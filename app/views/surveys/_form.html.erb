@@ -1,0 +1,357 @@
+
+<%- model_class = Customer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
+                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+</div>
+<%= form_for @survey, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <div class="control-group">
+    <%= f.label :application_ref_no, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :application_ref_no, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :agency_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :agency_name, :class => 'text_field', :value=>"Scorp Enterprises" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :fh_code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :fh_code, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :applicant_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :applicant_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :address, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :landmark, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :landmark, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address_confirmed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :address_confirmed, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name_and_stay_confirm, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :name_and_stay_confirm, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_of_visit, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_of_visit, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :time_of_visit, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_select :time_of_visit, :class => 'time_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :person_contacted, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :person_contacted, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :relation_with_applicant, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :relation_with_applicant, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :d_o_b, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :d_o_b, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :years_lived_at_current_address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :years_lived_at_current_address, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :residence_status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :residence_status, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :educational_qualification, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :educational_qualification, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :marital_status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :marital_status, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :no_of_family_members, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :no_of_family_members, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :working_member, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :working_member, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :children, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :children, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :spouse_working, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :spouse_working, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :spouse_working_detail, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :spouse_working_detail, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name_plate_seen, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :name_plate_seen, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :credit_card, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :credit_card, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :card_no, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :card_no, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :card_limit, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :card_limit, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :issuing_bank, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :issuing_bank, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :expiry_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :expiry_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :customer_beaviour, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :customer_beaviour, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :neighbour_ref, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :neighbour_ref, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name_varified_from, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name_varified_from, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :type_of_residence, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :type_of_residence, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :locality_of_residence, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :locality_of_residence, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ease_of_location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ease_of_location, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :construction_of_residence, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :construction_of_residence, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :comments_of_exteriors, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :comments_of_exteriors, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :carpet_area_in_sq_feet, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :carpet_area_in_sq_feet, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :interior_condition, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :interior_condition, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :asset_seen_at_residence, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :asset_seen_at_residence, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :potrait_on_wall, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :potrait_on_wall, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :applicant_residing_detail, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :applicant_residing_detail, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :application_availibility_time, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :application_availibility_time, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :no_of_family_member_in_the_house, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :no_of_family_member_in_the_house, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :verifiers_remark, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :verifiers_remark, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :accept_or_decline, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :accept_or_decline, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :refer_to_bank, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :refer_to_bank, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :slug, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :slug, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :latitude, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :latitude, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :longitude, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :longitude, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :gmaps, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :gmaps, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :state, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :state, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :pin, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :pin, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :country_state, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :country_state, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :country_city, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :country_city, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :country_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :country_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :status, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :degree_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :degree_name, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                customers_path, :class => 'btn' %>
+  </div>
+<% end %>

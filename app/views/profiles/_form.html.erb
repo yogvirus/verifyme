@@ -1,0 +1,71 @@
+<%= form_for @profile, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field_name">
+    <%= f.hidden_field :user_id, :class => 'number_field', :value=> current_user.id %>
+  </div>
+
+  <div class="row">
+  <div class="field_name">
+    <%= f.label :name, :class => 'control-label' %><br>
+      <%= f.text_field "", :value=> current_user.name, :disabled => true %>
+  </div><br><br><br>
+
+  <div class="field_name">
+    <%= f.label :Conatct_number_1, :class => 'control-label' %><br>
+      <%= f.text_field :contact_no_1, :class => 'text_field' %>
+  </div>
+
+  <div class="field_name">
+    <%= f.label :Conatct_number_2, :class => 'control-label' %><br>
+      <%= f.text_field :contact_no_2, :class => 'text_field' %>
+  </div><br><br><br>
+
+  <div class="field_name">
+    <%= f.label :BloodGroup, :class => 'control-label' %><br>
+      <%= f.text_field :blood_group, :class => 'text_field' %>
+  </div>
+<br><br><br>
+
+  <div class="field_name">
+   <span class="control-label">Date Of Birth</span><br><br>
+     <%= f.date_select :date_of_birth, :start_year=>1920, :class => 'text_field' %>
+  </div>
+
+<br><br><br><br>
+
+  <div class="field_name">
+    <%= f.label :"Upload Profile Photo", :class => 'control-label' %><br>
+     <%= f.file_field :photo %>
+  </div>
+<br><br><br>
+
+  <div class="field_name">
+    <%= f.label :Address, :class => 'control-label' %><br>
+      <%= f.text_area :address, :class => 'text_field' %>
+  </div>
+
+  <div class="field_name">
+    <%= f.label :Hobbies, :class => 'control-label' %><br>
+      <%= f.text_area :hobbies, :class => 'text_field' %>
+  </div>
+
+</div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                profiles_path, :class => 'btn' %>
+  </div>
+<% end %>

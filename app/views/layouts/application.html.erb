@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>e-verification</title>
+    <%= stylesheet_link_tag "bootstrap.css","form","bootstrap-responsive.css", :media => :all %>
+    <link href='http://fonts.googleapis.com/css?family=Happy+Monkey' rel='stylesheet' type='text/css'>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      body{
+            padding: 60px;
+            line-height: 25px;
+           }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+     .footer {
+       background-color: #000;
+       position: relative;
+       margin-top: -150px; /* negative value of footer height */
+       height: 150px;
+       clear:both;
+       padding-top:20px;
+     } 
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+ <a class="brand" href="/"><strong>&laquo; E-Verification - </strong>Online Client Verification</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+             <% if user_signed_in? %>
+              <%= link_to current_user.email,  :class=>"navbar-link" %> - 
+              <%= link_to "LOGOUT", destroy_user_session_path %>
+             <% else %>
+               <%= link_to "Login", new_user_session_path %> 
+               <!--<%= link_to "Admin login", "/admin" %>-->
+             <% end %>
+
+            </p><% if user_signed_in? %>
+            <ul class="nav"><% if current_user.role=="super_user"||current_user.role=="admin"%>
+              <li class="active"><%= link_to "Customers", customers_path %></li>
+              <li class="active"><%= link_to "Business", businesses_path %></li>
+              <li class="active"><%= link_to "Tabs", tabs_path %></li>
+              <% unless !current_user.profile %><li class="active"><%= link_to "My Profile", profile_path(current_user) %></li><% end %>
+              <% end %><% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<div id="hero-unit" style="margin:25px;">
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
+<%= yield %>
+</div>
+
+  </body>
+
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container">
+        <p class="muted credit"><br><br></p>
+      </div>
+    </div></html>
+

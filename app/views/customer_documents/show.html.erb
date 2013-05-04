@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @customer_document.customer_id %>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <%= @customer_document.photo %>
+</p>
+
+<p>
+  <b>Photo name:</b>
+  <%= @customer_document.photo_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_customer_document_path(@customer_document) %> |
+<%= link_to 'Back', customer_documents_path %>
+
+

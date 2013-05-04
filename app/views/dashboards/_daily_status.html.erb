@@ -1,0 +1,31 @@
+<style>
+ #status{float:right}
+
+  pending{
+           padding:4px;
+           border:2px solid red;
+           border-radius :3px;
+           background:red;
+            }
+  in_progress{
+           padding:4px;
+           border:2px solid yellow;
+           border-radius :3px;
+           background:yellow;
+            }
+
+  complete{
+           padding:4px;
+           border:2px solid green;
+           border-radius :5px;
+           background:green;
+           color:white;
+            }
+
+
+</style>
+<div id="status">
+ <pending>Pending </pending> &nbsp;&nbsp; <strong><%= @pending.count %></strong>  |
+ <in_progress>in progress </in_progress> &nbsp;&nbsp; <strong><%= @in_progress.count %></strong> |
+ <complete>Completed </complete> &nbsp;&nbsp; <strong><%= @completed.count %></strong>
+</div>

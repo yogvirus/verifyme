@@ -1,0 +1,19 @@
+<%= form_for @tab do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :tab_code %>
+    <%= f.text_field :tab_code %>
+  </p>
+
+  <p>
+    <%= f.label :tab_area_code %>
+    <%= f.collection_select :pincode_id, Pincode.all, :id, :name %>
+  </p>
+
+  <p><%= f.submit %></p>
+
+<% end %>

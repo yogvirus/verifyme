@@ -1,0 +1,57 @@
+
+<%- model_class = Customer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %>
+<b><%= link_to "Add Customer",
+            new_customer_path,
+            :class=>"btn btn-primary btn-small", :style=>"margin-right:150px;float:right" %></b><br><br></h1>
+</div>
+
+
+
+<table class="table table-striped">
+  <tr>
+    <th>Application ref no</th>
+    <th>Applicant name</th>
+    <th>Status</th>
+    <th>verifier</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @customers.each do |customer| %>
+
+  <tr>
+    <td><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></td>
+    <td><%= customer.applicant_name %></td>
+
+<% if customer.status=='submitted' %>
+     <td><span class="label label-info"> Submitted </span></td>  
+    <% end %>
+<% if customer.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>  
+    <% end %>
+<% if customer.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>  
+    <% end %>
+<% if customer.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>  
+    <% end %>
+
+<% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
+<% @verifier.each do |v| %>
+<% if v.tab.name %>
+    <td><%= v.tab.name %></td>
+<% else %>
+    <td> jodv</td>
+<% end %><% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+

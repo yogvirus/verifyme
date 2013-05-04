@@ -1,0 +1,21 @@
+<h1>Listing co_applicant_serveys</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @co_applicant_serveys.each do |co_applicant_servey| %>
+  <tr>
+    <td><%= link_to 'Show', co_applicant_servey %></td>
+    <td><%= link_to 'Edit', edit_co_applicant_servey_path(co_applicant_servey) %></td>
+    <td><%= link_to 'Destroy', co_applicant_servey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Co applicant servey', new_co_applicant_servey_path %>

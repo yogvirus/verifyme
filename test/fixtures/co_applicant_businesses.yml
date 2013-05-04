@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  applicant_ref_no: MyString
+  agency_name: MyString
+  document_required: false
+  fh_code: MyString
+  applicant_name: MyString
+  date_of_birth: 2013-04-27
+  landmark: MyString
+  address: MyText
+  country: MyString
+  city: MyString
+  state: MyString
+  pincode_id: 1
+  slug: MyString
+  latitude: 1.5
+  longitude: 1.5
+  status: MyString
+  co_applicant_id: 1
+  company_name: MyString
+
+two:
+  applicant_ref_no: MyString
+  agency_name: MyString
+  document_required: false
+  fh_code: MyString
+  applicant_name: MyString
+  date_of_birth: 2013-04-27
+  landmark: MyString
+  address: MyText
+  country: MyString
+  city: MyString
+  state: MyString
+  pincode_id: 1
+  slug: MyString
+  latitude: 1.5
+  longitude: 1.5
+  status: MyString
+  co_applicant_id: 1
+  company_name: MyString

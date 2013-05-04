@@ -1,0 +1,37 @@
+<%- model_class = Tab -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th><%= model_class.human_attribute_name(:name) %></th>
+    <th><%= model_class.human_attribute_name(:TabUser) %></th>
+    <th><%= model_class.human_attribute_name(:tab_code) %></th>
+  </tr>
+  <% for tab in @tabs %>
+    <tr>
+      <td><%= link_to tab.name, tab_path(tab) %></td>
+      <% if tab.user %> 
+         <td><i><small style ="color:green"> <%= link_to tab.user.profile.user.name, tab.user.profile %> </small></i></td>
+      <% else %>
+         <td><br><small style="color:red">no tab user </small></td>
+      <% end %>
+
+      <td><%= tab.tab_code %></td>
+<% if current_user.role=="super_user" %>        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_tab_path(tab), :class => 'label' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      tab_path(tab),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'label label-important' %>
+        </td>
+    </tr>
+  <% end %>  <% end %>
+</table>
+
+<p><%= link_to "New Tab", new_tab_path, :class=>"label label-info" %></p>

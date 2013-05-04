@@ -1,0 +1,2 @@
+module CoApplicantWorkDetailsHelper
+end

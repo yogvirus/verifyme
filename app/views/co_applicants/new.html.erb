@@ -1,0 +1,20 @@
+<%= render "form" %>
+
+
+
+
+<!--<h3>Enter Co applicant detail</h3> 
+    <%= form_for(@co_applicant) do |customer| %>
+      <%= customer.check_box :address_1 %><i> <small>* click if address verification compalsory</small></i>
+      <div class="field_name"><td><%= customer.label :'Co-Applicant Name' %>
+          <%= customer.text_field :name %>
+          <%= customer.hidden_field :customer_id, :value=>@servey.id %></div>
+
+
+      <div class="field_name"><td class="field_name"><%= customer.label :'Select Area' %>
+          <%= customer.collection_select :pincode_id, Pincode.all, :id, :pin_number  %></div>
+
+      <div class="field_name"><td class="field_name"><%= customer.label :'Co-Applicant address' %>
+          <%= customer.text_area :address %></div>
+      <%= customer.submit 'Continue..', :class=>"btn btn-primary btn-small" %>
+<hr><% end %>-->

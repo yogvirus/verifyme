@@ -1,0 +1,6 @@
+class AddStatusToSurveys < ActiveRecord::Migration
+  def change
+    add_column :surveys, :status, :string
+    add_column :customers, :degree_name, :string 
+  end
+end

@@ -1,0 +1,157 @@
+<style>
+img {
+/* This adds the border */
+padding:8px;
+border:solid;
+border-color: #000 #000 #000 #000;
+border-radius:4px;
+border-width: 1px 2px 2px 1px;
+background-color:white;
+}
+
+    name{
+    color: #000000;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 2px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+         
+
+.tab {
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 11.844px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 2px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    vertical-align: baseline;
+    white-space: nowrap;
+    background-color: transparent;
+    border:1px solid black;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.span1{ 
+          border-radius:5px;
+          padding:20px;
+          width:100px;
+          border:1px solid transparent;
+          background:pink;
+          color:white;
+         }
+
+.span2{ 
+          border-radius:5px;
+          padding:20px;
+          width:100px;
+          border:1px solid transparent;
+          background:yellow;
+          color:red;
+         }
+
+.span3{ 
+          border-radius:5px;
+          padding:20px;
+          width:100px;
+          border:1px solid transparent;
+          background:green;
+          color:white;
+         }
+
+ 
+</style>
+
+<%- model_class = Profile -%>
+<div class="page-header">
+ <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+
+<div style="float:center"><%= link_to t('.back', :default => t("helpers.links.back")),
+              profiles_path, :class => 'label label-info'  %>
+<% if current_user.role=="super_user" %>  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_profile_path(@profile), :class => 'label label-info' %> <% end %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              profile_path(@profile),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'label label-info' %>
+<% if current_user.role=="super_user" %>
+    <b style ="float:right"><%= link_to "Add Customer", new_customer_path , :class=>"label label-success"%></b>
+<% end %>
+</div>
+</div>
+
+ 
+<div id="center" style="width:auto">
+
+<div id="image" style="float:left;">
+<% if @profile.photo.exists? then %>
+  <%= image_tag @profile.photo.url(:small), :width=>"250", :height=>"400" %>
+<% end %>
+
+<div id="content" style="border-radius:10px;border:0px solid black;padding:20px;float:right;margin:20px;width:700px;">
+
+  <name><%= @profile.user.name %> </name>
+   <%= @t %>
+
+<br>
+   <small style ="color:#6E6E6E"> member since <%= time_tag @profile.created_at %> | </small>
+  <small style ="color:brown"><%= @profile.user.email %></small><br>
+
+     <% if @profile.user.role=="super_user" %>
+       <b class="label label-inverse"> Super Admin</b>
+     <% end %>
+
+<% if current_user.role=="tab_user"%>
+  <% if @profile.user.tab %>
+  <span class="tab"><%= link_to @profile.user.tab.name, tab_path(@profile.user.tab) %> </span> | 
+<% end %>
+<% end %>
+  <span class="label"><%= @profile.contact_no_1 %></span> |  <span class="label"><%= @profile.contact_no_2 %></span><br>
+
+<small style="color:#6E6E6E">
+  <%= @profile.address %><br>
+  <b style="color:#FF0000"><%= @profile.blood_group %> </b> | <%= time_tag @profile.date_of_birth %> | <%= @profile.verification_area %> <br>
+  <%= @profile.hobbies %></small><br>
+</dl>
+<hr>
+
+<small>
+     <% unless current_user.role=="super_user" %>
+ <div class="span9">
+<div class="row-fluid">
+
+   <div class="span4">
+    <b>complete</b>
+      <% Customer.find_all_by_status('verified').each do |p| %>
+       <br><%= link_to p.applicant_name, p %><br>
+     <% end %>
+    </div>
+
+    <div class="span4">
+     <b>pending</b>
+     <% Customer.find_all_by_status('ready_for_verification').each do |p| %>
+      <br><%= p.applicant_name %>
+     <% end %>
+    </div>
+
+    <div class="span4">
+     <b>ready</b>
+     <% Customer.find_all_by_status('ready_for_verification').each do |p| %>
+      <br><%= p.applicant_name %>
+     <% end %>
+    </div>
+
+ </div>
+ 
+ </div>
+   <% end %> 
+</small>
+
+
+

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  co_applicant_business_id: 1
+  co_applicant_work_detail_id: 1
+  photo_file_name: MyString
+  photo_content_type: MyString
+  photo_file_size: 1
+
+two:
+  co_applicant_business_id: 1
+  co_applicant_work_detail_id: 1
+  photo_file_name: MyString
+  photo_content_type: MyString
+  photo_file_size: 1

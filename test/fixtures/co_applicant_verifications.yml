@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  co_applicant_id: 1
+  user_id: 1
+  customer_id: 1
+  tab_id: 1
+
+two:
+  co_applicant_id: 1
+  user_id: 1
+  customer_id: 1
+  tab_id: 1

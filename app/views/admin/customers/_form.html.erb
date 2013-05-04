@@ -1,0 +1,62 @@
+<%= form_for @customer, :html => { :class => 'form-horizontal' } do |f| %>
+<% if @customer.blank? %>
+  <div class="control-group">
+    <%= f.label :application_ref_no, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :application_ref_no, :class => 'text_field', :value=>@ref_no %>
+    </div>
+  </div>
+<% else %>
+  <div class="control-group">
+    <%= f.label :application_ref_no, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :application_ref_no, :class => 'text_field', :value=> @final_no %>
+    </div>
+  </div>
+<% end %>
+  <div class="control-group">
+    <%= f.label :agency_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :agency_name, :class => 'text_field', :value=>"Scorp Enterprises" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :fh_code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :fh_code, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :applicant_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :applicant_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :address, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :landmark, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :landmark, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :date_of_birth, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :d_o_b, :start_year => 1930 %>
+    </div>
+  </div>
+
+
+<br>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                customers_path, :class => 'btn' %>
+  </div>
+<% end %>

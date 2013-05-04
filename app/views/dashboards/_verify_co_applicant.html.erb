@@ -1,0 +1,12 @@
+  <div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+   <h5>Co applicants To be verified</h5>
+<table class="table table-condensed">
+  <% CoApplicant.find_all_by_status('awaiting_to_get_verified').each do |c| %>
+  <tr>
+     <td><%= link_to c.applicant_name, c %></td>
+     <td><%= link_to "Accept", accept_co_applicant_path(c, :co_applicant_id=>c), :class=>"label label-success" %></td>
+     <td><%= link_to "Re Assign", re_indicated_co_applicant_path(c), :class=>"label label-important" %></td>
+  </tr>
+  <% end %>
+ </table></div>
+

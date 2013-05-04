@@ -1,0 +1,29 @@
+<div class="media">
+ <a class="pull-left" href="#">
+  <% if current_user.profile %>
+   <p><%= image_tag current_user.profile.photo.url(:thumb), :size=>"64x64" %></p>
+  <% else %>
+   <img class="media-object" src="http://placehold.it/64x64">
+  <% end %>
+ </a>
+
+<div class="media-body">
+ <% if current_user.role=="super_user"%><%= render "daily_status", :html=>{:float=>"right"} %><% end %>
+<% if current_user.profile %>
+<h4 class="media-heading">Hello, <%= link_to current_user.profile.user.name, current_user.profile %>!</h4>
+ <% if current_user.role=="super_user"%>
+   <h5 class="label label-inverse"> SUPER USER </h5><br>
+ <% end %>
+   <small style ="color:#6E6E6E"> member since <%= time_tag current_user.created_at %> | </small>
+   <small style ="color:brown"><%= current_user.email %></small>
+<hr>
+<% if current_user.role=="tab_user" %>
+   <small><%= link_to current_user.tab.name, current_user.tab, :class=>" label label-info" %> </small>
+<% end %>
+<% else %>
+  <h4>In-Complete Profile  <%= link_to 'Complete profile', new_profile_path %> </h4>
+<% end %>
+</div></div>
+<br><br>
+
+
