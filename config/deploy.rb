@@ -11,9 +11,9 @@ set :use_sudo, false
 set :scm, "git"
 set :repository, "git@github.com:sudorails/#{application}.git"
 set :branch, "master"
-# Uncomment for carrierwave gem, which uploads to public/uploads (which we don't want to overwrite on each deployment)
-# http://stackoverflow.com/questions/9043662/carrierwave-files-with-capistrano/9710542#9710542
-#set :shared_children, shared_children + %w{public/uploads}
+
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -31,8 +31,17 @@ namespace :deploy do
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+    run "mkdir -p #{shared_path}/config"
+    put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+    puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
+
+  task :symlink_config, roles: :app do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/setup_mail.rb #{release_path}/config/initializers/setup_mail.rb"
+  end
+  after "deploy:finalize_update", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
@@ -44,5 +53,3 @@ namespace :deploy do
   end
   before "deploy", "deploy:check_revision"
 end
-
-

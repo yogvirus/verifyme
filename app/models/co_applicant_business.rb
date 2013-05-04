@@ -6,7 +6,7 @@ attr_accessible :address, :agency_name, :applicant_name, :applicant_ref_no, :cit
  belongs_to :pincode
  has_one :co_applicant_verification
  has_one :client_verification
-
+ has_one :co_applicant_work_detail
 
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged

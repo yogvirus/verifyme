@@ -70,5 +70,93 @@
 <p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant_business.latitude}%2C#{@co_applicant_business.longitude}" %></p>
 </div>
 
+<% if @co_applicant_business.co_applicant_work_detail %>
+<div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 
+
+  <strong><%= model_class.human_attribute_name(:Designation) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.applicant_designation.inspect %><br>
+
+  <strong><%= model_class.human_attribute_name(:date_of_visit) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.date_of_visit %><br>
+
+  <strong><%= model_class.human_attribute_name(:time_of_visit) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.time_of_visit.strftime('%I:%M %P') %><rb><br>
+
+  <strong><%= model_class.human_attribute_name(:person_contacted) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.person_met %><br>
+
+  <strong><%= model_class.human_attribute_name(:designation_of_person_met) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.designation_of_person_met %><br>
+
+  <strong><%= model_class.human_attribute_name(:date_of_birth) %>:</strong>
+  <%= time_tag @co_applicant_business.co_applicant.customer.d_o_b %><br>
+
+  <strong><%= model_class.human_attribute_name(:contact_number) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.telephone_number %><br>
+
+  <strong><%= model_class.human_attribute_name(:extension_number) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.ext_number %><br>
+
+  <strong><%= model_class.human_attribute_name(:mobile_number) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.mobile_number %><br>
+
+  <strong><%= model_class.human_attribute_name(:no_of_years_in_present_employeement) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.number_of_years_in_present_employment %> Years<br>
+
+  <strong><%= model_class.human_attribute_name(:visiting_card_obtained) %>:</strong>
+  <% if @co_applicant_business.co_applicant_work_detail.visiting_card_obtained="true" %>
+   Yes <% else %> No <% end %><br>
+
+  <strong><%= model_class.human_attribute_name(:name_of_the_company) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.name_of_the_company %><br>
+
+  <strong><%= model_class.human_attribute_name(:type_of_business) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.type_of_business %><br>
+
+  <strong><%= model_class.human_attribute_name(:nature_of_business) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.nature_of_business %><br>
+
+  <strong><%= model_class.human_attribute_name(:nob_in_detail) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.nob_in_detail %><br>
+
+  <strong><%= model_class.human_attribute_name(:office_ownership) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.office_ownership %><br>
+
+  <strong><%= model_class.human_attribute_name(:no_of_employees) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.no_of_employees %><br>
+
+  <strong><%= model_class.human_attribute_name(:no_of_branches) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.no_of_branches %><br>
+
+  <strong><%= model_class.human_attribute_name(:average_monthly_turn_over) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.average_monthly_turn_over %><br>
+
+  <strong><%= model_class.human_attribute_name(:no_of_customer_per_date) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.no_of_customer_per_date %><br>
+
+  <strong><%= model_class.human_attribute_name(:type_of_job) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.type_of_job %><br>
+
+  <strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.job_transferable %><br>
+
+  <strong><%= model_class.human_attribute_name(:salary_drawn) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.salary_drawn %><br>
+
+  <strong><%= model_class.human_attribute_name(:no_of_years_worked_in_current_company) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.no_of_years_worked %><br>
+
+  <strong><%= model_class.human_attribute_name(:board_seen) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.board_seen %><br>
+
+  <strong><%= model_class.human_attribute_name(:name_verified_from) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.name_verified_from %><br>
+
+  <strong><%= model_class.human_attribute_name(:nature_of_business_in_detail) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.nob_in_detail %><br>
+
+
+</div>
+<% end %>
 

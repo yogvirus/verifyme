@@ -32,12 +32,13 @@ source 'https://rubygems.org'
   gem 'unicorn'
   gem 'capistrano-ext'
   gem 'capistrano'
+  gem 'whenever', "~> 0.8.0", :require => false
   gem 'quiet_assets', :group => :development
   #gem 'headshot' 
   gem 'validates_timeliness', '~> 3.0'
 group :production do
   #gem 'pg', '0.12.2'
-   gem 'mysql2'
+
    gem 'unicorn' 
    gem 'capistrano'
 end

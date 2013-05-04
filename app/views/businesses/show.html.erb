@@ -72,148 +72,94 @@
 <p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@business.latitude}%2C#{@business.longitude}" %></p>
 </div>
 
-
 <% if @business.work_servey %>
-<% if @business.work_servey.name_and_employee_confirm %></td></tr>
+<% if @business.work_servey.name_and_employee_confirm %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<table class="table table-bordered">
 
-  <tr><td><strong><%= model_class.human_attribute_name(:Designation) %>:</strong>
-  <%= @business.work_servey.applicant_designation %></td></tr>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:date_of_visit) %>:</strong>
-  <%= @business.work_servey.date_of_visit %></td></tr>
+  <strong><%= model_class.human_attribute_name(:Designation) %>:</strong>
+  <%= @business.work_servey.applicant_designation %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:time_of_visit) %>:</strong>
-  <%= @business.work_servey.time_of_visit %></td></tr>
+  <strong><%= model_class.human_attribute_name(:date_of_visit) %>:</strong>
+  <%= @business.work_servey.date_of_visit %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:person_contacted) %>:</strong>
-  <%= @business.work_servey.person_met %></td></tr>
+  <strong><%= model_class.human_attribute_name(:time_of_visit) %>:</strong>
+  <%= @business.work_servey.time_of_visit.strftime('%I:%M %P') %><rb><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:relation_with_applicant) %>:</strong>
-  <%= @business.work_servey.designation_of_person_met %></td></tr>
+  <strong><%= model_class.human_attribute_name(:person_contacted) %>:</strong>
+  <%= @business.work_servey.person_met %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:d_o_b) %>:</strong>
-  <%= @business.work_servey.business.customer.d_o_b %></td></tr>
+  <strong><%= model_class.human_attribute_name(:designation_of_person_met) %>:</strong>
+  <%= @business.work_servey.designation_of_person_met %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:contact_number) %>:</strong>
-  <%= @business.work_servey.telephone_number %></td></tr>
+  <strong><%= model_class.human_attribute_name(:date_of_birth) %>:</strong>
+  <%= time_tag @business.work_servey.business.customer.d_o_b %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:extension_number) %>:</strong>
-  <%= @business.work_servey.ext_number %></td></tr>
+  <strong><%= model_class.human_attribute_name(:contact_number) %>:</strong>
+  <%= @business.work_servey.telephone_number %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:mobile_number) %>:</strong>
-  <%= @business.work_servey.mobile_number %></td></tr>
+  <strong><%= model_class.human_attribute_name(:extension_number) %>:</strong>
+  <%= @business.work_servey.ext_number %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:no_of_years_in_present_employeement) %>:</strong>
-  <%= @business.work_servey.number_of_years_in_present_employment %></td></tr>
+  <strong><%= model_class.human_attribute_name(:mobile_number) %>:</strong>
+  <%= @business.work_servey.mobile_number %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:visiting_card_obtained) %>:</strong>
-  <%= @business.work_servey.visiting_card_obtained %></td></tr>
+  <strong><%= model_class.human_attribute_name(:no_of_years_in_present_employeement) %>:</strong>
+  <%= @business.work_servey.number_of_years_in_present_employment %> Years<br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:name_of_the_company) %>:</strong>
-  <%= @business.work_servey.name_of_the_company %></td></tr>
+  <strong><%= model_class.human_attribute_name(:visiting_card_obtained) %>:</strong>
+  <% if @business.work_servey.visiting_card_obtained="true" %>
+   Yes <% else %> No <% end %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:children) %>:</strong>
-  <%= @business.work_servey.type_of_business %></td></tr>
+  <strong><%= model_class.human_attribute_name(:name_of_the_company) %>:</strong>
+  <%= @business.work_servey.name_of_the_company %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:spouse_working) %>:</strong>
-  <%= @business.work_servey.nature_of_business %></td></tr>
+  <strong><%= model_class.human_attribute_name(:type_of_business) %>:</strong>
+  <%= @business.work_servey.type_of_business %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:spouse_working_detail) %>:</strong>
-  <%= @business.work_servey.nob_in_detail %></td></tr>
+  <strong><%= model_class.human_attribute_name(:nature_of_business) %>:</strong>
+  <%= @business.work_servey.nature_of_business %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:name_plate_seen) %>:</strong>
-  <%= @business.work_servey.office_ownership %></td></tr>
+  <strong><%= model_class.human_attribute_name(:nob_in_detail) %>:</strong>
+  <%= @business.work_servey.nob_in_detail %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:credit_card) %>:</strong>
-  <%= @business.work_servey.no_of_employees %></td></tr>
+  <strong><%= model_class.human_attribute_name(:office_ownership) %>:</strong>
+  <%= @business.work_servey.office_ownership %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:card_no) %>:</strong>
-  <%= @business.work_servey.no_of_branches %></td></tr>
+  <strong><%= model_class.human_attribute_name(:no_of_employees) %>:</strong>
+  <%= @business.work_servey.no_of_employees %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:card_limit) %>:</strong>
-  <%= @business.work_servey.average_monthly_turn_over %></td></tr>
+  <strong><%= model_class.human_attribute_name(:no_of_branches) %>:</strong>
+  <%= @business.work_servey.no_of_branches %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:issuing_bank) %>:</strong>
-  <%= @business.work_servey.no_of_customer_per_date %></td></tr>
+  <strong><%= model_class.human_attribute_name(:average_monthly_turn_over) %>:</strong>
+  <%= @business.work_servey.average_monthly_turn_over %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:expiry_date) %>:</strong>
-  <%= @business.work_servey.type_of_job %></td></tr>
+  <strong><%= model_class.human_attribute_name(:no_of_customer_per_date) %>:</strong>
+  <%= @business.work_servey.no_of_customer_per_date %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
-  <%= @business.work_servey.job_transferable %></td></tr>
+  <strong><%= model_class.human_attribute_name(:type_of_job) %>:</strong>
+  <%= @business.work_servey.type_of_job %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:name_varified_from) %>:</strong>
-  <%= @business.work_servey.salary_drawn %></td></tr>
+  <strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
+  <%= @business.work_servey.job_transferable %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:type_of_residence) %>:</strong>
-  <%= @business.work_servey.no_of_years_worked %></td></tr>
+  <strong><%= model_class.human_attribute_name(:salary_drawn) %>:</strong>
+  <%= @business.work_servey.salary_drawn %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:locality_of_residence) %>:</strong>
-  <%= @business.work_servey.board_seen %></td></tr>
+  <strong><%= model_class.human_attribute_name(:no_of_years_worked_in_current_company) %>:</strong>
+  <%= @business.work_servey.no_of_years_worked %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:ease_of_location) %>:</strong>
-  <%= @business.work_servey.name_verified_from %></td></tr>
+  <strong><%= model_class.human_attribute_name(:board_seen) %>:</strong>
+  <%= @business.work_servey.board_seen %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:construction_of_residence) %>:</strong>
-  <%= @business.work_servey.construction_of_residence %></td></tr>
+  <strong><%= model_class.human_attribute_name(:name_verified_from) %>:</strong>
+  <%= @business.work_servey.name_verified_from %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:comments_of_exteriors) %>:</strong>
-  <%= @business.work_servey.comments_of_exteriors %></td></tr>
+  <strong><%= model_class.human_attribute_name(:nature_of_business_in_detail) %>:</strong>
+  <%= @business.work_servey.nob_in_detail %><br>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:carpet_area_in_sq_feet) %>:</strong>
-  <%= @business.work_servey.carpet_area_in_sq_feet %></td></tr>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:interior_condition) %>:</strong>
-  <%= @business.work_servey.interior_condition %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:asset_seen_at_residence) %>:</strong>
-  <%= @business.work_servey.asset_seen_at_residence %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:potrait_on_wall) %>:</strong>
-  <%= @business.work_servey.potrait_on_wall %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:applicant_residing_detail) %>:</strong>
-  <%= @business.work_servey.applicant_residing_detail %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:application_availibility_time) %>:</strong>
-  <%= @business.work_servey.application_availibility_time %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:no_of_family_member_in_the_house) %>:</strong>
-  <%= @business.work_servey.no_of_family_member_in_the_house %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:verifiers_remark) %>:</strong>
-  <%= @business.work_servey.verifiers_remark %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:refer_to_bank) %>:</strong>
-  <%= @business.work_servey.refer_to_bank %></td></tr>
-
-<!--  <tr><td><strong><%= model_class.human_attribute_name(:gmaps) %>:</strong>
-  <%= @customer.gmaps %></td></tr> -->
-
-<!--  <tr><td><strong><%= model_class.human_attribute_name(:state) %>:</strong>
-  <%= @customer.state %></td></tr> -->
-
-  <tr><td><strong><%= model_class.human_attribute_name(:pin) %>:</strong>
-  <%= @customer.pincode.name %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:country_state) %>:</strong>
-  <%= @customer.country_state %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:country_city) %>:</strong>
-  <%= @customer.country_city %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:country_name) %>:</strong>
-  <%= @customer.country_name %></td></tr>
-
-<!--  <tr><td><strong><%= model_class.human_attribute_name(:status) %>:</strong>
-  <%= @customer.status %></td></tr>-->
-
-  <tr><td><strong><%= model_class.human_attribute_name(:degree_name) %>:</strong>
-  <%= @customer.degree_name %></td></tr>
-
-</table>
 </div>
 <% end %>
 <% end %>

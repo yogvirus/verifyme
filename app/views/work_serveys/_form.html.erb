@@ -46,7 +46,7 @@ $(document).ready(function(){
 
   <%= f.hidden_field :business_id, :value=> params[:customer_business_id], :class => 'text_field' %>
   <%= f.hidden_field :tab_id, :value=> params[:tab_id], :class => 'text_field' %>
-  <%= f.hidden_field :time_of_visit, :value=>Time.now , :class => 'time_select' %>
+  <%= f.hidden_field :time_of_visit, :value=>Time.now.strftime('%H:%M:%S') , :class => 'time_select' %>
   <%= f.hidden_field :date_of_visit, :value=> Time.now, :class => 'date_select' %>
 
   <!-- Customer detal -->
