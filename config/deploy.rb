@@ -1,9 +1,9 @@
 require "bundler/capistrano"
 
-server "58.146.118.69", :web, :app, :db, primary: true
+server "115.248.231.170", :web, :app, :db, primary: true
 
 set :application, "e_verification"
-set :user, "deployer"
+set :user, "scorp"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false

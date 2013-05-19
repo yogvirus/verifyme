@@ -1,4 +1,4 @@
-root = "/home/deployer/apps/e_verification/current"
+root = "/home/scorp/apps/e_verification/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"

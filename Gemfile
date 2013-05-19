@@ -6,7 +6,6 @@ source 'https://rubygems.org'
   gem 'heroku'
   gem 'therubyracer'
   gem 'devise'
-#  gem 'nifty-generators'
   gem 'carrierwave'
   gem "nested_form"
   gem 'paperclip'
@@ -28,19 +27,14 @@ source 'https://rubygems.org'
   gem "best_in_place"
   gem "macaddr" 
   gem 'rails_bootstrap_navbar'
-  #gem 'thin' 
   gem 'unicorn'
-  gem 'capistrano-ext'
-  gem 'capistrano'
   gem 'whenever', "~> 0.8.0", :require => false
   gem 'quiet_assets', :group => :development
-  #gem 'headshot' 
   gem 'validates_timeliness', '~> 3.0'
+  gem 'unicorn' 
+  gem 'capistrano'
 group :production do
-  #gem 'pg', '0.12.2'
-
-   gem 'unicorn' 
-   gem 'capistrano'
+   gem 'mysql2'
 end
 
 group :assets do
