@@ -38,7 +38,7 @@ $(document).ready(function(){
 
 <% if @co_applicant.document_required? %>
 <div class="alert alert-info">
-<h4 style ="text-transform: uppercase;">*Customers Document Phots are Required</h4>
+<h4 style ="text-transform: uppercase;">*Customers Document Photos are Required</h4>
 </div>
 <% end %>
 
@@ -63,8 +63,10 @@ $(document).ready(function(){
   <%= f.hidden_field :time_of_visit, :value=>Time.now , :class => 'time_select' %>
   <%= f.hidden_field :date_of_visit, :value=> Date.today, :class => 'date_select' %>
   <strong>Address</strong><br><b style ="color:blue"><%= @co_applicant.address %></b><br>
-
-
+<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant.latitude}%2C#{@co_applicant.longitude}" %></p>
+</div>
+<br><br><br>
 <table class="table table-striped" border>
   <tr>
     <th>Application ref no</th>
@@ -390,15 +392,11 @@ paying guest<br>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :accept_or_decline, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :accept_or_decline, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :refer_to_bank, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :refer_to_bank, :class => 'text_field' %>
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Accept" /> Accept
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Decline" /> Decline
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="refer to bank" /> Refer to Bank
+
     </div>
   </div>
 

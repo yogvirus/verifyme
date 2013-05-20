@@ -376,15 +376,11 @@ paying guest<br>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :accept_or_decline, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :accept_or_decline, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :refer_to_bank, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :refer_to_bank, :class => 'text_field' %>
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Accept" /> Accept
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Decline" /> Decline
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="refer to bank" /> Refer to Bank
+
     </div>
   </div>
 

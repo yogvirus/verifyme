@@ -12,11 +12,12 @@
 
 
 
-
-
 <div style="float:left;width:50%">
   <%= image_tag "verifyme.jpg" %>
+  <%= image_tag('scorpLogo.jpg', :size => "250x450")%>
 </div>
+
+
 <div style="float:right;width:50%">
   <h4>Sign in</h4>
    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -49,5 +50,16 @@
             </section>
         </div>
 </div>
-
     </body>
+
+<style>
+#footer {
+    position: absolute;
+    bottom: 0px;
+    margin-left:200px;
+}
+</style>
+<div id="footer">
+<p><b style="color:red">verify me </b> a product of 
+<a href="http://www.scorpeo.in"> <b>scorp enterprise outsourcing pvt.ltd.</b></a></p>
+</div>

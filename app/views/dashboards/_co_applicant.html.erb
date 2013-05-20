@@ -1,6 +1,4 @@
 
-<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
- <h5>Today's Co Applicant Residence verification</h5>
 <table class="table table-striped">
   <% CoApplicantVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC').each do |c| %>
  <tr><% if c.co_applicant.status=="submitted" %>
@@ -17,7 +15,6 @@
 
     <% end %>
   <% end %></tr></table>
-</div>
 
 
 

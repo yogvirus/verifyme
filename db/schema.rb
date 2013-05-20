@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429201924) do
+ActiveRecord::Schema.define(:version => 20130520130824) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -269,6 +269,8 @@ ActiveRecord::Schema.define(:version => 20130429201924) do
     t.string   "city"
     t.string   "state"
     t.integer  "application_ref_no"
+    t.integer  "tab_id"
+    t.string   "company_name_new"
   end
 
   create_table "co_applicants", :force => true do |t|
@@ -338,6 +340,13 @@ ActiveRecord::Schema.define(:version => 20130429201924) do
     t.string   "snapshot"
     t.string   "degree_name"
     t.boolean  "photo_required"
+  end
+
+  create_table "data_proofs", :force => true do |t|
+    t.string   "name"
+    t.string   "detail"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "headshot_photos", :force => true do |t|
@@ -531,6 +540,7 @@ ActiveRecord::Schema.define(:version => 20130429201924) do
     t.integer  "customer_id"
     t.string   "status"
     t.integer  "tab_id"
+    t.string   "company_name_new"
   end
 
 end

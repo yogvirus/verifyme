@@ -33,6 +33,7 @@ source 'https://rubygems.org'
   gem 'validates_timeliness', '~> 3.0'
   gem 'unicorn' 
   gem 'capistrano'
+  gem 'headshot'
 group :production do
    gem 'mysql2'
 end

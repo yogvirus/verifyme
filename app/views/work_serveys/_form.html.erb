@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 <% if @business.document_required? %>
 <div class="alert alert-info">
-<h4 style ="text-transform: uppercase;">*Customers Document Phots are Required</h4>
+<h4 style ="text-transform: uppercase;">*Customers Document Photos are Required</h4>
 </div>
 <% end %>
 
@@ -153,6 +153,7 @@ $(document).ready(function(){
   <div class="field_name">
     <%= f.label :name_of_the_company, :class => 'control-label' %>
       <%= f.text_field :name_of_the_company, :value=>@business.company_name %>
+      <%= f.text_field :company_name_new %> *tips : enter the new name if the existing name is wrong 
   </div>
 
   <div class="field_name">
@@ -333,6 +334,14 @@ $(document).ready(function(){
       <%= f.text_field :no_of_customer_seen %>
   </div>
 
+  <div class="control-group">
+    <div class="controls">
+      <input id="servey_marital_status" name="work_servey[refer_to_bank]" type="radio" value="positive" /> positive
+      <input id="servey_marital_status" name="work_servey[refer_to_bank]" type="radio" value="Negative" /> Negative
+      <input id="servey_marital_status" name="work_servey[refer_to_bank]" type="radio" value="refer to bank" /> Refer to Bank
+
+    </div>
+  </div>
 
 
 

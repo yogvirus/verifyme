@@ -94,6 +94,7 @@ GEM
     friendly_id (4.0.9)
     geocoder (1.1.6)
     has_scope (0.5.1)
+    headshot (0.1.6)
     heroku (2.37.2)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
@@ -263,6 +264,7 @@ DEPENDENCIES
   execjs
   friendly_id
   geocoder
+  headshot
   heroku
   jquery-rails
   less-rails

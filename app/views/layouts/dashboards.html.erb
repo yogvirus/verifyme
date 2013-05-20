@@ -30,8 +30,6 @@
  <% if current_user.role=="tab_user"&&current_user.tab %>
  <%= render "residence" %>
  <%= render "business" %>
- <%= render "co_applicant" %>
- <%= render "co_applicant_business" %>
  <%= render "verified_customers" %>
 <% end %> 
 
@@ -40,7 +38,7 @@
  <%= render "to_be_verified" %>
  <%= render "verify_business" %>
  <%= render "verify_co_applicant" %>
- <%= render "verify_co_applicant_business" %>
+
 <% end %>
 </div>
 
@@ -53,6 +51,8 @@
 
 
 </div>
+
+
   </body>
 </html>
 
