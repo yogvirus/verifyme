@@ -15,6 +15,7 @@
   <td><%= link_to "Verify",new_work_servey_path(:customer_business_id => c.business.id, :tab_id => current_user.tab.id), :class=>"label label-info" %></td>
     <% end %>
   <% end %></tr></table>
+ <%= render "co_applicant_business" %>
 </div>
 
- <%= render "verify_co_applicant_business" %>
+

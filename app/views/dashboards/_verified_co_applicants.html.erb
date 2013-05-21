@@ -1,7 +1,5 @@
-<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<h5>Customer's Verified</h5>
 <table class="table table-striped">
- <% CustomerVerification.find_all_by_tab_id(current_user.tab).each do |c| %>
+ <% CoApplicantVerification.find_all_by_tab_id(current_user.tab).each do |c| %>
   <tr><% if c.customer.status=="verified" %>
     <td><%= link_to c.customer.applicant_name, c.customer %>
      <% time1 = Time.now %> <% time2 = c.created_at %>
@@ -14,4 +12,3 @@
      <td><p class="label label-success">Verified</p></td>
   <% end %>
  <% end %></tr></table>
-</div><!--/span-->

@@ -1,4 +1,3 @@
-
 <table class="table table-striped">
   <% CoApplicantVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC').each do |c| %>
  <tr><% if c.co_applicant.status=="submitted" %>
@@ -11,7 +10,7 @@
       </small>
      </p>
   </td>
-  <td><%= link_to "Verify",new_co_applicant_servey_path(:customer_co_applicant_id=>c.co_applicant.id, :tab_id=> current_user.tab.id), :class=>"label label-info" %></td>
+  <td><%= link_to "Verify",new_co_applicant_servey_path(:customer_co_applicant_id=> c.co_applicant.id, :tab_id=> current_user.tab.id), :class=>"label label-info" %></td>
 
     <% end %>
   <% end %></tr></table>

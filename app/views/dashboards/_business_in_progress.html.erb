@@ -1,0 +1,4 @@
+<table class="table table-striped">
+ <% Business.find_all_by_status("submitted").each do |c| %>
+    <tr><td><%= link_to c.customer.applicant_name, c.customer %></td></tr>
+ <% end %></table>

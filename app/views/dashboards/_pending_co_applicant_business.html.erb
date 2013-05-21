@@ -1,0 +1,10 @@
+
+<table class="table table-condensed">
+  <% CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified').each do |c| %>
+  <tr>
+     <td><%= link_to c.applicant_name, c %></td>
+     <td><%= link_to "Accept", accept_business_path(c, :business_id=>c), :class=>"label label-success" %></td>
+     <td><%= link_to "Re Assign", re_indicated_business_path(c), :class=>"label label-important" %></td>
+  </tr>
+  <% end %>
+ </table>
