@@ -1,0 +1,11 @@
+
+
+
+<table class="table table-condensed">
+  <% CoApplicantBusiness.find_all_by_status('submitted').each do |c| %>
+  <tr>
+     <td><%= link_to c.applicant_name, c %></td>
+  </tr>
+  <% end %>
+ </table>
+

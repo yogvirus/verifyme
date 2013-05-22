@@ -30,14 +30,12 @@
  <% if current_user.role=="tab_user"&&current_user.tab %>
  <%= render "residence" %>
  <%= render "business" %>
- <%= render "verified_customers" %>
 <% end %> 
 
 <% if current_user.role=="super_user" %>
- <%= render "verified_customers" %>
- <%= render "to_be_verified" %>
- <%= render "verify_business" %>
- <%= render "verify_co_applicant" %>
+ <%= render "completed" %>
+ <%= render "pending" %>
+ <%= render "in_progress" %>
 
 <% end %>
 </div>

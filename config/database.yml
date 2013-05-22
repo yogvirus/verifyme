@@ -5,7 +5,7 @@ development:
   reconnect: false
   database: e-verification_development
   username: root
-  password: scorp
+  password: safew
 
 test:
   adapter: mysql2
@@ -13,10 +13,10 @@ test:
   reconnect: false
   database: e-verification_test
   username: root
-  password: scorp
+  password: safew
 
 production:
   adapter: mysql2
   database: e-verification_production
   username: root
-  password: scorp
+  password: safew
