@@ -61,6 +61,7 @@
               <li class="active"><%= link_to "Customers", customers_path %></li>
               <li class="active"><%= link_to "Business", businesses_path %></li>
               <li class="active"><%= link_to "Tabs", tabs_path %></li>
+              <li class="active"><%= link_to "Generate Report", reports_path %></li>
               <% unless !current_user.profile %><li class="active"><%= link_to "My Profile", profile_path(current_user) %></li><% end %>
               <% end %><% end %>
             </ul>
