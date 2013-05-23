@@ -15,5 +15,10 @@ module ApplicationHelper
     end
   end
 
+    def generate_report(from_date,to_date,rows_limit=10)
+     pending = Customer.select("status").where("created_at >= ? and created_at <= ?", from_date, to_date).group("applicant_name").order("id desc").limit(rows_limit)    
+logger.info "#####################"+to_date.inspect
+  end  
+
 
 end

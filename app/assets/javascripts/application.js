@@ -16,9 +16,17 @@
 //= require jquery_nested_form
 //= require_tree .
 //= require jquery.webcam
-
+//= require_self
+//= require bootstrap-datepicker
 
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
+});
+
+
+$("[data-behaviour~='datepicker']").datepicker({
+    "format": "yyyy-mm-dd",
+    "weekStart": 1,
+    "autoclose": true
 });

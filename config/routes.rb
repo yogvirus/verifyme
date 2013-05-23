@@ -1,6 +1,9 @@
 EVerification::Application.routes.draw do
 
 
+  resources :reports do
+   get :generate_report
+  end
   resources :co_applicant_serveys
 
   get "co_applicant_businesses/index"
