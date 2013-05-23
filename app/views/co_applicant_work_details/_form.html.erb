@@ -69,7 +69,9 @@ $(document).ready(function(){
 </table>
 <hr>
 <strong><%= @co_applicant_business.address %></strong>
-
+<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant_business.latitude}%2C#{@co_applicant_business.longitude}" %></p>
+</div>
     </div>
   </div>
 

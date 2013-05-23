@@ -47,6 +47,10 @@ $(document).ready(function(){
   <%= f.hidden_field :time_of_visit, :value=>Time.now , :class => 'time_select' %>
   <%= f.hidden_field :date_of_visit, :value=> Time.now, :class => 'date_select' %>
   <strong>Address</strong><br><b style ="color:blue"><%= @customer.address %></b><br>
+
+<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@customer.latitude}%2C#{@customer.longitude}" %></p>
+</div>
   <!-- Customer detal -->
 <table class="table table-striped" border>
   <tr>

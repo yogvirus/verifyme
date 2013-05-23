@@ -7,7 +7,7 @@ class CoApplicantWorkDetail < ActiveRecord::Base
                   :type_of_job, :working_as, :job_transferable, :salary_drawn, :no_of_years_worked, :board_seen,
                   :name_verified_from, :type_of_office, :locality_of_office, :construction_of_office, :exterior, :interior, :office_area,
                   :ease_of_location, :no_of_employees_sighted, :no_of_customer_seen, :political_party, :no_of_item_seen, 
-                  :verifier_remark, :positive, :refer_to_bank, :user_id, :verifier_signature, :status,
+                  :verifier_remark, :positive, :refer_to_bank, :user_id, :verifier_signature, :status, :company_name_new,
                   :co_applicant_business_id,:business_id, :tab_id, :co_applicant_business_documents_attributes
 
   belongs_to :customer
