@@ -7,7 +7,7 @@ EVerification::Application.routes.draw do
   resources :co_applicant_serveys
 
   get "co_applicant_businesses/index"
-
+  get "reports/to_excel" => "reports#to_excel", :as => :excel
   root :to => 'dashboards#index'
   get "dashboards/index"
   get "headshot_demo/index"

@@ -3,9 +3,13 @@ include ApplicationHelper
   def index
    @start_date = params[:start_date]
    @end_date = params[:end_date]
-   #@status = 'submitted'
    if params[:start_date] && params[:end_date] 
-     @data = Customer.where("created_at >= ? and created_at <= ?", @start_date, @end_date) 
-   end
+     @customers = Customer.where("created_at >= ? and created_at <= ?", @start_date, @end_date) 
+    respond_to do |format|
+      format.html
+      format.csv #{ send_data @customers.to_csv }
+      format.xls #{ send_data @customers.to_csv(col_sep: "\t") }
+    end
   end
+ end
 end

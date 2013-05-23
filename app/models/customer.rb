@@ -73,14 +73,15 @@ workflow_column :status
 
   end
 
+ def self.to_csv(options = {})
+  CSV.generate(options) do |csv|
+    csv << column_names
+    all.each do |product|
+      csv << customer.attributes.values_at(*column_names)
+    end
+  end
+ end
 
-  #acts_as_gmappable :position => :address
-      #def gmaps4rails_address
-          #address
-      #end
-       #def gmaps4rails_infowindow
-         #"<h4>#{name}</h4>" << "<h4>#{address}</h4>"
-     #end
 
 
 TYPE_OF_RESIDENCE= %w[independence-house multitanent-house temparory-shed bunglow/row-house flat standing-chawl janta-flat-hutment sitting-chawl hostel others]

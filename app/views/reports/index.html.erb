@@ -6,9 +6,14 @@
 <%= f.submit "Generate Report", :class =>"label label-info" %>
 <% end %>
 <hr>
-<% if @data.nil? %>
+<% if @customers.nil? %>
  <% else %>
 
+<p>
+  Download:
+  <%= link_to "CSV", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: "csv") %> |
+  <%= link_to "Excel", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: "xls") %>
+</p>
 
 <div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 <table class="table table-striped">
@@ -20,7 +25,7 @@
    <th> Co applicant_name </th>
    <th> Co applicant status </th>
   </tr>
- <% @data.each do |d| %>
+ <% @customers.each do |d| %>
   <tr>
    <td><%= d.applicant_name %></td>
    <td><%= d.fh_code %></td>
