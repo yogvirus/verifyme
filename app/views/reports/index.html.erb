@@ -1,0 +1,43 @@
+
+
+<%= form_for :reports_path, :method => :get do |f| %>
+  <%= text_field_tag :start_date, '', :class => "datepicker", :placeholder =>"select start date" %> &nbsp;&nbsp;to&nbsp;&nbsp; 
+  <%= text_field_tag :end_date, '', :class => "datepicker", :placeholder =>"select end date" %>&nbsp;&nbsp;&nbsp;&nbsp;
+<%= f.submit "Generate Report", :class =>"label label-info" %>
+<% end %>
+
+<% if @data1.nil? || @data2.nil? %>
+ <% else %>
+
+
+<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<h3>Pending</h3>
+<table class="table table-striped">
+  <tr>
+   <th> name </th>
+   <th> status </th>
+  </tr>
+ <% @data1.each do |d| %>
+  <tr>
+   <td><%= d.applicant_name %></td>
+   <td><%= d.status %></td>
+  </tr>
+ <% end %>
+</table>
+
+<h3>Completed</h3>
+<table class="table table-striped">
+  <tr>
+   <th> name </th>
+   <th> status </th>
+  </tr>
+ <% @data2.each do |d| %>
+  <tr>
+   <td><%= d.applicant_name %></td>
+   <td><%= d.status %></td>
+  </tr>
+ <% end %>
+</table>
+<% end %>
+
+</div>

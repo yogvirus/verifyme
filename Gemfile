@@ -34,6 +34,7 @@ source 'https://rubygems.org'
   gem 'unicorn' 
   gem 'capistrano'
   gem 'headshot'
+  gem 'bootstrap-datepicker-rails'
 group :production do
    gem 'mysql2'
 end
