@@ -15,26 +15,109 @@
   <%= link_to "Excel", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: "xls") %>
 </p>
 
-<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<table class="table table-striped">
+<div class="span4" style ="width:2800px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<table class="table table-striped" border>
+  <thead>
   <tr>
-   <th> name </th>
-   <th> BR CODE </th>
-   <th> Address </th>
-   <th> status </th>
-   <th> Co applicant_name </th>
-   <th> Co applicant status </th>
+   <th rowspan="2"> name </th>
+   <th rowspan="2"> br-code </th>
+   <th rowspan="2"> Address </th>
+   <th rowspan="2"> status </th>
+   <th rowspan="2"> Agency name </th>
+   <th colspan="5"> Business Detail </th>
+   <th colspan="5"> Co applicant Detail</th>
+   <th colspan="9"> Co applicant business</th>
   </tr>
+  <tr>
+   <th> Company_name </th>
+   <th> Employee_code </th>
+   <th> Pan Number </th>
+   <th> Office address </th>
+   <th> Agency Name </th>
+   <th> C-A-N </th>
+   <th> C-A-br-code </th>
+   <th> C-A-S </th>
+   <th> C-A-Address </th>
+   <th> Agency Name </th>
+   <th> C-A-N </th>
+   <th> C-A-br-code </th>
+   <th> C-A-S </th>
+   <th> Pan-no. </th>
+   <th> Emp code</th>
+
+   <th> C-A-Office Address </th>
+   <th> Agency Name </th>
+  </tr>
+  </thead>
  <% @customers.each do |d| %>
+  <tbody>
   <tr>
    <td><%= d.applicant_name %></td>
    <td><%= d.fh_code %></td>
    <td><%= d.address %></th>
-   <td><%= d.status %></td>
+   <% if d.status=='submitted' %>
+   <td><i style="color:red"><b>Pending</b></i></td>
+   <% end %>
+   <% if d.status=='awaiting_to_get_verified' %>
+   <td><i style="color:darkorange"><b>In Progress</b></i></td>
+   <% end %>
+   <% if d.status=='verified' %>
+   <td><i style="color:darkgreen"><b>Done</b></i></td>
+   <% end %>
+   <td><%= d.agency_name %></td>
+
+   <td><%= d.business.company_name %></td>
+   <td><%= d.business.fh_code %></td>
+   <td><%= d.business.address %></th>
+   <% if d.status=='submitted' %>
+   <td><i style="color:red"><b>Pending</b></i></td>
+   <% end %>
+   <% if d.business.status=='awaiting_to_get_verified' %>
+   <td><i style="color:darkorange"><b>In Progress</b></i></td>
+   <% end %>
+   <% if d.business.status=='verified' %>
+   <td><i style="color:darkgreen"><b>Done</b></i></td>
+   <% end %>
+   <td><%= d.business.agency_name %></td>
+
+
+<!-- co applicant detail-->
    <td><%= d.co_applicant.applicant_name %></td>
-   <td><%= d.co_applicant.status %></td>
+   <td><%= d.co_applicant.fh_code %></td>
+   <% if d.co_applicant.status=='submitted' %>
+   <td><i style="color:red"><b>Pending</b></i></td>
+   <% end %>
+   <% if d.co_applicant.status=='awaiting_to_get_verified' %>
+   <td><i style="color:darkorange"><b>In Progress</b></i></td>
+   <% end %>
+   <% if d.co_applicant.status=='verified' %>
+   <td><i style="color:darkgreen"><b>Done</b></i></td>
+   <% end %>
+   <td><%= d.co_applicant.address %></td>
+   <td><%= d.co_applicant.agency_name %></td>
+<!--co applicant detail end-->
+<!-- co applicant business detail-->
+   <td><%= d.co_applicant.co_applicant_business.applicant_name %></td>
+   <td><%= d.co_applicant.co_applicant_business.fh_code %></td>
+   <% if d.co_applicant.co_applicant_business.status=='submitted' %>
+   <td><i style="color:red"><b>Pending</b></i></td>
+   <% end %>
+   <% if d.co_applicant.co_applicant_business.status=='awaiting_to_get_verified' %>
+   <td><i style="color:darkorange"><b>In Progress</b></i></td>
+   <% end %>
+   <% if d.co_applicant.co_applicant_business.status=='verified' %>
+   <td><i style="color:darkgreen"><b>Done</b></i></td>
+   <% end %>
+   <td>AGLV15428796</td>
+   <td>EMP-8309</td>
+   <td><%= d.co_applicant.co_applicant_business.address %></td>
+   <td><%= d.co_applicant.co_applicant_business.agency_name %></td>
+
   </tr>
+  </tbody>
  <% end %>
 </table>
 </div>
 <% end %>
+
+
