@@ -8,7 +8,7 @@
  </a>
 
 <div class="media-body">
- <% if current_user.role=="super_user"%><%= render "daily_status", :html=>{:float=>"right"} %><% end %>
+<%= render "daily_status", :html=>{:float=>"right"} %>
 <% if current_user.profile %>
 <h4 class="media-heading">Hello, <%= link_to current_user.profile.user.name, current_user.profile %>!</h4>
  <% if current_user.role=="super_user"%>

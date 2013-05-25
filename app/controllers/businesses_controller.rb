@@ -1,6 +1,7 @@
 class BusinessesController < InheritedResources::Base
 
-  before_filter :authenticate_user!
+   before_filter :authenticate_user!
+   load_and_authorize_resource
 
  def create
   @business = Business.create(params[:business])
