@@ -1,9 +1,8 @@
 class CustomersController < ApplicationController
-   #before_filter :authenticate_user!
-   #load_and_authorize_resource
-   #load_and_authorize_resource
-   # GET /customers
-   # GET /customers.json
+   before_filter :authenticate_user!
+   load_and_authorize_resource
+
+
   def index
     @customers = Customer.all
 
@@ -51,7 +50,7 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     @customer = Customer.find(params[:id])
-    @new_no = @customer.fh_code
+    @final_no = @customer.fh_code
   end
 
   # POST /customers

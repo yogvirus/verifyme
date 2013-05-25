@@ -1,5 +1,5 @@
 class CoApplicantBusinessesController < ApplicationController
-
+  load_and_authorize_resource
  def create
   @co_applicant = CoApplicantBusiness.create(params[:co_applicant_business])
    if @co_applicant.save
