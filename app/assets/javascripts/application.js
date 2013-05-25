@@ -12,18 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-datepicker
 //= require jquery-ui
 //= require jquery_nested_form
 //= require jquery.webcam
-//= require jquery.ui.datepicker
-//= require_tree .
-
-
-$(function() {
-	$.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
-	$(".date_picker").datepicker({
-	    "dateFormat": "yy-mm-dd",
-	    "weekStart": 1,
-	    "autoclose": true
-	});
-

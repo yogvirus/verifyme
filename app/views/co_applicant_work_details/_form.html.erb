@@ -42,6 +42,7 @@ $(document).ready(function(){
 <% end %>
 
 
+
 <%= nested_form_for @co_applicant_work_detail, :html => { :class => 'form-horizontal' } do |f| %>
 
   <%= f.hidden_field :co_applicant_business_id, :value=> params[:customer_co_applicant_id], :class => 'text_field' %>
@@ -68,15 +69,16 @@ $(document).ready(function(){
   </tr>
 </table>
 <hr>
-<strong><%= @co_applicant_business.address %></strong>
-<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant_business.latitude}%2C#{@co_applicant_business.longitude}" %></p>
-</div>
     </div>
   </div>
 
 
 <h3> Following are the Details to be obtained from the customer </h3><hr>
+
+<div class="map" style ="float:right;width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+<strong><%= @co_applicant_business.address %></strong>
+<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant_business.latitude}%2C#{@co_applicant_business.longitude}" %></p>
+</div>
 
 <a><small><i class="show_hide">Click to activate Camera</i></small></a>
 

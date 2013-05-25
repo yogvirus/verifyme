@@ -35,8 +35,7 @@ source 'https://rubygems.org'
   gem 'capistrano'
   gem 'headshot'
   gem 'bootstrap-datepicker-rails'
-  gem 'jquery_datepicker'
-  gem 'bootstrap-datetimepicker-rails'
+
 
 
 group :production do

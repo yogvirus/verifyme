@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>e-verification</title>
-    <%= stylesheet_link_tag "bootstrap.css","form","bootstrap-responsive.css", :media => :all %>
+    <%= stylesheet_link_tag 'datepicker',"bootstrap.css","form","bootstrap-responsive.css", :media => :all %>
     <link href='http://fonts.googleapis.com/css?family=Prosto+One' rel='stylesheet' type='text/css'>
-    <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application",'bootstrap-datepicker' %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
@@ -47,7 +47,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
- <a class="brand" href="/"><strong>&laquo; E-Verification - </strong>Online Client Verification</a>
+ <a class="brand" style="font-size:16px;" href="/"><strong>&laquo; E-Verification - </strong>Online Client Verification</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
              <% if user_signed_in? %>
