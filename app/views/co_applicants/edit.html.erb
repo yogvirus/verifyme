@@ -1,0 +1,63 @@
+<%= form_for(@co_applicant) do |customer| %>
+  <% if @co_applicant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@co_applicant.errors.count, "error") %> prohibited this co applicants from being saved:</h2>
+
+      <ul>
+      <% @co_applicant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="row">
+  <strong class="label label-info"><%= @application_ref_no %> | <%= @application_ref_no %> | <%= @co_applicant.applicant_name %></strong> <br>
+
+  <div class="field_name">
+   <%= customer.check_box :document_required %>
+   <i style ="padding-left:20px;color:green">Check this if photocopy of the customers document is required. else leave it as it is</i>
+  </div>
+    <%= customer.hidden_field :customer_id, :value=> "#{@co_applicant.customer.id}" %>
+    <%= customer.hidden_field :agency_name, :value=>"Scorp Enterprises" %>
+    <%= customer.hidden_field :application_ref_no, :value=> "#{@application_ref_no}" %>
+    <%= customer.hidden_field :fh_code, :value=> "#{@application_ref_no}" %>
+  <br><br>
+
+  <div class="field_name">
+    <%= customer.label :Co_Applicant_name %>
+    <%= customer.text_field :applicant_name %>
+  </div><br><br><br>
+
+  <div class="field_name">
+    <%= customer.label :landmark %>
+    <%= customer.text_field :landmark %>
+  </div><br><br><br>
+
+  <div class="field_name">
+    <%= customer.label :address %>
+    <%= customer.text_area :address %>
+  </div>
+
+  <div class="field_name">
+    <%= customer.label :country_name %>
+    <%= customer.text_field :country_name, :value => "INDIA" %>
+  </div>
+  <div class="field_name">
+    <%= customer.label :country_state %>
+    <%= customer.text_field :country_state %>
+  </div>
+  <div class="field_name">
+    <%= customer.label :country_city %>
+    <%= customer.text_field :country_city %>
+  </div>
+  <div class="field_name">
+    <%= customer.label :pincode_id %>
+    <%= customer.collection_select :pincode_id, Pincode.all, :id, :pin_number %>
+  </div>
+</div>
+  <div class="actions">
+    <%= customer.submit 'Submit..', :class => 'btn btn-primary btn-small' %>
+  </div>
+<% end %>
+</div>

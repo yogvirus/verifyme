@@ -2,7 +2,7 @@ class CoApplicantsController < ApplicationController
 
   def show
    @co_applicant = CoApplicant.find(params[:id])
-    @co_applicant_work_detail = CoApplicantBusiness.new
+   @co_applicant_work_detail = CoApplicantBusiness.new
    @application_ref_no = @co_applicant.application_ref_no
 
   end
@@ -12,6 +12,14 @@ class CoApplicantsController < ApplicationController
    @co_applicant = CoApplicant.new
   end
 
+  def edit
+   @co_applicant = CoApplicant.find(params[:id])
+   @final_no = @co_applicant.fh_code
+   @application_ref_no = @co_applicant.application_ref_no
+  end
+
+
+
   def create
    @co_applicant = CoApplicant.create(params[:co_applicant])
    if @co_applicant.save
@@ -20,6 +28,24 @@ class CoApplicantsController < ApplicationController
     redirect_to @co_applicant.customer, :notice => "Something went wrong , please contact the administrator!."
    end
  end
+
+
+  def update
+    @co_applicant = CoApplicant.find(params[:id])
+
+    respond_to do |format|
+     if @co_applicant.update_attributes(params[:co_applicant])
+        #@customer.progress!
+        format.html { redirect_to @co_applicant, notice: 'Customer was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @co_applicant.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
 
  def co_applicant_verification
    @co_applicant = CoApplicant.find(params[:co_applicant_id])  
