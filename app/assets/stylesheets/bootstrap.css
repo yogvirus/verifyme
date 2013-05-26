@@ -1006,6 +1006,7 @@ input,
 textarea,
 .uneditable-input {
   width: 206px;
+  text-transform: uppercase;
 }
 
 textarea {
@@ -2154,7 +2155,7 @@ table th[class*="span"],
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
+  background-image: url("glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -5395,7 +5396,7 @@ a.thumbnail:hover {
 .badge {
   display: inline-block;
   padding: 2px 4px;
-  font-size: 11.844px;
+  font-size: -11.844px;
   font-weight: bold;
   line-height: 14px;
   color: #ffffff;

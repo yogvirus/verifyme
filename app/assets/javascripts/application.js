@@ -12,7 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-datepicker
 //= require jquery-ui
+//= require bootstrap-datepicker
 //= require jquery_nested_form
+//= require_tree .
 //= require jquery.webcam
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
