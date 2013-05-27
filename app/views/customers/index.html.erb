@@ -13,8 +13,9 @@
   <tr>
     <th>Application ref no</th>
     <th>Applicant name</th>
+    <th>Address</th> 
     <th>Status</th>
-    <th>verifier</th>
+    <th>verifing tab</th>
     <th></th>
     <th></th>
     <th></th>
@@ -25,7 +26,7 @@
   <tr>
     <td><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></td>
     <td><%= customer.applicant_name %></td>
-
+    <td><%= customer.address %></td>
 <% if customer.status=='submitted' %>
      <td><span class="label label-info"> Submitted </span></td>  
     <% end %>

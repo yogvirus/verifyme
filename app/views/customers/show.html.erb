@@ -97,7 +97,7 @@
 </div><br><br><br>
 <% end %>
 <div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<table class="table table-striped">
+<table class="table" style="background:silver">
   <tr><td><strong><%= model_class.human_attribute_name(:application_ref_no) %>:</strong>
   <%= @customer.application_ref_no %></td></tr></tr>
 
@@ -128,7 +128,7 @@
 <% if @customer.servey %>
 <% if @customer.servey.address_confirmed? %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<table class="table table-bordered">
+<table class="table" style="background:silver">
 
   <tr><td><strong><%= model_class.human_attribute_name(:address_confirmed) %>:</strong>
   <% if @customer.servey.address_confirmed? %> Yes <% end %></td></tr>
@@ -267,9 +267,6 @@
 
 <!--  <tr><td><strong><%= model_class.human_attribute_name(:status) %>:</strong>
   <%= @customer.status %></td></tr>-->
-
-  <tr><td><strong><%= model_class.human_attribute_name(:degree_name) %>:</strong>
-  <%= @customer.degree_name %></td></tr>
 
 </table>
 </div>
