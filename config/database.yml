@@ -20,3 +20,4 @@ production:
   database: e-verification_production
   username: root
   password: desidime
+
