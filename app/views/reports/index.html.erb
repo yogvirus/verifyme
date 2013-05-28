@@ -1,9 +1,10 @@
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-
 <%= javascript_include_tag "bootstrap-datepicker.js" %></script>
 <script type="text/javascript">
 $(function() {
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+    format: 'mm-dd-yyyy',
+    weekStart: 1,
 });
 </script>
 
@@ -11,11 +12,11 @@ $(function() {
 <div class ="row">
   <div class="field_name">
   <%= label_tag :'Choose Start Date' %>
-  <%= text_field_tag :start_date, '', :class=> "datepicker", :value=> Date.today-1 %>
+  <%= text_field_tag :start_date, '', :class=> "datepicker" %>
 </div>
   <div class="field_name">
   <%= label_tag :'Choose End Date' %>
-  <%= text_field_tag :end_date, '', :class => "datepicker", :value=> Date.today %>
+  <%= text_field_tag :end_date, '', :class => "datepicker" %>
 </div><br><Br><br><br>
 <%= f.submit "Generate Report", :class =>"btn btn-info" %>
 </div>
@@ -30,8 +31,8 @@ $(function() {
   </strong>
 </p>
 
-<div id="reports" style ="width:2800px;padding:0px;border-radius:5px;border:0px solid #000000;text-align:center">
-<table border="1" cellpadding="5" cellspacing="5">
+<div id="reports" style ="background:#fff;width:2800px;padding:0px;border-radius:5px;border:0px solid #000000;text-align:center">
+<table border="0" cellpadding="5" cellspacing="5">
   <thead>
   <tr>
    <th colspan="5"> Customer_detail </th>
@@ -40,7 +41,7 @@ $(function() {
    <th colspan="9"> Co applicant business</th>
   </tr>
 <tr>
-   <th> name </th>
+   <th style = "text-align:left;padding-left:10px;"> name </th>
    <th> br-code </th>
    <th> Address </th>
    <th> status </th>
@@ -66,61 +67,61 @@ $(function() {
  <% @customers.each do |d| %>
   <tbody>
   <tr>
-   <td style = "color:blue"><b><%= d.applicant_name %></b></td>
+   <td style = "color:blue;text-align:left;padding-left:10px;"><b><%= d.applicant_name %></b></td>
    <td><%= d.fh_code %></td>
    <td><%= d.address %></th>
    <% if d.status=='submitted' %>
-   <td style="color:red"><b>Pending</b></i></td>
+   <td style="background:red;color:#fff"><b>Pending</b></i></td>
    <% end %>
    <% if d.status=='awaiting_to_get_verified' %>
-   <td style="color:darkorange"><b>In Progress</b></i></td>
+   <td style="background:darkorange;color:#fff"><b>In Progress</b></i></td>
    <% end %>
    <% if d.status=='verified' %>
-   <td style="color:darkgreen"><b>Done</b></i></td>
+   <td style="background:green;color:#fff"><b>Done</b></i></td>
    <% end %>
    <td><%= d.agency_name %></td>
-
+<% if d.business %>
    <td><%= d.business.company_name %></td>
    <td><%= d.business.fh_code %></td>
    <td><%= d.business.address %></th>
    <% if d.status=='submitted' %>
-   <td style="color:red"><b>Pending</b></i></td>
+   <td style="background:red;color:#fff"><b>Pending</b></i></td>
    <% end %>
    <% if d.business.status=='awaiting_to_get_verified' %>
-   <td style="color:darkorange"><b>In Progress</b></i></td>
+   <td style="background:darkorange;color:#fff"><b>In Progress</b></i></td>
    <% end %>
    <% if d.business.status=='verified' %>
-   <td style="color:darkgreen"><b>Done</b></i></td>
+   <td style="background:green;color:#fff"><b>Done</b></i></td>
    <% end %>
    <td><%= d.business.agency_name %></td>
-
+<% end %>
 <% if d.co_applicant %>
-<!-- co applicant detail-->
+  <!-- co applicant detail-->
    <td><%= d.co_applicant.applicant_name %></td>
    <td><%= d.co_applicant.fh_code %></td>
    <% if d.co_applicant.status=='submitted' %>
-   <td style="color:red"><b>Pending</b></i></td>
+   <td style="background:red;color:#fff"><b>Pending</b></i></td>
    <% end %>
    <% if d.co_applicant.status=='awaiting_to_get_verified' %>
-   <td style="color:darkorange"><b>In Progress</b></i></td>
+   <td style="background:darkorange;color:#fff"><b>In Progress</b></i></td>
    <% end %>
    <% if d.co_applicant.status=='verified' %>
-   <td style="color:darkgreen"><b>Done</b></i></td>
+   <td style="background:green;color:#fff"><b>Done</b></i></td>
    <% end %>
    <td><%= d.co_applicant.address %></td>
    <td><%= d.co_applicant.agency_name %></td>
-<!--co applicant detail end-->
-<!-- co applicant business detail-->
+  <!--co applicant detail end-->
+  <!-- co applicant business detail-->
    <td><%= d.co_applicant.co_applicant_business.applicant_name %></td>
    <td><%= d.co_applicant.co_applicant_business.fh_code %></td>
    <% if d.co_applicant.co_applicant_business.status=='submitted' %>
-   <td style="color:red"><b>Pending</b></i></td>
+   <td style="background:red;color:#fff"><b>Pending</b></i></td>
    <% end %>
    <% if d.co_applicant.co_applicant_business.status=='awaiting_to_get_verified' %>
-   <td style="color:darkorange"><b>In Progress</b></i></td>
+   <td style="background:darkorange;color:#fff"><b>In Progress</b></i></td>
    <% end %>
    <% if d.co_applicant.co_applicant_business.status=='verified' %>
-   <td style="color:darkgreen"><b>Done</b></i></td>
+   <td style="background:green;color:#fff"><b>Done</b></i></td>
    <% end %>
    <td>AGLV15428796</td>
    <td>EMP-8309</td>
