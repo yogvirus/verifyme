@@ -7,14 +7,14 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">Unique ID</Data></Cell>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
         <Cell><Data ss:Type="String">Name</Data></Cell>
         <Cell><Data ss:Type="String">Recd Date</Data></Cell>
         <Cell><Data ss:Type="String">BR CODE</Data></Cell>
         <Cell><Data ss:Type="String">Address</Data></Cell>
         <Cell><Data ss:Type="String">City</Data></Cell>
         <Cell><Data ss:Type="String">Area</Data></Cell>
-        <Cell><Data ss:Type="Date">Dat Of Birth</Data></Cell>
+        <Cell><Data ss:Type="String">Dat Of Birth</Data></Cell>
         <Cell><Data ss:Type="String">status</Data></Cell>
         <Cell><Data ss:Type="String">Company name</Data></Cell>
         <Cell><Data ss:Type="String">Employee_code</Data></Cell>
@@ -23,18 +23,18 @@
         <Cell><Data ss:Type="String">Agency name</Data></Cell>
         <Cell><Data ss:Type="String">Co_applicant_name</Data></Cell>
         <Cell><Data ss:Type="String">CoApplicantAddress</Data></Cell>
-        <Cell><Data ss:Type="String">CoApplicantStatus</Data></Cell>
+        <Cell><Data ss:Type="String">CoApplicant Status</Data></Cell>
       </Row>
     <% @customers.each do |customer| %>
       <Row>
-        <Cell><Data ss:Type="string"><%= "scorpeo/ #{Date.today}/ #{customer.application_ref_no}" %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= "scorpeo/ #{Date.today}/ #{customer.application_ref_no}" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.applicant_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= time_tag customer.created_at %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.fh_code %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.address %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.country_city %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.pincode.name %></Data></Cell>
-        <Cell><Data ss:Type="Date"><%= customer.d_o_b %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.d_o_b %></Data></Cell>
         <% if customer.status=='submitted' %>
         <Cell><Data ss:Type="String">Pending</Data></Cell>
         <% end %>
@@ -44,24 +44,13 @@
         <% if customer.status=='verified' %>
         <Cell><Data ss:Type="String">Done</Data></Cell>
         <% end %>
-        <% if customer.business %>
-        <Cell><Data ss:Type="String"><%= customer.business.company_name %></Data></Cell>
-        <Cell><Data ss:Type="String">EMP-09876TGH67</Data></Cell>
-        <Cell><Data ss:Type="String">AGLV12345PLB</Data></Cell>
-        <Cell><Data ss:Type="String"><%= customer.business.address %></Data></Cell>
-        <% end %>
         <% if customer.co_applicant %>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.agency_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.applicant_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.co_applicant.fh_code %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.address %></Data></Cell>
         <% if customer.co_applicant.status=='submitted' %>
         <Cell><Data ss:Type="String">Pending</Data></Cell>
-        <% end %>
-        <% if customer.co_applicant.status=='awaiting_to_get_verified' %>
-        <Cell><Data ss:Type="String">InProgress</Data></Cell>
-        <% end %>
-        <% if customer.co_applicant.status=='verified' %>
-        <Cell><Data ss:Type="String">Done</Data></Cell>
         <% end %>
         <% end %>
       </Row>
