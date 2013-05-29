@@ -14,7 +14,7 @@
         <Cell><Data ss:Type="String">Address</Data></Cell>
         <Cell><Data ss:Type="String">City</Data></Cell>
         <Cell><Data ss:Type="String">Area</Data></Cell>
-        <Cell><Data ss:Type="Date">Dat Of Birth</Data></Cell>
+        <Cell><Data ss:Type="Date">Date Of Birth</Data></Cell>
         <Cell><Data ss:Type="String">status</Data></Cell>
         <Cell><Data ss:Type="String">Company name</Data></Cell>
         <Cell><Data ss:Type="String">Employee_code</Data></Cell>
@@ -29,7 +29,11 @@
       <Row>
         <Cell><Data ss:Type="string"><%= "scorpeo/ #{Date.today}/ #{customer.application_ref_no}" %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.applicant_name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= time_tag customer.created_at %></Data></Cell>
+        <% unless customer.servey.nil? %>
+        <Cell><Data ss:Type="String"><%= time_tag customer.servey.date_of_visit %> / <%= (customer.servey.time_of_visit).strftime("%I:%M %P") %></Data></Cell>
+        <% else %>
+        <Cell><Data ss:Type="String"> no date </Data></Cell>
+        <% end %>
         <Cell><Data ss:Type="String"><%= customer.fh_code %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.address %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.country_city %></Data></Cell>
