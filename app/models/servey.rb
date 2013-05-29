@@ -6,7 +6,7 @@ class Servey < ActiveRecord::Base
                 :d_o_b, :date_of_visit, :ease_of_location, :educational_qualification, :expiry_date,
                 :fh_code, :interior_condition, :issuing_bank, :landmark, :locality_of_residence,
                 :marital_status, :name_and_stay_confirm, :name_plate_seen, :name_varified_from,
-                :neighbour_ref, :no_of_family_member_in_the_house, :no_of_family_members, 
+                :neighbour_ref, :no_of_family_member_in_the_house, :no_of_family_members,:date_of_birth, 
                 :person_contacted, :potrait_on_wall, :refer_to_bank, :relation_with_applicant,
                 :residence_status, :spouse_working, :spouse_working_detail, :time_of_visit,
                 :type_of_residence, :verifiers_remark, :working_member, :years_lived_at_current_address,
@@ -17,6 +17,5 @@ class Servey < ActiveRecord::Base
   has_and_belongs_to_many :address_proofs
   has_many :customer_documents
   accepts_nested_attributes_for :customer_documents
-
 
 end

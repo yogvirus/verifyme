@@ -148,8 +148,8 @@
   <tr><td><strong><%= model_class.human_attribute_name(:relation_with_applicant) %>:</strong>
   <%= @customer.servey.relation_with_applicant %></td></tr>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:d_o_b) %>:</strong>
-  <%= @customer.d_o_b %></td></tr>
+  <tr><td><strong><%= model_class.human_attribute_name(:date_of_birth) %>:</strong>
+  <%= time_tag @customer.servey.date_of_birth %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:years_lived_at_current_address) %>:</strong>
   <%= @customer.servey.years_lived_at_current_address %></td></tr>

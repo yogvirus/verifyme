@@ -8,7 +8,7 @@ class CoApplicantServey < ActiveRecord::Base
                 :marital_status, :name_and_stay_confirm, :name_plate_seen, :name_varified_from,
                 :neighbour_ref, :no_of_family_member_in_the_house, :no_of_family_members, 
                 :person_contacted, :potrait_on_wall, :refer_to_bank, :relation_with_applicant,
-                :residence_status, :spouse_working, :spouse_working_detail, :time_of_visit,
+                :residence_status, :spouse_working, :spouse_working_detail, :time_of_visit,:date_of_birth,
                 :type_of_residence, :verifiers_remark, :working_member, :years_lived_at_current_address,
                 :status,:co_applicant_documents_attributes
 

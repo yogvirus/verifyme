@@ -53,7 +53,6 @@ $(document).ready(function(){
     <th>Agency name</th>
     <th>Fh code</th>
     <th>Applicant name</th>
-    <th>Age of applicant</th>
   </tr>
 
   <tr>
@@ -61,7 +60,6 @@ $(document).ready(function(){
     <td><%= @customer.agency_name %></td>
     <td><%= @customer.fh_code %></td>
     <td><%= @customer.applicant_name %></td>
-    <td><%= (Date.today.strftime('%Y%m%d').to_i - @customer.d_o_b.strftime('%Y%m%d').to_i) / 10000 %> years</td>
   </tr>
 </table>
 <hr>
@@ -165,6 +163,14 @@ paying guest<br>
       <%= f.number_field :no_of_family_members, :class => 'number_field' %>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= f.label :date_of_birth, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_of_birth, :class => 'number_field', :start_year => 1960 %>
+    </div>
+  </div>
+
   <div class="control-group">
     <%= f.label :working_member, :class => 'control-label' %>
     <div class="controls">
@@ -366,12 +372,12 @@ paying guest<br>
       <%= f.text_field :application_availibility_time, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
+  <!--<div class="control-group">
     <%= f.label :no_of_family_member_in_the_house, :class => 'control-label' %>
     <div class="controls">
       <%= f.number_field :no_of_family_member_in_the_house, :class => 'number_field' %>
     </div>
-  </div>
+  </div>-->
   <div class="control-group">
     <%= f.label :verifiers_remark, :class => 'control-label' %>
     <div class="controls">
