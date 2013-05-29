@@ -5,8 +5,8 @@ class Customer < ActiveRecord::Base
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
   validates_uniqueness_of :application_ref_no, :applicant_name, :address, :fh_code
-  validates_date :d_o_b, :before => lambda { 25.years.ago }, :before_message => "Age of Customer must be at least 25 years old"
-  validates :d_o_b, :timeliness => {:on_or_before => lambda { Date.current }, :type => :date}
+  #validates_date :d_o_b, :before => lambda { 25.years.ago }, :before_message => "Age of Customer must be at least 25 years old"
+  #validates :d_o_b, :timeliness => {:on_or_before => lambda { Date.current }, :type => :date}
 
 
 

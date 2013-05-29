@@ -2,7 +2,7 @@ class Business < ActiveRecord::Base
  attr_accessible :address, :agency_name, :applicant_name, :application_ref_no, 
                  :country_city, :country_name, :country_state, :date_of_birth,
                  :document_required, :fh_code, :landmark, :latitude, :longitude,
-                 :pincode_id, :slug, :status, :customer_id, :company_name
+                 :pincode_id, :slug, :status, :customer_id, :company_name, :pan_number,:emp_code
 
 
 

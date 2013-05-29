@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523075207) do
+ActiveRecord::Schema.define(:version => 20130529045009) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(:version => 20130523075207) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "company_name"
+    t.string   "pan_number"
+    t.string   "emp_code"
   end
 
   create_table "client_verifications", :force => true do |t|
@@ -141,6 +143,8 @@ ActiveRecord::Schema.define(:version => 20130523075207) do
     t.string   "company_name"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "pan_number"
+    t.string   "emp_code"
   end
 
   create_table "co_applicant_documents", :force => true do |t|
@@ -197,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20130523075207) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.boolean  "photo_required"
+    t.date     "date_of_birth"
   end
 
   create_table "co_applicant_verifications", :force => true do |t|
@@ -428,6 +433,7 @@ ActiveRecord::Schema.define(:version => 20130523075207) do
     t.string   "refer_to_bank"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.date     "date_of_birth"
   end
 
   create_table "tabs", :force => true do |t|
