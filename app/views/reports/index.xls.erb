@@ -42,7 +42,6 @@
         <Cell><Data ss:Type="String"><%= customer.address %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.country_city %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.pincode.name %></Data></Cell>
-        <Cell><Data ss:Type="Date"><%= customer.servey.date_of_birth %></Data></Cell>
         <% if customer.status=='submitted' %>
         <Cell><Data ss:Type="String">Pending</Data></Cell>
         <% end %>
@@ -52,27 +51,35 @@
         <% if customer.status=='verified' %>
         <Cell><Data ss:Type="String">Done</Data></Cell>
         <% end %>
-<!--customer data end-->
+        <!--customer data end-->
 
 <!--customer business data-->
-<% if customer.business %>
+     <% if customer.business %>
         <Cell><Data ss:Type="String"><%= customer.business.company_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.business.fh_code %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.business.address %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.business.country_city %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.business.pincode.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.business.status %></Data></Cell>
-<% end %>
+     <% end %>
 <!--customer business data end-->
 <!--customer co applicant data-->
-<% if customer.co_applicant %>
+     <% if customer.co_applicant %>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.applicant_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.fh_code %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.address %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.country_city %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.co_applicant.pincode.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= customer.co_applicant.status %></Data></Cell>
-<% end %>
+        <% if customer.co_applicant.status=='submitted' %>
+        <Cell><Data ss:Type="String">Pending</Data></Cell>
+        <% end %>
+        <% if customer.co_applicant.status=='awaiting_to_get_verified' %>
+        <Cell><Data ss:Type="String">InProgress</Data></Cell>
+        <% end %>
+        <% if customer.co_applicant.status=='verified' %>
+        <Cell><Data ss:Type="String">Done</Data></Cell>
+        <% end %>
+     <% end %>
 <!--customer co applicant data end -->
 
 
