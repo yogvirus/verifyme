@@ -45,6 +45,7 @@ $(function() {
    <th style = "text-align:left;padding-left:10px;"> name </th>
    <th> br-code </th>
    <th> Address </th>
+   <th> Visit time </th>
    <th> status </th>
    <th> Agency name </th>
    <th> Company_name </th>
@@ -71,6 +72,11 @@ $(function() {
    <td style = "color:blue;text-align:left;padding-left:10px;"><b><%= d.applicant_name %></b></td>
    <td><%= d.fh_code %></td>
    <td><%= d.address %></th>
+<% unless d.servey.nil? %>
+   <td><%= time_tag d.servey.date_of_visit %> / <%= (d.servey.time_of_visit).strftime("%I:%M %P") %></th>
+<% else %>
+     <td> no date </td>
+<% end %>
    <% if d.status=='submitted' %>
    <td><b>Pending</b></i></td>
    <% end %>
