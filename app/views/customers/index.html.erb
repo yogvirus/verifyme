@@ -11,6 +11,7 @@
 
 <table class="table table-striped">
   <tr>
+    <th> Serial </th>
     <th>Application ref no</th>
     <th>Applicant name</th>
     <th>Address</th> 
@@ -24,6 +25,7 @@
 <% @customers.each do |customer| %>
 
   <tr>
+    <td><%= customer.id %>
     <td><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></td>
     <td><%= customer.applicant_name %></td>
     <td><%= customer.address %></td>
@@ -56,3 +58,4 @@
 <br />
 
 
+<%= paginate @customers %>

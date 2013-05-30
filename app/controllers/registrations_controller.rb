@@ -1,10 +1,19 @@
 class RegistrationsController < Devise::RegistrationsController
+  after_filter :add_profile
+
+  protected
+
+  def add_profile
+    if current_user
+      @profile = Profile.create(params[:profile])
+      @profile.user_id = current_user.id 
+      @profile.save
+    end
+  end
  
- #autocomplete :group, :name, :full => true
- 
- protected
 
   def after_sign_up_path_for(resource)
-    new_profile_path
+    root_url
   end
+
 end

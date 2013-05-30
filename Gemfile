@@ -17,6 +17,8 @@ source 'https://rubygems.org'
   gem 'mysql2'
   gem "rmagick", "2.13.1" 
   gem 'jquery-rails'
+  gem 'kaminari'
+  gem 'kaminari-bootstrap'
   gem "mocha", :group => :test
   gem 'activeadmin'
   gem 'friendly_id'
