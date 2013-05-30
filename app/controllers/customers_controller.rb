@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
 
 
   def index
-    @customers = Customer.all
+    @customers = Customer.order("created_at").page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
