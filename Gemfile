@@ -24,6 +24,8 @@ source 'https://rubygems.org'
   gem 'friendly_id'
   gem "geocoder"
   gem 'friendly_id'
+  gem "kaminari"
+  gem 'kaminari-bootstrap'
   gem 'workflow'
   gem "cancan"
   gem "best_in_place"

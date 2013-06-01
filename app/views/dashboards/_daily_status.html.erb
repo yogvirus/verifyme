@@ -1,28 +1,5 @@
 <style>
- #status{padding-left:15px;border:3px solid transparent;border-radius:3px;background:silver;float:right}
-
-  pending{
-           padding:14px;
-           border:2px solid transparent;
-           border-radius :3px;
-           background:blue;
-           color:white;
-            }
-  in_progress{
-           padding:14px;
-           border:2px solid yellow;
-           border-radius :3px;
-           background:yellow;
-           color:black;
-            }
-
-  complete{
-           padding:14px;
-           border:2px solid green;
-           border-radius :5px;
-           background:green;
-           color:white;
-            }
+ #status{padding-left:15px;border:3px solid transparent;border-radius:3px;background:transparent;float:right}
 </style>
 <div id="status">
 <% if current_user.role=="super_user" %>

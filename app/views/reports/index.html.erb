@@ -27,10 +27,10 @@ $(function() {
 
 <p>
   <strong>  
+   <b style="font-size:20px">Report from <%= params[:start_date] %> to <%= params[:end_date] %></b> | 
    <%= link_to "Download this Report", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: "xls") %>
   </strong>
 </p>
-
 
 <div id="reports" style ="background:#fff;width:2800px;padding:0px;border-radius:5px;border:0px solid #000000;text-align:center">
 <table class="table table-condensed">
