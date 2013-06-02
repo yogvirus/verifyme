@@ -31,6 +31,7 @@
 <div id="hero-unit" style="width:auto;margin:30px;padding:25px;border:0px solid #000;border-radius:10px;">
  <%= render "media" %>
  <% if current_user.role=="tab_user"&&current_user.tab %>
+ <%= time_tag current_user.last_sign_in_at %>
  <%= render "residence" %>
  <%= render "business" %>
 <% end %> 

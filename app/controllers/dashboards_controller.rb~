@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
   include ApplicationHelper
   def index
    @customers = Customer.all
-   #admin status
+#admin status
    @pending = pending_customer
    @in_progress = customer_in_progress
    @completed = completed_customer
@@ -19,7 +19,7 @@ class DashboardsController < ApplicationController
    @total_pending = total_pending
    @total_in_progress = total_in_progress
    @total_completed = total_completed
-   #tab status
+#tab status
    @my_pending_1 = tab_customer_verification_pending
    @my_pending_2 = tab_business_verification_pending
    @my_pending_3 = tab_co_applicant_verification_pending

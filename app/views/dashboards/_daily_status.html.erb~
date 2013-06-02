@@ -8,9 +8,9 @@
  <strong>Completed </strong> &nbsp;&nbsp; <complete><%= @total_completed %></complete>
 <% end %>
 <% if current_user.role=="tab_user" %>
- <strong>Pending </strong> &nbsp;&nbsp; <pending><%= @all %></pending> &nbsp;&nbsp;
- <strong>In Progress </strong> &nbsp;&nbsp; <complete> 0 </complete> &nbsp;&nbsp;
- <strong>Completed </strong> &nbsp;&nbsp; <complete> 0 </complete> &nbsp;&nbsp;
+ <strong>Total Task </strong> &nbsp;&nbsp; <pending><%= @all %></pending> &nbsp;&nbsp;
+ <strong>Done </strong> &nbsp;&nbsp; <complete><%= @done %></complete>
+ <strong>Left </strong> &nbsp;&nbsp; <complete><%= @busi_pending %></complete>
 <% end %>
 </div>
 

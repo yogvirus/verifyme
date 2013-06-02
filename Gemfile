@@ -44,6 +44,7 @@ source 'https://rubygems.org'
 
 group :production do
    gem 'mysql2'
+  gem 'webrick', '~> 1.3.1'
 end
 
 group :assets do

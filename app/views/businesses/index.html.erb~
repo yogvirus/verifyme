@@ -1,26 +1,36 @@
-<%- model_class = Customer -%>
+<%- model_class = Business -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %>
-<b><%= link_to "Add Customer",
-            new_customer_path,
+<b><%= link_to "View Customers",
+            customers_path,
+            :class=>"btn btn-primary btn-small", :style=>"margin-right:150px;float:right" %></b> |
+<b><%= link_to "Add New Business",
+            new_business_path,
             :class=>"btn btn-primary btn-small", :style=>"margin-right:150px;float:right" %></b><br><br></h1>
 </div>
 
 
-<table class="table table-condensed">
+<table class="table table-striped">
   <tr>
-    <th width="195px">Application ref no</th>
-    <th width="195px">Applicant name</th>
+    <th>Application ref no</th>
+    <th>Agency name</th>
+    <th>Fh code</th>
+    <th>Applicant name</th>
     <th>Status</th>
-    <th>Address</th> 
-    <th>verifing tab</th>
+    <th>verifier</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
-<% @customers.each do |customer| %>
+<% @businesses.each do |customer| %>
 
   <tr>
     <td><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></td>
-    <td><%= customer.applicant_name %></td>
+    <td><%= customer.agency_name %></td>
+    <td><%= "scorpeo/ #{Date.today}/ #{customer.application_ref_no} #{customer.fh_code}" %></td>
+    <td><%= customer.customer.applicant_name %></td>
+
 <% if customer.status=='submitted' %>
      <td><span class="label label-info"> Submitted </span></td>  
     <% end %>
@@ -33,13 +43,13 @@
 <% if customer.status=='verified' %>
      <td><span class="label label-success"> verified </span></td>  
     <% end %>
-    <td><%= customer.address %></td>
+
 <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
 <% @verifier.each do |v| %>
 <% if v.tab.name %>
-    <td width="100px"><%= v.tab.name %></td>
+    <td><%= v.tab.name %></td>
 <% else %>
-    <td>no tab </td>
+    <td> jodv</td>
 <% end %><% end %>
 
       </tr>
@@ -49,5 +59,4 @@
 
 <br />
 
-<%= paginate @customers %>
 
