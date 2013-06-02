@@ -92,7 +92,7 @@ module ApplicationHelper
   end
    
   def pending_all_on_tab
-   (tab_customer_verification_pending + tab_business_verification_pending + tab_co_applicant_verification_pending + tab_co_applicant_business_pending).count
+   (@my_pending_1 + @my_pending_2 + @my_pending_3 + @my_pending_4).count
   end
 
 end

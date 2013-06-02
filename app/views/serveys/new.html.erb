@@ -196,14 +196,8 @@ paying guest<br>
       <%= f.text_field :spouse_working_detail, :class => 'text_field' %><br> Enter if spouse working , else leave it blank.
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :name_plate_seen, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :name_plate_seen, :class => 'check_box' %> yes 
-      <%= check_box_tag'test' %> no
-    </div>
-  </div>
-  <div class="control-group">
+      <%= f.hidden_field :name_plate_seen, :value=>'yes' %>
+  <!--<div class="control-group">
     <%= f.label :credit_card, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :credit_card, :class => 'check_box' %> ye
@@ -233,7 +227,7 @@ paying guest<br>
     <div class="controls">
       <%= f.date_select :expiry_date, :class => 'date_select' %>
     </div>
-  </div>
+  </div>-->
 <p> </p>
 <div class="alert alert-success" style="width:400px">
   <strong>the following is based on verifiers observation.</strong>
@@ -354,24 +348,25 @@ paying guest<br>
       <% end %>
   <hr></div></br>
 
-  <div class="control-group">
+<!--  <div class="control-group">
     <%= f.label :potrait_on_wall, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :potrait_on_wall, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+  </div>-->
+<!--  <div class="control-group">
     <%= f.label :applicant_residing_detail, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :applicant_residing_detail, :class => 'check_box' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :application_availibility_time, :class => 'control-label' %>
+    <%= f.label :applicant_availibility_time, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :application_availibility_time, :class => 'text_field' %>
+      <%= f.text_field :application_availibility_time, :class => 'text_field' %><br>
+      (morning / afternoon / evening)
     </div>
-  </div>
+  </div>-->
   <!--<div class="control-group">
     <%= f.label :no_of_family_member_in_the_house, :class => 'control-label' %>
     <div class="controls">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529045009) do
+ActiveRecord::Schema.define(:version => 20130601100043) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20130529045009) do
     t.boolean  "document_required"
     t.string   "fh_code"
     t.string   "applicant_name"
-    t.date     "date_of_birth"
+    t.string   "application_status"
     t.string   "landmark"
     t.text     "address"
     t.string   "country_name"
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20130529045009) do
     t.boolean  "document_required"
     t.string   "fh_code"
     t.string   "applicant_name"
-    t.date     "date_of_birth"
+    t.string   "application_status"
     t.string   "landmark"
     t.text     "address"
     t.string   "country"
@@ -141,8 +141,8 @@ ActiveRecord::Schema.define(:version => 20130529045009) do
     t.string   "status"
     t.integer  "co_applicant_id"
     t.string   "company_name"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "pan_number"
     t.string   "emp_code"
   end
@@ -293,7 +293,7 @@ ActiveRecord::Schema.define(:version => 20130529045009) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.date     "d_o_b"
+    t.string   "application_status"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "contact_number"
@@ -336,14 +336,14 @@ ActiveRecord::Schema.define(:version => 20130529045009) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.string   "state"
+    t.string   "contact_number"
     t.string   "status"
     t.integer  "pin"
     t.string   "country_state"
     t.string   "country_city"
     t.string   "country_name"
     t.string   "snapshot"
-    t.string   "degree_name"
+    t.string   "application_status"
     t.boolean  "photo_required"
   end
 
