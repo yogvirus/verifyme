@@ -14,7 +14,7 @@
   <% for tab in @tabs %>
     <tr>
       <td><%= link_to tab.name, tab_path(tab) %></td>
-      <% if tab.user %> 
+     <% if tab.user %> 
          <td><i><small style ="color:green"> <%= link_to tab.user.profile.user.name, tab.user.profile %> </small></i></td>
       <% else %>
          <td><br><small style="color:red">no tab user </small></td>

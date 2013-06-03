@@ -26,7 +26,8 @@
  <div class="row">
   <div class="field_name">
     <%= f.label :application_ref_no, :class => 'control-label' %>
-     <b> <%= f.text_field :application_ref_no, :class => 'text_field', :value=> @final_no %></b>
+     <b><%= f.text_field :application_ref_no, :class => 'text_field', :value=> @final_no %></b>
+     <%= f.hidden_field :application_status, :value => "RESIDENTIAL" %>    
   </div>
 <% end %>
 

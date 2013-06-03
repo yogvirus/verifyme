@@ -1,12 +1,13 @@
 class CoApplicantBusiness < ActiveRecord::Base
-attr_accessible :address, :agency_name, :applicant_name, :applicant_ref_no, :city, :co_applicant_id,
+attr_accessible :address, :agency_name, :applicant_name, :applicant_ref_no, :city, :customer_id,
                 :company_name, :country, :date_of_birth, :document_required, :fh_code, :landmark,
                 :latitude, :longitude, :pincode_id, :slug, :state, :status, :pan_number, :emp_code
- belongs_to :co_applicant
+ belongs_to :customer
  belongs_to :pincode
  has_one :co_applicant_verification
  has_one :client_verification
  has_one :co_applicant_work_detail
+ has_many :co_applicant_business_documents
 
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged

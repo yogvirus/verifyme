@@ -1,5 +1,5 @@
-<% if @co_applicant.co_applicant_business %>
- <%= link_to 'show co applicant business detail', co_applicant_business_path(@co_applicant.co_applicant_business), :class=>"label label-success" %>
+<% if @co_applicant.customer.co_applicant_business %>
+ <%= link_to 'show co applicant business detail', co_applicant_business_path(@co_applicant.customer.co_applicant_business), :class=>"label label-success" %>
 <% else %>
 <a href="#myModal_app_work" role="button" data-toggle="modal" class="label label-important">Add Co aplicant Business Detail</a>
 <% end %>
@@ -88,9 +88,17 @@
 <% end %>
 <% end %>
 </td></tr></tr></table>
-
-
 </div>
+
+<% if @co_applicant.co_applicant_servey.co_applicant_documents %>
+<div>
+<% @co_applicant.co_applicant_servey.co_applicant_documents.each do |d| %>
+ <%= image_tag d.photo.url(:thumb) %>
+<% end %>
+</div><br><br><br>
+<% end %>
+
+
 
 <div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
 <p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant.latitude}%2C#{@co_applicant.longitude}" %></p>
@@ -111,7 +119,7 @@
   <%= @co_applicant.co_applicant_servey.date_of_visit %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:time_of_visit) %>:</strong>
-  <%= @co_applicant.co_applicant_servey.time_of_visit %></td></tr>
+  <%= @co_applicant.co_applicant_servey.time_of_visit.strftime('%I:%M %P') %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:person_contacted) %>:</strong>
   <%= @co_applicant.co_applicant_servey.person_contacted %></td></tr>
@@ -143,16 +151,19 @@
   <tr><td><strong><%= model_class.human_attribute_name(:children) %>:</strong>
   <%= @co_applicant.co_applicant_servey.children %></td></tr>
 
+  <% if @co_applicant.co_applicant_servey.spouse_working==true %>
   <tr><td><strong><%= model_class.human_attribute_name(:spouse_working) %>:</strong>
-  <%= @co_applicant.co_applicant_servey.spouse_working %></td></tr>
-
+      Yes </td>
+  <% else %>
+   No </td>
+  <% end %></tr>
   <tr><td><strong><%= model_class.human_attribute_name(:spouse_working_detail) %>:</strong>
   <%= @co_applicant.co_applicant_servey.spouse_working_detail %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:name_plate_seen) %>:</strong>
   <%= @co_applicant.co_applicant_servey.name_plate_seen %></td></tr>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:credit_card) %>:</strong>
+  <!--<tr><td><strong><%= model_class.human_attribute_name(:credit_card) %>:</strong>
   <%= @co_applicant.co_applicant_servey.credit_card %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:card_no) %>:</strong>
@@ -165,7 +176,7 @@
   <%= @co_applicant.co_applicant_servey.issuing_bank %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:expiry_date) %>:</strong>
-  <%= @co_applicant.co_applicant_servey.expiry_date %></td></tr>
+  <%= @co_applicant.co_applicant_servey.expiry_date %></td></tr>-->
 
   <tr><td><strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
   <%= @co_applicant.co_applicant_servey.customer_beaviour %></td></tr>

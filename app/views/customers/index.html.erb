@@ -9,6 +9,7 @@
 
 <table class="table table-condensed">
   <tr>
+    <th> Application Status </th>
     <th width="195px">Application ref no</th>
     <th width="195px">Applicant name</th>
     <th>Status</th>
@@ -19,6 +20,7 @@
 <% @customers.each do |customer| %>
 
   <tr>
+    <td><b style="background:#009999;color:white;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
     <td><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></td>
     <td><%= customer.applicant_name %></td>
 <% if customer.status=='submitted' %>

@@ -5,7 +5,7 @@ class CoApplicantBusinessesController < ApplicationController
  def create
   @co_applicant = CoApplicantBusiness.create(params[:co_applicant_business])
    if @co_applicant.save
-    redirect_to customer_path(@co_applicant.co_applicant.customer), :notice => "'#{@co_applicant.applicant_name}'s business Details Added."
+    redirect_to customer_path(@co_applicant.customer), :notice => "'#{@co_applicant.applicant_name}'s business Details Added."
    else
     redirect_to @co_applicant.customer, :notice => "Something went wrong , please contact the administrator!."
  end

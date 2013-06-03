@@ -57,7 +57,6 @@ $(document).ready(function(){
     <th>Agency name</th>
     <th>Fh code</th>
     <th>Applicant name</th>
-    <th>Age of applicant</th>
   </tr>
 
   <tr>
@@ -65,7 +64,6 @@ $(document).ready(function(){
     <td><%= @co_applicant_business.agency_name %></td>
     <td><%= @co_applicant_business.fh_code %></td>
     <td><%= @co_applicant_business.applicant_name %></td>
-    <td><%= (Date.today.strftime('%Y%m%d').to_i - @co_applicant_business.co_applicant.customer.d_o_b.strftime('%Y%m%d').to_i) / 10000 %> years</td>
   </tr>
 </table>
 <hr>
@@ -85,7 +83,7 @@ $(document).ready(function(){
 <div class="slidingDiv">
  <%= f.fields_for :co_applicant_business_documents do |b| %>
     <%= b.file_field :photo %>
-    <%= b.hidden_field :co_applicant_business_id %>
+    <%= b.hidden_field :co_applicant_business_id, :value =>@co_applicant_business.id  %>
     <%= b.hidden_field :co_applicant_work_detail_id, :value =>@co_applicant_business.id %>
     <%= b.link_to_remove "Remove" %>
  <% end %>
@@ -95,8 +93,8 @@ $(document).ready(function(){
   <div class="control-group">
     <%= f.label :name_and_employee_confirm, :class => 'control-label' %>
     <div class="controls">
-     Yes <input id="servey_name_and_employee_confirm" name="work_servey[name_and_employee_confirm]" type="radio" value="1" />
-     No <input id="servey_name_and_employee_confirm" name="work_servey[name_and_employee_confirm]" type="radio" value="0" />
+     Yes <input id="servey_name_and_employee_confirm" name="co_applicant_work_detail[name_and_employee_confirm]" type="radio" value="1" />
+     No <input id="servey_name_and_employee_confirm" name="co_applicant_work_detail[name_and_employee_confirm]" type="radio" value="0" />
     </div>
   </div>
 
@@ -159,31 +157,31 @@ $(document).ready(function(){
 
   <div class="field_name">
     <%= f.label :'Type Of Business', :class => 'control-label' %>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Public Ltd." />Public Ltd. <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Partnership" />Partnership <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Private LTD." />Private LTD. <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Propreietorship" />Propreietorship <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Others" /> Others <br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_business]" type="radio" value="Public Ltd." />Public Ltd. <br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_business]" type="radio" value="Partnership" />Partnership <br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_business]" type="radio" value="Private LTD." />Private LTD. <br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_business]" type="radio" value="Propreietorship" />Propreietorship <br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_business]" type="radio" value="Others" /> Others <br>
   </div>
 <br>
   <div class="field_name">
     <%= f.label :'Nature Of Business', :class => 'control-label' %>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="Professional" />Professional <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="Manufacturer" />Manufacturer <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="Trade/Shopkeeper" />Trade/Shopkeeper <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="Commission Agent" />Commission Agent <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="Broker" /> Broker <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="Tutor/Personal Care" /> Tutor/Personal Care <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="LIC Agent" /> LIC Agent <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="STD/PCO Booth" /> STD/PCO Booth <br>
-<input id="work_nature_of_business" name="work_servey[nature_of_business]" type="radio" value="Others" /> Others <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="Professional" />Professional <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="Manufacturer" />Manufacturer <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="Trade/Shopkeeper" />Trade/Shopkeeper <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="Commission Agent" />Commission Agent <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="Broker" /> Broker <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="Tutor/Personal Care" /> Tutor/Personal Care <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="LIC Agent" /> LIC Agent <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="STD/PCO Booth" /> STD/PCO Booth <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[nature_of_business]" type="radio" value="Others" /> Others <br>
   </div>
 <br>
  <div class="field_name">
     <%= f.label :'Office Ownership', :class => 'control-label' %>
-<input id="work_servey_type_of_business" name="work_servey[office_ownership]" type="radio" value="Owned" />Owned<br>
-<input id="work_servey_type_of_business" name="work_servey[office_ownership]" type="radio" value="Rented" />Rented<br>
-<input id="work_servey_type_of_business" name="work_servey[office_ownership]" type="radio" value="Pagdi" />Pagdi<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[office_ownership]" type="radio" value="Owned" />Owned<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[office_ownership]" type="radio" value="Rented" />Rented<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[office_ownership]" type="radio" value="Pagdi" />Pagdi<br>
   </div>
 
   <div class="field_name">
@@ -208,33 +206,33 @@ $(document).ready(function(){
 
   <div class="field_name">
     <%= f.label :type_of_job, :class => 'control-label' %>
-<input id="work_nature_of_business" name="work_servey[type_of_job]" type="radio" value="Permanent" /> Permanent <br>
-<input id="work_nature_of_business" name="work_servey[type_of_job]" type="radio" value="Probation" /> Probation <br>
-<input id="work_nature_of_business" name="work_servey[type_of_job]" type="radio" value="Temporary Worker" /> Temporary Worker <br>
-<input id="work_nature_of_business" name="work_servey[type_of_job]" type="radio" value="Contract Worker" /> Contract Worker <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[type_of_job]" type="radio" value="Permanent" /> Permanent <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[type_of_job]" type="radio" value="Probation" /> Probation <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[type_of_job]" type="radio" value="Temporary Worker" /> Temporary Worker <br>
+<input id="work_nature_of_business" name="co_applicant_work_detail[type_of_job]" type="radio" value="Contract Worker" /> Contract Worker <br>
 
   </div>
 
   <div class="field_name">
     <%= f.label :working_as, :class => 'control-label' %>
  <div class="field_name">
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Senior/Middle Manager" />Senior/Middle Manager<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Supervisior" />Supervisior<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Junior Management" />Junior Management<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Assistant" />Assistant<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Clerk" />Clerk<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="typist" />Typist<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Stenographer" />Stenographer<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Skilled Labour" />Skilled Labour<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Others" />Others<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Senior/Middle Manager" />Senior/Middle Manager<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Supervisior" />Supervisior<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Junior Management" />Junior Management<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Assistant" />Assistant<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Clerk" />Clerk<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="typist" />Typist<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Stenographer" />Stenographer<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Skilled Labour" />Skilled Labour<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[working_as]" type="radio" value="Others" />Others<br>
   </div>
     </div>
 <br>
   <div class="field_name">
     <%= f.label :job_transferable, :class => 'control-label' %>
     <div class="controls">
-     Yes <input id="servey_name_and_employee_confirm" name="work_servey[job_transferable]" type="radio" value="1" />
-     No <input id="servey_name_and_employee_confirm" name="work_servey[job_transferable]" type="radio" value="0" />
+     Yes <input id="servey_name_and_employee_confirm" name="co_applicant_work_detail[job_transferable]" type="radio" value="1" />
+     No <input id="servey_name_and_employee_confirm" name="co_applicant_work_detail[job_transferable]" type="radio" value="0" />
     </div>
   </div>
 
@@ -243,86 +241,86 @@ $(document).ready(function(){
   <div class="field_name">
     <%= f.label :'Business Board Seen outside Building / office', :class => 'control-label' %>
     <div class="controls">
-     Yes <input id="servey_name_and_employee_confirm" name="work_servey[board_seen]" type="radio" value="1" />
-     No <input id="servey_name_and_employee_confirm" name="work_servey[board_seen]" type="radio" value="0" />
+     Yes <input id="servey_name_and_employee_confirm" name="co_applicant_work_detail[board_seen]" type="radio" value="1" />
+     No <input id="servey_name_and_employee_confirm" name="co_applicant_work_detail[board_seen]" type="radio" value="0" />
     </div>
   </div>
 <br>
   <div class="field_name">
     <%= f.label :name_verified_from, :class => 'control-label' %>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Colleage" />Colleage<br>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Receptionst" />Receptionst<br>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Security" />Security<br>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Others" />Others<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[name_verified_from]" type="radio" value="Colleage" />Colleage<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[name_verified_from]" type="radio" value="Receptionst" />Receptionst<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[name_verified_from]" type="radio" value="Security" />Security<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[name_verified_from]" type="radio" value="Others" />Others<br>
   </div>
 <br>
  <div class="field_name">
     <%= f.label :type_of_office, :class => 'control-label' %>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Business Center" />Business Center<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Independent Office" />Independent Office<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Office Complex" />Office Complex<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Shop" />Shop<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Shared Office" />Shared Office<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Industry / Factory" />Industry / Factory<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Clinic" />Clinic<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Small Scale / Shade" />Small Scale / Shed<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Residence Cum OFfice" />Residence Cum Office<br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Others" />Others<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Business Center" />Business Center<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Independent Office" />Independent Office<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Office Complex" />Office Complex<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Shop" />Shop<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Shared Office" />Shared Office<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Industry / Factory" />Industry / Factory<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Clinic" />Clinic<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Small Scale / Shade" />Small Scale / Shed<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Residence Cum OFfice" />Residence Cum Office<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[type_of_office]" type="radio" value="Others" />Others<br>
   </div>
 <br>
 
 <div class="field_name">
 <%= f.label :'Office Locality', :class => 'control-label' %>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Business Center" />Business Center<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Independent Office" />Independent Office<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Office Complex" />Office Complex<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Shop" />Shop<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Shared Office" />Shared Office<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Industry / Factory" />Industry / Factory<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Clinic" />Clinic<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Small Scale / Shade" />Small Scale / Shed<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Residence Cum OFfice" />Residence Cum Office<br>
-<input id="work_servey_type_of_business" name="work_servey[locality_of_office]" type="radio" value="Others" />Others<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Business Center" />Business Center<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Independent Office" />Independent Office<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Office Complex" />Office Complex<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Shop" />Shop<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Shared Office" />Shared Office<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Industry / Factory" />Industry / Factory<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Clinic" />Clinic<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Small Scale / Shade" />Small Scale / Shed<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Residence Cum OFfice" />Residence Cum Office<br>
+<input id="work_servey_type_of_business" name="co_applicant_work_detail[locality_of_office]" type="radio" value="Others" />Others<br>
 </div>
 <br>
 
 <div class="field_name">
 <%= f.label :construction_of_office, :class => 'control-label' %>
- <input id="work_servey_type_of_business" name="work_servey[construction_of_office]" type="radio" value="Pukka" />Pukka<br>
- <input id="work_servey_type_of_business" name="work_servey[construction_of_office]" type="radio" value="Semi-Pukka" />Semi-Pukka<br>
- <input id="work_servey_type_of_business" name="work_servey[construction_of_office]" type="radio" value="Temporary" />Temporary<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[construction_of_office]" type="radio" value="Pukka" />Pukka<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[construction_of_office]" type="radio" value="Semi-Pukka" />Semi-Pukka<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[construction_of_office]" type="radio" value="Temporary" />Temporary<br>
 </div>
 <br>
 
 <div class="field_name">
 <%= f.label :exterior, :class => 'control-label' %>
- <input id="work_servey_type_of_business" name="work_servey[exterior]" type="radio" value="Good" />Good<br>
- <input id="work_servey_type_of_business" name="work_servey[exterior]" type="radio" value="Average" />Average<br>
- <input id="work_servey_type_of_business" name="work_servey[exterior]" type="radio" value="Poor" />Poor<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[exterior]" type="radio" value="Good" />Good<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[exterior]" type="radio" value="Average" />Average<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[exterior]" type="radio" value="Poor" />Poor<br>
 </div>
 <br>
 
   <div class="field_name">
     <%= f.label :interior, :class => 'control-label' %>
- <input id="work_servey_type_of_business" name="work_servey[interior]" type="radio" value="Painted" />Painted<br>
- <input id="work_servey_type_of_business" name="work_servey[interior]" type="radio" value="Carpated" />Carpated<br>
- <input id="work_servey_type_of_business" name="work_servey[interior]" type="radio" value="Curtains" />Curtains<br>
- <input id="work_servey_type_of_business" name="work_servey[interior]" type="radio" value="Clean" />Clean<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[interior]" type="radio" value="Painted" />Painted<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[interior]" type="radio" value="Carpated" />Carpated<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[interior]" type="radio" value="Curtains" />Curtains<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[interior]" type="radio" value="Clean" />Clean<br>
   </div>
 <br>
 
   <div class="field_name">
     <%= f.label :ease_of_locating_office, :class => 'control-label' %>
- <input id="work_servey_type_of_business" name="work_servey[ease_of_location]" type="radio" value="Easy" />Easy<br>
- <input id="work_servey_type_of_business" name="work_servey[ease_of_location]" type="radio" value="Difficult" />Difficult<br>
- <input id="work_servey_type_of_business" name="work_servey[ease_of_location]" type="radio" value="Untracabale" />Untracable<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[ease_of_location]" type="radio" value="Easy" />Easy<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[ease_of_location]" type="radio" value="Difficult" />Difficult<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[ease_of_location]" type="radio" value="Untracabale" />Untracable<br>
   </div>	
 <br>
   <div class="field_name">
     <%= f.label :Business_Activity_level, :class => 'control-label' %>
- <input id="work_servey_type_of_business" name="work_servey[activity_level]" type="radio" value="High" />High<br>
- <input id="work_servey_type_of_business" name="work_servey[activity_level]" type="radio" value="Medium" />Medium<br>
- <input id="work_servey_type_of_business" name="work_servey[activity_level]" type="radio" value="Low" />Low<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[activity_level]" type="radio" value="High" />High<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[activity_level]" type="radio" value="Medium" />Medium<br>
+ <input id="work_servey_type_of_business" name="co_applicant_work_detail[activity_level]" type="radio" value="Low" />Low<br>
   </div><br>
 
   <div class="field_name">
@@ -336,8 +334,12 @@ $(document).ready(function(){
   </div>
 
 
-
-
+  <div class="control-group">
+    <%= f.label :verifiers_remark, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :verifier_remark, :class => 'text_area' %>
+    </div>
+  </div>
 
 <br><br>
 <%= f.submit "Continue.." , :class=>"btn btn-primary btn-small" %>

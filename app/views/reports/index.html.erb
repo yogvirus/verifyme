@@ -64,12 +64,11 @@ $(function() {
    <!-- co applicant business detail  -->   
    <th> C-A-B-N </th>
    <th> C-A-B-br-code </th>
+   <th> C-A-B-Address </th>
    <th> C-A-S </th>
    <th> Pan-no. </th>
    <th> Emp code</th>
    <th> C-A-Office Address </th>
-   <th> Agency Name </th>
-   <th> Agency Name </th>
    <th> Agency Name </th>
    <!-- co applicant business detail end -->
   </tr>
@@ -103,7 +102,7 @@ $(function() {
    <td><%= d.business.company_name %></td>
    <td><%= d.business.fh_code %></td>
    <td><%= d.business.address %></th>
-   <% if d.status=='submitted' %>
+   <% if d.business.status=='submitted' %>
     <td><b>Pending</b></i></td>
    <% end %>
    <% if d.business.status=='awaiting_to_get_verified' %>
@@ -155,8 +154,10 @@ $(function() {
 <% end %>
 
 <% if d.co_applicant_business %>
-   <td><%= d.co_applicant_business.company_name %></td>
+   <td><%= d.co_applicant_business.customer.co_applicant.applicant_name %></td>
    <td><%= d.co_applicant_business.fh_code %></td>
+   <td><%= d.co_applicant_business.company_name %></td>
+
    <% if d.co_applicant_business.status=='submitted' %>
    <td><b>Pending</b></i></td>
    <% end %>
@@ -169,13 +170,11 @@ $(function() {
    <% if d.co_applicant_business.status=='verified' %>
    <td><b>Done</b></i></td>
    <% end %>
+
    <td>AGLV15428796</td>
    <td>EMP-8309</td>
    <td><%= d.co_applicant_business.address %></td>
    <td><%= d.co_applicant_business.agency_name %></td>
-   <td><%= d.co_applicant_business.agency_name %></td>
-   <td><%= d.co_applicant_business.agency_name %></td>
-
 <% else %>
   <td>-</td>
   <td>-</td>
@@ -185,7 +184,6 @@ $(function() {
   <td>-</td>  
   <td>-</td>
   <td>-</td>
-  <td>-</td>  
 <% end %>
 
   
