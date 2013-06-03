@@ -1,9 +1,10 @@
 <div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<h5>In Progress</h5>
+<h5>In Progress (<small> Submitted by tab </small>)</h5>
 <table class="table table-condensed">
   <% @in_progress.each do |c| %>
   <tr>
      <td><%= link_to c.applicant_name, c %></td>
+     <td> <b style="background:#009999;color:white;border-radius:3px;padding:2px;">Residential </b></td>
      <td><%= c.customer_verification.tab.name %></td>
   </tr>
   <% end %>
@@ -13,6 +14,7 @@
   <% @business_in_progress.each do |c| %>
   <tr>
      <td><%= link_to c.applicant_name, c %></td>
+     <td> <b style="background:#CC0066;color:white;border-radius:3px;padding:2px;"> Business </b> </td>
      <td><%= c.customer.customer_verification.tab.name %></td>
   </tr>
   <% end %>
@@ -22,6 +24,7 @@
   <% @co_applicant_in_progress.each do |c| %>
   <tr>
      <td><%= link_to c.applicant_name, c %></td>
+     <td><b style="background:#009999;color:white;border-radius:3px;padding:2px;"> Residential </b></td>
      <td><%= c.customer.customer_verification.tab.name %></td>
   </tr>
   <% end %>
@@ -32,6 +35,7 @@
   <% @co_applicant_business_in_progress.each do |c| %>
   <tr>
      <td><%= link_to c.applicant_name, c %></td>
+     <td> <b style="background:#CC0066;color:white;border-radius:3px;padding:2px;"> Business </b> </td>
      <td><%= c.co_applicant.customer.customer_verification.tab.name %></td>
   </tr>
   <% end %>

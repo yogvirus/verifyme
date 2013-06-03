@@ -9,7 +9,9 @@ $(document).ready(function(){
         $('.show_hide').click(function(){
         $(".slidingDiv").slideToggle();
     });
- 
+$(".checkbox").click(function(){
+   $(this).next("div").toggle();    
+});
 });
  
 </script>
@@ -28,6 +30,10 @@ $(document).ready(function(){
     display:none;
 }
 </style>
+
+
+
+
 
 
 <%- model_class = Servey -%>
@@ -64,6 +70,7 @@ $(document).ready(function(){
 </table>
 <hr>
 <h3> Following are the Details to be obtained from the customer </h3><hr>
+
 
 <div class="map" style ="float:right;width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
 <b style ="color:blue"><%= @customer.address %></b><br>
@@ -157,6 +164,22 @@ paying guest<br>
     </div>
   </div>
 
+    <%= f.label :Spouse_Working, :class => 'control-label' %>
+      <label class="checkbox controls">
+         <input id="spouse_working_detail_no" name="servey[spouse_working]" type="checkbox" value="no" /> no
+      </label>
+      <label class="checkbox controls">
+         <input id="spouse_working_detail_yes" name="servey[spouse_working]" type="checkbox" value="Yes" class="checkbox" /> Yes
+      </label>
+
+   <div class="control-group" style ="display:none;"><br>
+     <%= f.label :spouse_working_detail, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :spouse_working_detail, :class => 'text_field' %>
+    </div>
+  </div>
+
+
   <div class="control-group">
     <%= f.label :no_of_family_members, :class => 'control-label' %>
     <div class="controls">
@@ -183,19 +206,7 @@ paying guest<br>
       <%= f.number_field :children, :class => 'number_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :spouse_working, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :spouse_working, :class => 'check_box' %> Yes
-      <%= check_box_tag'test' %> no
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :spouse_working_detail, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :spouse_working_detail, :class => 'text_field' %><br> Enter if spouse working , else leave it blank.
-    </div>
-  </div>
+
       <%= f.hidden_field :name_plate_seen, :value=>'yes' %>
   <!--<div class="control-group">
     <%= f.label :credit_card, :class => 'control-label' %>
@@ -232,11 +243,12 @@ paying guest<br>
 <div class="alert alert-success" style="width:400px">
   <strong>the following is based on verifiers observation.</strong>
 </div>
-  <div class="control-group">
+<!--  <div class="control-group">
     <%= f.label :'How Co-Operative was the customer', :class => 'control-label' %>
     <div class="controls">
+
    <input id="servey_marital_status" name="servey[customer_beaviour]" type="radio" value="Polite" /> Polite  
-   <input id="servey_marital_status" name="servey[customer_beaviour]" type="radio" value="Rude" /> Rude  
+   <input id="servey_marital_status" name="servey[customer_beaviour]" type="radio" value="Rude" /> Rude
     </div>
   </div>
   <div class="control-group">
@@ -245,17 +257,17 @@ paying guest<br>
    <input id="servey_marital_status" name="servey[neighbour_ref]" type="radio" value="+ve" /> +ve
    <input id="servey_marital_status" name="servey[neighbour_ref]" type="radio" value="-ve" /> -ve    
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :name_varified_from, :class => 'control-label' %>
-    <div class="controls">
-   <input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="name plate" /> name plate <br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="Watchman" /> Watchman <br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="neighbour" /> Neighbour<br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="society board" /> society board <br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="company board" /> Company Board <br>
+  </div>-->
+
+  <% for name in Customer::NAME_VERIFIED %>
+    <%= check_box_tag "servey[name_varified_from][]", name %>
+    <%=h name.humanize %><br />
+  <% end %>
+  <%= hidden_field_tag "servey[name_varified_from][]" %>
 </div>
-  </div>
+
+
+
   <div class="control-group">
     <%= f.label :type_of_residence, :class => 'control-label' %>
     <div class="controls">

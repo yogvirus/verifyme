@@ -1,0 +1,47 @@
+<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<h5>Pending (<small>given to tab</small>)</h5>
+<table class="table table-condensed">
+  <% @pending.each do |c| %>
+  <tr>
+     <td><%= link_to c.applicant_name, c %></td>
+     <td> <b style="background:#009999;color:white;border-radius:3px;padding:2px;">Residential </b></td>
+     <td><%= c.customer_verification.tab.name %></td>
+  </tr>
+  <% end %>
+ </table>
+
+<table class="table table-condensed">
+  <% @business_pending.each do |c| %>
+  <tr>
+     <td><%= link_to c.applicant_name, c %></td>
+     <td> <b style="background:#CC0066;color:white;border-radius:3px;padding:2px;"> Commercial </b></td>
+     <td><%= c.customer.customer_verification.tab.name %></td>
+  </tr>
+  <% end %>
+ </table>
+
+<table class="table table-condensed">
+  <% @co_applicant_pending.each do |c| %>
+  <tr>
+     <td><%= link_to c.applicant_name, c %></td>
+     <td> <b style="background:#009999;color:white;border-radius:3px;padding:2px;">Residential </b></td>
+     <td><%= c.customer.customer_verification.tab.name %></td>
+  </tr>
+  <% end %>
+ </table>
+
+
+<table class="table table-condensed">
+  <% @co_applicant_business_pending.each do |c| %>
+  <tr>
+     <td><%= link_to c.applicant_name, c %></td>
+     <td> <b style="background:#CC0066;color:white;border-radius:3px;padding:2px;"> Business </b></td>
+     <td><%= c.co_applicant.customer.customer_verification.tab.name %></td>
+  </tr>
+  <% end %>
+ </table>
+
+
+
+</div>
+
