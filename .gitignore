@@ -1,7 +1,13 @@
+#----------------------------------------------------------------------------
+# Ignore these files when commiting to a git repository
+#----------------------------------------------------------------------------
+
+
+# minimal Rails specific artifacts
+# various artifacts
+**.war
 *.rbc
 *.sassc
-.sass-cache
-capybara-*.html
 .rspec
 .rvmrc
 /.bundle
@@ -10,11 +16,44 @@ capybara-*.html
 /tmp/*
 /db/*.sqlite3
 /public/system/*
+.sass-cache
+/config/config.yml
 /config/database.yml
+/coverage.data
 /coverage/
+/db/*.javadb/
+/db/*.sqlite3-journal
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
+/public/cache
+/public/stylesheets/compiled
+/public/system
 /spec/tmp/*
+/cache
+/capybara*
+/capybara-*.html
+/gems
+/rerun.txt
+/spec/requests
+/spec/routing
+/spec/views
+/specifications
+
+# scm revert files
 **.orig
-rerun.txt
-pickle-email-*.html
-.project
-/~
+
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# Textmate project files
+/*.tmpproj
+
+# vim artifacts
+**.swp
+
+

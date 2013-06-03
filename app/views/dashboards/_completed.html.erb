@@ -1,5 +1,5 @@
 <div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<h5>Completed</h5>
+<h5>Completed (<small> Verification Done </small>)</h5>
 <table class="table table-striped">
  <% @completed.each do |c| %>
     <tr><td><%= link_to c.applicant_name, c %>
@@ -10,6 +10,7 @@
       </small>
      </p>
   </td>
+     <td> <b style="background:#009999;color:white;border-radius:3px;padding:2px;">Residential </b></td>
      <td><p class="label label-success">Verified</p></td>
  </tr><% end %></table>
 
@@ -23,6 +24,7 @@
       </small>
      </p>
   </td>
+     <td> <b style="background:#CC0066;color:white;border-radius:3px;padding:2px;"> Business </b></td>
      <td><p class="label label-success">Verified</p></td>
  </tr><% end %></table>
 
@@ -36,6 +38,7 @@
       </small>
      </p>
   </td>
+     <td> <b style="background:#009999;color:white;border-radius:3px;padding:2px;">Residential </b></td>
      <td><p class="label label-success">Verified</p></td>
  </tr><% end %></table>
 
@@ -49,6 +52,7 @@
       </small>
      </p>
   </td>
+     <td> <b style="background:#CC0066;color:white;border-radius:3px;padding:2px;"> Business </b></td>
      <td><p class="label label-success">Verified</p></td>
  </tr><% end %></table>
 
