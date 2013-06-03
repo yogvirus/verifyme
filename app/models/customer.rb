@@ -21,6 +21,7 @@ class Customer < ActiveRecord::Base
   has_one :customer_verification
   has_many :customer_documents
   has_one :co_applicant	
+  has_one :co_applicant_business	
   has_one :co_applicant_work_detail
   belongs_to :pincode
   has_and_belongs_to_many :assets
