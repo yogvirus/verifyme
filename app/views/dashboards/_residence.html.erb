@@ -4,6 +4,7 @@
   <% CustomerVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC').each do |c| %>
  <tr><% if c.customer.status=="submitted" %>
   <td><strong><%= c.customer.applicant_name %></strong>&nbsp;&nbsp;&nbsp;&nbsp;
+      <strong><%= c.customer.application_ref_no %></strong>
      <% time1 = Time.now %> <% time2 = c.created_at %>
      <p>
       <small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">

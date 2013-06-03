@@ -1,0 +1,58 @@
+<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<h5>Completed (<small> Verification Done </small>)</h5>
+<table class="table table-striped">
+ <% @completed.each do |c| %>
+    <tr><td><%= link_to c.applicant_name, c %>
+     <% time1 = Time.now %> <% time2 = c.created_at %>
+     <p>
+      <small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
+          <%= distance_of_time_in_words(time1, time2) %> ago 
+      </small>
+     </p>
+  </td>
+     <td> <b style="background:#009999;color:white;border-radius:3px;padding:2px;">Residential </b></td>
+     <td><p class="label label-success">Verified</p></td>
+ </tr><% end %></table>
+
+<table class="table table-striped">
+ <% @business_completed.each do |c| %>
+    <tr><td><%= link_to c.applicant_name, c %>
+     <% time1 = Time.now %> <% time2 = c.created_at %>
+     <p>
+      <small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
+          <%= distance_of_time_in_words(time1, time2) %> ago 
+      </small>
+     </p>
+  </td>
+     <td> <b style="background:#CC0066;color:white;border-radius:3px;padding:2px;"> Business </b></td>
+     <td><p class="label label-success">Verified</p></td>
+ </tr><% end %></table>
+
+<table class="table table-striped">
+ <% @co_applicant_completed.each do |c| %>
+    <tr><td><%= link_to c.applicant_name, c %>
+     <% time1 = Time.now %> <% time2 = c.created_at %>
+     <p>
+      <small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
+          <%= distance_of_time_in_words(time1, time2) %> ago 
+      </small>
+     </p>
+  </td>
+     <td> <b style="background:#009999;color:white;border-radius:3px;padding:2px;">Residential </b></td>
+     <td><p class="label label-success">Verified</p></td>
+ </tr><% end %></table>
+
+<table class="table table-striped">
+ <% @co_applicant_business_completed.each do |c| %>
+    <tr><td><%= link_to c.applicant_name, c %>
+     <% time1 = Time.now %> <% time2 = c.created_at %>
+     <p>
+      <small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
+          <%= distance_of_time_in_words(time1, time2) %> ago 
+      </small>
+     </p>
+  </td>
+     <td><p class="label label-success">Verified</p></td>
+ </tr><% end %></table>
+
+</div><!--/span-->

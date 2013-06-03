@@ -1,42 +1,29 @@
 class DashboardsController < ApplicationController
   before_filter :authenticate_user!
+  include ApplicationHelper
   def index
    @customers = Customer.all
-
-   #/for admin/
-
-   @pending = Customer.find_all_by_status('submitted')
-   @in_progress = Customer.find_all_by_status('awaiting_to_get_verified')
-   @completed = Customer.find_all_by_status('verified')
-
-   @business_pending = Business.find_all_by_status('submitted')
-   @business_in_progress = Business.find_all_by_status('awaiting_to_get_verified')
-   @business_completed = Business.find_all_by_status('verified')
-
-   @co_applicant_pending = CoApplicant.find_all_by_status('submitted')
-   @co_applicant_in_progress = CoApplicant.find_all_by_status('awaiting_to_get_verified')
-   @co_applicant_completed = CoApplicant.find_all_by_status('verified')
-
-   @co_applicant_business_pending = CoApplicantBusiness.find_all_by_status('submitted')
-   @co_applicant_business_in_progress = CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
-   @co_applicant_business_completed = CoApplicantBusiness.find_all_by_status('verified')
-
-   @total_pending = (@pending.count)+(@business_pending.count)+(@co_applicant_pending.count)+(@co_applicant_business_pending.count)
-   @total_in_progress = (@in_progress.count)+(@business_in_progress.count)+(@co_applicant_in_progress.count)+(@co_applicant_business_in_progress.count) 
-
-   @total_completed = (@completed.count)+(@business_completed.count)+(@co_applicant_completed.count)+(@co_applicant_business_completed.count)
-   #/for admin end /
-
-   #/for tab user /
-
-   @my_pending_1 = BusinessVerification.find_all_by_tab_id(current_user.tab).map{|d|d.business.status} 
-   @my_pending_2 = CustomerVerification.find_all_by_tab_id(current_user.tab).map{|d|d.customer.status}
-   @my_pending_3 = CoApplicantVerification.find_all_by_tab_id(current_user.tab).map{|d|d.co_applicant.status}
-   @my_pending_4 = ClientVerification.find_all_by_tab_id(current_user.tab).map{|d|d.co_applicant_business.status}
-
-   @all = (@my_pending_1 + @my_pending_2 + @my_pending_3 + @my_pending_4).count
-
-
-   #/for tab user end / 
+   #admin status
+   @pending = pending_customer
+   @in_progress = customer_in_progress
+   @completed = completed_customer
+   @business_pending = pending_business
+   @business_in_progress = business_in_progress
+   @business_completed = completed_business
+   @co_applicant_pending = pending_co_applicant
+   @co_applicant_in_progress = co_applicant_in_progress
+   @co_applicant_completed = completed_co_applicant
+   @co_applicant_business_pending = pending_co_applicant_business
+   @co_applicant_business_in_progress = co_applicant_business_in_progress
+   @co_applicant_business_completed = co_applicant_business_completed
+   @total_pending = total_pending
+   @total_in_progress = total_in_progress
+   @total_completed = total_completed
+   #tab status
+   @my_pending_1 = tab_customer_verification_pending
+   @my_pending_2 = tab_business_verification_pending
+   @my_pending_3 = tab_co_applicant_verification_pending
+   @my_pending_4 = tab_co_applicant_business_pending
+   @all = pending_all_on_tab
   end
 end

@@ -63,9 +63,19 @@
 <% end %>
 <% end %>
 </td></tr></tr></table>
-
-
 </div>
+
+
+
+<% if @business.business_documents %>
+<div>
+<% @business.business_documents.each do |d| %>
+ <%= link_to image_tag(d.photo.url(:thumb)), d.photo.url(:large) %>
+<% end %>
+</div><br><br><br>
+<% end %>
+
+
 
 <div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
 <p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@business.latitude}%2C#{@business.longitude}" %></p>
@@ -74,8 +84,8 @@
 <% if @business.work_servey %>
 <% if @business.work_servey.name_and_employee_confirm %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-
-
+<table class="table" style="background:silver">
+<tr>
   <strong><%= model_class.human_attribute_name(:Designation) %>:</strong>
   <%= @business.work_servey.applicant_designation %><br>
 
@@ -90,9 +100,6 @@
 
   <strong><%= model_class.human_attribute_name(:designation_of_person_met) %>:</strong>
   <%= @business.work_servey.designation_of_person_met %><br>
-
-  <strong><%= model_class.human_attribute_name(:date_of_birth) %>:</strong>
-  <%= time_tag @business.work_servey.business.customer.d_o_b %><br>
 
   <strong><%= model_class.human_attribute_name(:contact_number) %>:</strong>
   <%= @business.work_servey.telephone_number %><br>
@@ -112,6 +119,11 @@
 
   <strong><%= model_class.human_attribute_name(:name_of_the_company) %>:</strong>
   <%= @business.work_servey.name_of_the_company %><br>
+
+<% if !@business.work_servey.company_name_new.blank? %>
+  <p style="background:pink"><strong><%= model_class.human_attribute_name(:Company_name_new) %>:</strong>
+  <%= @business.work_servey.company_name_new %><br></p>
+<% end %>
 
   <strong><%= model_class.human_attribute_name(:type_of_business) %>:</strong>
   <%= @business.work_servey.type_of_business %><br>
@@ -143,22 +155,22 @@
   <strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
   <%= @business.work_servey.job_transferable %><br>
 
-  <strong><%= model_class.human_attribute_name(:salary_drawn) %>:</strong>
-  <%= @business.work_servey.salary_drawn %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:salary_drawn) %>:</strong>
+  <%= @business.work_servey.salary_drawn %></td><br>
 
-  <strong><%= model_class.human_attribute_name(:no_of_years_worked_in_current_company) %>:</strong>
-  <%= @business.work_servey.no_of_years_worked %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:no_of_years_worked_in_current_company) %>:</strong>
+  <%= @business.work_servey.no_of_years_worked %></td><br></tr>
 
-  <strong><%= model_class.human_attribute_name(:board_seen) %>:</strong>
-  <%= @business.work_servey.board_seen %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:board_seen) %>:</strong>
+  <%= @business.work_servey.board_seen %></td><br></tr>
 
-  <strong><%= model_class.human_attribute_name(:name_verified_from) %>:</strong>
-  <%= @business.work_servey.name_verified_from %><br>
+  <tr><strong><td><%= model_class.human_attribute_name(:name_verified_from) %>:</strong>
+  <%= @business.work_servey.name_verified_from %></td><br>
 
-  <strong><%= model_class.human_attribute_name(:nature_of_business_in_detail) %>:</strong>
-  <%= @business.work_servey.nob_in_detail %><br>
-
-
+  <tr><strong><td><%= model_class.human_attribute_name(:nature_of_business_in_detail) %>:</strong>
+  <%= @business.work_servey.nob_in_detail %></td><br>
+</tr>
+</table>
 </div>
 <% end %>
 <% end %>

@@ -12,7 +12,7 @@ class Business < ActiveRecord::Base
  belongs_to :pincode
  has_one :business_verification
  has_one :work_servey
-
+ has_many :business_documents
 
 
  extend FriendlyId

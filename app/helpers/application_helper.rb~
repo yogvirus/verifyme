@@ -1,0 +1,98 @@
+module ApplicationHelper
+
+  def bootstrap_class_for flash_type
+    case flash_type
+      when :success
+        "alert-success"
+      when :error
+        "alert-error"
+      when :alert
+        "alert-block"
+      when :notice
+        "alert-info"
+      else
+        flash_type.to_s
+    end
+  end
+
+  def pending_customer
+    Customer.find_all_by_status('submitted')
+  end
+
+  def customer_in_progress
+    Customer.find_all_by_status('awaiting_to_get_verified')
+  end 
+
+  def completed_customer
+    Customer.find_all_by_status('verified')
+  end
+
+  def pending_business
+    Business.find_all_by_status('submitted')
+  end
+ 
+  def business_in_progress
+    Business.find_all_by_status('awaiting_to_get_verified')
+  end 
+
+  def completed_business
+    Business.find_all_by_status('verified')
+  end
+
+  def pending_co_applicant
+    CoApplicant.find_all_by_status('submitted')
+  end
+
+  def co_applicant_in_progress
+    CoApplicant.find_all_by_status('awaiting_to_get_verified')
+  end
+
+  def completed_co_applicant
+    CoApplicant.find_all_by_status('verified')
+  end
+
+  def pending_co_applicant_business
+    CoApplicantBusiness.find_all_by_status('submitted')
+  end
+
+  def co_applicant_business_in_progress
+    CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
+  end
+
+  def co_applicant_business_completed
+    CoApplicantBusiness.find_all_by_status('verified')
+  end
+  
+  def total_pending
+  pending_customer.count + pending_business.count + pending_co_applicant.count + pending_co_applicant_business.count
+  end
+
+  def total_in_progress
+   customer_in_progress.count + business_in_progress.count + co_applicant_in_progress.count+ co_applicant_business_in_progress.count
+  end
+
+  def total_completed
+   completed_customer.count + completed_business.count + completed_co_applicant.count + co_applicant_business_completed.count
+  end
+
+  def tab_customer_verification_pending
+    CustomerVerification.find_all_by_tab_id(current_user.tab).map{|d|d.customer.status}
+  end
+
+  def tab_business_verification_pending
+    BusinessVerification.find_all_by_tab_id(current_user.tab).map{|d|d.business.status} 
+  end
+
+  def tab_co_applicant_verification_pending
+    CoApplicantVerification.find_all_by_tab_id(current_user.tab).map{|d|d.co_applicant.status}
+  end
+
+  def tab_co_applicant_business_pending
+    ClientVerification.find_all_by_tab_id(current_user.tab).map{|d|d.co_applicant_business.status}
+  end
+   
+  def pending_all_on_tab
+   (@my_pending_1 + @my_pending_2 + @my_pending_3 + @my_pending_4).count
+  end
+
+end

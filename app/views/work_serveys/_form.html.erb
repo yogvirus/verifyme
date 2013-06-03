@@ -56,7 +56,6 @@ $(document).ready(function(){
     <th>Agency name</th>
     <th>Fh code</th>
     <th>Applicant name</th>
-    <th>Age of applicant</th>
   </tr>
 
   <tr>
@@ -64,7 +63,6 @@ $(document).ready(function(){
     <td><%= @business.agency_name %></td>
     <td><%= @business.fh_code %></td>
     <td><%= @business.applicant_name %></td>
-    <td><%= (Date.today.strftime('%Y%m%d').to_i - @business.customer.d_o_b.strftime('%Y%m%d').to_i) / 10000 %> years</td>
   </tr>
 </table>
 <hr>
