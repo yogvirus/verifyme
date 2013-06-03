@@ -18,14 +18,30 @@
       .sidebar-nav {
         padding: 9px 0;
       }
-     .footer {
-       background-color: #000;
-       position: relative;
-       margin-top: -150px; /* negative value of footer height */
-       height: 150px;
-       clear:both;
-       padding-top:20px;
-     } 
+      
+     
+      /* Set the fixed height of the footer here */
+      #footer {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 160px;
+	      }
+      #footer {
+        background-color: #000;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -83,11 +99,82 @@
 <%= yield %>
 </div>
 
-  </body>
 
-    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <hr>
+
+   <div id="footer">
       <div class="container">
-        <p class="muted credit"><br><br></p>
-      </div>
-    </div></html>
 
+      
+      <div class="row-fluid">
+<div class="span12">
+<div class="span2" style="width: 15%;">
+<ul class="unstyled">
+<li>GitHub<li>
+<li><a href="#">About us</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">Contact & support</a></li>
+<li><a href="#">Enterprise</a></li>
+<li><a href="#">Site status</a></li>
+</ul>
+</div>
+<div class="span2" style="width: 15%;">
+<ul class="unstyled">
+<li>Applications<li>
+<li><a href="#">Product for Mac</a></li>
+<li><a href="#">Product for Windows</a></li>
+<li><a href="#">Product for Eclipse</a></li>
+<li><a href="#">Product mobile apps</a></li>	
+</ul>
+</div>
+<div class="span2" style="width: 15%;">
+<ul class="unstyled">
+<li>Services<li>
+<li><a href="#">Web analytics</a></li>
+<li><a href="#">Presentations</a></li>
+<li><a href="#">Code snippets</a></li>
+<li><a href="#">Job board</a></li>	
+</ul>
+</div>
+<div class="span2" style="width: 15%;">
+<ul class="unstyled">
+<li>Documentation<li>
+<li><a href="#">Product Help</a></li>
+<li><a href="#">Developer API</a></li>
+<li><a href="#">Product Markdown</a></li>
+<li><a href="#">Product Pages</a></li>	
+</ul>
+</div>	
+<div class="span2" style="width: 15%;">
+<ul class="unstyled">
+<li>More<li>
+<li><a href="#">Training</a></li>
+<li><a href="#">Students & teachers</a></li>
+<li><a href="#">The Shop</a></li>
+<li><a href="#">Plans & pricing</a></li>
+<li><a href="#">Contact us</a></li>
+</ul>
+</div>	
+</div>
+</div>
+<hr>
+<div class="row-fluid">
+<div class="span12">
+<div class="span8">
+<a href="#">Terms of Service</a>
+<a href="#">Privacy</a>
+<a href="#">Security</a>
+</div>
+<div class="span4">
+<p class="muted pull-right">© 2013 Company Name. All rights reserved</p>
+</div>
+</div>
+</div>
+      
+      
+      
+      </div>
+    </div>
+
+</body>
+</html>
