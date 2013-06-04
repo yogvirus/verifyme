@@ -21,14 +21,30 @@
       .sidebar-nav {
         padding: 9px 0;
       }
-     .footer {
-       background-color: #000;
-       position: relative;
-       margin-top: -150px; /* negative value of footer height */
-       height: 150px;
-       clear:both;
-       padding-top:20px;
-     } 
+      
+     
+      /* Set the fixed height of the footer here */
+      #footer {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 160px;
+	      }
+      #footer {
+        background-color: #000;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -86,11 +102,8 @@
 <%= yield %>
 </div>
 
-  </body>
 
-    <div class="navbar navbar-inverse navbar-fixed-bottom">
-      <div class="container">
-        <p class="muted credit"><br><br></p>
-      </div>
-    </div></html>
+      <hr>
 
+</body>
+</html>

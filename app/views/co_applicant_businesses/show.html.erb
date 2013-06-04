@@ -1,7 +1,6 @@
 <%- model_class = CoApplicantBusiness -%>
 <div class="page-header">
 
-
   <%= link_to t('.back', :default => t("helpers.links.back")),
               businesses_path, :class => 'label'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -61,9 +60,15 @@
 <% end %>
 <% end %>
 </td></tr></tr></table>
-
-
 </div>
+<% if @co_applicant_business.co_applicant_business_documents %>
+<div>
+<% @co_applicant_business.co_applicant_business_documents.each do |d| %>
+ <%= image_tag d.photo.url(:thumb) %>
+<% end %>
+</div><br><br><br>
+<% end %>
+
 
 <div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
 <p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant_business.latitude}%2C#{@co_applicant_business.longitude}" %></p>
@@ -71,90 +76,89 @@
 
 <% if @co_applicant_business.co_applicant_work_detail %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<table class="table" style="background:silver">
 
+  <tr><td><strong><%= model_class.human_attribute_name(:Designation) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.applicant_designation %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:Designation) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.applicant_designation.inspect %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:date_of_visit) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.date_of_visit %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:date_of_visit) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.date_of_visit %><br>
-
-  <strong><%= model_class.human_attribute_name(:time_of_visit) %>:</strong>
+  <tr><td><strong><%= model_class.human_attribute_name(:time_of_visit) %>:</strong>
   <%= @co_applicant_business.co_applicant_work_detail.time_of_visit.strftime('%I:%M %P') %><rb><br>
 
-  <strong><%= model_class.human_attribute_name(:person_contacted) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.person_met %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:person_contacted) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.person_met %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:designation_of_person_met) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.designation_of_person_met %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:designation_of_person_met) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.designation_of_person_met %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:date_of_birth) %>:</strong>
-  <%= time_tag @co_applicant_business.co_applicant.customer.d_o_b %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:contact_number) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.telephone_number %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:contact_number) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.telephone_number %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:extension_number) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.ext_number %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:extension_number) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.ext_number %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:mobile_number) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.mobile_number %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:mobile_number) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.mobile_number %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:no_of_years_in_present_employeement) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.number_of_years_in_present_employment %> Years</td></tr>
 
-  <strong><%= model_class.human_attribute_name(:no_of_years_in_present_employeement) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.number_of_years_in_present_employment %> Years<br>
-
-  <strong><%= model_class.human_attribute_name(:visiting_card_obtained) %>:</strong>
+  <tr><td><strong><%= model_class.human_attribute_name(:visiting_card_obtained) %>:</strong>
   <% if @co_applicant_business.co_applicant_work_detail.visiting_card_obtained="true" %>
-   Yes <% else %> No <% end %><br>
+   Yes <% else %> No <% end %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:name_of_the_company) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.name_of_the_company %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:name_of_the_company) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.name_of_the_company %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:type_of_business) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.type_of_business %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:type_of_business) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.type_of_business %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:nature_of_business) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.nature_of_business %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:nature_of_business) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.nature_of_business %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:nob_in_detail) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.nob_in_detail %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:nob_in_detail) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.nob_in_detail %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:office_ownership) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.office_ownership %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:office_ownership) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.office_ownership %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:no_of_employees) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.no_of_employees %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:no_of_employees) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.no_of_employees %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:no_of_branches) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.no_of_branches %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:no_of_branches) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.no_of_branches %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:average_monthly_turn_over) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.average_monthly_turn_over %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:average_monthly_turn_over) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.average_monthly_turn_over %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:no_of_customer_per_date) %>:</strong>
+  <tr><td><strong><%= model_class.human_attribute_name(:no_of_customer_per_date) %>:</strong>
   <%= @co_applicant_business.co_applicant_work_detail.no_of_customer_per_date %><br>
 
-  <strong><%= model_class.human_attribute_name(:type_of_job) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.type_of_job %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:type_of_job) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.type_of_job %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.job_transferable %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.job_transferable %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:salary_drawn) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.salary_drawn %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:salary_drawn) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.salary_drawn %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:no_of_years_worked_in_current_company) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.no_of_years_worked %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:no_of_years_worked_in_current_company) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.no_of_years_worked %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:board_seen) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.board_seen %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:board_seen) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.board_seen %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:name_verified_from) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.name_verified_from %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:name_verified_from) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.name_verified_from %></td></tr>
 
-  <strong><%= model_class.human_attribute_name(:nature_of_business_in_detail) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.nob_in_detail %><br>
+  <tr><td><strong><%= model_class.human_attribute_name(:nature_of_business_in_detail) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.nob_in_detail %></td></tr>
 
+  <tr><td><strong><%= model_class.human_attribute_name(:verifier_remark) %>:</strong>
+  <%= @co_applicant_business.co_applicant_work_detail.verifier_remark %></td></tr>
 
 </div>
 <% end %>

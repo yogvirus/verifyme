@@ -1,7 +1,8 @@
 class Customer < ActiveRecord::Base
   attr_accessible :applicant_name, :application_ref_no, :latitude, :longitude,
                   :gmaps, :state, :pincode_id, :country_state, :country_city,
-                  :country_name, :slug, :address, :degree_name, :agency_name, :fh_code, :landmark, :d_o_b, :photo_required
+                  :country_name, :slug, :address, :degree_name, :agency_name, 
+                  :fh_code, :landmark, :d_o_b, :photo_required, :contact_number
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
   validates_uniqueness_of :application_ref_no, :applicant_name, :address, :fh_code
@@ -21,6 +22,7 @@ class Customer < ActiveRecord::Base
   has_one :customer_verification
   has_many :customer_documents
   has_one :co_applicant	
+  has_one :co_applicant_business	
   has_one :co_applicant_work_detail
   belongs_to :pincode
   has_and_belongs_to_many :assets
