@@ -2,7 +2,7 @@ class CoApplicant < ActiveRecord::Base
   attr_accessible :document_required,:address, :name,
                   :pincode_id, :customer_id, :status,
                   :agency_name, :application_ref_no,
-                  :fh_code, :applicant_name, :landmark,
+                  :fh_code, :applicant_name, :landmark,:application_status,
                   :country_name, :country_state, :country_city
 
   has_one :co_applicant_work_detail
@@ -20,7 +20,7 @@ class CoApplicant < ActiveRecord::Base
  friendly_id :applicant_name, use: :slugged
 
  geocoded_by :full_address
-  after_validation :geocode, :if => :address_changed?
+ after_validation :geocode, :if => :address_changed?
 
  def full_address
   [address, country_city, country_state, country_name].compact.join(', ')

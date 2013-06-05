@@ -1,5 +1,5 @@
 class CoApplicantBusiness < ActiveRecord::Base
-attr_accessible :address, :agency_name, :applicant_name, :applicant_ref_no, :city, :customer_id,
+attr_accessible :address, :agency_name, :applicant_name, :applicant_ref_no, :city, :customer_id,:application_status,
                 :company_name, :country, :date_of_birth, :document_required, :fh_code, :landmark,
                 :latitude, :longitude, :pincode_id, :slug, :state, :status, :pan_number, :emp_code
  belongs_to :customer
@@ -13,7 +13,7 @@ attr_accessible :address, :agency_name, :applicant_name, :applicant_ref_no, :cit
  friendly_id :applicant_name, use: :slugged
 
  geocoded_by :full_address
-  after_validation :geocode, :if => :address_changed?
+ after_validation :geocode, :if => :address_changed?
 
  def full_address
   [address, city, state, country].compact.join(', ')

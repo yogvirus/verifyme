@@ -251,10 +251,13 @@ $(document).ready(function(){
 <br>
   <div class="field_name">
     <%= f.label :name_verified_from, :class => 'control-label' %>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Colleage" />Colleage<br>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Receptionst" />Receptionst<br>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Security" />Security<br>
-<input id="work_servey_type_of_business" name="work_servey[name_verified_from]" type="radio" value="Others" />Others<br>
+
+  <% for name in WorkServey::NAME_VERIFIED %>
+    <%= check_box_tag "work_servey[name_verified_from][]", name %>
+    <%= h name.humanize %><br />
+  <% end %>
+  <%= hidden_field_tag "work_servey[name_verified_from][]" %>
+
   </div>
 <br>
  <div class="field_name">
@@ -336,6 +339,12 @@ $(document).ready(function(){
       <%= f.text_field :no_of_customer_seen %>
   </div>
 
+  <div class="field_name">
+    <%= f.label :Verifier_Remark, :class => 'control-label' %>
+      <%= f.text_area :verifier_remark %>
+  </div>
+
+
   <div class="control-group">
     <div class="controls">
       <input id="servey_marital_status" name="work_servey[refer_to_bank]" type="radio" value="positive" /> positive
@@ -344,8 +353,6 @@ $(document).ready(function(){
 
     </div>
   </div>
-
-
 
 
 <br><br>

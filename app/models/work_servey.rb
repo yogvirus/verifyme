@@ -10,6 +10,8 @@ class WorkServey < ActiveRecord::Base
                   :verifier_remark, :positive, :refer_to_bank, :user_id, :verifier_signature, :status, :business_id, :tab_id,
                   :activity_level, :company_name_new
 
+  serialize :name_verified_from
+
   attr_accessible :business_documents_attributes
 
   belongs_to :customer
@@ -53,6 +55,14 @@ workflow_column :status
     end
 
   end
+
+NAME_VERIFIED = %w[ colleage receptionist security others]
+
+
+
+
+
+
 
 
 end

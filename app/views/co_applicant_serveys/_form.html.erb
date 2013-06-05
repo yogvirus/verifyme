@@ -102,15 +102,15 @@ $(document).ready(function(){
   <div class="control-group">
     <%= f.label :address_confirmed, :class => 'control-label' %>
     <div class="controls">
-       Yes <input id="servey_address_confirmed" name="co_applicant_servey[address_confirmed]" type="radio" value="1" />
-       No <input id="servey_address_confirmed" name="co_applicant_servey[address_confirmed]" type="radio" value="0" />
+       Yes <input id="servey_address_confirmed" name="co_applicant_co_applicant_servey[address_confirmed]" type="radio" value="1" />
+       No <input id="servey_address_confirmed" name="co_applicant_co_applicant_servey[address_confirmed]" type="radio" value="0" />
     </div>
   </div>
   <div class="control-group">
     <%= f.label :name_and_stay_confirm, :class => 'control-label' %>
     <div class="controls">
-     Yes <input id="servey_name_and_stay_confirm" name="co_applicant_servey[name_and_stay_confirm]" type="radio" value="1" />
-     No <input id="servey_name_and_stay_confirm" name="co_applicant_servey[name_and_stay_confirm]" type="radio" value="0" />
+     Yes <input id="servey_name_and_stay_confirm" name="co_applicant_co_applicant_servey[name_and_stay_confirm]" type="radio" value="1" />
+     No <input id="servey_name_and_stay_confirm" name="co_applicant_co_applicant_servey[name_and_stay_confirm]" type="radio" value="0" />
     </div>
   </div>
 
@@ -136,29 +136,29 @@ $(document).ready(function(){
 <div class="control-group">
 <%= f.label :residence_status, :class => 'control-label' %><br>
 <div class="controls">
-<input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Self Owned" />
+<input id="servey_marital_status" name="co_applicant_servey[marital_status]" type="radio" value="Self Owned" />
  Self Owned <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Owned By Parents" />
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Owned By Parents" />
  Owned By Parents <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Rented" />
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Rented" />
 Rented 
 <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Company Accomodation" /> Company accomodation<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="paying guest" /> 
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Company Accomodation" /> Company accomodation<br>
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="paying guest" /> 
 paying guest<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="owned by friend" /> owned by friend <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Married" /> owned by relative <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Married" /> lodging <br>
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="owned by friend" /> owned by friend <br>
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Married" /> owned by relative <br>
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Married" /> lodging <br>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :educational_qualification, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="proffessional" /> Proffessional <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Post Graduate" /> Post Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Under Graduate" /> Under Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Graduate" /> Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="others" /> others <br>
+<input id="servey_marital_status" name="co_applicant_servey[educational_qualification]" type="radio" value="proffessional" /> Proffessional <br>
+<input id="servey_marital_status" name="co_applicant_servey[educational_qualification]" type="radio" value="Post Graduate" /> Post Graduate <br>
+<input id="servey_marital_status" name="co_applicant_servey[educational_qualification]" type="radio" value="Under Graduate" /> Under Graduate <br>
+<input id="servey_marital_status" name="co_applicant_servey[educational_qualification]" type="radio" value="Graduate" /> Graduate <br>
+<input id="servey_marital_status" name="co_applicant_servey[educational_qualification]" type="radio" value="others" /> others <br>
 
     </div>
   </div>
@@ -166,8 +166,8 @@ paying guest<br>
   <div class="control-group">
     <%= f.label :marital_status, :class => 'control-label' %>
     <div class="controls">
-     <input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Married" /> Married  <br>
-    <input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Unmarried" /> Unmarried  <br>
+     <input id="servey_marital_status" name="co_applicant_servey[marital_status]" type="radio" value="Married" /> Married  <br>
+    <input id="servey_marital_status" name="co_applicant_servey[marital_status]" type="radio" value="Unmarried" /> Unmarried  <br>
     </div>
   </div>
   <div class="control-group">
@@ -209,7 +209,7 @@ paying guest<br>
       <%= check_box_tag'test' %> no
     </div>
   </div>
-  <div class="control-group">
+<!--<div class="control-group">
     <%= f.label :credit_card, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :credit_card, :class => 'check_box', :class=>"show_hide" %> yes
@@ -239,91 +239,76 @@ paying guest<br>
     <div class="controls">
       <%= f.date_select :expiry_date, :class => 'date_select' %>
     </div>
-  </div>
+  </div>-->
 <p> </p>
 <div class="alert alert-success" style="width:400px">
   <strong>the following is based on verifiers observation.</strong>
 </div>
-  <div class="control-group">
-    <%= f.label :'How Co-Operative was the customer', :class => 'control-label' %>
-    <div class="controls">
-   <input id="servey_marital_status" name="servey[customer_beaviour]" type="radio" value="Polite" /> Polite  
-   <input id="servey_marital_status" name="servey[customer_beaviour]" type="radio" value="Rude" /> Rude  
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :neighbour_ref, :class => 'control-label' %>
-    <div class="controls">
-   <input id="servey_marital_status" name="servey[neighbour_ref]" type="radio" value="+ve" /> +ve
-   <input id="servey_marital_status" name="servey[neighbour_ref]" type="radio" value="-ve" /> -ve    
-    </div>
-  </div>
+
+     <%= f.hidden_field :customer_beaviour, :value=> 'Polite' %>
+     <%= f.hidden_field :neighbour_ref, :value=> 'Positive' %>
+
   <div class="control-group">
     <%= f.label :name_varified_from, :class => 'control-label' %>
     <div class="controls">
-   <input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="name plate" /> name plate <br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="Watchman" /> Watchman <br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="neighbour" /> Neighbour<br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="society board" /> society board <br>
-<input id="servey_marital_status" name="servey[name_varified_from]" type="radio" value="company board" /> Company Board <br>
-</div>
+  <% for name in Customer::NAME_VERIFIED %>
+    <%= check_box_tag "co_applicant_servey[name_varified_from][]", name %>
+    <%=h name.humanize %><br />
+  <% end %>
+  <%= hidden_field_tag "co_applicant_servey[name_varified_from][]" %>
   </div>
+  </div>
+
   <div class="control-group">
     <%= f.label :type_of_residence, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Flat" /> Flat <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Independent House" /> Independent House <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Multitanent House" />Multi Tanent house <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="bunglow" /> Bunglow <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Row House" /> Row house <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="temperory Shed" /> Temperary Shed <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="standing Chawl" /> Standing Chawl <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Janta Flat Hutment" /> Janta Flat Hutment <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Sitting Chawl" /> Sitting chawl <br>
+<input id="servey_marital_status" name="co_applicant_co_applicant_servey[type_of_residence]" type="radio" value="Flat" /> Flat <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="Independent House" /> Independent House <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="Multitanent House" />Multi Tanent house <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="bunglow" /> Bunglow <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="Row House" /> Row house <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="temperory Shed" /> Temperary Shed <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="standing Chawl" /> Standing Chawl <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="Janta Flat Hutment" /> Janta Flat Hutment <br>
+<input id="servey_marital_status" name="co_applicant_servey[type_of_residence]" type="radio" value="Sitting Chawl" /> Sitting chawl <br>
 
     </div>
   </div>
   <div class="control-group">
     <%= f.label :locality_of_residence, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="Posh locality" /> posh locality <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="village area" /> Village area <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="upper middle class" /> Upper middle class <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="lower middle class" /> lower middle class <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="slum" /> slum <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="other" /> other <br>
+<input id="servey_marital_status" name="co_applicant_servey[locality_of_residence]" type="radio" value="Posh locality" /> posh locality <br>
+<input id="servey_marital_status" name="co_applicant_servey[locality_of_residence]" type="radio" value="village area" /> Village area <br>
+<input id="servey_marital_status" name="co_applicant_servey[locality_of_residence]" type="radio" value="upper middle class" /> Upper middle class <br>
+<input id="servey_marital_status" name="co_applicant_servey[locality_of_residence]" type="radio" value="lower middle class" /> lower middle class <br>
+<input id="servey_marital_status" name="co_applicant_servey[locality_of_residence]" type="radio" value="slum" /> slum <br>
+<input id="servey_marital_status" name="co_applicant_servey[locality_of_residence]" type="radio" value="other" /> other <br>
 
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :ease_of_location, :class => 'control-label' %>
-    <div class="controls">
-<input id="servey_marital_status" name="servey[ease_of_location]" type="radio" value="easy" /> easy <br>
-<input id="servey_marital_status" name="servey[ease_of_location]" type="radio" value="difficult" /> Difficult <br>
-<input id="servey_marital_status" name="servey[ease_of_location]" type="radio" value="unreachabe" /> unreachable <br>
-    </div>
-  </div>
+     <%= f.hidden_field :ease_of_location, :value=>"Easy" %>
+     <%= f.hidden_field :construction_of_residence, :value=>"pakka" %>
   <div class="control-group">
     <%= f.label :construction_of_residence, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="pakka" /> pakka <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="semi pakka" /> semi pakka <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="temperory" /> temperory <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="car park" /> car park <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="garden" /> garden <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="security" /> security <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="building wall" /> building wall <br>
+<input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="pakka" /> pakka <br>
+<input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="semi pakka" /> semi pakka <br>
+<input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="temperory" /> temperory <br>
+<input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="car park" /> car park <br>
+<input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="garden" /> garden <br>
+<input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="security" /> security <br>
+<input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="building wall" /> building wall <br>
 
     </div>
   </div>
   <div class="control-group">
     <%= f.label :comments_of_exteriors, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="fenced" /> fenced <br>
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="compound wall" /> compound wall <br>
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="elevator" /> elevator <br>
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="others" /> others <br>
-
+  <% for name in Customer::EXTERIORS %>
+    <%= check_box_tag "co_applicant_servey[comments_of_exteriors][]", name %>
+    <%=h name.humanize %><br />
+  <% end %>
+  <%= hidden_field_tag "co_applicant_servey[comments_of_exteriors][]" %>
     </div>
   </div>
   <div class="control-group">
@@ -335,11 +320,11 @@ paying guest<br>
   <div class="control-group">
     <%= f.label :interior_condition, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="sofa" /> Sofa <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="clean" /> Clean <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="painted" /> painted <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="carpated" /> Carpated <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="ventilation blinds" /> ventilation blinds <br>
+<input id="servey_marital_status" name="co_applicant_servey[interior_condition]" type="radio" value="sofa" /> Sofa <br>
+<input id="servey_marital_status" name="co_applicant_servey[interior_condition]" type="radio" value="clean" /> Clean <br>
+<input id="servey_marital_status" name="co_applicant_servey[interior_condition]" type="radio" value="painted" /> painted <br>
+<input id="servey_marital_status" name="co_applicant_servey[interior_condition]" type="radio" value="carpated" /> Carpated <br>
+<input id="servey_marital_status" name="co_applicant_servey[interior_condition]" type="radio" value="ventilation blinds" /> ventilation blinds <br>
 
     </div>
   </div>
@@ -358,20 +343,33 @@ paying guest<br>
           <%= address_proof.name %><br>
 </div>
       <% end %>
+<br>    <div class="controls">
+    <%= f.label :pancard_number %>
+    <%= f.text_field :pancard_number %>
+    </div>
+    <div class="controls">
+    <%= f.label :Driving_licence_number %>
+    <%= f.text_field :driving_licence_number %>
+    </div>
+    <div class="controls">
+    <%= f.label :Electricity_account_number %>
+    <%= f.text_field :electricity_acc_number %>
+   </div>
+
   <hr></div></br>
 
-  <div class="control-group">
+  <!--<div class="control-group">
     <%= f.label :potrait_on_wall, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :potrait_on_wall, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+  </div>-->
+  <!--<div class="control-group">
     <%= f.label :applicant_residing_detail, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :applicant_residing_detail, :class => 'check_box' %>
     </div>
-  </div>
+  </div>-->
   <div class="control-group">
     <%= f.label :application_availibility_time, :class => 'control-label' %>
     <div class="controls">
@@ -392,9 +390,9 @@ paying guest<br>
   </div>
   <div class="control-group">
     <div class="controls">
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Accept" /> Accept
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Decline" /> Decline
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="refer to bank" /> Refer to Bank
+      <input id="servey_marital_status" name="co_applicant_servey[refer_to_bank]" type="radio" value="Accept" /> Accept
+      <input id="servey_marital_status" name="co_applicant_servey[refer_to_bank]" type="radio" value="Decline" /> Decline
+      <input id="servey_marital_status" name="co_applicant_servey[refer_to_bank]" type="radio" value="refer to bank" /> Refer to Bank
 
     </div>
   </div>
