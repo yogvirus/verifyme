@@ -6,7 +6,7 @@ class CoApplicantServeysController < InheritedResources::Base
   def new
    @co_applicant = CoApplicant.find(params[:customer_co_applicant_id])
    @co_applicant_servey = CoApplicantServey.new
-   @customer_documents = @co_applicant_servey.co_applicant_documents.build
+   @customer_documents = @co_applicant.co_applicant_documents.build
   end
  
   def create

@@ -2,7 +2,7 @@ class Customer < ActiveRecord::Base
   attr_accessible :applicant_name, :application_ref_no, :latitude, :longitude,
                   :gmaps, :state, :pincode_id, :country_state, :country_city,
                   :country_name, :slug, :address, :degree_name, :agency_name, 
-                  :fh_code, :landmark, :d_o_b, :photo_required, :contact_number
+                  :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
   validates_uniqueness_of :application_ref_no, :applicant_name, :address, :fh_code
@@ -104,7 +104,7 @@ ASSET_SEEN = %w[car two_Wheeler aircon television refrigerator music_system pc]
 
 INTERIORS = %w[sofa clean painted carpeted curtains]
 
-EXTERIORS = %w[fenced/compund-wall elevator others]
+EXTERIORS = %w[fenced/compaund-wall elevator others]
 
 CONSTRUCTION = %w[ pukka semi-pukka temperory carpark garden security building-wall]
 
