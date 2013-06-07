@@ -32,6 +32,7 @@ source 'https://rubygems.org'
   gem 'quiet_assets', :group => :development
   gem 'validates_timeliness', '~> 3.0'
   gem 'unicorn' 
+  gem 'kaminari'
   gem 'capistrano'
   gem 'headshot'
 group :production do

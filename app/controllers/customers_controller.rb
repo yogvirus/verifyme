@@ -4,10 +4,11 @@ class CustomersController < ApplicationController
 
 
   def index
-    @business = Business.order("status ASC").page(params[:page]).per(15)
-    @co_applicants = CoApplicant.order("status ASC").page(params[:page]).per(15)
-    @co_app_business = CoApplicantBusiness.order("status ASC").page(params[:page]).per(15)
-    @customers = Customer.order("status ASC").page(params[:page]).per(15)
+    @business = Business.order("status ASC").page(params[:page]).per(10)
+    @co_applicants = CoApplicant.order("status ASC").page(params[:page]).per(10)
+    @co_app_business = CoApplicantBusiness.order("status ASC").page(params[:page]).per(10)
+    @customers = Customer.order("status ASC").page(params[:page]).per(10)
+    @all_customer = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse
 
     respond_to do |format|
       format.html # index.html.erb
