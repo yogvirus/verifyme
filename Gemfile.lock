@@ -267,6 +267,7 @@ DEPENDENCIES
   headshot
   heroku
   jquery-rails
+  kaminari
   less-rails
   macaddr
   mocha

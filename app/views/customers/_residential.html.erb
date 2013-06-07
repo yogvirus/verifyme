@@ -19,14 +19,10 @@
     <th>verifing tab</th>
   </tr>
 
-<% @all_customer.each do |customer| %>
+<% @customers.each do |customer| %>
 
   <tr>
-    <% if customer.application_status == 'residential'%>
     <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
-    <% else %>
-    <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
-    <% end %>    
     <td><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></td>
     <td><%= customer.applicant_name %></td>
      <td><%= customer.address %></td>
