@@ -50,7 +50,7 @@ $(".checkbox").click(function(){
 
   <%= f.hidden_field :customer_id, :value=> params[:customer_id], :class => 'text_field' %>
   <%= f.hidden_field :tab_id, :value=> params[:tab_id], :class => 'text_field' %>
-  <%= f.hidden_field :time_of_visit, :value=>Time.now , :class => 'time_select' %>
+  <%= f.hidden_field :time_of_visit, :value=> Time.now , :class => 'time_select' %>
   <%= f.hidden_field :date_of_visit, :value=> Time.now, :class => 'date_select' %>
   <!-- Customer detal -->
 <table class="table table-striped" border>
