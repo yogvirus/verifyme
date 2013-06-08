@@ -20,7 +20,7 @@
 
 
 <h3 class ="label label-info">
- <%= "scorpeo-#{Date.today}-#{@co_applicant_business.applicant_ref_no}" %> | <%= @co_applicant_business.agency_name %>
+ <%= "scorpeo-#{Date.today}-#{@co_applicant_business.application_ref_no}" %> | <%= @co_applicant_business.agency_name %>
 </h3>
   <h4 style="color:blue"><%= @co_applicant_business.applicant_name %></h4>
 <h5>
@@ -145,17 +145,11 @@
   <tr><td><strong><%= model_class.human_attribute_name(:salary_drawn) %>:</strong>
   <%= @co_applicant_business.co_applicant_work_detail.salary_drawn %></td></tr>
 
-  <tr><td><strong><%= model_class.human_attribute_name(:no_of_years_worked_in_current_company) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.no_of_years_worked %></td></tr>
-
   <tr><td><strong><%= model_class.human_attribute_name(:board_seen) %>:</strong>
   <%= @co_applicant_business.co_applicant_work_detail.board_seen %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:name_verified_from) %>:</strong>
   <%= @co_applicant_business.co_applicant_work_detail.name_verified_from %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:nature_of_business_in_detail) %>:</strong>
-  <%= @co_applicant_business.co_applicant_work_detail.nob_in_detail %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:verifier_remark) %>:</strong>
   <%= @co_applicant_business.co_applicant_work_detail.verifier_remark %></td></tr>

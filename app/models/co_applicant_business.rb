@@ -1,5 +1,5 @@
 class CoApplicantBusiness < ActiveRecord::Base
-attr_accessible :address, :agency_name, :applicant_name, :applicant_ref_no, :city, :customer_id,:application_status,
+attr_accessible :address, :agency_name, :applicant_name, :application_ref_no, :city, :customer_id,:application_status,
                 :company_name, :country, :date_of_birth, :document_required, :fh_code, :landmark,
                 :latitude, :longitude, :pincode_id, :slug, :state, :status, :pan_number, :emp_code
  belongs_to :customer
