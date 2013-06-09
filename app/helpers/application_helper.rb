@@ -15,6 +15,34 @@ module ApplicationHelper
     end
   end
 
+  def residential
+    Customer.find_all_by_application_status('RESIDENTIAL').last(50) + CoApplicant.find_all_by_application_status('RESIDENTIAL').last(50)
+  end
+
+  def business 
+    Business.find_all_by_application_status('BUSINESS').last(50) + CoApplicantBusiness.find_all_by_application_status('BUSINESS').last(50)
+  end
+
+  def pending_filter
+    Customer.find_all_by_status('submitted') + CoApplicant.find_all_by_status('submitted') + Business.find_all_by_status('submitted') + CoApplicantBusiness.find_all_by_status('submitted')
+  end
+  
+  def in_progress_filter
+    Customer.find_all_by_status('awaiting_to_get_verified') + CoApplicant.find_all_by_status('awaiting_to_get_verified') + Business.find_all_by_status('awaiting_to_get_verified') + CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
+  end
+
+  def completed_filter
+    Customer.find_all_by_status('verified') + CoApplicant.find_all_by_status('verified') + Business.find_all_by_status('verified') + CoApplicantBusiness.find_all_by_status('verified')
+  end
+
+  def complete_filter
+    Customer.find_all_by_status('awaiting_to_get_verified') + CoApplicant.find_all_by_status('awaiting_to_get_verified') + Business.find_all_by_status('awaiting_to_get_verified') + CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
+  end
+
+  def tab_pending
+   CustomerVerification.select("customer_id").where("tab_id= ?", "#{current_user.tab_id}").order("created_at")
+  end 
+
   def pending_customer
     Customer.find_all_by_status('submitted')
   end

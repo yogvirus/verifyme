@@ -64,7 +64,7 @@ $(function() {
    <!-- co applicant business detail  -->   
    <th> C-A-B-N </th>
    <th> C-A-B-br-code </th>
-   <th> C-A-B-Address </th>
+   <th> C-A-B-Companyname </th>
    <th> C-A-S </th>
    <th> Pan-no. </th>
    <th> Emp code</th>
@@ -154,7 +154,7 @@ $(function() {
 <% end %>
 
 <% if d.co_applicant_business %>
-   <td><%= d.co_applicant_business.customer.co_applicant.applicant_name %></td>
+   <td><%= d.co_applicant_business.customer.applicant_name %></td>
    <td><%= d.co_applicant_business.fh_code %></td>
    <td><%= d.co_applicant_business.company_name %></td>
 

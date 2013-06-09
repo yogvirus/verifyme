@@ -1,6 +1,5 @@
 EVerification::Application.routes.draw do
 
-
   resources :reports do
    get :generate_report
   end
@@ -11,7 +10,11 @@ EVerification::Application.routes.draw do
   root :to => 'dashboards#index'
   get "dashboards/index"
   get "headshot_demo/index"
-
+  get "customers/cust_residential"
+  get "customers/cust_business"
+  get "customers/cust_pending"
+  get "customers/cust_in_progress"
+  get "customers/cust_completed"
   post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
 
   resources :work_serveys  

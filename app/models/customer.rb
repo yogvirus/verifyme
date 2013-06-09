@@ -34,12 +34,12 @@ class Customer < ActiveRecord::Base
 
   accepts_nested_attributes_for :customer_documents, :allow_destroy => true
 
-geocoded_by :full_address
-after_validation :geocode, :if => :address_changed?
+  geocoded_by :full_address
+  after_validation :geocode, :if => :address_changed?
 
-def full_address
-  [address, country_state, country_city, country_name].compact.join(', ')
-end
+  def full_address
+   [address, country_state, country_city, country_name].compact.join(', ')
+  end
 
 
   #geocoded_by :address   # can also be an IP address

@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
+   include ApplicationHelper
    before_filter :authenticate_user!
    load_and_authorize_resource
-
 
   def index
     @business = Business.order("status ASC").page(params[:page]).per(15)
@@ -16,6 +16,27 @@ class CustomersController < ApplicationController
       format.xls #{ send_data @customers.to_csv(col_sep: "\t") }
     end
   end
+
+  def cust_residential
+   @all_customer = residential
+  end 
+
+  def cust_business
+   @all_customer_business = business
+  end
+
+  def cust_pending
+   @cust_pending = pending_filter
+  end
+
+  def cust_in_progress
+   @cust_in_progress = in_progress_filter
+  end
+
+  def cust_completed
+   @cust_completed = completed_filter
+  end
+
 
   # GET /customers/1
   # GET /customers/1.json
