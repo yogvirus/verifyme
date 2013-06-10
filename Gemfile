@@ -35,6 +35,7 @@ source 'https://rubygems.org'
   gem 'kaminari'
   gem 'capistrano'
   gem 'headshot'
+  gem 'pg'
 group :production do
    gem 'mysql2'
 end
