@@ -42,6 +42,19 @@ class Customer < ActiveRecord::Base
   end
 
 
+
+def self.search(search)
+  if search
+    find(:all, :conditions => ['applicant_name LIKE ?', "%#{search}%"])
+  else
+    find(:all)
+  end
+end
+
+
+
+
+
   #geocoded_by :address   # can also be an IP address
   #reverse_geocoded_by :latitude, :longitude
   #after_validation :reverse_geocode  # auto-fetch address

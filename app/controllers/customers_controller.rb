@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @customers }
+      format.json { render json: @all_customer }
       format.xls #{ send_data @customers.to_csv(col_sep: "\t") }
     end
   end
@@ -98,6 +98,7 @@ class CustomersController < ApplicationController
 
   # PUT /customers/1
   # PUT /customers/1.json
+
   def update
     @customer = Customer.find(params[:id])
 

@@ -127,8 +127,9 @@
 
 <% if @customer.servey %>
 <% if @customer.servey.address_confirmed? %>
+<%= link_to "edit servey", edit_servey_path(@customer.servey, :customer_id => @customer) %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<table class="table" style="background:silver">
+<table class="table">
 
   <tr><td><strong><%= model_class.human_attribute_name(:address_confirmed) %>:</strong>
   <% if @customer.servey.address_confirmed? %> Yes <% end %></td></tr>
@@ -274,8 +275,3 @@
 </div>
 <% end %>
 <% end %>
-
-
-
-
-

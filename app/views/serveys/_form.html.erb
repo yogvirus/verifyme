@@ -16,6 +16,24 @@ $(".checkbox").click(function(){
  
 </script>
 
+<script>
+function updateTextArea() {
+    var allVals = [];
+    $('.taglist :checked').each(function (i) {
+
+        allVals.push((i != 0 ? "\r\n" : "") + $(this).val());
+    });
+    $('#video0_tags').val(allVals).attr('rows', allVals.length);
+
+}
+$(function () {
+    $('.taglist input').click(updateTextArea);
+    updateTextArea();
+});
+</script>
+
+
+
 <style>
 
   i{color:green}
@@ -41,7 +59,11 @@ $(".checkbox").click(function(){
   <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
                                    :default => "New #{model_class.model_name.human}") %></h1>
 </div>
-
+<% if @customer.photo_required? %>
+<div class="alert alert-info">
+<h4 style ="text-transform: uppercase;">*Customers Document Phots are Required</h4>
+</div>
+<% end %>
 <%= nested_form_for @survey, :html => { :class => 'form-horizontal' } do |f| %>
 
   <%= f.hidden_field :customer_id, :value=> params[:customer_id], :class => 'text_field' %>
@@ -336,7 +358,7 @@ paying guest<br>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="taglist">
     <%= f.label :address_proof_sighted %>
       <% AddressProof.find(:all).each do |address_proof| %>
     <div class="controls">
@@ -386,16 +408,15 @@ paying guest<br>
   <div class="control-group">
     <%= f.label :verifiers_remark, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :verifiers_remark, :class => 'text_area' %>
+      <%= f.text_area :verifiers_remark, :class => 'textfield', :id=>"video0_tags" %>
     </div>
   </div>
   <div class="control-group">
-    <div class="controls">
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Accept" /> Accept
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Decline" /> Decline
+    <div class="controls"><b>
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Accept" /> Accept &nbsp;&nbsp;
+      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Decline" /> Decline &nbsp;&nbsp;
       <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="refer to bank" /> Refer to Bank
-
-    </div>
+    </b></div>
   </div>
 
   <div class="form-actions">

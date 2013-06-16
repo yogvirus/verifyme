@@ -1,3 +1,4 @@
+
 <% if @co_applicant.customer.co_applicant_business %>
  <%= link_to 'show co applicant business detail', co_applicant_business_path(@co_applicant.customer.co_applicant_business), :class=>"label label-success" %>
 <% else %>
@@ -111,10 +112,10 @@
 <table class="table table-bordered">
 
   <tr><td><strong><%= model_class.human_attribute_name(:address_confirmed) %>:</strong>
-  <% if @co_applicant.co_applicant_servey.address_confirmed? %> Yes <% end %></td></tr>
+  <% if @co_applicant.co_applicant_servey.address_confirmed? %> Yes <% else %> NO <% end %> </td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:name_and_stay_confirm) %>:</strong>
-  <%= @co_applicant.co_applicant_servey.name_and_stay_confirm %></td></tr>
+  <% if @co_applicant.co_applicant_servey.name_and_stay_confirm %>Yes <% else %> NO <% end %> </td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:date_of_visit) %>:</strong>
   <%= @co_applicant.co_applicant_servey.date_of_visit %></td></tr>
@@ -152,12 +153,12 @@
   <tr><td><strong><%= model_class.human_attribute_name(:children) %>:</strong>
   <%= @co_applicant.co_applicant_servey.children %></td></tr>
 
-  <% if @co_applicant.co_applicant_servey.spouse_working==true %>
+  <a href="#" id="editgoal" data-type="text" data-pk="191" data-url="/post" data-original-title="edit">test</a>
+
   <tr><td><strong><%= model_class.human_attribute_name(:spouse_working) %>:</strong>
-      Yes </td>
-  <% else %>
-   No </td>
-  <% end %></tr>
+  <% if @co_applicant.co_applicant_servey.spouse_working==true %>
+  Yes <% else %> No <% end %></td></tr>
+
   <tr><td><strong><%= model_class.human_attribute_name(:spouse_working_detail) %>:</strong>
   <%= @co_applicant.co_applicant_servey.spouse_working_detail %></td></tr>
 

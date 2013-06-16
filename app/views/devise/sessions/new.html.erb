@@ -38,10 +38,11 @@
     Keep me logged in</label></i> 
   <% end -%>
 </p>
+    
 
-<p class="login button"> 
-  <%= f.submit "Sign in", :class=>"label label-info" %>
-</p>
+<div class="btn-group">
+  <%= f.submit "Sign in", :class=>"btn btn-small btn-primary" %>
+</div>
 <% end %>
 
 <%= render "devise/shared/links" %>

@@ -29,7 +29,7 @@ source 'https://rubygems.org'
   gem 'rails_bootstrap_navbar'
   gem 'unicorn'
   gem 'whenever', "~> 0.8.0", :require => false
-  gem 'quiet_assets', :group => :development
+  gem 'quiet_assets'
   gem 'validates_timeliness', '~> 3.0'
   gem 'unicorn' 
   gem 'kaminari'
@@ -37,6 +37,9 @@ source 'https://rubygems.org'
   gem 'headshot'
   gem 'pg'
   gem 'thin'
+
+
+
 group :production do
    #gem 'mysql2'
    gem 'pg'

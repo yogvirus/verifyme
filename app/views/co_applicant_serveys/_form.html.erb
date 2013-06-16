@@ -122,6 +122,13 @@ $(document).ready(function(){
   </div>
 
   <div class="control-group">
+    <%= f.label :date_of_birth, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_of_birth, :class => 'number_field', :start_year => 1960 %>
+    </div>
+  </div>
+
+  <div class="control-group">
     <%= f.label :relation_with_applicant, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :relation_with_applicant, :class => 'text_field' %>

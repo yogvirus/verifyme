@@ -26,6 +26,27 @@ class ServeysController < ApplicationController
     end
   end
 
-  def show
+  def edit
+   @customer = Customer.find(params[:customer_id])
+   @survey = Servey.find(params[:id])
+   @customer_documents = @survey.customer_documents.build
   end
+
+  def update
+    @customer = Customer.find(params[:id])
+
+    respond_to do |format|
+     if @customer.update_attributes(params[:customer])
+        #@customer.progress!
+        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+
 end
