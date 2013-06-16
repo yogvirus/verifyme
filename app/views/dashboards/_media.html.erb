@@ -1,11 +1,12 @@
 <div class="media">
  <a class="pull-left" href="#">
-  <% if current_user.profile.photo.url %>
+  <% unless current_user.profile.photo.blank? %>
    <p><%= image_tag current_user.profile.photo.url(:thumb), :size=>"64x64" %></p>
   <% else %>
-   <%= image_tag('sample-avatar.png',:size=>"64x64")%>
+   <%= image_tag('sample-avatar.png',:size => '64x64')%>
   <% end %>
  </a>
+
 
 <div class="media-body">
 <%= render "daily_status", :html=>{:float=>"right"} %>
