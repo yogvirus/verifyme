@@ -46,6 +46,13 @@ class BusinessesController < InheritedResources::Base
      end
   end
 
+  def edit
+   @customer = Customer.find(params[:customer_id])
+   @business = Business.find(params[:id])
+   @application_ref_no = @customer.application_ref_no
+  end
+
+
   def re_indicated
     @business = Business.find(params[:business_id])
     @business.re_indicated!

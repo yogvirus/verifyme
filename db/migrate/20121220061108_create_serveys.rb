@@ -45,5 +45,8 @@ class CreateServeys < ActiveRecord::Migration
 
       t.timestamps
     end
+  add_index :serveys, [:customer_id] # Polymorphic
+  add_index :serveys, [:tab_id] # Polymorphic
+  add_index :serveys, [:date_of_visit] # Polymorphic
   end
 end

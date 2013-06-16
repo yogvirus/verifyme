@@ -3,6 +3,11 @@ class CoApplicantServeysController < InheritedResources::Base
   def index
   end
 
+  def edit
+   @co_applicant = CoApplicant.find(params[:customer_id])
+   @co_applicant_servey = CoApplicantServey.find(params[:id])
+  end
+  
   def new
    @co_applicant = CoApplicant.find(params[:customer_co_applicant_id])
    @co_applicant_servey = CoApplicantServey.new

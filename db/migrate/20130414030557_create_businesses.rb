@@ -20,5 +20,10 @@ class CreateBusinesses < ActiveRecord::Migration
       t.integer :customer_id
       t.timestamps
     end
+     add_index(:businesses, :status)
+     add_index(:businesses, [:applicant_name], :unique => true)
+     add_index(:businesses, [:application_ref_no], :unique => true)
+     add_index(:businesses, [:customer_id], :unique => true)
+     add_index(:businesses, [:fh_code], :unique => true)
   end
 end

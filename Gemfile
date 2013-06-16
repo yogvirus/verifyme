@@ -36,8 +36,10 @@ source 'https://rubygems.org'
   gem 'capistrano'
   gem 'headshot'
   gem 'pg'
+  gem 'thin'
 group :production do
-   gem 'mysql2'
+   #gem 'mysql2'
+   gem 'pg'
 end
 
 group :assets do

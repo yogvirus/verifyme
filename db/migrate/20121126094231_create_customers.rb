@@ -12,5 +12,8 @@ class CreateCustomers < ActiveRecord::Migration
 
       t.timestamps
     end
+  add_index :customers, [:address] # Polymorphic
+  add_index :customers, [:application_ref_no] # Polymorphic
+  add_index :customers, [:applicant_name] # Polymorphic
   end
 end

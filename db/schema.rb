@@ -103,6 +103,12 @@ ActiveRecord::Schema.define(:version => 20130607105708) do
     t.string   "emp_code"
   end
 
+  add_index "businesses", ["applicant_name"], :name => "index_businesses_on_applicant_name", :unique => true
+  add_index "businesses", ["application_ref_no"], :name => "index_businesses_on_application_ref_no", :unique => true
+  add_index "businesses", ["customer_id"], :name => "index_businesses_on_customer_id", :unique => true
+  add_index "businesses", ["fh_code"], :name => "index_businesses_on_fh_code", :unique => true
+  add_index "businesses", ["status"], :name => "index_businesses_on_status"
+
   create_table "client_verifications", :force => true do |t|
     t.integer  "co_applicant_business_id"
     t.integer  "tab_id"
@@ -354,6 +360,10 @@ ActiveRecord::Schema.define(:version => 20130607105708) do
     t.boolean  "photo_required"
   end
 
+  add_index "customers", ["address"], :name => "index_customers_on_address"
+  add_index "customers", ["applicant_name"], :name => "index_customers_on_applicant_name"
+  add_index "customers", ["application_ref_no"], :name => "index_customers_on_application_ref_no"
+
   create_table "headshot_photos", :force => true do |t|
     t.string   "description"
     t.string   "image_file_name"
@@ -446,6 +456,10 @@ ActiveRecord::Schema.define(:version => 20130607105708) do
     t.string   "driving_licence_number"
     t.string   "electricity_acc_number"
   end
+
+  add_index "serveys", ["customer_id"], :name => "index_serveys_on_customer_id"
+  add_index "serveys", ["date_of_visit"], :name => "index_serveys_on_date_of_visit"
+  add_index "serveys", ["tab_id"], :name => "index_serveys_on_tab_id"
 
   create_table "tabs", :force => true do |t|
     t.string   "name"
