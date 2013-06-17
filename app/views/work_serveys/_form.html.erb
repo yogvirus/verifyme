@@ -14,6 +14,23 @@ $(document).ready(function(){
  
 </script>
 
+<script>
+function updateTextArea() {
+    var allVals = [];
+    $('.taglist :checked').each(function (i) {
+
+        allVals.push((i != 0 ? "\r\n" : "") + $(this).val());
+    });
+    $('#video0_tags').val(allVals).attr('rows', allVals.length);
+
+}
+$(function () {
+    $('.taglist input').click(updateTextArea);
+    updateTextArea();
+});
+</script>
+
+
 <style>
 
   i{color:green}
@@ -44,11 +61,11 @@ $(document).ready(function(){
 
 <%= nested_form_for @work_servey, :html => { :class => 'form-horizontal' } do |f| %>
 
-  <%= f.hidden_field :business_id, :value=> params[:customer_business_id], :class => 'text_field' %>
-  <%= f.hidden_field :tab_id, :value=> params[:tab_id], :class => 'text_field' %>
-  <%= f.hidden_field :time_of_visit, :value=>Time.now.strftime('%H:%M:%S') , :class => 'time_select' %>
-  <%= f.hidden_field :date_of_visit, :value=> Time.now, :class => 'date_select' %>
-
+  <%= f.hidden_field :business_id, :value=> params[:customer_business_id] %>
+  <%= f.hidden_field :tab_id, :value=> params[:tab_id] %>
+  <%= f.hidden_field :time_of_visit, :value=>Time.now.strftime('%H:%M:%S') %>
+  <%= f.hidden_field :date_of_visit, :value=> Time.now %>
+  <%= f.hidden_field :office_addres, :value =>@business.address %>
   <!-- Customer detal -->
 <table class="table table-striped" border>
   <tr>
@@ -68,7 +85,7 @@ $(document).ready(function(){
 <hr>
 
   </div>
-
+<%= @business.address %>
 
 <h3> Following are the Details to be obtained from the customer </h3><hr>
 
@@ -260,6 +277,10 @@ $(document).ready(function(){
 
   </div>
 <br>
+
+
+
+
  <div class="field_name">
     <%= f.label :type_of_office, :class => 'control-label' %>
 <input id="work_servey_type_of_business" name="work_servey[type_of_office]" type="radio" value="Business Center" />Business Center<br>
@@ -339,9 +360,21 @@ $(document).ready(function(){
       <%= f.text_field :no_of_customer_seen %>
   </div>
 
+  <div class="taglist">
+    <%= f.label :business_proof_sighted %>
+      <% BDocument.find(:all).each do |b_doc| %>
+    <div class="controls">
+          <%= check_box_tag( 'business_servey[office_area][]', b_doc.name) %>
+          <%= b_doc.name %><br>
+    </div>
+      <% end %>
+<br>
+
+
+
   <div class="field_name">
     <%= f.label :Verifier_Remark, :class => 'control-label' %>
-      <%= f.text_area :verifier_remark %>
+      <%= f.text_area :verifier_remark, :class => 'textfield', :id=>"video0_tags" %>
   </div>
 
 

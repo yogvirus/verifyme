@@ -14,6 +14,23 @@ $(document).ready(function(){
  
 </script>
 
+<script>
+function updateTextArea() {
+    var allVals = [];
+    $('.taglist :checked').each(function (i) {
+
+        allVals.push((i != 0 ? "\r\n" : "") + $(this).val());
+    });
+    $('#video0_tags').val(allVals).attr('rows', allVals.length);
+
+}
+$(function () {
+    $('.taglist input').click(updateTextArea);
+    updateTextArea();
+});
+</script>
+
+
 <style>
 
   i{color:green}
@@ -337,12 +354,12 @@ $(document).ready(function(){
   <div class="control-group">
     <%= f.label :verifiers_remark, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :verifier_remark, :class => 'text_area' %>
+      <%= f.text_area :verifier_remark, :class => 'textfield', :id=>"video0_tags" %>
     </div>
   </div>
 
 <br><br>
-<%= f.submit "Continue.." , :class=>"btn btn-primary btn-small" %>
+<%= f.submit "Save" , :class=>"btn btn-primary btn-small" %>
 
 <% end %>
 

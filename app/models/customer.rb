@@ -31,9 +31,8 @@ class Customer < ActiveRecord::Base
 
 
   attr_accessible :customer_documents_attributes, :dependent_destroy => true
-
   accepts_nested_attributes_for :customer_documents, :allow_destroy => true
-
+  accepts_nested_attributes_for :customer_documents, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   geocoded_by :full_address
   after_validation :geocode, :if => :address_changed?
 

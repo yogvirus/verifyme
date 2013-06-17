@@ -10,7 +10,8 @@ class Servey < ActiveRecord::Base
                 :person_contacted, :potrait_on_wall, :refer_to_bank, :relation_with_applicant,
                 :residence_status, :spouse_working, :spouse_working_detail, :time_of_visit,
                 :type_of_residence, :verifiers_remark, :working_member, :years_lived_at_current_address,
-                :status,:customer_documents_attributes, :pancard_number, :driving_licence_number, :electricity_acc_number
+                :status,:customer_documents_attributes, :pancard_number, 
+                :driving_licence_number, :electricity_acc_number, :address_proof_sighted
 
 
   serialize :name_varified_from# Hash

@@ -76,6 +76,7 @@
 
 <% if @co_applicant_business.co_applicant_work_detail %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<strong><%= link_to "edit business servey", edit_co_applicant_work_detail_path(@co_applicant_business.co_applicant_work_detail, :customer_id => @customer) %></strong>
 <table class="table" style="background:silver">
 
   <tr><td><strong><%= model_class.human_attribute_name(:Designation) %>:</strong>

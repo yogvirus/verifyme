@@ -13,7 +13,7 @@ class Business < ActiveRecord::Base
  has_one :business_verification
  has_one :work_servey
  has_many :business_documents
-
+ has_and_belongs_to_many :b_documents
 
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged

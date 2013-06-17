@@ -10,6 +10,9 @@
                          { name: 'Telephone Bill'}, { name: 'Bank Statement card'},
                          { name: 'Driving licence'}, { name: 'Passport'}])
 
+    @b_documents = BDocument.create([{ name: 'Employee Card' }, { name: 'Salary Slip'},
+                         { name: 'Mobile Bill'}, { name: 'Pan Card'}])
+
 
     @asset = Asset.create([{ name: 'TV'}, { name: 'Air Conditioner'}, { name: 'Refrigrator'}, { name: 'Music System'}])
 
