@@ -109,7 +109,7 @@
 <% if @co_applicant.co_applicant_servey.address_confirmed? %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 <strong>
- <%= link_to 'Edit this document' , edit_co_applicant_servey_path(@co_applicant.co_applicant_servey, :customer_id => @co_applicant) %></strong>
+ <%= link_to 'Edit this document' , edit_co_applicant_servey_path(@co_applicant.co_applicant_servey, :customer_id => @co_applicant, :tab_id => @co_applicant.co_applicant_servey.tab_id) %></strong>
 <table class="table table-bordered">
 
   <tr><td><strong><%= model_class.human_attribute_name(:address_confirmed) %>:</strong>

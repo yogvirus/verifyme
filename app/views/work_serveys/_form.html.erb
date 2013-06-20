@@ -12,9 +12,8 @@ $(document).ready(function(){
  
 });
  
-</script>
 
-<script>
+
 function updateTextArea() {
     var allVals = [];
     $('.taglist :checked').each(function (i) {
@@ -29,7 +28,6 @@ $(function () {
     updateTextArea();
 });
 </script>
-
 
 <style>
 
@@ -65,7 +63,7 @@ $(function () {
   <%= f.hidden_field :tab_id, :value=> params[:tab_id] %>
   <%= f.hidden_field :time_of_visit, :value=>Time.now.strftime('%H:%M:%S') %>
   <%= f.hidden_field :date_of_visit, :value=> Time.now %>
-  <%= f.hidden_field :office_addres, :value =>@business.address %>
+  <%= f.hidden_field :office_address, :value =>@business.address %>
   <!-- Customer detal -->
 <table class="table table-striped" border>
   <tr>
@@ -376,7 +374,7 @@ $(function () {
     <%= f.label :Verifier_Remark, :class => 'control-label' %>
       <%= f.text_area :verifier_remark, :class => 'textfield', :id=>"video0_tags" %>
   </div>
-
+</div>
 
   <div class="control-group">
     <div class="controls">

@@ -109,7 +109,7 @@ $(function () {
 
  <%= f.fields_for :co_applicant_documents do |customer| %>
     <%= customer.file_field :photo %>
-    <%= customer.hidden_field :co_applicant_servey_id %>
+    <%= customer.hidden_field :co_applicant_id %>
     <%= customer.link_to_remove "Remove" %>
  <% end %>
   <p><%= f.link_to_add "Add more documents", :co_applicant_documents %></p><br>

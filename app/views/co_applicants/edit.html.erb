@@ -18,7 +18,7 @@
    <%= customer.check_box :document_required %>
    <i style ="padding-left:20px;color:green">Check this if photocopy of the customers document is required. else leave it as it is</i>
   </div>
-    <%= customer.hidden_field :customer_id, :value=> "#{@co_applicant.customer.id}" %>
+    <%= customer.hidden_field :customer_id, :value=> @co_applicant.id %>
     <%= customer.hidden_field :agency_name, :value=>"Scorp Enterprises" %>
     <%= customer.hidden_field :application_ref_no, :value=> "#{@application_ref_no}" %>
     <%= customer.hidden_field :fh_code, :value=> "#{@application_ref_no}" %>
