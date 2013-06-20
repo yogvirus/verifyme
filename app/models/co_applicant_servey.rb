@@ -10,7 +10,7 @@ class CoApplicantServey < ActiveRecord::Base
                 :person_contacted, :potrait_on_wall, :refer_to_bank, :relation_with_applicant,
                 :residence_status, :spouse_working, :spouse_working_detail, :time_of_visit,:date_of_birth,
                 :type_of_residence, :verifiers_remark, :working_member, :years_lived_at_current_address,
-                :status,:co_applicant_documents_attributes, :pancard_number, :driving_licence_number, :electricity_acc_number
+                :status,:co_applicant_documents_attributes, :pancard_number, :driving_licence_number, :electricity_acc_number,:co_applicant_id
 
   serialize :name_varified_from
   belongs_to :co_applicant

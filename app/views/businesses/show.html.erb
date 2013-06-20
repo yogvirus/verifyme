@@ -85,7 +85,7 @@
 <% if @business.work_servey %>
 <% if @business.work_servey.name_and_employee_confirm %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
-<strong><%= link_to "edit servey", edit_work_servey_path(@business.work_servey, :customer_id => @business) %></strong>
+<strong><%= link_to "edit servey", edit_work_servey_path(@business.work_servey, :business_id=> @business, :tab_id=>@business.work_servey.tab_id) %></strong>
 <table class="table" style="background:silver">
 <tr>
   <tr><td><strong><%= model_class.human_attribute_name(:Designation) %>:</strong>

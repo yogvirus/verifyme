@@ -19,7 +19,7 @@ class CoApplicantServeysController < InheritedResources::Base
 
     respond_to do |format|
       if @servey.save
-         @servey.co_applicant.progress!
+         #@servey.co_applicant.progress!
         format.html { redirect_to root_url, notice: 'Customer Servey successfully Done.' }
         format.json { render json: @servey, status: :created, location: @servey }
       else
@@ -29,6 +29,19 @@ class CoApplicantServeysController < InheritedResources::Base
     end
   end
 
+  def update
+   @co_applicant_servey = CoApplicantServey.find(params[:id])
+
+    respond_to do |format|
+     if @co_applicant_servey.update_attributes(params[:co_applicant_servey])
+        format.html { redirect_to @co_applicant_servey.co_applicant, notice: 'Customer was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @co_applicant_servey.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 
 end

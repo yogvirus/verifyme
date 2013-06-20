@@ -14,5 +14,24 @@ class CoApplicantWorkDetailsController < ApplicationController
    end
   end
 
+  def edit
+   @co_applicant_business = CoApplicantBusiness.find(params[:co_applicant_business_id]) 
+   @co_applicant_work_detail = CoApplicantWorkDetail.find(params[:id])
+  end
+
+
+  def update
+    @co_applicant_work_servey = CoApplicantWorkDetail.find(params[:id])
+    
+    respond_to do |format|
+     if @co_applicant_work_servey.update_attributes(params[:co_applicant_work_detail])
+        format.html { redirect_to @co_applicant_work_servey.co_applicant_business, notice: 'successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @co_applicant_work_servey.errors, status: :unprocessable_entity }
+      end
+    end
+end
 
 end
