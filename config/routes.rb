@@ -2,6 +2,15 @@ EVerification::Application.routes.draw do
 
   root :to => 'dashboards#index'
 
+  get "help_topics/" => 'help_topics#index', :as => :help_topics
+
+  get "help_topics/how-to-make-applicant" => 'help_topics#make_customer', :as => :make_customer
+  get "help_topics/how-to-make-co-applicant" => 'help_topics#make_co_applicant', :as => :make_co_applicant
+  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
+  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
+  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
+  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
+
   resources :reports do
    get :generate_report
   end
