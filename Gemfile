@@ -23,6 +23,7 @@ source 'https://rubygems.org'
   gem "geocoder"
   gem 'friendly_id'
   gem 'workflow'
+  #gem 'matric_fu'
   gem "cancan"
   gem "best_in_place"
   gem "macaddr" 

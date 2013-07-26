@@ -12,7 +12,7 @@
       body {
         text-transform: uppercase;
         font-family: 'Ubuntu', sans-serif;
-        font-size:15px;
+        font-size:12px;
         padding-top: 60px;
         padding-bottom: 40px;
       }
@@ -30,7 +30,7 @@
 
 <div id="hero-unit" style="width:auto;margin:30px;padding:25px;border:0px solid #000;border-radius:10px;">
  <%= render "media" %>
- <% if current_user.role=="tab_user"&&current_user.tab %>
+ <% if current_user.role=="tab_user" && current_user.tab %>
  <%= render "residence" %>
  <%= render "business" %>
 <% end %> 

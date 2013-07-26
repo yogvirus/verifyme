@@ -29,7 +29,7 @@ class CoApplicant < ActiveRecord::Base
 
   include Workflow
 
-workflow_column :status
+  workflow_column :status
 
   workflow do
 

@@ -1,7 +1,7 @@
 <div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 <h5>In Progress (<small> Submitted by tab </small>)</h5>
 <table class="table table-condensed">
-  <% @in_progress.each do |c| %>
+  <% customer_in_progress.each do |c| %>
   <tr>
      <td><b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
      <td><%= link_to c.applicant_name, c %></td>
@@ -11,7 +11,7 @@
  </table>
 
 <table class="table table-condensed">
-  <% @business_in_progress.each do |c| %>
+  <% business_in_progress.each do |c| %>
   <tr>
      <td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
      <td><%= link_to c.applicant_name, c %></td>
@@ -21,7 +21,7 @@
  </table>
 
 <table class="table table-condensed">
-  <% @co_applicant_in_progress.each do |c| %>
+  <% co_applicant_in_progress.each do |c| %>
   <tr>
      <td><b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
      <td><%= link_to c.applicant_name, c %></td>
@@ -32,7 +32,7 @@
 
 
 <table class="table table-condensed">
-  <% @co_applicant_business_in_progress.each do |c| %>
+  <% co_applicant_business_in_progress.each do |c| %>
   <tr>
      <td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
      <td><%= link_to c.applicant_name, c %></td>

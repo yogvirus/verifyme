@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   has_one :profile
   belongs_to :tab
-
+  
   ROLES = %w[super_user tab_user]
 
 end

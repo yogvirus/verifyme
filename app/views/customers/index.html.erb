@@ -6,7 +6,9 @@
                 <%= link_to "in progress" , customers_cust_in_progress_path %> | 
                 <%= link_to "completed" , customers_cust_completed_path %> 
 </b>
+</div>
 <%- model_class = Customer -%>
+
 <div class="page-header">
   <h5><%=t '.title', :default => "all " + model_class.model_name.human.pluralize %> | 
    <%= link_to "Export to excel", customers_path(format: "xls") %>
@@ -15,6 +17,7 @@
             new_customer_path,
             :class=>"btn btn-primary btn-small", :style=>"margin-right:150px;float:right" %></b><br><br></h5>
 </div>
+
 <table class="table table-condensed">
   <tr>
     <th>Application Status </th>
@@ -61,4 +64,11 @@
       </tr>
     <% end %>
 </table>
+<div id="paginate" style= "float:right"><%= paginate @all_customer %></div>
 <br />
+
+
+
+
+
+

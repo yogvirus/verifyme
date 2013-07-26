@@ -1,7 +1,7 @@
 	<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 	<h5>Completed (<small> Verification Done </small>)</h5>
 	<table class="table">
-	<% @completed.each do |c| %>
+	<% completed_customer.each do |c| %>
 		<tr><td> <b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
 		<td><%= link_to c.applicant_name, c %>
 		<% time1 = Time.now %> <% time2 = c.created_at %>
@@ -15,7 +15,7 @@
 	</tr><% end %></table>
 	
 	<table class="table">
-	<% @business_completed.each do |c| %>
+	<% completed_business.each do |c| %>
 		<tr><td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
 		<td><%= link_to c.applicant_name, c %>
 		<% time1 = Time.now %> <% time2 = c.created_at %>
@@ -29,7 +29,7 @@
 	</tr><% end %></table>
 	
 	<table class="table">
-	<% @co_applicant_completed.each do |c| %>
+	<% completed_co_applicant.each do |c| %>
 		<tr><td> <b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
 		<td><%= link_to c.applicant_name, c %>
 		<% time1 = Time.now %> <% time2 = c.created_at %>
@@ -43,7 +43,7 @@
 	</tr><% end %></table>
 	
 	<table class="table">
-	<% @co_applicant_business_completed.each do |c| %>
+	<% co_applicant_business_completed.each do |c| %>
 		<tr><td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
 		<td><%= link_to c.applicant_name, c %>
 		<% time1 = Time.now %> <% time2 = c.created_at %>

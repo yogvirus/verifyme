@@ -4,12 +4,17 @@ class CustomersController < ApplicationController
    load_and_authorize_resource
 
   def index
-    @business = Business.order("status ASC").page(params[:page]).per(15)
-    @co_applicants = CoApplicant.order("status ASC").page(params[:page]).per(15)
-    @co_app_business = CoApplicantBusiness.order("status ASC").page(params[:page]).per(15)
-    @customers = Customer.order("status ASC").page(params[:page]).per(15)
-    @all_customer = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse
-
+    @business = Business.all
+    @co_applicants = CoApplicant.all
+    @co_app_business = CoApplicantBusiness.all
+    @customers = Customer.all
+    @all_custome = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse
+    #@all_customer = @all_customer.page(params[:page]).per(5)
+		unless @all_custome.kind_of?(Array)
+			@all_customer = @all_custome.page(params[:page]).per(10)
+		else
+			@all_customer = Kaminari.paginate_array(@all_custome).page(params[:page]).per(10)
+		end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @all_customer }

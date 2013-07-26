@@ -14,7 +14,7 @@ class Servey < ActiveRecord::Base
                 :driving_licence_number, :electricity_acc_number, :address_proof_sighted
 
 
-  serialize :name_varified_from# Hash
+  serialize :name_varified_from
 
 
 
