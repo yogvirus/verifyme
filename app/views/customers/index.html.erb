@@ -1,3 +1,6 @@
+
+
+
 <div id="residential">
 <b> Filter by : <%= link_to "residential" , customers_cust_residential_path %> | 
                 <%= link_to "business" , customers_cust_business_path %> </b><br>
@@ -20,7 +23,7 @@
 
 <table class="table table-condensed">
   <tr>
-    <th>Application Status </th>
+    <th>Status </th>
     <th width="195px">Application ref no</th>
     <th width="195px">Applicant name</th>
     <th>Address</th> 
@@ -64,7 +67,7 @@
       </tr>
     <% end %>
 </table>
-<div id="paginate" style= "float:right"><%= paginate @all_customer %></div>
+  <h4><%= paginate @all_customer %></h4>
 <br />
 
 

@@ -23,7 +23,12 @@
 </p>
 <% end %>
 
-<h4">Tab History</h4>
+<h4>Tab History</h4>
+ Pending : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'submitted', 'tabs.id' => @tab).count %> | 
+ In Progress : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'awaiting_to_get_verified', 'tabs.id' => @tab).count %> | 
+ Completed : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'verified', 'tabs.id' => @tab).count %>
+ 
+
 
 <% if @tab_data.nil? %>
  <p style="color:green"> no history.. </p>
@@ -32,10 +37,10 @@
 <% @tab_data.each do |data| %>
     <tr><td><%= data.customer.applicant_name %></td>
             <% if data.customer.status=="submitted" %>
-              <td><b class="label label-warning">submitted</b></td>
+              <td><b class="label label-info">Pending</b></td>
             <% end %>  
             <% if data.customer.status=="awaiting_to_get_verified" %>
-              <td><b class="label label-info">In Progress</b></td>
+              <td><b class="label label-warning">In Progress</b></td>
             <% end %>  
             <% if data.customer.status=="verified" %>
               <td><b class="label label-success">Verified</b></td>
@@ -46,6 +51,7 @@
 
  </tr>
   <% end %><% end %></table><br>
+
 
 <% if current_user.role=="super_admin"%><p><b>
   <%= link_to "Edit", edit_tab_path(@tab) %> |

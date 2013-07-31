@@ -54,7 +54,8 @@
 
 <div style="display:none;">
 <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Select a tab (if role is not super user) </label>
-<%= f.collection_select :tab_id, Tab.all, :id, :name, :prompt => "None", :id=>"passwordsignup_confirm", :placeholder=>"eg. X8df!90EO" %>
+   <%= f.select :tab_id, Tab.joins(:user).all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Select one'}, { index: nil } %>
+
 </div>
 </br>
 

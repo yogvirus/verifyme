@@ -1,3 +1,10 @@
+
+<style>
+body{
+ font-size:12px; 
+ font-weight: bold;
+ }
+</style>
 <%- model_class = Tab -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
@@ -15,9 +22,9 @@
     <tr>
       <td><%= link_to tab.name, tab_path(tab) %></td>
      <% if tab.user %> 
-         <td><i><small style ="color:green">  </small></i></td>
+         <td><i><small style ="color:green"><%=  tab.user.name %></small></i></td>
       <% else %>
-         <td><br><small style="color:red">no tab user </small></td>
+         <td><i><small style="font-size:12px;color:red">no-one assigned  </small></td>
       <% end %>
 
       <td><%= tab.tab_code %></td>

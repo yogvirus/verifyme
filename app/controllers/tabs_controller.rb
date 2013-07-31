@@ -1,4 +1,7 @@
 class TabsController < ApplicationController
+  include ApplicationHelper
+  
+  
   def index
     @tabs = Tab.all
   end

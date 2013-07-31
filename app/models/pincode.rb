@@ -7,4 +7,6 @@ class Pincode < ActiveRecord::Base
   has_many :co_applicant_work_details
   has_many :work_serveys
   
+  validates :name, uniqueness: { case_sensitive: false }
+  
 end
