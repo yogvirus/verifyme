@@ -1,3 +1,24 @@
-<% @data.each do |d| %>
- <%= d.customer.applicant_name %> <%= d.customer.status %><br>
+<h1><%= @tab_id.name %></h1>
+<% if @tab_id.user %>
+  <%= @tab_id.user.name %>
 <% end %>
+<table>
+ <% @data.each do |d| %>
+  <tr>
+   <td><%= d.customer.applicant_name %></td>
+     <% if d.customer.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>  
+     <% end %>
+     <% if d.customer.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>  
+     <% end %>
+     
+     <% if d.customer.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>  
+     <% end %>
+     <% if d.customer.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>  
+     <% end %>
+  </tr><br>
+ <% end %>
+</table>
