@@ -6,6 +6,7 @@ EVerification::Application.routes.draw do
 
   get "help_topics/how-to-make-applicant" => 'help_topics#make_customer', :as => :make_customer
   get "help_topics/how-to-make-co-applicant" => 'help_topics#make_co_applicant', :as => :make_co_applicant
+  #get "/tabs/" => "tabs#tab_status", :as => :tab_status
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
@@ -32,7 +33,9 @@ EVerification::Application.routes.draw do
   resources :work_serveys  
   resources :webcam_pictures
   resources :customers
-  resources :tabs
+  resources :tabs do 
+   get :tab_status
+  end
   resources :profiles
   resources :customer_documents
 

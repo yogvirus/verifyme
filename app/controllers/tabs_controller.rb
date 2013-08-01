@@ -1,6 +1,6 @@
 class TabsController < ApplicationController
   include ApplicationHelper
-  
+  include TabsHelper
   
   def index
     @tabs = Tab.all
@@ -37,6 +37,12 @@ class TabsController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+  
+  def tab_status
+    @tab_id = Tab.find(params[:tab_id])
+    @data = CustomerVerification.find_all_by_tab_id(@tab_id)
+    logger.info "@@@@@@@@@@@@@@@@"+@data.inspect
   end
 
   def destroy

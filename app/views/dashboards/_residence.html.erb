@@ -1,4 +1,4 @@
-<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<div class="span4" style ="width:700px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
  <h5>Residencial verification</h5>
 <table class="table table-striped">
   <% CustomerVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC').each do |c| %>
@@ -17,6 +17,12 @@
     <% end %>
   <% end %></tr></table>
 <%= render "co_applicant" %>
+ <!--<table class="table table-striped">
+ <% customer_data.each do |c| %>
+   <tr><td><%= c.customer.applicant_name %></td><tr>
+ <% end %>
+ </table>-->
+
 </div>
 
- 
+

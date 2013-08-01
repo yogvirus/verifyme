@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   before_filter :authenticate_user!
   include ApplicationHelper
+  include DashboardsHelper
 
   def index
    @customers = Customer.all

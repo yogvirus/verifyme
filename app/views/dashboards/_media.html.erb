@@ -9,7 +9,6 @@
 
 
 <div class="media-body">
-<%= render "daily_status", :html=>{:float=>"right"} %>
 <% if current_user.profile %>
 <h4 class="media-heading">Hello, <%= link_to current_user.profile.user.name, current_user.profile %>!</h4>
  <% if current_user.role=="super_user"%>
@@ -17,7 +16,6 @@
  <% end %>
    <small style ="color:#6E6E6E"> member since <%= time_tag current_user.created_at %> | </small>
    <small style ="color:brown"><%= current_user.email %></small>
-<hr>
 <% if current_user.role=="tab_user" %>
    <small><%= link_to current_user.tab.name, current_user.tab, :class=>" label label-info" %> </small>
 <% end %>

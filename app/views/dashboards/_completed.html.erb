@@ -1,60 +1,53 @@
-	<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+	<div class="span4" style ="width:700px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 	<h5>Completed (<small> Verification Done </small>)</h5>
-	<table class="table">
+	
+<table class="table table-condensed">
 	<% completed_customer.each do |c| %>
-		<tr><td> <b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
-		<td><%= link_to c.applicant_name, c %>
-		<% time1 = Time.now %> <% time2 = c.created_at %>
-		<p>
-		<small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
-			<%= distance_of_time_in_words(time1, time2) %> ago 
-		</small>
-		</p>
-	</td>
-		<td><p class="label label-success">Verified</p></td>
-	</tr><% end %></table>
+		<tr>
+    <td><b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
+		<td><%= link_to c.applicant_name, c %></td>
+  	<% time1 = Time.now %> <% time2 = c.created_at %>
+		<td style="color:silver"><%= distance_of_time_in_words(time1, time2) %> ago</td>
+  	<td style ="color:green">Verified</td>
+		</tr>
+	<% end %>
+</table>
 	
-	<table class="table">
+<table class="table table-condensed">
 	<% completed_business.each do |c| %>
-		<tr><td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
-		<td><%= link_to c.applicant_name, c %>
-		<% time1 = Time.now %> <% time2 = c.created_at %>
-		<p>
-		<small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
-			<%= distance_of_time_in_words(time1, time2) %> ago 
-		</small>
-		</p>
-	</td>
-		<td><p class="label label-success">Verified</p></td>
-	</tr><% end %></table>
+		<tr>
+    <td><b style="color:#CC0066;border-radius:3px;padding:2px;">Business </b></td>
+		<td><%= link_to c.applicant_name, c %></td>
+  	<% time1 = Time.now %> <% time2 = c.created_at %>
+		<td style="color:silver"><%= distance_of_time_in_words(time1, time2) %> ago</td>
+  	<td style ="color:green">Verified</td>
+	</tr>
+	<% end %>
+</table>
 	
-	<table class="table">
+<table class="table table-condensed">
 	<% completed_co_applicant.each do |c| %>
-		<tr><td> <b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
-		<td><%= link_to c.applicant_name, c %>
-		<% time1 = Time.now %> <% time2 = c.created_at %>
-		<p>
-		<small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
-			<%= distance_of_time_in_words(time1, time2) %> ago 
-		</small>
-		</p>
-	</td>
-		<td><p class="label label-success">Verified</p></td>
-	</tr><% end %></table>
+		<tr>
+    <td><b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
+		<td><%= link_to c.applicant_name, c %></td>
+  	<% time1 = Time.now %> <% time2 = c.created_at %>
+		<td style="color:silver"><%= distance_of_time_in_words(time1, time2) %> ago</td>
+  	<td style ="color:green">Verified</td>
+		</tr>
+	<% end %>
+</table>
 	
 	<table class="table">
 	<% co_applicant_business_completed.each do |c| %>
-		<tr><td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
-		<td><%= link_to c.applicant_name, c %>
-		<% time1 = Time.now %> <% time2 = c.created_at %>
-		<p>
-		<small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
-			<%= distance_of_time_in_words(time1, time2) %> ago 
-		</small>
-		</p>
-	</td>
-		<td><p class="label label-success">Verified</p></td>
-	</tr><% end %></table>
+		<tr>
+    <td><b style="color:#CC0066;border-radius:3px;padding:2px;">Business </b></td>
+		<td><%= link_to c.applicant_name, c %></td>
+  	<% time1 = Time.now %> <% time2 = c.created_at %>
+		<td style="color:silver"><%= distance_of_time_in_words(time1, time2) %> ago</td>
+  	<td style ="color:green">Verified</td>
+	</tr>
+	<% end %>
+</table>
 	
 	</div><!--/span-->
 
