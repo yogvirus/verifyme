@@ -104,19 +104,19 @@ module ApplicationHelper
   end
 
   def tab_customer_verification_pending
-    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'submitted', 'tabs.id' => 1).count
+    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
 
   def tab_business_verification_pending
-    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'submitted', 'tabs.id' => 1).count
+    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_verification_pending
-    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'submitted', 'tabs.id' => 1).count
+    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_business_pending
-    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'submitted', 'tabs.id' => 1).count
+    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
    
   def pending_all_on_tab
@@ -124,19 +124,19 @@ module ApplicationHelper
   end
 
   def tab_customer_verification_in_progress
-    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'awaiting_to_get_verified', 'tabs.id' => 1).count
+    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
   end
 
   def tab_business_verification_in_progress
-    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'awaiting_to_get_verified', 'tabs.id' => 1).count
+    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_verification_in_progress
-    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'awaiting_to_get_verified', 'tabs.id' => 1).count
+    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_business_in_progress
-    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'awaiting_to_get_verified', 'tabs.id' => 1).count
+    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
   end
    
   def in_progress_all_on_tab
@@ -144,19 +144,19 @@ module ApplicationHelper
   end
 
   def tab_customer_verification_completed
-    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'verified', 'tabs.id' => 1).count
+    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'verified', 'tabs.id' => current_user.tab).count
   end
 
   def tab_business_verification_completed
-    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'verified', 'tabs.id' => 1).count
+    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'verified', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_verification_completed
-    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'verified', 'tabs.id' => 1).count
+    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'verified', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_business_completed
-    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'verified', 'tabs.id' => 1).count
+    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'verified', 'tabs.id' => current_user.tab).count
   end
    
   def completed_all_on_tab
