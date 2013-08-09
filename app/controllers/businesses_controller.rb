@@ -3,6 +3,19 @@ class BusinessesController < InheritedResources::Base
    before_filter :authenticate_user!
    load_and_authorize_resource
 
+ def index
+   @business = Business.all
+    respond_to do |format|
+      format.html # index.html.erb
+			format.xlsx {
+										 send_data Business.to_xlsx.to_stream.read, 
+										 :filename => 'Customers.xlsx',
+										 :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet"
+            			}
+    end
+
+ end
+
  def create
   @business = Business.create(params[:business])
    if @business.save

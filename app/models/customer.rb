@@ -25,6 +25,7 @@ class Customer < ActiveRecord::Base
   has_one :co_applicant_business	
   has_one :co_applicant_work_detail
   belongs_to :pincode
+  belongs_to :tab
   has_and_belongs_to_many :assets
   has_and_belongs_to_many :office_assets
   has_and_belongs_to_many :address_proofs

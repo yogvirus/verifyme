@@ -4,6 +4,7 @@ class Tab < ActiveRecord::Base
   has_one :profile
   has_one :user
   belongs_to :pincode
+  has_many :customers
   has_many :customer_verifications, :dependent => :destroy  
   has_many :co_applicants
 

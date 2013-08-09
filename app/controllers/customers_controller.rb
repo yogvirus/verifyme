@@ -18,7 +18,11 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @all_customer }
-      format.xls #{ send_data @customers.to_csv(col_sep: "\t") }
+			format.xlsx {
+										 send_data Customer.to_xlsx.to_stream.read, 
+										 :filename => 'Customers.xlsx',
+										 :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet"
+            			}
     end
   end
 
