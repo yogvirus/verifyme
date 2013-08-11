@@ -65,6 +65,9 @@
         <% if customer.status=='awaiting_to_get_verified' %>
         <Cell><Data ss:Type="String">InProgress</Data></Cell>
         <% end %>
+        <% if customer.status=='ready_for_verification' %>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+        <% end %>
         <% if customer.status=='verified' %>
         <Cell><Data ss:Type="String">Done</Data></Cell>
         <% end %>
@@ -76,7 +79,19 @@
         <Cell><Data ss:Type="String"><%= customer.business.address %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.business.country_city %></Data></Cell>
         <Cell><Data ss:Type="String"><%= customer.business.pincode.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= customer.business.status %></Data></Cell>
+        <% if customer.business.status=='submitted' %>
+        <Cell><Data ss:Type="String">Pending</Data></Cell>
+        <% end %>
+        <% if customer.business.status=='awaiting_to_get_verified' %>
+        <Cell><Data ss:Type="String">InProgress</Data></Cell>
+        <% end %>
+        <% if customer.business.status=='verified' %>
+        <Cell><Data ss:Type="String">Done</Data></Cell>
+        <% end %>
+        <% if customer.business.status=='ready_for_verification' %>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+        <% end %>
+
      <% else %>
         <Cell><Data ss:Type="String"> - </Data></Cell>
         <Cell><Data ss:Type="String"> - </Data></Cell>
@@ -102,6 +117,9 @@
         <% end %>
         <% if customer.co_applicant.status=='verified' %>
         <Cell><Data ss:Type="String">Done</Data></Cell>
+        <% end %>
+        <% if customer.co_applicant.status=='ready_for_verification' %>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
         <% end %>
      <% else %>
         <Cell><Data ss:Type="String"> NO </Data></Cell>
@@ -129,6 +147,10 @@
         <% if customer.co_applicant_business.status=='verified' %>
         <Cell><Data ss:Type="String">Done</Data></Cell>
         <% end %>
+        <% if customer.co_applicant_business.status=='ready_for_verification' %>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+        <% end %>
+
       <% else %>
         <Cell><Data ss:Type="String"> - </Data></Cell>
         <Cell><Data ss:Type="String"> - </Data></Cell>

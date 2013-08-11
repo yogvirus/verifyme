@@ -18,11 +18,10 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @all_customer }
-			format.xlsx {
-										 send_data Customer.to_xlsx.to_stream.read, 
-										 :filename => 'Customers.xlsx',
-										 :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet"
-            			}
+			   format.xls do
+      render :xls => @all_custome,
+                     :columns => [ :name, :ref ],
+                     :headers => %w[ Name Reference ]
     end
   end
 

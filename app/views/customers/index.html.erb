@@ -18,6 +18,7 @@
 				<%= link_to "Business", businesses_path(format: "xlsx") %> |
 				<%= link_to "Co-applicants", co_applicants_path(format: "xlsx") %> |
 				<%= link_to "Co-applicants Business", co_applicant_businesses_path(format: "xlsx") %>
+    <%= link_to 'Export to Excel', url_for(:format => 'xls') %>
 </h5>
 <b><%= link_to "Add Customer",
             new_customer_path,
