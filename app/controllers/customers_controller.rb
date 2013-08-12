@@ -8,6 +8,7 @@ class CustomersController < ApplicationController
     @co_applicants = CoApplicant.all
     @co_app_business = CoApplicantBusiness.all
     @customers = Customer.all
+    filename = "customers.xls"
     @all_custome = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse
     #@all_customer = @all_customer.page(params[:page]).per(5)
 		unless @all_custome.kind_of?(Array)
@@ -18,11 +19,12 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @all_customer }
-			format.xlsx {
-										 send_data Customer.to_xlsx.to_stream.read, 
-										 :filename => 'Customers.xlsx',
-										 :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet"
-            			}
+      #format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
+      format.xls do
+      render :xls => @all_custome,
+             :columns => [ :application_status, :applicant_name, :address, :status ],
+             :headers => %w[ Application_Status Applicant_Name Address Status ]
+      end
     end
   end
 

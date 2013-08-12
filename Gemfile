@@ -28,7 +28,7 @@ source 'https://rubygems.org'
   gem 'kaminari'
   gem 'capistrano'
   gem 'pg'
-
+  gem 'to_xls', '~> 1.0.0'
 
 group :development do
    #gem 'mysql2'
