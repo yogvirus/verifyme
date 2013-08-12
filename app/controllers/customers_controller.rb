@@ -11,13 +11,13 @@ class CustomersController < ApplicationController
     filename = "customers.xls"
     @all_custome = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse
     #@all_customer = @all_customer.page(params[:page]).per(5)
-		unless @all_custome.kind_of?(Array)
-			@all_customer = @all_custome.page(params[:page]).per(10)
-		else
-			@all_customer = Kaminari.paginate_array(@all_custome).page(params[:page]).per(10)
-		end
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do # index.html.erb
+    		unless @all_custome.kind_of?(Array)
+     			@all_customer = @all_custome.page(params[:page]).per(10)
+		    else
+			    @all_customer = Kaminari.paginate_array(@all_custome).page(params[:page]).per(10)
+		    end
       format.json { render json: @all_customer }
       #format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
       format.xls do
