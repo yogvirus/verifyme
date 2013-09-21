@@ -1,8 +1,8 @@
 class Business < ActiveRecord::Base
- attr_accessible :address, :agency_name, :applicant_name, :application_ref_no, 
+ attr_accessible :address, :agency_name, :applicant_name, :application_ref_no,
                  :country_city, :country_name, :country_state, :date_of_birth,
                  :document_required, :fh_code, :landmark, :latitude, :longitude, :application_status,
-                 :pincode_id, :slug, :status, :customer_id, :company_name, :pan_number,:emp_code
+                 :pincode_id, :slug, :status, :customer_id, :company_name, :pan_number,:emp_code, :department_id
 
 
 
@@ -14,7 +14,7 @@ class Business < ActiveRecord::Base
  has_one :work_servey
  has_many :business_documents
  has_and_belongs_to_many :b_documents
-
+ belongs_to :department
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged
 
@@ -42,7 +42,7 @@ workflow_column :status
     state :awaiting_to_get_verified do
       event :accept, :transitions_to => :verified
     end
-     
+
     state :verified do
       event :re_indicated, :transitions_to => :ready_for_verification
       event :submitted, :transitions_to => :verified_with_changes

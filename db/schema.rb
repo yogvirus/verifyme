@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130616112556) do
+ActiveRecord::Schema.define(:version => 20130921044357) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20130616112556) do
     t.string   "company_name"
     t.string   "pan_number"
     t.string   "emp_code"
+    t.integer  "department_id"
   end
 
   add_index "businesses", ["applicant_name"], :name => "index_businesses_on_applicant_name", :unique => true
@@ -157,6 +158,7 @@ ActiveRecord::Schema.define(:version => 20130616112556) do
     t.datetime "updated_at",         :null => false
     t.string   "pan_number"
     t.string   "emp_code"
+    t.integer  "department_id"
   end
 
   create_table "co_applicant_documents", :force => true do |t|
@@ -364,11 +366,18 @@ ActiveRecord::Schema.define(:version => 20130616112556) do
     t.string   "snapshot"
     t.string   "application_status"
     t.boolean  "photo_required"
+    t.boolean  "document_required"
   end
 
   add_index "customers", ["address"], :name => "index_customers_on_address"
   add_index "customers", ["applicant_name"], :name => "index_customers_on_applicant_name"
   add_index "customers", ["application_ref_no"], :name => "index_customers_on_application_ref_no"
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "headshot_photos", :force => true do |t|
     t.string   "description"

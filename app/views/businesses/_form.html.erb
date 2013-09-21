@@ -34,6 +34,11 @@
   </div><br><br><br>
 
   <div class="field_name">
+    <%= f.label :'Name OF The Department' %>
+    <%= f.collection_select :department_id, Department.all, :id, :name %>
+  </div><br><br><br>
+
+  <div class="field_name">
     <%= f.label :landmark %>
     <%= f.text_field :landmark %>
   </div><br><br><br>
