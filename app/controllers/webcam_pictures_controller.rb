@@ -1,5 +1,5 @@
 class WebcamPicturesController < ApplicationController
-  helper :headshot
+  #helper :headshot
   # GET /webcam_pictures
   # GET /webcam_pictures.json
   def index

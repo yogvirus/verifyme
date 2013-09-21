@@ -5,31 +5,28 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <strong>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:role) %></th>
-      <th><%= model_class.human_attribute_name(:tab_id) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:role) %></th></strong>
+      <th><%= model_class.human_attribute_name(:tabname) %></th></strong>
     </tr>
   </thead>
   <tbody>
-    <% @profiles.each do |profile| %>
+    <% User.find(:all, :conditions => ["id NOT IN (?)", [1,4]]).each do |user| %>
+     <% unless user.id == current_user.id  %>
       <tr>
-        <td><%= link_to profile.user.name, profile_path(profile) %></td>
-        <td><%= profile.user.role %></td>
-<% if current_user.role=="tab_user" %>
-        <td><%= profile.user.tab.name %></td>
-<% end %>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_profile_path(profile), :class => 'label' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      profile_path(profile),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'label label-important' %>
-        </td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+	<% if user.role=='tab_user' %>
+        <td><%= user.tab.name %></td>
+        <% else %>
+        <td>  </td>
+	<% end %>
       </tr>
     <% end %>
+<% end %>
   </tbody>
 </table>
 

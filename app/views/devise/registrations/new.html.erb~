@@ -59,7 +59,7 @@
                                              [ p.name, p.id ] 
                                              end  }, {include_blank: 'Select one'}, { index: nil } %>-->
 
- <%= f.collection_select :tab_id, Tab.all, :id, :name %>
+ <%= f.collection_select :tab_id, Tab.all, id, name %>
 
 </div>
 </br>

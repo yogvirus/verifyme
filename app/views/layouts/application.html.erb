@@ -79,9 +79,10 @@
 
             </p><% if user_signed_in? %>
             <ul class="nav"><% if current_user.role=="super_user"||current_user.role=="admin"%>
-              <li class="active"><%= link_to "Customers", customers_path %></li>
-              <li class="active"><%= link_to "Tabs", tabs_path %></li>
-              <li class="active"><%= link_to "Generate Report", reports_path %></li>
+              <li class="active"> <%= link_to 'Show all users', profiles_path %></li>
+              <li><%= link_to "Customers", customers_path %></li>
+              <li><%= link_to "Tabs", tabs_path %></li>
+              <li><%= link_to "Generate Report", reports_path %></li>
               <% unless !current_user.profile %><li class="active"><%= link_to "My Profile", profile_path(current_user) %></li><% end %>
               <% end %><% end %>
             </ul>

@@ -1,0 +1,70 @@
+<%- model_class = Customer -%>
+<div id="residential">
+ <%= render "filter" %>
+</div>
+
+<div class="page-header">
+  <h5><%=t '.title', :default => "all " + model_class.model_name.human.pluralize %> | 
+   <%= link_to "Export to excel", customers_path(format: "xls") %> <%= link_to image_tag('excel-icon.png', :size => "30x30"), customers_path(format: "xls") %>
+</h5>
+<b><%= link_to "Add Customer",
+            new_customer_path,
+            :class=>"btn btn-primary btn-small", :style=>"margin-right:150px;float:right" %></b><br><br></h5>
+<b><%= paginate @all_customer %></b>
+</div>
+
+<table class="table table-condensed">
+  <tr>
+    <th>Application Status </th>
+    <th width="195px">Application ref no</th>
+    <th width="195px">Applicant name</th>
+    <th>Address</th> 
+    <th>verifing tab</th>
+    <th>Status</th>
+  </tr>
+
+<% @all_customer.each do |customer| %>
+
+  <tr>
+     <% if customer.application_status == 'RESIDENTIAL'%>
+   <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+   <% else %>
+   <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+   <% end %>    
+   <td><strong><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></strong></td>
+     <td><%= customer.applicant_name %></td>
+     <td width="50%"><%= customer.address %></td>
+     <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td width="150px"><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+
+     <% if customer.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>  
+     <% end %>
+     <% if customer.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>  
+     <% end %>
+     
+     <% if customer.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>  
+     <% end %>
+     <% if customer.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>  
+     <% end %>
+
+      </tr>
+    <% end %>
+</table>
+<b><%= paginate @all_customer %></b>
+<br />
+
+
+
+
+
+

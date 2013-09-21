@@ -22,6 +22,7 @@
     </p>
 
     <ul class="nav"><% if current_user.role=="super_user"||current_user.role=="admin"%>
+      <li class="active"><%= link_to 'show all users', profiles_path %></li>
       <li class="active"><%= link_to "Customers", customers_path %></li>
       <!--<li class="active"><%= link_to "Business", businesses_path %></li>-->
       <li class="active"><%= link_to "Tabs", tabs_path %></li>

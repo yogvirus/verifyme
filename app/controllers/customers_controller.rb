@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
       end
     end
   end
+end
 
   def cust_residential
    @all_customer = residential

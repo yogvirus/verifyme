@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Application_status</Data></Cell>
+        <Cell><Data ss:Type="String">Unique ID</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">BR CODE</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">Area</Data></Cell>
+        <Cell><Data ss:Type="String">status</Data></Cell>
+
+
+      </Row>
+    <% @all_customer.each do |customer| %>
+      <Row>
+ <!--customer data-->
+        <Cell><Data ss:Type="String"><%= customer.application_status %></Data></Cell>
+        <Cell><Data ss:Type="string"><%= "scorpeo/ #{Date.today}/ #{customer.application_ref_no}" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.applicant_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.fh_code %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.address %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= customer.pincode.name %></Data></Cell>
+        <% if customer.status=='submitted' %>
+        <Cell><Data ss:Type="String">Pending</Data></Cell>
+        <% end %>
+        <% if customer.status=='awaiting_to_get_verified' %>
+        <Cell><Data ss:Type="String">InProgress</Data></Cell>
+        <% end %>
+        <% if customer.status=='verified' %>
+        <Cell><Data ss:Type="String">Done</Data></Cell>
+        <% end %>
+        <!--customer data end-->
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+
+
+

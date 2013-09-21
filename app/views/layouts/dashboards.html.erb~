@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>e-verification</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application",'bootstrap-datepicker' %>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+      <style type="text/css">
+      body {
+        text-transform: uppercase;
+        font-family: 'Ubuntu', sans-serif;
+        font-size:11.5px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        font-weight: bold;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+       h5{background:black;color:white;}
+    </style>
+  </head> 
+<body>
+
+<%= render "navigation" %>
+
+<div class="container-fluid">
+ <div class="row-fluid"> 
+    <div class="span4 hidden-phone hidden-tablet"></div>
+   <%= render "media" %><hr>
+  <div class="span2" style="width:35%;">
+   <%= render "daily_status", :html=>{:float=>"right"} %>
+   <% if current_user.role=="tab_user" && current_user.tab %>
+   <%= render "residence" %>
+   <%= render "business" %>
+   <% end %> 
+  </div>
+
+ <div class="span10" style ="width:60%">
+   <% if current_user.role=="super_user" %>
+   <%= render "completed" %>
+   <%= render "pending" %>
+   <%= render "in_progress" %>
+   <% end %>
+  </div>
+ </div>
+</div>

@@ -1,5 +1,5 @@
 class HeadshotDemoController < ApplicationController
-  helper :headshot
+  #helper :headshot
 
   def index
    @head = HeadshotPhoto.all
