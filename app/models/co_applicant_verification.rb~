@@ -3,5 +3,5 @@ class CoApplicantVerification < ActiveRecord::Base
   belongs_to :co_applicant
   belongs_to :tab
   belongs_to :co_applicant_business
-  validates_presence_of :tab_id
+  validates_presence_of :tab_id, :customer_id
 end

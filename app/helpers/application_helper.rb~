@@ -15,6 +15,34 @@ module ApplicationHelper
     end
   end
 
+  def residential
+    Customer.find_all_by_application_status('RESIDENTIAL').last(50) + CoApplicant.find_all_by_application_status('RESIDENTIAL').last(50)
+  end
+
+  def business 
+    Business.find_all_by_application_status('BUSINESS').last(50) + CoApplicantBusiness.find_all_by_application_status('BUSINESS').last(50)
+  end
+
+  def pending_filter
+    Customer.find_all_by_status('submitted') + CoApplicant.find_all_by_status('submitted') + Business.find_all_by_status('submitted') + CoApplicantBusiness.find_all_by_status('submitted')
+  end
+  
+  def in_progress_filter
+    Customer.find_all_by_status('awaiting_to_get_verified') + CoApplicant.find_all_by_status('awaiting_to_get_verified') + Business.find_all_by_status('awaiting_to_get_verified') + CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
+  end
+
+  def completed_filter
+    Customer.find_all_by_status('verified') + CoApplicant.find_all_by_status('verified') + Business.find_all_by_status('verified') + CoApplicantBusiness.find_all_by_status('verified')
+  end
+
+  def complete_filter
+    Customer.find_all_by_status('awaiting_to_get_verified') + CoApplicant.find_all_by_status('awaiting_to_get_verified') + Business.find_all_by_status('awaiting_to_get_verified') + CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
+  end
+
+  def tab_pending
+   CustomerVerification.select("customer_id").where("tab_id= ?", "#{current_user.tab_id}").order("created_at")
+  end 
+
   def pending_customer
     Customer.find_all_by_status('submitted')
   end
@@ -76,23 +104,65 @@ module ApplicationHelper
   end
 
   def tab_customer_verification_pending
-    CustomerVerification.find_all_by_tab_id(current_user.tab).map{|d|d.customer.status}
+    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
 
   def tab_business_verification_pending
-    BusinessVerification.find_all_by_tab_id(current_user.tab).map{|d|d.business.status} 
+    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_verification_pending
-    CoApplicantVerification.find_all_by_tab_id(current_user.tab).map{|d|d.co_applicant.status}
+    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
 
   def tab_co_applicant_business_pending
-    ClientVerification.find_all_by_tab_id(current_user.tab).map{|d|d.co_applicant_business.status}
+    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
    
   def pending_all_on_tab
-   (@my_pending_1 + @my_pending_2 + @my_pending_3 + @my_pending_4).count
+    (tab_customer_verification_pending + tab_business_verification_pending + tab_co_applicant_verification_pending + tab_co_applicant_business_pending)
   end
+
+  def tab_customer_verification_in_progress
+    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
+  end
+
+  def tab_business_verification_in_progress
+    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
+  end
+
+  def tab_co_applicant_verification_in_progress
+    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
+  end
+
+  def tab_co_applicant_business_in_progress
+    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
+  end
+   
+  def in_progress_all_on_tab
+    (tab_customer_verification_in_progress + tab_business_verification_in_progress + tab_co_applicant_verification_in_progress + tab_co_applicant_business_in_progress)
+  end
+
+  def tab_customer_verification_completed
+    CustomerVerification.joins(:customer, :tab).where('customers.status' => 'verified', 'tabs.id' => current_user.tab).count
+  end
+
+  def tab_business_verification_completed
+    BusinessVerification.joins(:business, :tab).where('businesses.status' => 'verified', 'tabs.id' => current_user.tab).count
+  end
+
+  def tab_co_applicant_verification_completed
+    CoApplicantVerification.joins(:co_applicant, :tab).where('co_applicants.status' => 'verified', 'tabs.id' => current_user.tab).count
+  end
+
+  def tab_co_applicant_business_completed
+    ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'verified', 'tabs.id' => current_user.tab).count
+  end
+   
+  def completed_all_on_tab
+    (tab_customer_verification_completed + tab_business_verification_completed + tab_co_applicant_verification_completed + tab_co_applicant_business_completed)
+  end
+
+
 
 end

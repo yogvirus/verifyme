@@ -4,7 +4,7 @@
   <%= link_to t('.back', :default => t("helpers.links.back")),
               businesses_path, :class => 'label'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_co_applicant_business_path(@co_applicant_business), :class => 'label' %>
+              edit_co_applicant_business_path(@co_applicant_business, :customer_id => @co_applicant_business.customer.co_applicant), :class => 'label' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               co_applicant_business_path(@co_applicant_business),
               :method => 'delete',
@@ -73,9 +73,9 @@
 <div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
 <p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant_business.latitude}%2C#{@co_applicant_business.longitude}" %></p>
 </div>
-
 <% if @co_applicant_business.co_applicant_work_detail %>
 <div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<strong><%= link_to "edit business servey", edit_co_applicant_work_detail_path(@co_applicant_business.co_applicant_work_detail, :co_applicant_business_id => @co_applicant_business.co_applicant_work_detail.co_applicant_business_id, :tab_id => @co_applicant_business.co_applicant_work_detail.tab_id) %></strong>
 <table class="table" style="background:silver">
 
   <tr><td><strong><%= model_class.human_attribute_name(:Designation) %>:</strong>

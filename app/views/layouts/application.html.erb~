@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>e-verification</title>
     <%= stylesheet_link_tag "application",'datepicker',"bootstrap.css","form", :media => :all %>
     <%= javascript_include_tag "application" %>
@@ -9,18 +10,54 @@
   <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
 
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style type="text/css">
+      body{
+            font-family: 'Ubuntu', sans-serif;
+            font-family: ubuntu;
+            text-transform: uppercase;
+            font-size:11px;
+            padding: 60px;
+            line-height: 25px;
+             font-weight: bold;
+           }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      
+     
+      /* Set the fixed height of the footer here */
+      #footer {
+				bottom: 0;
+				left: 0;
+				right: 0;
+        background-color: #000;
+				height: 160px;
+	      }
 
-     .sidebar {width:200px;
-               float:left;
-               border-right:1px solid black;}
-       .sidebar ul li a {width:170px;font-size:12px; color:#000}
-       .sidebar ul li a:hover { background-color:#FFF8DC; color:#999;}
-   
-     .maincontent {width:700px;padding-left:20px;float:left;}
-</style>      
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+
   </head>
+
+<body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -43,9 +80,10 @@
 
             </p><% if user_signed_in? %>
             <ul class="nav"><% if current_user.role=="super_user"||current_user.role=="admin"%>
-              <li class="active"><%= link_to "Customers", customers_path %></li>
-              <li class="active"><%= link_to "Tabs", tabs_path %></li>
-              <li class="active"><%= link_to "Generate Report", reports_path %></li>
+              <li class="active"> <%= link_to 'Show all users', profiles_path %></li>
+              <li><%= link_to "Customers", customers_path %></li>
+              <li><%= link_to "Tabs", tabs_path %></li>
+              <li><%= link_to "Generate Report", reports_path %></li>
               <% unless !current_user.profile %><li class="active"><%= link_to "My Profile", profile_path(current_user) %></li><% end %>
               <% end %><% end %>
             </ul>
@@ -53,19 +91,20 @@
         </div>
       </div>
     </div>
-
-
-    <div class="sidebar">
-    <ul class="nav nav-list">
-        <li><%= link_to "Make Customer", make_customer_path %></li>
-        <li><%= link_to "Make Business", make_co_applicant_path %></li>
-        <li><%= link_to "Make Co Applicants", make_co_applicant_path %></li>
-        <li><%= link_to "Make Co Applicants", make_co_applicant_path %></li>
-        <li><%= link_to "Make Co Applicants", make_co_applicant_path %></li>
-    </ul>
-
-
+<div id="hero-unit" style="margin:25px;">
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
     </div>
-    <div class="maincontent">
+  <% end %>
+<% end %>
 <%= yield %>
-    </div>
+</div>
+
+
+      <hr>
+
+</body>
+</html>

@@ -35,7 +35,7 @@
 <% if @co_applicant_business.status=="ready_for_verification" %>
  <% if user_signed_in?&&current_user.role=="super_user" %>
    <%= form_for :business_verification_co_applicant_business_path, :url => business_verification_co_applicant_business_path(:business_id=>@co_applicant_business.id), :method=>:post do |f| %>
-<%= select_tag "client_verification[tab_id]", options_for_select(Tab.all.collect {|r|[r.name,r.id]}), {:prompt=> 'select',:class=>'tf help',:style=>"margin-top:15px;"} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<%= select_tag "client_verification[tab_id]", options_for_select(Tab.all.collect {|r|[r.name,r.id]}), {:class=>'tf help',:style=>"margin-top:15px;"} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
       <%= f.submit "Send for verification", :class=>"btn btn-primary btn-small" %>
       <% end %>
 <% end %>

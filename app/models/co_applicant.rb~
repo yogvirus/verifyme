@@ -1,5 +1,5 @@
 class CoApplicant < ActiveRecord::Base
-  attr_accessible :document_required,:address, :name,:status,
+  attr_accessible :document_required,:address, :name,
                   :pincode_id, :customer_id, :status,
                   :agency_name, :application_ref_no,
                   :fh_code, :applicant_name, :landmark,:application_status,

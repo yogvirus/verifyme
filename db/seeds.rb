@@ -17,12 +17,8 @@ end
 @office_asset = OfficeAsset.create([{name: 'Telephones'}, {name: 'Computer'},{name: 'Fax'}, {name: 'AC'}, {name: 'Photocopier'}])
 
    Tab.create( :name=>"TAB-ANDHERI", :tab_code=>'T0102030')
-   Tab.create( :name=>"TAB-JOGESHWARI", :tab_code=>'T0102031')
-   Tab.create( :name=>"TAB-GOREGAON", :tab_code=>'T0102032')
-   Tab.create( :name=>"TAB-MALAD", :tab_code=>'T0102033')
-   Tab.create( :name=>"TAB-VIKROLI", :tab_code=>'T0102034')
-   Tab.create( :name=>"TAB-SION", :tab_code=>'T0102035')
-   Tab.create( :name => "TAB-MAHAKALI", :tab_code =>'T3434890')
+   Tab.create( :name=>"TAB-VIKROLI", :tab_code=>'T0102031')
+   Tab.create( :name=>"TAB-SION", :tab_code=>'T0102032')
 
    Pincode.create(:name =>"Fort", :pin_number=>400001 )
    Pincode.create(:name =>"Kalbadevi", :pin_number=>400002 )

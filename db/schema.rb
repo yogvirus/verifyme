@@ -366,7 +366,6 @@ ActiveRecord::Schema.define(:version => 20130921044357) do
     t.string   "snapshot"
     t.string   "application_status"
     t.boolean  "photo_required"
-    t.boolean  "document_required"
   end
 
   add_index "customers", ["address"], :name => "index_customers_on_address"

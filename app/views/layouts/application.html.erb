@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>e-verification</title>
     <%= stylesheet_link_tag "application",'datepicker',"bootstrap.css","form", :media => :all %>
     <%= javascript_include_tag "application" %>
@@ -9,7 +10,7 @@
   <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
 
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style type="text/css">
       body{
             font-family: 'Ubuntu', sans-serif;
@@ -33,16 +34,6 @@
         background-color: #000;
 				height: 160px;
 	      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
 
 
     </style>

@@ -22,7 +22,7 @@
 								<% if user.role=='tab_user' %>
         <td><%= user.tab.name if user.tab %></td>
         <% else %>
-        <td><%= link_to "assign tab", new_tab_path %></td>
+        <td>  </td>
 								<% end %>
       </tr>
     <% end %>
