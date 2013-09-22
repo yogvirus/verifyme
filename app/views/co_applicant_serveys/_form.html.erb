@@ -1,17 +1,17 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
- 
+
 $(document).ready(function(){
- 
+
         $(".slidingDiv").hide();
         $(".show_hide").show();
- 
+
         $('.show_hide').click(function(){
         $(".slidingDiv").slideToggle();
     });
- 
+
 });
- 
+
 </script>
 
 <script>
@@ -40,7 +40,7 @@ $(function () {
     padding:20px;
     margin-top:10px;
 }
- 
+
 .show_hide {
     display:none;
 }
@@ -165,10 +165,10 @@ $(function () {
 <input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Owned By Parents" />
  Owned By Parents <br>
 <input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Rented" />
-Rented 
+Rented
 <br>
 <input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Company Accomodation" /> Company accomodation<br>
-<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="paying guest" /> 
+<input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="paying guest" />
 paying guest<br>
 <input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="owned by friend" /> owned by friend <br>
 <input id="servey_marital_status" name="co_applicant_servey[residence_status]" type="radio" value="Married" /> owned by relative <br>
@@ -229,7 +229,7 @@ paying guest<br>
   <div class="control-group">
     <%= f.label :name_plate_seen, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :name_plate_seen, :class => 'check_box' %> yes 
+      <%= f.check_box :name_plate_seen, :class => 'check_box' %> yes
       <%= check_box_tag'test' %> no
     </div>
   </div>
@@ -311,7 +311,7 @@ paying guest<br>
     </div>
   </div>
      <%= f.hidden_field :ease_of_location, :value=>"Easy" %>
-     <%= f.hidden_field :construction_of_residence, :value=>"pakka" %>
+     <!--<%= f.hidden_field :construction_of_residence, :value=>"pakka" %>
   <div class="control-group">
     <%= f.label :construction_of_residence, :class => 'control-label' %>
     <div class="controls">
@@ -324,7 +324,7 @@ paying guest<br>
 <input id="servey_marital_status" name="co_applicant_servey[construction_of_residence]" type="radio" value="building wall" /> building wall <br>
 
     </div>
-  </div>
+  </div>-->
   <div class="control-group">
     <%= f.label :comments_of_exteriors, :class => 'control-label' %>
     <div class="controls">
@@ -400,12 +400,12 @@ paying guest<br>
       <%= f.text_field :application_availibility_time, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
+  <!--<div class="control-group">
     <%= f.label :no_of_family_member_in_the_house, :class => 'control-label' %>
     <div class="controls">
       <%= f.number_field :no_of_family_member_in_the_house, :class => 'number_field' %>
     </div>
-  </div>
+  </div>-->
   <div class="control-group">
     <%= f.label :verifiers_remark, :class => 'control-label' %>
     <div class="controls">
@@ -427,6 +427,3 @@ paying guest<br>
                 customers_path, :class => 'btn' %>
   </div>
 <% end %>
-
-
-

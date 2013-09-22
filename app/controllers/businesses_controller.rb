@@ -8,7 +8,7 @@ class BusinessesController < InheritedResources::Base
     respond_to do |format|
       format.html # index.html.erb
 			format.xlsx {
-										 send_data Business.to_xlsx.to_stream.read, 
+										 send_data Business.to_xlsx.to_stream.read,
 										 :filename => 'Customers.xlsx',
 										 :type => "application/vnd.openxmlformates-officedocument.spreadsheetml.sheet"
             			}
@@ -27,11 +27,12 @@ class BusinessesController < InheritedResources::Base
 
  def show
   @business = Business.find(params[:id])
+  @business_verification = BusinessVerification.new
  end
 
  def business_verification
-   @business = Business.find(params[:business_id])  
-   @tab = Tab.find(:all) 
+   @business = Business.find(params[:business_id])
+   @tab = Tab.find(:all)
    @verification = BusinessVerification.create(params[:business_verification])
     @verification.user_id = current_user.id
     @verification.business_id = @business.id
