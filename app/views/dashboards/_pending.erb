@@ -15,7 +15,7 @@
   <tr>
      <td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
      <td><%= link_to c.applicant_name, c %></td>
-     <td><%= c.customer.customer_verification.tab.name %></td>
+     <td><%= c.business_verification.tab.name %></td>
   </tr>
   <% end %>
  </table>
@@ -25,7 +25,7 @@
   <tr>
      <td> <b style="color:#009999;border-radius:3px;padding:2px;">Residential </b></td>
      <td><%= link_to c.applicant_name, c %></td>
-     <td><%= c.customer.customer_verification.tab.name %></td>
+     <td><%= c.co_applicant_verification.tab.name %></td>
   </tr>
   <% end %>
  </table>
@@ -36,7 +36,7 @@
   <tr>
      <td> <b style="color:#CC0066;border-radius:3px;padding:2px;"> Business </b></td>
      <td><%= link_to c.applicant_name, c %></td>
-     <td><%= c.customer.customer_verification.tab.name %></td>
+     <td><%= c.client_verification.tab.name %></td>
   </tr>
   <% end %>
  </table>
@@ -44,4 +44,3 @@
 
 
 </div>
-

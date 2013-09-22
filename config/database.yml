@@ -4,19 +4,19 @@ development:
     host: localhost
     database: e-verification_development
     username: postgres
-    password: scorp
+    password: safew
 
 test:
     adapter: postgresql
     host: localhost
     database: e-verification_test
     username: postgres
-    password: scorp
+    password: safew
 
 production:
     adapter: postgresql
     host: localhost
     database: e-verification_production
     username: postgres
-    password: scorp
+    password: safew
     reconnect: true

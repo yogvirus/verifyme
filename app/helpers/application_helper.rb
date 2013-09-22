@@ -19,14 +19,14 @@ module ApplicationHelper
     Customer.find_all_by_application_status('RESIDENTIAL').last(50) + CoApplicant.find_all_by_application_status('RESIDENTIAL').last(50)
   end
 
-  def business 
+  def business
     Business.find_all_by_application_status('BUSINESS').last(50) + CoApplicantBusiness.find_all_by_application_status('BUSINESS').last(50)
   end
 
   def pending_filter
     Customer.find_all_by_status('submitted') + CoApplicant.find_all_by_status('submitted') + Business.find_all_by_status('submitted') + CoApplicantBusiness.find_all_by_status('submitted')
   end
-  
+
   def in_progress_filter
     Customer.find_all_by_status('awaiting_to_get_verified') + CoApplicant.find_all_by_status('awaiting_to_get_verified') + Business.find_all_by_status('awaiting_to_get_verified') + CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
   end
@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def tab_pending
    CustomerVerification.select("customer_id").where("tab_id= ?", "#{current_user.tab_id}").order("created_at")
-  end 
+  end
 
   def pending_customer
     Customer.find_all_by_status('submitted')
@@ -49,7 +49,7 @@ module ApplicationHelper
 
   def customer_in_progress
     Customer.find_all_by_status('awaiting_to_get_verified')
-  end 
+  end
 
   def completed_customer
     Customer.find_all_by_status('verified')
@@ -58,10 +58,10 @@ module ApplicationHelper
   def pending_business
     Business.find_all_by_status('submitted')
   end
- 
+
   def business_in_progress
     Business.find_all_by_status('awaiting_to_get_verified')
-  end 
+  end
 
   def completed_business
     Business.find_all_by_status('verified')
@@ -90,7 +90,7 @@ module ApplicationHelper
   def co_applicant_business_completed
     CoApplicantBusiness.find_all_by_status('verified')
   end
-  
+
   def total_pending
   pending_customer.count + pending_business.count + pending_co_applicant.count + pending_co_applicant_business.count
   end
@@ -118,7 +118,7 @@ module ApplicationHelper
   def tab_co_applicant_business_pending
     ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'submitted', 'tabs.id' => current_user.tab).count
   end
-   
+
   def pending_all_on_tab
     (tab_customer_verification_pending + tab_business_verification_pending + tab_co_applicant_verification_pending + tab_co_applicant_business_pending)
   end
@@ -138,7 +138,7 @@ module ApplicationHelper
   def tab_co_applicant_business_in_progress
     ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'awaiting_to_get_verified', 'tabs.id' => current_user.tab).count
   end
-   
+
   def in_progress_all_on_tab
     (tab_customer_verification_in_progress + tab_business_verification_in_progress + tab_co_applicant_verification_in_progress + tab_co_applicant_business_in_progress)
   end
@@ -158,7 +158,7 @@ module ApplicationHelper
   def tab_co_applicant_business_completed
     ClientVerification.joins(:co_applicant_business, :tab).where('co_applicant_businesses.status' => 'verified', 'tabs.id' => current_user.tab).count
   end
-   
+
   def completed_all_on_tab
     (tab_customer_verification_completed + tab_business_verification_completed + tab_co_applicant_verification_completed + tab_co_applicant_business_completed)
   end

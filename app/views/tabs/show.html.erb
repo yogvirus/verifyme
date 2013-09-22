@@ -1,8 +1,8 @@
 
 <p>
   <strong>Name:</strong>
-  <small class="label label-info"><%= @tab.name %></small> is assigned to 
-     <% if @tab.user %> 
+  <small class="label label-info"><%= @tab.name %></small> is assigned to
+     <% if @tab.user %>
       <i><small style ="color:green"> test user </small></i>
      <% else %>
       <br><small style="color:red">This Tab is not assigned to anyone </small>
@@ -16,7 +16,7 @@
 <% if @tab.pincode %>
 <p>
   <strong>Tab Area Code:</strong>
-  <%= @tab.pincode.name %>  <br>
+  <%= @tab.pincode.name %><br>
 
   <strong>Pin Code:</strong>
   <%= @tab.pincode.pin_number%>
@@ -24,34 +24,32 @@
 <% end %>
 
 <h4>Tab History</h4>
- Pending : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'submitted', 'tabs.id' => @tab).count %> | 
- In Progress : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'awaiting_to_get_verified', 'tabs.id' => @tab).count %> | 
+ Pending : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'submitted', 'tabs.id' => @tab).count %> |
+ In Progress : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'awaiting_to_get_verified', 'tabs.id' => @tab).count %> |
  Completed : <%= CustomerVerification.joins(:customer, :tab).where('customers.status' => 'verified', 'tabs.id' => @tab).count %>
- 
 
 
-<% if @tab_data.nil? %>
- <p style="color:green"> no history.. </p>
- <% else %>
+
+<% if @tab_data_client %>
 <table class="table table-striped">
-<% @tab_data.each do |data| %>
-    <tr><td><%= data.customer.applicant_name %></td>
-            <% if data.customer.status=="submitted" %>
+<% @tab_data_client.each do |data| %>
+    <tr><td><%= data.co_applicant_business.customer.applicant_name %></td>
+        <td><%= data.co_applicant_business.application_status %></td>
+            <% if data.co_applicant_business.status=="submitted" %>
               <td><b class="label label-info">Pending</b></td>
-            <% end %>  
-            <% if data.customer.status=="awaiting_to_get_verified" %>
+            <% end %>
+            <% if data.co_applicant_business.status=="awaiting_to_get_verified" %>
               <td><b class="label label-warning">In Progress</b></td>
-            <% end %>  
-            <% if data.customer.status=="verified" %>
+            <% end %>
+            <% if data.co_applicant_business.status=="verified" %>
               <td><b class="label label-success">Verified</b></td>
-            <% end %>  
-            <% if data.customer.status=="ready_for_verification" %>
-              <td><b class="label label-success">Click to verify</b></td>
-            <% end %>  
+            <% end %>
 
  </tr>
-  <% end %><% end %></table><br>
-
+  <% end %>
+ <% else %>
+ <p style="color:green"> no history.. </p>
+<% end %></table><br>
 
 <% if current_user.role=="super_admin"%><p><b>
   <%= link_to "Edit", edit_tab_path(@tab) %> |

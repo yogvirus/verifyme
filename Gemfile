@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-  gem 'rails', '3.2.8'
+  gem 'rails', '3.2.13'
   gem 'taps'
   gem 'execjs'
   gem 'heroku'
@@ -30,16 +30,15 @@ source 'https://rubygems.org'
   gem 'pg'
   gem 'to_xls', '~> 1.0.0'
   gem 'carrierwave'
+  gem 'jquery-rails', '~> 2.3.0'
 
 group :development do
-   #gem 'mysql2'
    gem 'pg'
    gem 'thin'
 end
 
 
 group :production do
-   #gem 'mysql2'
    gem 'pg'
 end
 
