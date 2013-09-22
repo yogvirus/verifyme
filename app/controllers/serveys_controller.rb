@@ -1,6 +1,6 @@
 class ServeysController < ApplicationController
   def index
-   
+
   end
 
   def new

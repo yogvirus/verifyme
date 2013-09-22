@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
 
   def index
    @customers = Customer.all
-   
+
    @total_pending = total_pending
    @total_in_progress = total_in_progress
    @total_completed = total_completed
@@ -14,10 +14,10 @@ class DashboardsController < ApplicationController
    @my_pending_2 = tab_business_verification_pending
    @my_pending_3 = tab_co_applicant_verification_pending
    @my_pending_4 = tab_co_applicant_business_pending
-   #@all = pending_all_on_tab
+
    #@customer = Customer.find_all_by_status('submitted')
    #@all_id_s = @customer.map{|i| i.id }
-   #@verifi_c = CustomerVerification.find_all_by_customer_id(@all_id_s).count 
+   #@verifi_c = CustomerVerification.find_all_by_customer_id(@all_id_s).count
    #admin status
    #@pending = pending_customer
    #@in_progress = customer_in_progress
