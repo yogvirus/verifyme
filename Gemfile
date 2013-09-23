@@ -5,7 +5,7 @@ source 'https://rubygems.org'
   gem 'execjs'
   gem 'heroku'
   gem 'therubyracer'
-  gem 'devise'
+  gem 'devise', '3.0.3'
   gem "nested_form"
   gem 'paperclip'
   gem "therubyracer"
