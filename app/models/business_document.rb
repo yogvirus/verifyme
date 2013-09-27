@@ -5,7 +5,7 @@ class BusinessDocument < ActiveRecord::Base
 
   has_attached_file :photo,
      :styles => {
-     :thumb=> "400x400#",
+     :thumb=> "400x400",
      :small  => "800x600",
      :medium => "1024x768",
      :large => "1600x1200",

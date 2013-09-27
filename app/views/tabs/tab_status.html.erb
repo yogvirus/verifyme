@@ -1,24 +1,108 @@
 <h1><%= @tab_id.name %></h1>
 <% if @tab_id.user %>
-  <%= @tab_id.user.name %>
+  <h3><%= @tab_id.user.name %></h3>
 <% end %>
-<table>
- <% @data.each do |d| %>
+<table class="table table-condensed">
+<tr style ="background:gray">
+  <td> Res/Bus </td>
+  <td>Name </td>
+  <td>Status </td>
+  </tr>
+ <% @customer_v.each do |d| %>
   <tr>
+   <% if d.customer.application_status == 'RESIDENTIAL'%>
+   <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= d.customer.application_status %></b></td>
+   <% else %>
+   <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= d.customer.application_status %></b></td>
+   <% end %>
    <td><%= d.customer.applicant_name %></td>
      <% if d.customer.status=='submitted' %>
-     <td><span class="label label-info"> Pending </span></td>  
+     <td><span class="label label-info"> Pending </span></td>
      <% end %>
      <% if d.customer.status=='ready_for_verification' %>
-     <td><span class="label label-info"> ready for verification </span></td>  
+     <td><span class="label label-info"> ready for verification </span></td>
      <% end %>
-     
+
      <% if d.customer.status=='awaiting_to_get_verified' %>
-     <td><span class="label label-warning"> in progress </span></td>  
+     <td><span class="label label-warning"> in progress </span></td>
      <% end %>
      <% if d.customer.status=='verified' %>
-     <td><span class="label label-success"> verified </span></td>  
+     <td><span class="label label-success"> verified </span></td>
      <% end %>
-  </tr><br>
+  </tr>
  <% end %>
+
+ <% @business_v.each do |d| %>
+  <tr>
+   <% if d.business.application_status == 'RESIDENTIAL'%>
+   <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= d.business.application_status %></b></td>
+   <% else %>
+   <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= d.business.application_status %></b></td>
+   <% end %>
+   <td><%= d.business.applicant_name %></td>
+     <% if d.business.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if d.business.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if d.business.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if d.business.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+  </tr>
+ <% end %>
+
+ <% @co_applicant_v.each do |d| %>
+  <tr>
+   <% if d.co_applicant.application_status == 'RESIDENTIAL'%>
+   <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= d.co_applicant.application_status %></b></td>
+   <% else %>
+   <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= d.co_applicant.application_status %></b></td>
+   <% end %>
+   <td><%= d.co_applicant.applicant_name %></td>
+     <% if d.co_applicant.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if d.co_applicant.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if d.co_applicant.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if d.co_applicant.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+  </tr>
+ <% end %>
+
+ <% @co_applicant__business_v.each do |d| %>
+  <tr>
+   <% if d.co_applicant_business.application_status == 'RESIDENTIAL'%>
+   <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= d.co_applicant_business.application_status %></b></td>
+   <% else %>
+   <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= d.co_applicant_business.application_status %></b></td>
+   <% end %>
+   <td><%= d.co_applicant_business.applicant_name %></td>
+     <% if d.co_applicant_business.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if d.co_applicant_business.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if d.co_applicant_business.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if d.co_applicant_business.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+  </tr>
+ <% end %>
+
+
 </table>

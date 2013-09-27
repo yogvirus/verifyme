@@ -46,7 +46,11 @@ class TabsController < ApplicationController
 
   def tab_status
     @tab_id = Tab.find(params[:tab_id])
-    @data = CustomerVerification.find_all_by_tab_id(@tab_id)
+    @customer_v = CustomerVerification.find_all_by_tab_id(@tab_id)
+    @business_v = BusinessVerification.find_all_by_tab_id(@tab_id)
+    @co_applicant_v = CoApplicantVerification.find_all_by_tab_id(@tab_id)
+    @co_applicant__business_v = ClientVerification.find_all_by_tab_id(@tab_id)
+    @data =  @customer_v+@business_v+@co_applicant_v+@co_applicant__business_v
   end
 
   def destroy

@@ -17,11 +17,12 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= user.role %></td>
         <% if user.role=='tab_user' %>
+        <td style ="color:red">Tab User</td>
         <td><%= user.tab.name if user.tab %></td>
         <% else %>
-        <td><%= link_to "assign tab", new_tab_path %></td>
+        <td style ="color:green"> Super User </td>
+        <td><%= link_to "assign tab", new_tab_path if user.role=='admin' %></td>
 	<% end %>
       </tr>
 <% end %>

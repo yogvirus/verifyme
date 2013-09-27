@@ -72,7 +72,11 @@
 <% if @business.business_documents %>
 <div>
 <% @business.business_documents.each do |d| %>
- <%= link_to image_tag(d.photo.url(:thumb)), d.photo.url(:large) %>
+	<% if d.photo? %>
+	 <%= link_to image_tag(d.photo.url(:thumb)), d.photo.url(:large) %>
+	<% else %>
+   <%= image_tag("url.png", :size => "100x100") %>
+	<% end %>
 <% end %>
 </div><br><br><br>
 <% end %>
