@@ -64,7 +64,10 @@ EVerification::Application.routes.draw do
 
   end
   resources :co_applicant_work_details
-
+  resources :customer_verifications
+  resources :business_verifications
+  resources :co_applicant_verifications
+  resources :client_verifications
   resources :serveys
   resources :customers do
     member do

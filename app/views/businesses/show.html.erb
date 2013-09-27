@@ -26,6 +26,10 @@
  <%= "scorpeo-#{Date.today}-#{@business.application_ref_no}" %> | <%= @business.agency_name %>
 </h3>
   <h4 style="color:blue"><%= @business.applicant_name %></h4> <b style="color:blue"><%= @business.department.name if @business.department %></b>
+  		 <% if @business.status=="submitted" %>
+		   <h6><%= link_to 'reasign to another tab', edit_business_verification_path(@business.business_verification, :id => @business.business_verification) %></h6>
+     <% end %>
+
 <h5>
   <%= @business.address %> <br>
   <%= @business.country_name %> |
@@ -50,7 +54,8 @@
     <% if @business.status=='submitted' %>
      <td><span class="label label-warning">Submitted to Tab User </span></td></tr><br>
 <small>
- The customer has been send for verification. this is been assigned to
+ The customer has been send for verification. <br>
+ Tab Name:
  <%= link_to @business.business_verification.tab.name, tab_path(@business.business_verification.tab) %></small>
 
     <% end %>

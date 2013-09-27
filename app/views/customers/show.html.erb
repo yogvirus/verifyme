@@ -39,6 +39,9 @@
 <%- model_class = Customer -%>
 <div class="page-header">
   <h1><%= @customer.applicant_name %></h1>
+		 <% if @customer.status=="submitted" %>
+		   <h6><%= link_to 'reasign to another tab', edit_customer_verification_path(@customer.customer_verification, :id => @customer.customer_verification) %></h6>
+     <% end %>
    <h3><%= @customer.address %></h3>
   <%= link_to t('.back', :default => t("helpers.links.back")),
               customers_path, :class => 'label'  %>
@@ -70,10 +73,10 @@
 <br>
     <% if @customer.status=='submitted' %>
      <td><span class="label label-warning">Submitted to Tab User </span></td></tr><br>
-<small>
- The customer has been send for verification. this is been assigned to
- <%= link_to @customer.customer_verification.tab.name, tab_path(@customer.customer_verification.tab) %></small>
-
+		<small>
+		 The customer has been send for verification. this is been assigned to
+		 <%= link_to @customer.customer_verification.tab.name, tab_path(@customer.customer_verification.tab) %><br>
+		</small>
     <% end %>
 <% else %>
     <% if @customer.status=='verified' %>

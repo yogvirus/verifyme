@@ -1,0 +1,6 @@
+<%= form_for (@co_applicant_verification) do |f| %>
+ <u><b><%= @co_applicant_verification.co_applicant.applicant_name %></b></u> is assigned <u><%= @co_applicant_verification.tab.name %></u>
+ to change him to another tab please select a tab from the following tabs.<br><br>
+ <%= f.collection_select :tab_id , Tab.all, :id, :name %><br><br>
+ <%= f.submit 'Update', :class => "btn btn-info" %>
+<% end %>

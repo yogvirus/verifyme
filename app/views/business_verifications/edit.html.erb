@@ -1,0 +1,6 @@
+<%= form_for (@business_verification) do |f| %>
+ <u><b><%= @business_verification.business.customer.applicant_name %></b></u> is assigned <u><%= @business_verification.tab.name %></u>
+ to change him to another tab please select a tab from the following tabs.<br><br>
+ <%= f.collection_select :tab_id , Tab.all, :id, :name %><br><br>
+ <%= f.submit 'Update', :class => "btn btn-info" %>
+<% end %>
