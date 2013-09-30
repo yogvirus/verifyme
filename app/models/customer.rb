@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
   attr_accessible :applicant_name, :application_ref_no, :latitude, :longitude,
                   :gmaps, :state, :pincode_id, :country_state, :country_city,
-                  :country_name, :slug, :address, :degree_name, :agency_name, 
+                  :country_name, :slug, :address, :degree_name, :agency_name,
                   :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
@@ -17,13 +17,13 @@ class Customer < ActiveRecord::Base
   scope :verified, where(:status => 'verified')
   scope :submitted, where(:status => 'submitted')
 
-  has_one :servey
-  has_one :business
-  has_one :customer_verification
-  has_many :customer_documents
-  has_one :co_applicant	
-  has_one :co_applicant_business	
-  has_one :co_applicant_work_detail
+  has_one :servey, :dependent => :destroy
+  has_one :business, :dependent => :destroy
+  has_one :customer_verification, :dependent => :destroy
+  has_many :customer_documents, :dependent => :destroy
+  has_one :co_applicant, :dependent => :destroy
+  has_one :co_applicant_business, :dependent => :destroy
+  has_one :co_applicant_work_detail, :dependent => :destroy
   belongs_to :pincode
   belongs_to :tab
   has_and_belongs_to_many :assets
@@ -52,13 +52,6 @@ def self.search(search)
 end
 
 
-
-
-
-  #geocoded_by :address   # can also be an IP address
-  #reverse_geocoded_by :latitude, :longitude
-  #after_validation :reverse_geocode  # auto-fetch address
-
   include Workflow
 
 workflow_column :status
@@ -76,7 +69,7 @@ workflow_column :status
     state :awaiting_to_get_verified do
       event :accept, :transitions_to => :verified
     end
-     
+
     state :verified do
       event :re_indicated, :transitions_to => :ready_for_verification
       event :submitted, :transitions_to => :verified_with_changes
@@ -99,7 +92,7 @@ TYPE_OF_RESIDENCE= %w[independence-house multitanent-house temparory-shed bunglo
 
 RESIDENCE_STATUS= %w[ selfowned owned-by-parnets rented company-accomodation paying-guest owned-by-friend owned-by-relative lodging ]
 
-EDUCATIONAL_QUALIFICATION = %w[professional post_graduate graduate undergraduate others] 
+EDUCATIONAL_QUALIFICATION = %w[professional post_graduate graduate undergraduate others]
 
 MARTIAL_STATUS= %w[single married divorced]
 
@@ -122,6 +115,3 @@ EXTERIORS = %w[fenced/compaund-wall elevator others]
 CONSTRUCTION = %w[ pukka semi-pukka temperory carpark garden security building-wall]
 
 end
-
-
-

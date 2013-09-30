@@ -82,6 +82,15 @@ class BusinessesController < InheritedResources::Base
      end
   end
 
+  def destroy
+    @business = Business.find(params[:id])
+    @business.destroy
+
+    respond_to do |format|
+      format.html { redirect_to customers_url }
+      format.json { head :no_content }
+    end
+  end
 
 
 end

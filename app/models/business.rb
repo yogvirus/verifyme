@@ -8,11 +8,11 @@ class Business < ActiveRecord::Base
 
 
 
- belongs_to :customer
+ belongs_to :customer, :dependent => :destroy
  belongs_to :pincode
- has_one :business_verification
- has_one :work_servey
- has_many :business_documents
+ has_one :business_verification, :dependent => :destroy
+ has_one :work_servey, :dependent => :destroy
+ has_many :business_documents, :dependent => :destroy
  has_and_belongs_to_many :b_documents
  belongs_to :department
  extend FriendlyId

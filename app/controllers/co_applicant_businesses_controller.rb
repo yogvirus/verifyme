@@ -35,9 +35,21 @@ class CoApplicantBusinessesController < ApplicationController
   @co_applicant_business = CoApplicantBusiness.find(params[:id])
  end
 
+  def destroy
+    @co_applicant_business = CoApplicantBusiness.find(params[:id])
+    @co_applicant_business.destroy
+
+    respond_to do |format|
+      format.html { redirect_to customers_url }
+      format.json { head :no_content }
+    end
+  end
+
+
+
  def business_verification
-   @co_applicant = CoApplicantBusiness.find(params[:business_id])  
-   @tab = Tab.find(:all) 
+   @co_applicant = CoApplicantBusiness.find(params[:business_id])
+   @tab = Tab.find(:all)
    @verification = ClientVerification.create(params[:client_verification])
     @verification.user_id = current_user.id
     @verification.co_applicant_business_id = @co_applicant.id

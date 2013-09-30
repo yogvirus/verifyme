@@ -9,7 +9,7 @@ class CoApplicantsController < ApplicationController
 
   end
 
-  def new 
+  def new
    @servey = WorkServey.find(params[:customer_id])
    @co_applicant = CoApplicant.new
   end
@@ -31,6 +31,16 @@ class CoApplicantsController < ApplicationController
    end
  end
 
+  def destroy
+    @co_applicant = CoApplicant.find(params[:id])
+    @co_applicant.destroy
+
+    respond_to do |format|
+      format.html { redirect_to customers_url }
+      format.json { head :no_content }
+    end
+  end
+
 
   def update
     @co_applicant = CoApplicant.find(params[:id])
@@ -50,8 +60,8 @@ class CoApplicantsController < ApplicationController
 
 
  def co_applicant_verification
-   @co_applicant = CoApplicant.find(params[:co_applicant_id])  
-   @tab = Tab.find(:all) 
+   @co_applicant = CoApplicant.find(params[:co_applicant_id])
+   @tab = Tab.find(:all)
    @verification = CoApplicantVerification.create(params[:co_applicant_verification])
     @verification.user_id = current_user.id
     @verification.co_applicant_id = @co_applicant.id

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130921044357) do
+ActiveRecord::Schema.define(:version => 20130930072233) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(:version => 20130921044357) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "address_proofs_customers", :id => false, :force => true do |t|
+    t.integer "address_proof_id"
+    t.integer "customer_id"
+  end
+
+  create_table "address_proofs_serveys", :id => false, :force => true do |t|
+    t.integer "address_proof_id"
+    t.integer "servey_id"
   end
 
   create_table "admin_users", :force => true do |t|
@@ -59,10 +69,25 @@ ActiveRecord::Schema.define(:version => 20130921044357) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "assets_customers", :id => false, :force => true do |t|
+    t.integer "asset_id"
+    t.integer "customer_id"
+  end
+
+  create_table "assets_serveys", :id => false, :force => true do |t|
+    t.integer "asset_id"
+    t.integer "servey_id"
+  end
+
   create_table "b_documents", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "b_documents_businesses", :id => false, :force => true do |t|
+    t.integer "business_id"
+    t.integer "b_document_id"
   end
 
   create_table "business_documents", :force => true do |t|
@@ -371,6 +396,11 @@ ActiveRecord::Schema.define(:version => 20130921044357) do
   add_index "customers", ["address"], :name => "index_customers_on_address"
   add_index "customers", ["applicant_name"], :name => "index_customers_on_applicant_name"
   add_index "customers", ["application_ref_no"], :name => "index_customers_on_application_ref_no"
+
+  create_table "customers_office_assets", :id => false, :force => true do |t|
+    t.integer "customer_id"
+    t.integer "office_asset_id"
+  end
 
   create_table "departments", :force => true do |t|
     t.string   "name"
