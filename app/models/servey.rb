@@ -17,7 +17,7 @@ class Servey < ActiveRecord::Base
   serialize :name_varified_from
 
 
-
+  belongs_to :tab
   belongs_to :customer
   has_and_belongs_to_many :assets
   has_and_belongs_to_many :address_proofs

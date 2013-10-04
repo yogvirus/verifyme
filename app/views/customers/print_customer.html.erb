@@ -1,0 +1,12 @@
+<%= @print_customer.servey.id %>
+<%= @print_customer.applicant_name  %><br>
+<%= @print_customer.servey.tab.name  %><br>
+<%= @print_customer.servey.address_confirmed?  %><br>
+<%= @print_customer.servey.name_and_stay_confirm? %><br>
+<%= @print_customer.servey.date_of_visit %><br>
+<%= @print_customer.servey.time_of_visit.strftime("%H:%M :%S %P") %><br>
+<%= @print_customer.servey.person_contacted  %><br>
+<%= @print_customer.servey.relation_with_applicant  %><br>
+<%= @print_customer.servey.years_lived_at_current_address  %><br>
+<%= @print_customer.servey.residence_status %><br>
+<%= @print_customer.servey.inspect %>

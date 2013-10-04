@@ -58,6 +58,9 @@
       <%= link_to "Re Assign", re_indicated_customer_path(@customer, :customer_id=>@customer), :class=>"label label-info" %>
     </p>
   <% end %>
+  <b style="float:right">
+    <%= link_to "print customer", print_customer_customer_path(:customer_id => @customer ), :class => "label label-important" %>
+  </b>
 <br><br>
 
 <% if @customer.status=="ready_for_verification" %>

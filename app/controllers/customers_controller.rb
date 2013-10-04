@@ -126,6 +126,10 @@ end
     end
   end
 
+  def print_customer
+    @print_customer = Customer.find(params[:customer_id])
+  end 
+  
  def customer_verification
    @customer = Customer.find(params[:customer_id])  
    @tab = Tab.find(:all) 
