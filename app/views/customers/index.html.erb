@@ -42,7 +42,7 @@
      <% else %>
      <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
      <% end %>    
-     <td><strong><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></strong></td>
+     <td><strong><%= link_to "scorpeo/ #{customer.created_at.to_date}/ #{customer.application_ref_no}", customer %></strong></td>
      <td><%= customer.applicant_name %></td>
      <td><%= customer.address %></td>
      <% if customer.status=='submitted' %>

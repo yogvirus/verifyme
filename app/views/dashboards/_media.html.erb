@@ -1,10 +1,6 @@
 <div class="media">
  <a class="pull-left" href="#">
-  <% unless current_user.profile.photo.blank? %>
-   <p><%= image_tag current_user.profile.photo.url(:thumb), :size=>"64x64" %></p>
-  <% else %>
    <%= image_tag('sample-avatar.png',:size => '64x64')%>
-  <% end %>
  </a>
 
 
@@ -15,7 +11,8 @@
    <h5 class="label label-inverse"> SUPER USER </h5><br>
  <% end %>
    <small style ="color:#6E6E6E"> member since <%= time_tag current_user.created_at %> | </small>
-   <small style ="color:brown"><%= current_user.email %></small>
+   <small style ="color:brown"><%= current_user.email %></small><br>
+   <small style ="color:green"><b>last login:</b><%= time_tag current_user.last_sign_in_at.to_date if current_user.last_sign_in_at %></small>
 <% if current_user.role=="tab_user" %>
    <small><%= link_to current_user.tab.name, current_user.tab, :class=>" label label-info" %> </small>
 <% end %>
