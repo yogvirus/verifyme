@@ -69,10 +69,12 @@ EVerification::Application.routes.draw do
   resources :co_applicant_verifications
   resources :client_verifications
   resources :serveys
+
   resources :customers do
     member do
      post :customer_verification
      get :customer_verification
+     get :print_customer
      post :customer_work_servey_verification
      get :customer_work_servey_verification
      post :accept
