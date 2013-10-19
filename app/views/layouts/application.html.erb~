@@ -7,14 +7,12 @@
     <%= stylesheet_link_tag "application",'datepicker',"bootstrap.css","form", :media => :all %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag 'bootstrap-datepicker' %>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
-
+<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
-    
+
     <style type="text/css">
       body{
-            font-family: 'Ubuntu', sans-serif;
-            font-family: ubuntu;
+font-family: 'Shadows Into Light Two', cursive;
             text-transform: uppercase;
             font-size:11px;
             padding: 60px;
@@ -24,8 +22,8 @@
       .sidebar-nav {
         padding: 9px 0;
       }
-      
-     
+
+
       /* Set the fixed height of the footer here */
       #footer {
 				bottom: 0;
@@ -34,16 +32,6 @@
         background-color: #000;
 				height: 160px;
 	      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
 
 
     </style>
@@ -71,10 +59,10 @@
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
              <% if user_signed_in? %>
-              <%= link_to current_user.email,  :class=>"navbar-link" %> - 
-              <%= link_to "LOGOUT", destroy_user_session_path %>
+              <%= link_to current_user.email,  :class=>"navbar-link" %> -
+              <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
              <% else %>
-               <%= link_to "Login", new_user_session_path %> 
+               <%= link_to "Login", new_user_session_path %>
                <!--<%= link_to "Admin login", "/admin" %>-->
              <% end %>
 

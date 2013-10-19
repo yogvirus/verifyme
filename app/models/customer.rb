@@ -86,8 +86,6 @@ workflow_column :status
   end
  end
 
-
-
 TYPE_OF_RESIDENCE= %w[independence-house multitanent-house temparory-shed bunglow/row-house flat standing-chawl janta-flat-hutment sitting-chawl hostel others]
 
 RESIDENCE_STATUS= %w[ selfowned owned-by-parnets rented company-accomodation paying-guest owned-by-friend owned-by-relative lodging ]

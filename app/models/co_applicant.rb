@@ -1,17 +1,20 @@
 class CoApplicant < ActiveRecord::Base
-  attr_accessible :document_required,:address, :name,:status,
+  attr_accessible :document_required, :address, :name,:status,
                   :pincode_id, :customer_id, :status,
                   :agency_name, :application_ref_no,
                   :fh_code, :applicant_name, :landmark,:application_status,
                   :country_name, :country_state, :country_city
 
   has_one :co_applicant_work_detail
-  has_one :co_applicant_verification
+  has_one :co_applicant_verification, :dependent => :destroy
   belongs_to :customer
   has_one :co_applicant_business
   belongs_to :pincode
   belongs_to :tab
   has_one :co_applicant_servey
+
+  validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
+  validates_uniqueness_of :application_ref_no, :address, :fh_code
 
   has_many :co_applicant_documents
   accepts_nested_attributes_for :co_applicant_documents, :allow_destroy => true

@@ -19,12 +19,23 @@ class BusinessesController < InheritedResources::Base
  def create
   @business = Business.create(params[:business])
 
-   if @business.save
-    redirect_to @business.customer, :notice => "Details Added."
-   else
-    redirect_to @business.customer, :alert => "you must have kept few empty fields or Something went wrong , please contact the administrator!."
- end
- end
+    respond_to do |format|
+      if @business.save
+        format.html { redirect_to @business.customer, notice: 'Business was successfully created.' }
+      else
+        format.html { render @business.customer }
+        format.json { render json: @customer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+   #if @business.save
+   # redirect_to @business.customer, :notice => "Details Added."
+   ##else
+   # redirect_to @business.customer, :alert => "you must have kept few empty fields or Something went wrong , please contact the administrator!."
+ #end
+ #end
 
  def show
   @business = Business.find(params[:id])
