@@ -6,7 +6,7 @@ class Business < ActiveRecord::Base
 
 
  validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
- validates_uniqueness_of :application_ref_no, :address, :fh_code
+ validates_uniqueness_of :application_ref_no, :fh_code
 
  belongs_to :customer, :dependent => :destroy
  belongs_to :pincode

@@ -11,7 +11,7 @@ attr_accessible :address, :agency_name, :applicant_name, :application_ref_no, :c
  belongs_to :department
 
  validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
- validates_uniqueness_of :application_ref_no, :address, :fh_code
+ validates_uniqueness_of :application_ref_no, :fh_code
 
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged

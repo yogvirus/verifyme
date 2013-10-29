@@ -5,7 +5,7 @@ class Customer < ActiveRecord::Base
                   :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
-  validates_uniqueness_of :application_ref_no, :address, :fh_code
+  validates_uniqueness_of :application_ref_no, :fh_code
 
   serialize :asset_seen_at_residence
 
