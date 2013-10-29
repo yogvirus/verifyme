@@ -4,13 +4,12 @@ source 'https://rubygems.org'
   gem 'taps'
   gem 'execjs'
   gem 'heroku'
-  gem 'therubyracer'
   gem 'devise', '3.0.3'
   gem "nested_form"
   gem 'paperclip'
   gem "therubyracer"
   gem 'mysql2'
-  gem "rmagick", "2.13.1" 
+  gem "rmagick", "2.13.1"
   gem "mocha", :group => :test
   gem 'activeadmin'
   gem 'friendly_id'
@@ -20,7 +19,7 @@ source 'https://rubygems.org'
   #gem 'matric_fu'
   gem "cancan"
   gem "best_in_place"
-  gem "macaddr" 
+  gem "macaddr"
   gem 'unicorn'
   gem 'whenever', "~> 0.8.0", :require => false
   gem 'quiet_assets'
@@ -48,5 +47,3 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'coffee-script-source', '~> 1.4.0' # ADD THIS LINE, 1.5.0 doesn't compile ActiveAdmin JavaScript files
 end
-
-
