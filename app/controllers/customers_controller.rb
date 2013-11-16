@@ -14,9 +14,9 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html do # index.html.erb
     		unless @all_custome.kind_of?(Array)
-     			@all_customer = @all_custome.page(params[:page]).per(10)
+     			@all_customer = @all_custome.page(params[:page]).per(25)
 		    else
-			    @all_customer = Kaminari.paginate_array(@all_custome).page(params[:page]).per(10)
+			    @all_customer = Kaminari.paginate_array(@all_custome).page(params[:page]).per(25)
 		    end
       format.json { render json: @all_customer }
       #format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
