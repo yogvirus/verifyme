@@ -14,9 +14,9 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html do # index.html.erb
     		unless @all_custome.kind_of?(Array)
-     			@all_customer = @all_custome.page(params[:page]).per(10)
+     			@all_customer = @all_custome.page(params[:page]).per(25)
 		    else
-			    @all_customer = Kaminari.paginate_array(@all_custome).page(params[:page]).per(10)
+			    @all_customer = Kaminari.paginate_array(@all_custome).page(params[:page]).per(25)
 		    end
       format.json { render json: @all_customer }
       #format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
@@ -29,9 +29,15 @@ class CustomersController < ApplicationController
   end
 end
 
+  def customer_search
+   @start_date = params[:start] || Date.today-5
+   @end_date = params[:end] || Date.today
+   @customer_results = Customer.where("created_at >= ? and created_at <= ?", @start_date, @end_date)
+  end
+
   def cust_residential
    @all_customer = residential
-  end 
+  end
 
   def cust_business
    @all_customer_business = business
@@ -128,11 +134,11 @@ end
 
   def print_customer
     @print_customer = Customer.find(params[:customer_id])
-  end 
-  
+  end
+
  def customer_verification
-   @customer = Customer.find(params[:customer_id])  
-   @tab = Tab.find(:all) 
+   @customer = Customer.find(params[:customer_id])
+   @tab = Tab.find(:all)
    @verification = CustomerVerification.create(params[:customer_verification])
     @verification.user_id = current_user.id
     @verification.customer_id = @customer.id
@@ -147,7 +153,7 @@ end
 
   def customer_work_servey_verification
    @work_servey = WorkServey.find(params[:work_servey_id])
-   @tab = Tab.find(:all) 
+   @tab = Tab.find(:all)
    @verification = WorkServeyVerification.create(params[:work_servey_verification])
 
     @verification.user_id = current_user.id
@@ -166,10 +172,10 @@ end
     @customer.accept!
 
        if @customer.update_attributes(params[:customer])
-         redirect_to root_url, :notice => 'Status was successfully updated.' 
+         redirect_to root_url, :notice => 'Status was successfully updated.'
        else
-         render action: "edit" 
-         render json: @customer.errors, status: :unprocessable_entity 
+         render action: "edit"
+         render json: @customer.errors, status: :unprocessable_entity
        end
   end
 
@@ -178,10 +184,10 @@ end
     @customer.re_indicated!
 
        if @customer.update_attributes(params[:customer])
-         redirect_to root_url, :notice => 'Status was successfully updated.' 
+         redirect_to root_url, :notice => 'Status was successfully updated.'
        else
-         render action: "edit" 
-         render json: @customer.errors, status: :unprocessable_entity 
+         render action: "edit"
+         render json: @customer.errors, status: :unprocessable_entity
      end
   end
 

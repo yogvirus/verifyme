@@ -1,0 +1,17 @@
+<% if current_user.role=="super_user" %>
+<div class="span10" style ="float:right;width:380px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<h1> Online Tabs </h1>
+<table class="table table-condensed">
+ <tr>
+   <td> Tab User </td>
+   <td> Login Time </td>
+ </tr>
+ <tr>
+<% User.where("DATE(current_sign_in_at) = ? and role = ?", Date.today, "tab_user").each do |tab_user| %>
+  <td style ="color:green"><%= tab_user.tab.name %></td>
+  <td><%= tab_user.current_sign_in_at.strftime('%H:%M:%S %P') %></td>
+ </tr>
+<% end %>
+</table>
+<% end %>
+</div>

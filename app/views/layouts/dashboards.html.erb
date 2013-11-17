@@ -22,28 +22,105 @@
       }
        h5{background:black;color:white;}
     </style>
-  </head> 
-<body>
+  </head>
+ <body onload="javascript:setTimeout("location.reload(true);",5000);">
 
 <%= render "navigation" %>
-
 <div class="container-fluid">
- <div class="row-fluid"> 
+
+<div class="span2" style="float:right;width:35%;">
+ <%= render "daily_status", :html=>{:float=>"right"} %>
+</div>
+
+ <div class="row-fluid">
    <%= render "media" %><hr>
-  <div class="span2" style="width:35%;">
-   <%= render "daily_status", :html=>{:float=>"right"} %>
    <% if current_user.role=="tab_user" && current_user.tab %>
    <%= render "residence" %>
    <%= render "business" %>
-   <% end %> 
-  </div>
-
- <div class="span10" style ="width:60%">
-   <% if current_user.role=="super_user" %>
-   <%= render "completed" %>
-   <%= render "pending" %>
-   <%= render "in_progress" %>
    <% end %>
   </div>
+<!--<% if current_user.role=="super_user" %>
+<div class="span10" style ="font-size:10px;float:right;width:380px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<h5 style ="padding-left:130px;"> Online Tabs </h5>
+<table class="table table-condensed">
+ <tr>
+   <td> Tab User </td>
+   <td> Login Time </td>
+   <td> Logout Time </td>
+   <td> Tatal Time </td>
+ </tr>
+ <tr>
+<% Attendence.where(login_date: Date.today).each do |a|  %>
+  <td style ="color:green"><%= a.user.tab.name %></td>
+  <td><%= a.login_time.strftime("at %H:%M%p") %></td>
+  <td><%= a.logout_time.strftime("at %H:%M%p") if a.logout_time %></td>
+  <td><%= distance_of_time_in_words(a.login_time, a.logout_time) if a.logout_time %></td>
+ </tr>
+<% end %>
+</table>
+<% end %>
+</div>-->
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<%= javascript_include_tag "bootstrap-datepicker.js" %></script>
+<script type="text/javascript">
+$(function() {
+    $('.datepicker').datepicker({
+    format: 'mm-dd-yyyy',
+    weekStart: 1,
+});
+</script>
+
+<%= form_for :search_path, :method => :get do |f| %>
+<div class ="row">
+  <div class="field_name">
+  <%= label_tag :'Choose Start Date' %>
+  <%= text_field_tag :start_date, '', :class=> "datepicker", :value => @start_date %>
+  </div>
+  <div class="field_name">
+  <%= label_tag :'Choose End Date' %>
+  <%= text_field_tag :end_date, '', :class => "datepicker", :value => @end_date %>
+  </div><br><br>
+  <div class="field_name">
+  <%= f.submit "Search", :class =>"btn" %>
+  </div>
+  </div>
+<% end %>
+
+
+<div class="span10" style ="font-size:10px;width:580px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<h5> Todays Activity - all records</h5>
+   <%= render "todays_activity" %>
+</div>
+
+<div class="span10" style ="float:right;font-size:10px;width:380px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<table class="table table-condensed" style ="width:700px;">
+   <% Tab.find(:all).each do |t| %>
+    <tr>
+      <td><h5 style ="text-align:center"><%= t.name %></h5></td>
+    </tr>
+    <tr>
+      <td> Application Status </td>
+      <td> Applicant name </td>
+    </tr>
+
+        <% t.customer_verifications.where("created_at::date = ?", Date.today - 4).each do |c| %>
+          <tr>
+            <td style="color:#009999;border-radius:3px;padding:2px;"><%= c.customer.application_status %></td>
+            <td><%= c.customer.applicant_name %></td>
+          </tr>
+     <% end %>
+   <% end %>
+</table>
+
+</div>
+   <%# if current_user.role=="super_user" %>
+   <%#= render "completed" %>
+   <%#= render "pending" %>
+   <%#= render "in_progress" %>
+   <%# end %>
+  </div>
+<hr>
+
  </div>
 </div>

@@ -1,0 +1,27 @@
+<h5> List of customers from <u><%= params[:start] %></u> to <u><%= params[:end] %></u></h5><br>
+<table class="table table-condensed">
+ <tr>
+   <td> Application Status </td>
+   <td> Customer Name </td>
+   <td> Status </td>
+ </tr>
+<% @customer_results.each do |customer| %>
+ <tr>
+  <td style="color:#009999;border-radius:3px;padding:2px;"><%= customer.application_status %></td>
+  <td><%= link_to customer.applicant_name, customer %></td>
+     <% if customer.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if customer.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if customer.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if customer.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+ </tr>
+<% end %>
+</table>

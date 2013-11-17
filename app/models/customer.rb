@@ -41,17 +41,6 @@ class Customer < ActiveRecord::Base
    [address, country_state, country_city, country_name].compact.join(', ')
   end
 
-
-
-def self.search(search)
-  if search
-    find(:all, :conditions => ['applicant_name LIKE ?', "%#{search}%"])
-  else
-    find(:all)
-  end
-end
-
-
   include Workflow
 
 workflow_column :status

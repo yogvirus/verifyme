@@ -92,7 +92,7 @@ module ApplicationHelper
   end
 
   def total_pending
-  pending_customer.count + pending_business.count + pending_co_applicant.count + pending_co_applicant_business.count
+    pending_customer.count + pending_business.count + pending_co_applicant.count + pending_co_applicant_business.count
   end
 
   def total_in_progress

@@ -19,7 +19,7 @@ EVerification::Application.routes.draw do
 
   get "co_applicant_businesses/index"
   get "reports/to_excel" => "reports#to_excel", :as => :excel
-
+  get "customers/search_results" => "customers#customer_search", :as => :search
   get "dashboards/index"
   get "headshot_demo/index"
   get "customers/cust_residential"
@@ -29,7 +29,7 @@ EVerification::Application.routes.draw do
   get "customers/cust_completed"
   post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
 
-  resources :searches
+  #resources :searches
   resources :work_serveys
   resources :webcam_pictures
   resources :customers
