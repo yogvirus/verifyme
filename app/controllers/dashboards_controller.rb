@@ -13,7 +13,7 @@ class DashboardsController < ApplicationController
    @my_pending_3 = tab_co_applicant_verification_pending
    @my_pending_4 = tab_co_applicant_business_pending
    @start_date = params[:start_date] || Date.today-5
-   @end_date = params[:end_date] || Date.today
+   @end_date = params[:end_date] || Date.today+1
    if params[:start_date] && params[:end_date]
      redirect_to search_path(:start => params[:start_date], :end => params[:end_date])
    end
