@@ -13,10 +13,11 @@ EVerification::Application.routes.draw do
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
 
   resources :reports do
+   get :generated_report
    get :generate_report
   end
   resources :co_applicant_serveys
-
+  get "reports/show"
   get "co_applicant_businesses/index"
   get "reports/to_excel" => "reports#to_excel", :as => :excel
   get "customers/search_results" => "customers#customer_search", :as => :search

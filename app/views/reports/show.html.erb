@@ -1,27 +1,3 @@
-
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<%= javascript_include_tag "bootstrap-datepicker.js" %></script>
-<script type="text/javascript">
-$(function() {
-    $('.datepicker').datepicker({
-    format: 'mm-dd-yyyy',
-    weekStart: 1,
-});
-</script>
-
-<%= form_for :reports_path, :method => :get do |f| %>
-<div class ="row">
-  <div class="field_name">
-  <%= label_tag :'Choose Start Date' %>
-  <%= text_field_tag :start_date, '', :class=> "datepicker", :value => @start_date %>
-</div>
-  <div class="field_name">
-  <%= label_tag :'Choose End Date' %>
-  <%= text_field_tag :end_date, '', :class => "datepicker", :value => @end_date %>
-</div><br><Br><br><br>
-<%= f.submit "Generate Report", :class =>"btn btn-info" %>
-</div>
-<% end %>
 <hr>
 <% if @customers.nil? %>
  <% else %>
@@ -29,7 +5,7 @@ $(function() {
 <p>
   <strong>
    <b style="font-size:20px">Report from <%= params[:start_date] %> to <%= params[:end_date] %></b> |
-  <%= link_to "Download this Report", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
+   <%= link_to "Download this Report", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: "xls") %>
   </strong>
 </p>
 
@@ -37,7 +13,6 @@ $(function() {
 <table class="table">
   <thead>
   <tr>
-   <th colspan="6"> Status </th>
    <th colspan="6"> Customer_detail </th>
    <th colspan="4"> Business Detail </th>
    <th colspan="5"> Co applicant Detail</th>
@@ -78,7 +53,6 @@ $(function() {
  <% @customers.each do |d| %>
   <tbody>
   <tr>
-   <td><%= d.application_status %></td>
    <td style = "color:blue;text-align:left;padding-left:10px;"><b><%= d.applicant_name %></b></td>
    <td><%= d.fh_code %></td>
    <td><%= d.address %></th>
