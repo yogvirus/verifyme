@@ -27,10 +27,10 @@ source 'https://rubygems.org'
   gem 'kaminari'
   gem 'capistrano'
   gem 'pg'
-  gem 'to_xls', '~> 1.0.0'
+#  gem 'to_xls', '~> 1.0.0'
   gem 'carrierwave'
   gem 'jquery-rails', '~> 2.3.0'
-
+gem 'to_spreadsheet'
 group :development do
    gem 'pg'
    gem 'thin'
