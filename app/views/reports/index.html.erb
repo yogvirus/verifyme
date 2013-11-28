@@ -34,77 +34,127 @@ $(function() {
 </p>
 
 
+<div id="reports" style ="background:#fff;width:1200px;padding:10px;border-radius:5px;border:0px solid #000000;text-align:center">
 
-<div id="reports" style ="background:#fff;width:2800px;padding:0px;border-radius:5px;border:0px solid #000000;text-align:center">
-
-<table class="table table-condensed">
- <h3 style= "font-size:18px;float:left;color:#F0F"> <u>Residential</u> </h3><br><br>
-  <thead>
-  <tr>
-   <th> Applicant Name </th>
-   <th> FH Code </th>
+<table class="table" border>
+<h3 style= "font-size:18px;float:left;color:#F0F"> <u>Residential</u> </h3><br><br>
+<thead>
+<tr>
+   <th style = "width:160px;text-align:left;padding-left:10px;"> Applicants Name </th>
    <th> Address </th>
-   <th> Status </th>
+   <th style="width:10%"> Visit time </th>
+   <th style="width:10%"> status </th>
+   <th> Person Contacted </th>
+   <th> Relationship with applicant </th>
+   <th> Date Of Birth </th>
+   <th> Years Lived at current address </th>
+   <th> Residential Status </th>
+   <th> Education Qualification </th>
+   <th> Family Members </th>
+   <th> Verifiers Remark </th>
   </tr>
   </thead>
- <% @customers.each do |d| %>
+  <% @customers.each do |d| %>
   <tbody>
-  <tr>
-   <% if d.application_status == 'RESIDENTIAL' %>
-   <td style = "color:blue;text-align:left;padding-left:10px;"><b><%= d.applicant_name %></b></td>
-   <td><%= d.fh_code %></td>
-   <td><%= d.address %></th>
-   <% if d.status=='submitted' %>
-   <td><b>Pending</b></i></td>
-   <% end %>
-   <% if d.status=='awaiting_to_get_verified' %>
-   <td><b>In Progress</b></i></td>
-   <% end %>
-   <% if d.status=='ready_for_verification' %>
-    <td><b> not given </b></i></td>
-   <% end %>
-   <% if d.status=='verified' %>
-   <td><b>Done</b></i></td>
-   <% end %>
+   <tr>
+    <td><%= d.customer.applicant_name %></td>
+    <td><%= d.customer.address %></td>
+    <td><%= time_tag d.date_of_visit %> / <%= (d.time_of_visit).strftime("%I:%M %P") %></td>
+    <td><%= d.customer.status %></td>
+    <td><%= d.person_contacted %></td>
+    <td><%= d.relation_with_applicant %></td>
+    <td><%= d.date_of_birth %></td>
+    <td><%= d.years_lived_at_current_address %></td>
+    <td><%= d.residence_status %></td>
+    <td><%= d.educational_qualification %></td>
+    <td><%= d.no_of_family_members %></td>
+    <td><%= d.verifiers_remark %></td>
    </tr>
-   <% end %>
-   </tbody>
- <% end  %>
+  <% end %>
+  <% @customers.each do |d| %>
+   <tr>
+    <% if d.customer.co_applicant %>
+    <td><%= d.customer.co_applicant.applicant_name %></td>
+    <td><%= d.customer.co_applicant.address %></td>
+    <td><%= time_tag d.customer.co_applicant.co_applicant_servey.date_of_visit %> /
+        <%= (d.customer.co_applicant.co_applicant_servey.time_of_visit).strftime("%I:%M %P") %></td>
+    <td><%= d.customer.co_applicant.status %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.person_contacted %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.relation_with_applicant %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.date_of_birth %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.years_lived_at_current_address %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.residence_status %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.educational_qualification %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.no_of_family_members %></td>
+    <td><%= d.customer.co_applicant.co_applicant_servey.verifiers_remark %></td>
+    </tr>
+    <% end %>
+  <% end %>
 </table>
+</div>
 
-<table class="table table-condensed">
- <h3 style= "font-size:18px;float:left;color:#F0F"> <u>Business</u> </h3><br><br>
-  <thead>
-  <tr>
-   <th> Applicant Name </th>
-   <th> FH Code </th>
+
+
+<div id="reports" style ="background:#fff;width:1200px;padding:10px;border-radius:5px;border:0px solid #000000;text-align:center">
+<table class="table table-condensed" border>
+ <h3 style= "font-size:18px;float:left;color:#F0F"> <u>BUSINESS</u> </h3><br><br>
+<thead>
+<tr>
+   <th style = "width:160px;text-align:left;padding-left:10px;"> Applicants Name </th>
    <th> Address </th>
-   <th> Status </th>
+   <th style="width:10%"> Visit time </th>
+   <th style="width:10%"> status </th>
+   <th> Person Contacted </th>
+   <th> Relationship with applicant </th>
+   <th> Date Of Birth </th>
+   <th> Years Lived at current address </th>
+   <th> Residential Status </th>
+   <th> Education Qualification </th>
+   <th> Family Members </th>
+   <th> Verifiers Remark </th>
   </tr>
   </thead>
- <% @customers.each do |d| %>
+  <% @customers.each do |d| %>
+  <% if d.customer.business %>
   <tbody>
-  <tr>
-   <% if d.application_status == 'BUSINESS' %>
-   <td style = "color:blue;text-align:left;padding-left:10px;"><b><%= d.applicant_name %></b></td>
-   <td><%= d.fh_code %></td>
-   <td><%= d.address %></th>
-   <% if d.status=='submitted' %>
-   <td><b>Pending</b></i></td>
-   <% end %>
-   <% if d.status=='awaiting_to_get_verified' %>
-   <td><b>In Progress</b></i></td>
-   <% end %>
-   <% if d.status=='ready_for_verification' %>
-    <td><b> not given </b></i></td>
-   <% end %>
-   <% if d.status=='verified' %>
-   <td><b>Done</b></i></td>
-   <% end %>
+   <tr>
+    <td><%= d.customer.business.applicant_name %></td>
+    <td><%= d.customer.business.address %></td>
+    <td><%= time_tag d.date_of_visit %> / <%= (d.time_of_visit).strftime("%I:%M %P") %></td>
+    <td><%= d.customer.business.status %></td>
+    <td><%= d.person_contacted %></td>
+    <td><%= d.relation_with_applicant %></td>
+    <td><%= d.date_of_birth %></td>
+    <td><%= d.years_lived_at_current_address %></td>
+    <td><%= d.residence_status %></td>
+    <td><%= d.educational_qualification %></td>
+    <td><%= d.no_of_family_members %></td>
+    <td><%= d.verifiers_remark %></td>
    </tr>
-   <% end %>
-   </tbody>
- <% end  %>
+  <% end %>
+  <% end %>
+  <% @customers.each do |d| %>
+   <tr>
+    <% if d.customer.co_applicant_business %>
+    <td><%= d.customer.co_applicant.applicant_name %></td>
+    <td><%= d.customer.co_applicant.address %></td>
+    <td><%= time_tag d.date_of_visit %> / <%= (d.time_of_visit).strftime("%I:%M %P") %></td>
+    <td><%= d.customer.co_applicant.status %></td>
+    <td><%= d.person_contacted %></td>
+    <td><%= d.relation_with_applicant %></td>
+    <td><%= d.date_of_birth %></td>
+    <td><%= d.years_lived_at_current_address %></td>
+    <td><%= d.residence_status %></td>
+    <td><%= d.educational_qualification %></td>
+    <td><%= d.no_of_family_members %></td>
+    <td><%= d.verifiers_remark %></td>
+    </tr>
+    <% end %>
+  <% end %>
 </table>
+</div>
+
+
+
 
 <% end %>
