@@ -36,7 +36,7 @@ $(function() {
 
 <div id="reports" style ="background:#fff;width:1200px;padding:10px;border-radius:5px;border:0px solid #000000;text-align:center">
 
-<table class="table" border>
+<table class="table">
 <h3 style= "font-size:18px;float:left;color:#F0F"> <u>Residential</u> </h3><br><br>
 <thead>
 <tr>
@@ -73,11 +73,11 @@ $(function() {
   <% end %>
   <% @customers.each do |d| %>
    <tr>
-    <% if d.customer.co_applicant %>
+    <% if d.customer.co_applicant && d.customer.co_applicant.co_applicant_servey %>
     <td><%= d.customer.co_applicant.applicant_name %></td>
     <td><%= d.customer.co_applicant.address %></td>
-    <td><%= time_tag d.customer.co_applicant.co_applicant_servey.date_of_visit %> /
-        <%= (d.customer.co_applicant.co_applicant_servey.time_of_visit).strftime("%I:%M %P") %></td>
+    <td><%= time_tag d.customer.co_applicant.co_applicant_servey.date_of_visit if d.customer.co_applicant.co_applicant_servey %> /
+        <%= (d.customer.co_applicant.co_applicant_servey.time_of_visit).strftime("%I:%M %P") if d.customer.co_applicant.co_applicant_servey %></td>
     <td><%= d.customer.co_applicant.status %></td>
     <td><%= d.customer.co_applicant.co_applicant_servey.person_contacted %></td>
     <td><%= d.customer.co_applicant.co_applicant_servey.relation_with_applicant %></td>
@@ -96,7 +96,7 @@ $(function() {
 
 
 <div id="reports" style ="background:#fff;width:1200px;padding:10px;border-radius:5px;border:0px solid #000000;text-align:center">
-<table class="table table-condensed" border>
+<table class="table table-condensed">
  <h3 style= "font-size:18px;float:left;color:#F0F"> <u>BUSINESS</u> </h3><br><br>
 <thead>
 <tr>

@@ -73,7 +73,7 @@ $(function() {
     weekStart: 1,
 });
 </script>
-
+<% if current_user.role=="super_user" %>
 <%= form_for :search_path, :method => :get do |f| %>
 <div class ="row">
   <div class="field_name">
@@ -89,7 +89,6 @@ $(function() {
   </div>
   </div>
 <% end %>
-
 
 <div class="span10" style ="font-size:10px;width:580px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <h5> Todays Activity - all records</h5>
@@ -115,7 +114,7 @@ $(function() {
      <% end %>
    <% end %>
 </table>
-
+<% end %>
 </div>
    <%# if current_user.role=="super_user" %>
    <%#= render "completed" %>

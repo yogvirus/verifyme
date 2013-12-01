@@ -1,7 +1,7 @@
 
 <table class="table table-striped">
   <% ClientVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC').each do |c| %>
- <tr><% if c.co_applicant_business.status=="submitted" %>
+ <tr><% if c.co_applicant_business && c.co_applicant_business.status=="submitted" %>
   <td><strong><%= c.co_applicant_business.applicant_name %></strong>&nbsp;&nbsp;&nbsp;&nbsp;
      <% time1 = Time.now %> <% time2 = c.created_at %>
      <p>
