@@ -75,30 +75,28 @@ workflow_column :status
   end
  end
 
-TYPE_OF_RESIDENCE= %w[independence-house multitanent-house temparory-shed bunglow/row-house flat standing-chawl janta-flat-hutment sitting-chawl hostel others]
+	TYPE_OF_RESIDENCE= %w[independence-house multitanent-house temparory-shed bunglow/row-house flat standing-chawl janta-flat-hutment sitting-chawl hostel others]
+	RESIDENCE_STATUS= %w[ selfowned owned-by-parnets rented company-accomodation paying-guest owned-by-friend owned-by-relative lodging ]
+	EDUCATIONAL_QUALIFICATION = %w[professional post_graduate graduate undergraduate others]
+	MARTIAL_STATUS= %w[single married divorced]
+	BEHAVIOUR = %w[ polite rude]
+	NEIGHBOUR_REFERENCE = %w[positive negative]
+	NAME_VERIFIED = %w[ name-plate watchman neighbour society-board company-board]
+	RESIDENCE_LOCALITY = %w[posh_locality village_area upper_middle_class lower_middle_class slums others ]
+	EASE_OF_LOCATION = %w[easy difficult unreachable]
+	ASSET_SEEN = %w[car two_Wheeler aircon television refrigerator music_system pc]
+	INTERIORS = %w[sofa clean painted carpeted curtains]
+	EXTERIORS = %w[fenced/compaund-wall elevator others]
+	CONSTRUCTION = %w[ pukka semi-pukka temperory carpark garden security building-wall]
 
-RESIDENCE_STATUS= %w[ selfowned owned-by-parnets rented company-accomodation paying-guest owned-by-friend owned-by-relative lodging ]
 
-EDUCATIONAL_QUALIFICATION = %w[professional post_graduate graduate undergraduate others]
+	def self.search(search)
+		if search
+			where('applicant_name LIKE ?', "%#{search}%")
+		else
+			scoped
+		end
+	end
 
-MARTIAL_STATUS= %w[single married divorced]
-
-BEHAVIOUR = %w[ polite rude]
-
-NEIGHBOUR_REFERENCE = %w[positive negative]
-
-NAME_VERIFIED = %w[ name-plate watchman neighbour society-board company-board]
-
-RESIDENCE_LOCALITY = %w[posh_locality village_area upper_middle_class lower_middle_class slums others ]
-
-EASE_OF_LOCATION = %w[easy difficult unreachable]
-
-ASSET_SEEN = %w[car two_Wheeler aircon television refrigerator music_system pc]
-
-INTERIORS = %w[sofa clean painted carpeted curtains]
-
-EXTERIORS = %w[fenced/compaund-wall elevator others]
-
-CONSTRUCTION = %w[ pukka semi-pukka temperory carpark garden security building-wall]
 
 end

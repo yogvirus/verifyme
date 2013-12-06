@@ -29,6 +29,10 @@ class CustomersController < ApplicationController
   end
 end
 
+  def search
+    @customer_search = Customer.order(:id).search(params[:search])
+  end
+
   def customer_search
    @start_date = params[:start] || Date.today-5
    @end_date = params[:end] || Date.today

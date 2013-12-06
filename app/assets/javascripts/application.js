@@ -12,9 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.purr
-//= require jquery.purr
-//= require jquery-ui
+//= require dataTables/jquery.dataTables
 //= require bootstrap-datepicker
 //= require jquery_nested_form
 //= require_tree .
