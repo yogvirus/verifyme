@@ -73,29 +73,44 @@ $(function() {
     weekStart: 1,
 });
 </script>
+<div class="search" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <% if current_user.role=="super_user" %>
 <%= form_for :search_path, :method => :get do |f| %>
 <div class ="row">
-  <div class="field_name">
-  <%= label_tag :'Choose Start Date' %>
-  <%= text_field_tag :start_date, '', :class=> "datepicker", :value => @start_date %>
-  </div>
-  <div class="field_name">
-  <%= label_tag :'Choose End Date' %>
-  <%= text_field_tag :end_date, '', :class => "datepicker", :value => @end_date %>
-  </div><br><br>
-  <div class="field_name">
-  <%= f.submit "Search", :class =>"btn" %>
-  </div>
-  </div>
-<% end %>
+<style>
+input[type=submit] {
+	font-size:10px;
+  margin-top:31px;
+  padding: 7px;
+  font-weight:bold;
+}
+</style>
 
-<div class="span10" style ="font-size:10px;width:580px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+  <div class="field_name">
+    <%= label_tag :'Choose Start Date' %>
+    <%= text_field_tag :start_date, params[:start_date], :class=> "datepicker", :value => @start_date %>
+  </div>
+
+  <div class="field_name">
+    <%= label_tag :'Choose End Date' %>
+    <%= text_field_tag :end_date, params[:end_date], :class => "datepicker", :value => @end_date %>
+  </div>
+
+  <div class="field_name">
+    <%= submit_tag "Find Customer", :class =>"btn btn-primary" %>
+  </div>
+
+</div>
+<% end %>
+</div>
+<hr>
+
+<div class="span" style ="font-size:10px;width:580px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <h5> Todays Activity - all records</h5>
    <%= render "todays_activity" %>
 </div>
 
-<div class="span10" style ="float:right;font-size:10px;width:380px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<div class="span" style ="float:right;font-size:10px;width:380px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <table class="table table-condensed" style ="width:700px;">
    <% Tab.find(:all).each do |t| %>
     <tr>
@@ -122,7 +137,6 @@ $(function() {
    <%#= render "in_progress" %>
    <%# end %>
   </div>
-<hr>
 
  </div>
 </div>

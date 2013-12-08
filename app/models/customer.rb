@@ -92,7 +92,7 @@ workflow_column :status
 
 	def self.search(search)
 		if search
-			where('applicant_name LIKE ?', "%#{search}%")
+			where('applicant_name iLIKE ?', "%#{search}%")
 		else
 			scoped
 		end

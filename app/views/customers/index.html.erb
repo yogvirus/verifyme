@@ -1,9 +1,29 @@
-<%= form_tag customer_search_path, :method => 'get', :id => 'messages_search' do %>
-  <p>
-    <%= text_field_tag :search, params[:search], :placeholder => "Search here" %>
-    <%= submit_tag 'Search', :body => nil %>
-</p>
- <% end %>
+<style>
+input[type=text] {
+	font-size:9px;
+}
+input[type=submit] {
+	font-size:14px;
+  margin-top:13px;
+}
+.input-mysize { width: 150px }
+</style>
+
+<%= form_tag customer_search_path, :method => 'get' do %>
+<div class="topic_form" style="float:right;display: block; ">
+<table>
+ <tr>
+  <td>
+   Search Customer :<br>
+   <%= text_field_tag :search, params[:search], :class=>"span6 input-xxlarge input-large" %>
+  </td>
+  <td>
+    <%= submit_tag 'Search', :class=>"btn btn-primary" %>
+  </td>
+ </tr>
+</table>
+</div>
+<% end %>
 
 
 <div id="residential">
@@ -14,7 +34,7 @@
                 <%= link_to "in progress" , customers_cust_in_progress_path %> |
                 <%= link_to "completed" , customers_cust_completed_path %>
 </b>
-</div>
+</div><br>
 <%- model_class = Customer -%>
 
 <div class="page-header">
@@ -23,14 +43,13 @@
 				<%= link_to "Business", businesses_path(format: "xlsx") %> |
 				<%= link_to "Co-applicants", co_applicants_path(format: "xlsx") %> |
 				<%= link_to "Co-applicants Business", co_applicant_businesses_path(format: "xlsx") %>-->
-</h5>
-<b><%= link_to "Add Customer",
-            new_customer_path,
-            :class=>"btn btn-primary btn-small", :style=>"margin-right:150px;float:right" %></b><br><br></h5>
+<!--</h5>-->
+
+<br><br>
 </div>
-
-
-<table class="table">
+<%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-right:150px;" %>
+<b style="float:right"><%= paginate @all_customer %></b>
+<table class="table table-condensed">
  <thead>
   <tr>
     <th>Status </th>
@@ -82,5 +101,5 @@
 </table>
 
 
-  <h4><%= paginate @all_customer %></h4>
+<h6  style ="float:right"><%= paginate @all_customer %></h6>
 <br />
