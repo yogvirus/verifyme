@@ -30,7 +30,14 @@ class CustomersController < ApplicationController
 end
 
   def search
-    @customer_search = Customer.order(:id).search(params[:search])
+    @business = Business.all
+    @co_applicants = CoApplicant.all
+    @co_app_business = CoApplicantBusiness.all
+    @customers = Customer.all
+   # @customer_search = Customer.order(:id).search(params[:search])
+    #@customer_search = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse.search(params[:search])
+@customer_search = (@business + @co_applicants + @co_app_business + @customers).find.(:applicant_name, 'iLIKE', "%#{search}%")
+
   end
 
   def customer_search

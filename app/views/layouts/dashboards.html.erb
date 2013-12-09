@@ -5,13 +5,10 @@
   <title>e-verification</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application",'bootstrap-datepicker' %>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
       <style type="text/css">
-     @import url(bootstrap.css);
-     @import url(bootstrap-responsive.css);
-
       body {
         text-transform: uppercase;
         font-family: 'Ubuntu', sans-serif;
@@ -26,7 +23,7 @@
        h5{background:black;color:white;}
     </style>
   </head>
- <body onload="javascript:setTimeout("location.reload(true);",5000);">
+ <body>
 
 <%= render "navigation" %>
 <div class="container-fluid">
@@ -73,10 +70,7 @@ $(function() {
     weekStart: 1,
 });
 </script>
-<div class="search" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;" >
-<% if current_user.role=="super_user" %>
-<%= form_for :search_path, :method => :get do |f| %>
-<div class ="row">
+
 <style>
 input[type=submit] {
 	font-size:10px;
@@ -86,6 +80,10 @@ input[type=submit] {
 }
 </style>
 
+<div class="search" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<% if current_user.role=="super_user" %>
+<%= form_for :search_path, :method => :get do |f| %>
+<div class ="row">
   <div class="field_name">
     <%= label_tag :'Choose Start Date' %>
     <%= text_field_tag :start_date, params[:start_date], :class=> "datepicker", :value => @start_date %>

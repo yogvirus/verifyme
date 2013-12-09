@@ -5,13 +5,20 @@
    <strong>in progress </strong> &nbsp;&nbsp; <in_progress><%= @total_in_progress %></in_progress> &nbsp;&nbsp;
    <strong>Completed </strong> &nbsp;&nbsp; <complete><%= @total_completed %></complete><br><br>
 
+
+
+
+
+
   <div class="well" style ="padding:20px;width:150px;">
 	   <table><% Tab.all.each do |t| %>
-	    <tr><td><%= link_to t.name, tab_tab_status_path(:tab_id => t ) %> &nbsp;&nbsp;&nbsp;</td>
-	    <td><%= (BusinessVerification.find_all_by_tab_id(t).count+
+	    <tr>
+	      <td><%= link_to t.name, tab_tab_status_path(:tab_id => t ) %> &nbsp;&nbsp;&nbsp;</td>
+	      <td><%= (BusinessVerification.find_all_by_tab_id(t).count+
 	            ClientVerification.find_all_by_tab_id(t).count+
 	            CustomerVerification.find_all_by_tab_id(t).count+
-	            CoApplicantVerification.find_all_by_tab_id(t).count) %></td></tr>
+	            CoApplicantVerification.find_all_by_tab_id(t).count) %></td>
+	    </tr>
 	   <% end %></table>
    <% end %>
   </div>
