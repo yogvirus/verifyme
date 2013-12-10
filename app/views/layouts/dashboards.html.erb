@@ -79,7 +79,7 @@ input[type=submit] {
   font-weight:bold;
 }
 </style>
-
+<% if current_user.admin? %>
 <div class="search" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <% if current_user.role=="super_user" %>
 <%= form_for :search_path, :method => :get do |f| %>
@@ -102,7 +102,7 @@ input[type=submit] {
 <% end %>
 </div>
 <hr>
-
+<% end %>
 <div class="span" style ="font-size:10px;width:580px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <h5> Todays Activity - all records</h5>
    <%= render "todays_activity" %>

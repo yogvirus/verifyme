@@ -1,15 +1,15 @@
-<div class="span4" style ="width:500px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<div class="span4" style ="width:600px;float:right;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
  <h5>Business verification</h5>
 <table class="table table-striped">
   <% BusinessVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC').each do |c| %>
  <tr><% if c.business.status=="submitted" %>
   <td><strong><%= c.business.customer.applicant_name %></strong>&nbsp;&nbsp;&nbsp;&nbsp;
      <% time1 = Time.now %> <% time2 = c.created_at %>
-     <p>
       <small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
           <%= distance_of_time_in_words(time1, time2) %> ago <br>
-          <%= c.business.address %>
       </small>
+     <p style ="color:silver;font-size:11px;">
+          <%= c.business.address %>
      </p>
   </td>
   <td><%= link_to "Verify",new_work_servey_path(:customer_business_id => c.business.id, :tab_id => current_user.tab.id), :class=>"label label-info" %></td>
@@ -17,5 +17,3 @@
   <% end %></tr></table>
  <%= render "co_applicant_business" %>
 </div>
-
-
