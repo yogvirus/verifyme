@@ -28,7 +28,7 @@
 <% co_app_business_list.each do |e| %>
   <tr>
     <td style="color:#CC0066;border-radius:3px;padding:2px;"><%= e.co_applicant_business.application_status %></td>
-    <td><%= link_to e.co_applicant_business.co_applicant.applicant_name, e.co_applicant_business %></td>
+    <td><%= link_to e.co_applicant_business.customer.co_applicant.applicant_name, e.co_applicant_business %></td>
      <td><%= e.tab.name %></td>
   </tr>
 <% end %>
