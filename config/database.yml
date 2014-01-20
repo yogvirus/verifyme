@@ -3,20 +3,20 @@ development:
     adapter: postgresql
     host: localhost
     database: e-verification_development
-    username: postgres
-    password: safew
+    username: desidime
+    password: desidime123
 
 test:
     adapter: postgresql
     host: localhost
     database: e-verification_test
-    username: postgres
-    password: safew
+    username: desidime
+    password: desidime123
 
 production:
     adapter: postgresql
     host: localhost
     database: e-verification_production
-    username: postgres
-    password: safew
+    username: desidime
+    password: desidime123
     reconnect: true
