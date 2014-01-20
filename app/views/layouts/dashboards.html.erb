@@ -103,12 +103,12 @@ input[type=submit] {
 </div>
 <hr>
 <% end %>
-<div class="span" style ="font-size:10px;width:580px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<div class="span" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
 <h5> Todays Activity - all records</h5>
    <%= render "todays_activity" %>
 </div>
 
-<div class="span" style ="float:right;font-size:10px;width:380px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<div class="span" style ="float:right;font-size:10px;width:470px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <table class="table table-condensed" style ="width:700px;">
    <% Tab.find(:all).each do |t| %>
     <tr>
