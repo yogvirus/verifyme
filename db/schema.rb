@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131117062235) do
+ActiveRecord::Schema.define(:version => 20140116120857) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20131117062235) do
     t.string   "pan_number"
     t.string   "emp_code"
     t.integer  "department_id"
+    t.string   "message"
   end
 
   add_index "businesses", ["applicant_name"], :name => "index_businesses_on_applicant_name", :unique => true
@@ -193,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20131117062235) do
     t.string   "pan_number"
     t.string   "emp_code"
     t.integer  "department_id"
+    t.string   "message"
   end
 
   create_table "co_applicant_documents", :force => true do |t|
@@ -354,6 +356,7 @@ ActiveRecord::Schema.define(:version => 20131117062235) do
     t.integer  "pincode_id"
     t.string   "state"
     t.date     "d_o_b"
+    t.string   "message"
   end
 
   create_table "customer_documents", :force => true do |t|
@@ -400,6 +403,7 @@ ActiveRecord::Schema.define(:version => 20131117062235) do
     t.string   "snapshot"
     t.string   "application_status"
     t.boolean  "photo_required"
+    t.string   "message"
   end
 
   add_index "customers", ["address"], :name => "index_customers_on_address"
@@ -618,6 +622,7 @@ ActiveRecord::Schema.define(:version => 20131117062235) do
     t.string   "status"
     t.integer  "tab_id"
     t.string   "company_name_new"
+    t.integer  "department_id"
   end
 
 end

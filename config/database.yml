@@ -3,20 +3,35 @@ development:
     adapter: postgresql
     host: localhost
     database: e-verification_development
+<<<<<<< HEAD
     username: postgres
     password: scorp
+=======
+    username: desidime
+    password: desidime123
+>>>>>>> 18d8d9c6ebf5b9db0f9ccc8b051f007015ac927d
 
 test:
     adapter: postgresql
     host: localhost
     database: e-verification_test
+<<<<<<< HEAD
     username: postgres
     password: scorp
+=======
+    username: desidime
+    password: desidime123
+>>>>>>> 18d8d9c6ebf5b9db0f9ccc8b051f007015ac927d
 
 production:
     adapter: postgresql
     host: localhost
     database: e-verification_production
+<<<<<<< HEAD
     username: postgres
     password: scorp
+=======
+    username: desidime
+    password: desidime123
+>>>>>>> 18d8d9c6ebf5b9db0f9ccc8b051f007015ac927d
     reconnect: true
