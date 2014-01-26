@@ -81,28 +81,11 @@ input[type=submit] {
 </style>
 <% if current_user.admin? %>
 <div class="search" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;" >
-<% if current_user.role=="super_user" %>
-<%= form_for :search_path, :method => :get do |f| %>
-<div class ="row">
-  <div class="field_name">
-    <%= label_tag :'Choose Start Date' %>
-    <%= text_field_tag :start_date, params[:start_date], :class=> "datepicker", :value => @start_date %>
-  </div>
-
-  <div class="field_name">
-    <%= label_tag :'Choose End Date' %>
-    <%= text_field_tag :end_date, params[:end_date], :class => "datepicker", :value => @end_date %>
-  </div>
-
-  <div class="field_name">
-    <%= submit_tag "Find Customer", :class =>"btn btn-primary" %>
-  </div>
-
+  Today Custiomer created : <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> | 
+  Cpmpleted: <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> |
+  Pending : <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> |
+  Progress : <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> |
 </div>
-<% end %>
-</div>
-<hr>
-<% end %>
 <div class="span" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
 <h5> Todays Activity - all records</h5>
    <%= render "todays_activity" %>

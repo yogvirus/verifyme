@@ -82,6 +82,7 @@
 
  <% @co_applicant__business_v.each do |d| %>
   <tr>
+   <% if d.co_applicant_business %>
    <% if d.co_applicant_business.application_status == 'RESIDENTIAL'%>
    <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= d.co_applicant_business.application_status %></b></td>
    <% else %>
@@ -101,6 +102,11 @@
      <% if d.co_applicant_business.status=='verified' %>
      <td><span class="label label-success"> verified </span></td>
      <% end %>
+    <% else %>
+
+   <% end %>
+
+
   </tr>
  <% end %>
 

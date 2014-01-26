@@ -135,7 +135,7 @@ $(function() {
   <% end %>
   <% @customers.each do |d| %>
    <tr>
-    <% if d.customer.co_applicant_business %>
+    <% if d.customer.co_applicant %>
     <td><%= d.customer.co_applicant.applicant_name %></td>
     <td><%= d.customer.co_applicant.address %></td>
     <td><%= time_tag d.date_of_visit %> / <%= (d.time_of_visit).strftime("%I:%M %P") %></td>
