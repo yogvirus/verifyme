@@ -17,7 +17,7 @@ $(function() {
   </div>
   <div class="field_name">
   <%= label_tag :'Select Status' %>
-  <%= select_tag :status, options_for_select([['All'], ['Pending', 'submitted'], ['progress', 'awaiting_to_get_verified'], ['Complete', 'verified']]) %>
+  <%= select_tag(:status, options_for_select([['All'], ['Pending', 'submitted'], ['progress', 'awaiting_to_get_verified'], ['Complete', 'verified']])) %>
   </div>
 
   <div class="field_name">
@@ -37,43 +37,21 @@ $(function() {
  <% else %>
  <h4>Report from <%= params[:start_date] %> to <%= params[:end_date] %></h4>
 
-<table class="table table-condensed" style="width:200px;">
- <tr>
-	 <td>Status </td>
-	 <td><%= params[:status] %></td>
-	</tr>
-	<tr>
-	 <% if params[:tab_id].present? %>
-	 <% @name = Tab.find(params[:tab_id]) %>
-	 <td>Tab name </td>
-	 <td><%= @name.name %></td>
-	</tr>
-	 <% else %>
-	<tr>
-	 <td>Tab </td>
-	 <td> All </td>
-	</tr>
-	 <% end %>
-	<tr>
-	 <td>Total</td>
-	 <td><%= @customers.count %></td>
-  </tr>
-</table>
 
 <p style="float:right">
  <%= image_tag('xls_icon.png') %>
 
  <% if @tab_id!=0 && @status!='All' && params[:start_date] && params[:end_date] %>
-	 <%= link_to "To Excel", reports_path(:tab_id => params[:tab_id], :status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
+	 <%= link_to "To Excel1", reports_path(:tab_id => params[:tab_id], :status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
 
  <% elsif @tab_id!=0 && params[:status]=='All' && params[:start_date] && params[:end_date] %>
-	 <%= link_to "To Excel", reports_path(:tab_id => params[:tab_id], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
+	 <%= link_to "To Excel2", reports_path(:tab_id => params[:tab_id], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
 
  <% elsif @tab_id==0 && @status!='All' %>
-	 <%= link_to "To Excel", reports_path(:status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
+	 <%= link_to "To Excel3", reports_path(:status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
 
  <% else %>
-	 <%= link_to "To Excel", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
+	 <%= link_to "To Excel4", reports_path(:tab_id => params[:tab_id], :status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
 
 <% end %>
 </p>
