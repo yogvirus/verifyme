@@ -29,15 +29,28 @@ class CustomersController < ApplicationController
   end
 end
 
+  def daily_customers
+    @customers = Customer.where('DATE(created_at) = ?', Date.today-60)
+    @business = Business.where('DATE(created_at) = ?', Date.today-60)
+    @co_applicants = CoApplicant.where('DATE(created_at) = ?', Date.today-60)
+    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ?', Date.today-60)
+    @all_customers_today = @customers + @co_applicants + @co_applicant_business + @business
+  end
+
+  def daily_pending_customers
+    @pending_customers_today = Customer.where('DATE(created_at) = ? and status = ?', Date.today-60, 'submitted')
+    @pending_co_applicants_today = CoApplicant.where('DATE(created_at) = ? and status = ?', Date.today-60, 'submitted')
+    @pending_business_today = Business.where('DATE(created_at) = ? and status = ?', Date.today-60, 'submitted')
+    @pending_co_app_business_today = CoApplicantBusiness.where('DATE(created_at) = ? and status = ?', Date.today-60, 'submitted')
+    @all_customers_pending_today = @pending_customers_today + @pending_co_applicants_today + @pending_business_today + @pending_co_app_business_today
+  end
+
   def search
     @business = Business.all
     @co_applicants = CoApplicant.all
     @co_app_business = CoApplicantBusiness.all
     @customers = Customer.all
-   # @customer_search = Customer.order(:id).search(params[:search])
-    #@customer_search = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse.search(params[:search])
-@customer_search = (@business + @co_applicants + @co_app_business + @customers).find.(:applicant_name, 'iLIKE', "%#{search}%")
-
+    @customer_search = (@business + @co_applicants + @co_app_business + @customers).find.(:applicant_name, 'iLIKE', "%#{search}%")
   end
 
   def customer_search

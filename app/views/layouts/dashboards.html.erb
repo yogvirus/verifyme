@@ -80,12 +80,8 @@ input[type=submit] {
 }
 </style>
 <% if current_user.admin? %>
-<div class="search" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;" >
-  Today Custiomer created : <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> | 
-  Cpmpleted: <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> |
-  Pending : <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> |
-  Progress : <%= Customer.where('DATE(created_at) = ? ', Date.today-57).count %> |
-</div>
+
+
 <div class="span" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
 <h5> Todays Activity - all records</h5>
    <%= render "todays_activity" %>
@@ -102,7 +98,7 @@ input[type=submit] {
       <td> Applicant name </td>
     </tr>
 
-        <% t.customer_verifications.where("created_at::date = ?", Date.today).each do |c| %>
+        <% t.customer_verifications.where("created_at::date = ?", Date.today-59).each do |c| %>
           <tr>
             <td style="color:#009999;border-radius:3px;padding:2px;"><%= c.customer.application_status %></td>
             <td><%= c.customer.applicant_name %></td>

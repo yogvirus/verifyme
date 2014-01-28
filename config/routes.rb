@@ -10,13 +10,18 @@ EVerification::Application.routes.draw do
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
-  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
+  #get "todays_list" => 'customers#daily_customers', :as => :daily_customers
+  #get "customers/todays_list" => "customers#daily_customers", :as => :todays_customers
 
   resources :reports do
    get :generated_report
    get :generate_report
   end
   resources :co_applicant_serveys
+  get "customers/daily_customers"
+  get "customers/daily_pending_customers"
+  get "customers/daily_completed_customers"
+  get "customers/daily_progress_customers"
   get "reports/show"
   get "co_applicant_businesses/index"
   get "reports/to_excel" => "reports#to_excel", :as => :excel
