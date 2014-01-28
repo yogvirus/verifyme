@@ -1,4 +1,4 @@
-<% if @customer.business %>
+<% if @customer.business.present? %>
  <%= link_to "show work detail", business_path(@customer.business), :class=>"label label-success" %> |
 <% else %>
  <a href="#myModal" role="button" data-toggle="modal" class="label label-important">Add Work Detail</a>
