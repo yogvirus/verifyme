@@ -3,6 +3,6 @@ development:
     adapter: postgresql
     host: localhost
     database: e-verification_development
-    username: desidime
-    password: desidime123
+    username: postgres
+    password: safew
 
