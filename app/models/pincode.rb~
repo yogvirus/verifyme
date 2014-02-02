@@ -1,5 +1,5 @@
 class Pincode < ActiveRecord::Base
-  attr_accessible :name, :pin_number, :city
+  attr_accessible :name, :pin_number
   has_many :tabs
   has_many :customers
   has_many :co_applicants

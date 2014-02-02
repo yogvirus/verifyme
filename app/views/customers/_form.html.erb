@@ -1,4 +1,4 @@
-<h2><u>Personal Detail</u></h2>
+
 <%= form_for(@customer, :html => { :style => 'padding-left:70px;' }) do |f| %>
 
   <% if @customer.errors.any? %>
@@ -12,6 +12,14 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="row">
+   <div class ="field_name">
+     <%= f.label :select_branch_name, :class => 'control-label' %>
+     <%= f.collection_select :branch_id, Branch.all, :id, :name, :class => 'text_field' %> 
+   </div>
+
+ </div>
 
 
 <% if @customer.blank? %>
@@ -32,6 +40,11 @@
 <% end %>
 
   <div class="field_name">
+    <%= f.label :fh_code, :class => 'control-label' %>
+      <%= f.text_field :fh_code, :class => 'text_field', :value=> @final_no %>
+  </div>
+
+  <div class="field_name">
     <%= f.label :agency_name, :class => 'control-label' %>
       <%= f.text_field :agency_name, :class => 'text_field', :value=>"Scorp Enterprises" %>
   </div>
@@ -39,65 +52,59 @@
 
   <div class="field_name">
     <%= f.label :Document_copy_required, :class => 'control-label' %>
-      <%= f.check_box :photo_required, :class => 'text_field' %> 
-    <small>
-     <i style ="padding-left:20px;color:green">Check this if photocopy of the customers document is required. else leave it as it is</i>
-    </small> 
+      <h5><%= f.check_box :photo_required, :class => 'text_field' %> 
+	     <b style ="padding-left:10px;color:blue">Check this if photocopy of the customers document is required. else leave it as it is</b></h5>
   </div>
-  <br><br><br>
-
-  <div class="field_name">
-    <%= f.label :fh_code, :class => 'control-label' %>
-      <%= f.text_field :fh_code, :class => 'text_field', :value=> @final_no %>
-  </div>
+  <br><br><br><br>
 
   <div class="field_name">
     <%= f.label :applicant_name, :class => 'control-label' %>
-      <%= f.text_field :applicant_name, :class => 'text_field' %>
+    <%= f.text_field :applicant_name, :class => 'text_field' %>
     </div>
 
   <div class="field_name">
     <%= f.label :'Contact Number', :class => 'control-label' %>
-      <%= f.text_field :contact_number, :class => 'text_field' %>
+    <%= f.text_field :contact_number, :class => 'text_field' %>
   </div>
 <!--    <br><br><br><br><br><br> -->
 
   <div class="field_name">
     <%= f.label :landmark, :class => 'control-label' %>
-      <%= f.text_field :landmark, :class => 'text_field' %>
+    <%= f.text_field :landmark, :class => 'text_field' %>
     </div>
 
    <br><br><br>
 
   <div class="field_name">
-    <%= f.label :address, :class => 'control-label' %>
-      <%= f.text_area :address, :class => 'text_area' %>
-    </div>
-
-  <div class="field_name">
     <%= f.label :Country, :class => 'control-label' %>
-      <%= f.text_field :country_name, :class => 'text_field', :value=>"INDIA" %>
+    <%= f.text_field :country_name, :class => 'text_field', :value=>"INDIA" %>
   </div>
 
   <div class="field_name">
     <%= f.label :State, :class => 'control-label' %>
-      <%= f.text_field :country_state, :class => 'text_field' %>
+    <%= f.text_field :country_state, :class => 'text_field', :value => "MAHARASHTRA" %>
   </div>
 
   <div class="field_name">
     <%= f.label :City, :class => 'control-label' %>
-      <%= f.text_field :country_city, :class => 'text_field' %>
+    <%= f.text_field :country_city, :class => 'text_field' %>
   </div>
 
   <div class="field_name">
     <%= f.label :'Select Area', :class => 'control-label' %>
-      <%= f.collection_select :pincode_id, Pincode.all, :id, :pin_number, :class => 'text_field' %>
+    <%= f.collection_select :pincode_id, Pincode.all, :id, :pin_number, :class => 'text_field' %>
   </div> 
+
+  <div class="field_name">
+    <%= f.label :address, :class => 'control-label' %>
+    <%= f.text_area :address, :class => 'text_area' %>
+    </div>
+
   <br><br><br><br><br><br><br><br>
 </div>
 
-  <div class="form-actions" style="margin-left:400px">
-    <%= f.submit 'Next..', :class => 'btn btn-primary btn-small' %>
+  <div class="form-actions">
+    <%= f.submit 'Save Customer..', :class => 'btn btn-primary btn-small' %>
   </div>
 <% end %>
 

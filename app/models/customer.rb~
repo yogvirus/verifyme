@@ -2,10 +2,10 @@ class Customer < ActiveRecord::Base
   attr_accessible :applicant_name, :application_ref_no, :latitude, :longitude,
                   :gmaps, :state, :pincode_id, :country_state, :country_city,
                   :country_name, :slug, :address, :degree_name, :agency_name,
-                  :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status
+                  :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status, :branch_id
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
-  validates_uniqueness_of :application_ref_no, :address, :fh_code
+  validates_uniqueness_of :application_ref_no, :fh_code
 
   serialize :asset_seen_at_residence
 
@@ -26,6 +26,7 @@ class Customer < ActiveRecord::Base
   has_one :co_applicant_work_detail, :dependent => :destroy
   belongs_to :pincode
   belongs_to :tab
+  belongs_to :branch
   has_and_belongs_to_many :assets
   has_and_belongs_to_many :office_assets
   has_and_belongs_to_many :address_proofs
@@ -40,17 +41,6 @@ class Customer < ActiveRecord::Base
   def full_address
    [address, country_state, country_city, country_name].compact.join(', ')
   end
-
-
-
-def self.search(search)
-  if search
-    find(:all, :conditions => ['applicant_name LIKE ?', "%#{search}%"])
-  else
-    find(:all)
-  end
-end
-
 
   include Workflow
 
@@ -86,36 +76,28 @@ workflow_column :status
   end
  end
 
-validate :check_fh_code_and_and_application_ref_number
+	TYPE_OF_RESIDENCE= %w[independence-house multitanent-house temparory-shed bunglow/row-house flat standing-chawl janta-flat-hutment sitting-chawl hostel others]
+	RESIDENCE_STATUS= %w[ selfowned owned-by-parnets rented company-accomodation paying-guest owned-by-friend owned-by-relative lodging ]
+	EDUCATIONAL_QUALIFICATION = %w[professional post_graduate graduate undergraduate others]
+	MARTIAL_STATUS= %w[single married divorced]
+	BEHAVIOUR = %w[ polite rude]
+	NEIGHBOUR_REFERENCE = %w[positive negative]
+	NAME_VERIFIED = %w[ name-plate watchman neighbour society-board company-board]
+	RESIDENCE_LOCALITY = %w[posh_locality village_area upper_middle_class lower_middle_class slums others ]
+	EASE_OF_LOCATION = %w[easy difficult unreachable]
+	ASSET_SEEN = %w[car two_Wheeler aircon television refrigerator music_system pc]
+	INTERIORS = %w[sofa clean painted carpeted curtains]
+	EXTERIORS = %w[fenced/compaund-wall elevator others]
+	CONSTRUCTION = %w[ pukka semi-pukka temperory carpark garden security building-wall]
 
-def check_fh_code_and_and_application_ref_number
-  errors.add(:fh_code, "has to be same as application reference number") if !application_ref_no == fh_code
-end
 
-TYPE_OF_RESIDENCE= %w[independence-house multitanent-house temparory-shed bunglow/row-house flat standing-chawl janta-flat-hutment sitting-chawl hostel others]
+	def self.search(search)
+		if search
+			where('applicant_name iLIKE ?', "%#{search}%")
+		else
+			scoped
+		end
+	end
 
-RESIDENCE_STATUS= %w[ selfowned owned-by-parnets rented company-accomodation paying-guest owned-by-friend owned-by-relative lodging ]
-
-EDUCATIONAL_QUALIFICATION = %w[professional post_graduate graduate undergraduate others]
-
-MARTIAL_STATUS= %w[single married divorced]
-
-BEHAVIOUR = %w[ polite rude]
-
-NEIGHBOUR_REFERENCE = %w[positive negative]
-
-NAME_VERIFIED = %w[ name-plate watchman neighbour society-board company-board]
-
-RESIDENCE_LOCALITY = %w[posh_locality village_area upper_middle_class lower_middle_class slums others ]
-
-EASE_OF_LOCATION = %w[easy difficult unreachable]
-
-ASSET_SEEN = %w[car two_Wheeler aircon television refrigerator music_system pc]
-
-INTERIORS = %w[sofa clean painted carpeted curtains]
-
-EXTERIORS = %w[fenced/compaund-wall elevator others]
-
-CONSTRUCTION = %w[ pukka semi-pukka temperory carpark garden security building-wall]
 
 end

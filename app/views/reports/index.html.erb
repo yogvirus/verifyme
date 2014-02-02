@@ -1,4 +1,13 @@
-
+<style>
+select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    width: 149px;
+}
+input[type="submit"] {
+    font-size: 20px;
+}
+</style>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <%= javascript_include_tag "bootstrap-datepicker.js" %>
 <script type="text/javascript">
@@ -8,6 +17,16 @@ $(function() {
     weekStart: 1,
 });
 </script>
+<!-- <div class="well" style ="padding:10px;width:360px;">
+	   <table><% Tab.all.each do |t| %>
+	      <td><%= link_to t.name, tab_tab_status_path(:tab_id => t ) %> &nbsp;&nbsp;&nbsp;</td>
+	      <td><%= (BusinessVerification.find_all_by_tab_id(t).count+
+	            ClientVerification.find_all_by_tab_id(t).count+
+	            CustomerVerification.find_all_by_tab_id(t).count+
+	            CoApplicantVerification.find_all_by_tab_id(t).count) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+	   <% end %></table>
+  </div>-->
+
 
 <%= form_for :reports_path, :method => :get do |f| %>
 <div class ="row">
@@ -21,7 +40,7 @@ $(function() {
   </div>
 
   <div class="field_name">
-  <%= label_tag :'Select Status' %>
+  <%= label_tag :'Application Type' %>
   <%= select_tag(:application_status, options_for_select([['All'], ['RESIDENTIAL', 'RESIDENTIAL'], ['BUSINESS', 'BUSINESS']])) %>
   </div>
 
