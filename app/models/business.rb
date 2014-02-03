@@ -2,7 +2,8 @@ class Business < ActiveRecord::Base
  attr_accessible :address, :agency_name, :applicant_name, :application_ref_no,:status,
                  :country_city, :country_name, :country_state, :date_of_birth,
                  :document_required, :fh_code, :landmark, :latitude, :longitude, :application_status,
-                 :pincode_id, :slug, :status, :customer_id, :company_name, :pan_number,:emp_code, :department_id
+                 :pincode_id, :slug, :status, :customer_id, :company_name, :pan_number,:emp_code, :department_id,
+                 :client_id, :branch_id, :branch_code
 
 
  validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code

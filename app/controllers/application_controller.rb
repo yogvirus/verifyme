@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 
-  def after_sign_up_path_for(resource)
-    new_profiles_path
-  end
+  #def after_sign_up_path_for(resource)
+  #  new_profiles_path
+  #end
 
   def after_sign_in_path_for(resource)
     current_user.attendences.create!(login_time: Time.now.strftime("at %H:%M%p"), login_date: Date.today )

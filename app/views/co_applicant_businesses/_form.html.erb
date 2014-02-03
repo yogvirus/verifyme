@@ -26,6 +26,9 @@
     <%= f.hidden_field :fh_code, :value=> "#{@application_ref_no}" %>
     <%= f.hidden_field :applicant_name, :value=> "#{@co_applicant.applicant_name}" %>
     <%= f.hidden_field :application_status, :value => "BUSINESS" %>
+    <%= f.hidden_field :client_id, :value => "#{@co_applicant.client_id}" %>
+    <%= f.hidden_field :branch_id, :value => "#{@co_applicant.branch_id}" %>
+    <%= f.hidden_field :branch_code, :value => "#{@co_applicant.branch_code}" %>
   <br><br>
 
   <div class="field_name">

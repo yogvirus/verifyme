@@ -1,14 +1,16 @@
-<table class="table table-condensed" style ="width:700px;">
+<table class="table table-condensed">
 <tr>
     <td> Application Status </td>
     <td> Applicant name </td>
     <td> Verifier Tab name </td>
+    <td> Current Status </td>
  </tr>
 <% customers_list.each do |e| %>
   <tr>
     <td style="color:#009999;border-radius:3px;padding:2px;"><%= e.customer.application_status %></td>
     <td><%= link_to e.customer.applicant_name, e.customer %></td>
      <td><%= e.tab.name %></td>
+     <td><%= e.customer.status %></td>
   </tr>
 <% end %>
 <% business_list.each do |e| %>
@@ -16,6 +18,7 @@
     <td style="color:#CC0066;border-radius:3px;padding:2px;"><%= e.business.application_status %></td>
     <td><%= link_to e.business.customer.applicant_name, e.business %></td>
      <td><%= e.tab.name %></td>
+     <td><%= e.business.status %></td>
   </tr>
 <% end %>
 <% co_applicants_list.each do |e| %>
@@ -23,6 +26,7 @@
     <td style="color:#009999;border-radius:3px;padding:2px;"><%= e.co_applicant.application_status %></td>
     <td><%= link_to e.co_applicant.applicant_name, e.co_applicant %></td>
      <td><%= e.tab.name %></td>
+     <td><%= e.co_applicant.status %></td>
   </tr>
 <% end %>
 <% co_app_business_list.each do |e| %>
@@ -30,6 +34,7 @@
     <td style="color:#CC0066;border-radius:3px;padding:2px;"><%= e.co_applicant_business.application_status %></td>
     <td><%= link_to e.co_applicant_business.customer.co_applicant.applicant_name, e.co_applicant_business %></td>
      <td><%= e.tab.name %></td>
+     <td><%= e.co_applicant_business.status %></td>
   </tr>
 <% end %>
 </table>

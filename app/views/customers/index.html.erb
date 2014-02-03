@@ -8,9 +8,6 @@ input[type=submit] {
 }
 .input-mysize { width: 150px }
 
-
-
-
 .page
 {
     border: 1px solid #C0C0C0;
@@ -23,26 +20,8 @@ input[type=submit] {
     text-shadow: 0 1px 0 #FFFFFF;
 }
 
-
 #hero-unit{margin:25px;width:2000px}
 </style>
-<!--
-<%= form_tag customer_search_path, :method => 'get' do %>
-<div class="topic_form" style="float:right;display: block; ">
-<table>
- <tr>
-  <td>
-   Search Customer :<br>
-   <%= text_field_tag :search, params[:search], :class=>"span6 input-xxlarge input-large" %>
-  </td>
-  <td>
-    <%= submit_tag 'Search', :class=>"btn btn-primary" %>
-  </td>
- </tr>
-</table>
-</div>
-<% end %>
--->
 
 <div id="residential">
 <b> Filter by : <%= link_to "residential" , customers_cust_residential_path %> |
@@ -56,15 +35,6 @@ input[type=submit] {
 </div>
 
 <%- model_class = Customer -%>
-
-<!--<div class="page-header">
-  <h5>Export to Excel | <%= link_to 'Export to Excel', url_for(:format => 'xls') %> |-->
-				<!--<%= link_to "Customers", customers_path(format: "xlsx") %> |
-				<%= link_to "Business", businesses_path(format: "xlsx") %> |
-				<%= link_to "Co-applicants", co_applicants_path(format: "xlsx") %> |
-				<%= link_to "Co-applicants Business", co_applicant_businesses_path(format: "xlsx") %>-->
-<!--</h5>
-</div>-->
 
 <b><%= paginate @all_customer %></b>
 <table class="table table-condensed table-bordered table-striped">

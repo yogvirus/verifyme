@@ -30,11 +30,20 @@ class CustomersController < ApplicationController
 end
 
   def daily_customers
-    @customers = Customer.where('DATE(created_at) = ?', Date.today-60)
-    @business = Business.where('DATE(created_at) = ?', Date.today-60)
-    @co_applicants = CoApplicant.where('DATE(created_at) = ?', Date.today-60)
-    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ?', Date.today-60)
+    @customers = Customer.where('DATE(created_at) = ?', Date.today)
+    @business = Business.where('DATE(created_at) = ?', Date.today)
+    @co_applicants = CoApplicant.where('DATE(created_at) = ?', Date.today)
+    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ?', Date.today)
     @all_customers_today = @customers + @co_applicants + @co_applicant_business + @business
+  end
+
+  def assigned_data_today
+    @customers = CustomerVerification.where('DATE(created_at) = ?', Date.today)
+    @business = BusinessVerification.where('DATE(created_at) = ?', Date.today)
+    @co_applicants = CoApplicantVerification.where('DATE(created_at) = ?', Date.today)
+    @co_applicant_business = ClientVerification.where('DATE(created_at) = ?', Date.today)
+    @all_customers_today = @customers + @co_applicants + @co_applicant_business + @business
+
   end
 
   def daily_pending_customers

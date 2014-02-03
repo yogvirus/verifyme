@@ -1,5 +1,5 @@
 <style>
-  .row-fluid:before, .row-fluid:after {padding:0px;} 
+  .row-fluid:before, .row-fluid:after {padding:0px;}
 </style>
 <div id="sidebar">
   <% if current_user.role=="super_user" %>
@@ -7,11 +7,15 @@
   <!-- <strong>Pending </strong> &nbsp;&nbsp; <pending><%= @total_pending %></pending> &nbsp;&nbsp;
    <strong>in progress </strong> &nbsp;&nbsp; <in_progress><%= @total_in_progress %></in_progress> &nbsp;&nbsp;
    <strong>Completed </strong> &nbsp;&nbsp; <complete><%= @total_completed %></complete><br><br>-->
-  <div class="well" style ="padding:20px;width:200px;">
-    <table>
+  <div class="span" style ="width:200px;">
+    <table class="table table-bordered table-condensed">
       <tr>
       <td>Total Created Today &nbsp;&nbsp;&nbsp; </td>
-      <td><%= link_to todays_list.count, customers_daily_customers_path %> </td>
+      <td><%= link_to daily_total, customers_daily_customers_path %> </td>
+      </tr>
+      <tr>
+      <td>Total Assigned Today &nbsp;&nbsp;&nbsp; </td>
+      <td><%= link_to todays_list.count, customers_assigned_data_today_path %> </td>
       </tr>
       <tr>
       <td>Completed</td>

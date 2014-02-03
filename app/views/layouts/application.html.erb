@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag "application",'datepicker',"bootstrap.css","form", :media => :all %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag 'bootstrap-datepicker' %>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Happy+Monkey' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
 
 
@@ -15,13 +15,11 @@
 
     <style type="text/css">
       body{
-            font-family: 'Ubuntu', sans-serif;
-            font-family: ubuntu;
-            text-transform: uppercase;
+          	font-family: 'Happy Monkey', cursive;
             font-size:11px;
             padding: 60px;
             line-height: 25px;
-             font-weight: bold;
+            font-weight: bold;
            }
       .sidebar-nav {
         padding: 9px 0;
@@ -65,9 +63,9 @@
             <ul class="nav">
             <% if current_user.role=="super_user"||current_user.role=="admin"%>
               <li class="active"> <%= link_to 'Show all users', profiles_path %></li>
-              <li><%= link_to "Customers", customers_path %></li>
-              <li><%= link_to "Tabs", tabs_path %></li>
-              <li><%= link_to "Generate Report", reports_path %></li>
+              <li class="active"><%= link_to "Customers", customers_path %></li>
+              <li class="active"><%= link_to "Tabs", tabs_path %></li>
+              <li class="active"><%= link_to "Generate Report", reports_path %></li>
             <% unless !current_user.profile %>
               <li class="active"><%= link_to "My Profile", profile_path(current_user) %></li>
             <% end %>

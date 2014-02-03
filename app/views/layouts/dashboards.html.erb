@@ -5,29 +5,32 @@
   <title>e-verification</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application",'bootstrap-datepicker' %>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin,greek-ext,greek,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Happy+Monkey' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
-      <style type="text/css">
-      body {
-        text-transform: uppercase;
-        font-family: 'Ubuntu', sans-serif;
-        font-size:11.5px;
-        padding-top: 60px;
-        padding-bottom: 40px;
-        font-weight: bold;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-       h5{background:black;color:white;}
-      .row-fluid:before, .row-fluid:after {
-						 content: "";
-						 display: table;
-						 line-height: 0;
-						 padding: 48px;
-}
-    </style>
+<style type="text/css">
+	body {
+  	font-family: 'Happy Monkey', cursive;
+		font-size:11px;
+		padding-top: 60px;
+		padding-bottom: 40px;
+    line-height: 25px;
+		font-weight: bold;
+	}
+	.sidebar-nav {
+		padding: 9px 0;
+	}
+	h5
+	 {
+	  background:black;color:white;padding-left:15px;;
+	  }
+	.row-fluid:before, .row-fluid:after {
+		content: "";
+		display: table;
+		line-height: 0;
+		padding: 48px;
+	}
+</style>
   </head>
  <body>
 
@@ -88,12 +91,12 @@ input[type=submit] {
 <% if current_user.admin? %>
 
 
-<div class="span" style ="font-size:10px;width:680px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
+<div class="span" style ="font-size:10px;width:1080px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
 <h5> Todays Activity - all records</h5>
    <%= render "todays_activity" %>
 </div>
 
-<div class="span" style ="float:right;font-size:10px;width:470px;background:#F5F5F5;padding:10px;border-radius:5px;" >
+<!--<div class="span" style ="float:right;font-size:10px;width:470px;background:#F5F5F5;padding:10px;border-radius:5px;" >
 <table class="table table-condensed" style ="width:700px;">
    <% Tab.find(:all).each do |t| %>
     <tr>
@@ -104,7 +107,7 @@ input[type=submit] {
       <td> Applicant name </td>
     </tr>
 
-        <% t.customer_verifications.where("created_at::date = ?", Date.today-59).each do |c| %>
+        <% t.customer_verifications.where("created_at::date = ?", Date.today).each do |c| %>
           <tr>
             <td style="color:#009999;border-radius:3px;padding:2px;"><%= c.customer.application_status %></td>
             <td><%= c.customer.applicant_name %></td>
@@ -113,7 +116,7 @@ input[type=submit] {
    <% end %>
 </table>
 <% end %>
-</div>
+</div>-->
    <%# if current_user.role=="super_user" %>
    <%#= render "completed" %>
    <%#= render "pending" %>

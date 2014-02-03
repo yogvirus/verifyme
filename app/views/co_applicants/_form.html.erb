@@ -12,7 +12,10 @@
   <% end %>
 
  <div class="row">
-  <strong class="label label-info"><%= @customer.client.name %> | <%= @customer.branch.name %> | <%= @customer.branch_code %><%= @application_ref_no %> | <%= @application_ref_no %> | <%= @customer.applicant_name %></strong> <br>
+  <strong class="label label-info">
+     <% if @customer && @customer.client && @customer.branch %>
+        <%= @customer.client.name %> | <%= @customer.branch.name %> | <%= @customer.branch_code %> |<% end %>
+        <%= @application_ref_no %> | <%= @application_ref_no %> | <%= @customer.applicant_name %></strong> <br>
 
   <div class="field_name">
    <%= customer.check_box :document_required %>

@@ -1,5 +1,25 @@
 module DashboardsHelper
 
+  def customers_daily
+   Customer.where("created_at::date = ?", Date.today)
+  end
+
+  def co_applicants_daily
+   CoApplicant.where("created_at::date = ?", Date.today)
+  end
+
+  def businesses_daily
+   Business.where("created_at::date = ?", Date.today)
+  end
+
+  def co_applicant_businesses_daily
+   CoApplicantBusiness.where("created_at::date = ?", Date.today)
+  end
+
+  def daily_total
+   (customers_daily+co_applicants_daily+businesses_daily+co_applicant_businesses_daily).count
+  end
+
  def customer_data
   CustomerVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC')
   #CoApplicantVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC')
@@ -56,7 +76,7 @@ module DashboardsHelper
 
 
   def customer_completed_on_the_tab_today
-   Customer.joins(:customer_verification).where('DATE(customer_verifications.created_at) = ? and customers.status = ?', Date.today, 'submitted' )
+   Customer.joins(:customer_verification).where('DATE(customer_verifications.created_at) = ? and customers.status = ?', Date.today, 'verified' )
   end
 
   def co_applicant_completed_on_the_tab_today

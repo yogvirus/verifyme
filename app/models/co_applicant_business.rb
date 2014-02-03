@@ -1,7 +1,8 @@
 class CoApplicantBusiness < ActiveRecord::Base
 attr_accessible :address, :agency_name, :applicant_name, :application_ref_no, :city, :customer_id,:application_status,
                 :company_name, :country, :date_of_birth, :document_required, :fh_code, :landmark,:status,
-                :latitude, :longitude, :pincode_id, :slug, :state, :status, :pan_number, :emp_code, :department_id
+                :latitude, :longitude, :pincode_id, :slug, :state, :status, :pan_number, :emp_code, :department_id,
+                :client_id, :branch_id, :branch_code, :area_name
  belongs_to :customer
  belongs_to :pincode
  has_one :co_applicant_verification
