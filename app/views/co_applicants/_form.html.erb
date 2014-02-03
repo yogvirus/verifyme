@@ -12,7 +12,7 @@
   <% end %>
 
  <div class="row">
-  <strong class="label label-info"><%= @application_ref_no %> | <%= @application_ref_no %> | <%= @customer.applicant_name %></strong> <br>
+  <strong class="label label-info"><%= @customer.client.name %> | <%= @customer.branch.name %> | <%= @customer.branch_code %><%= @application_ref_no %> | <%= @application_ref_no %> | <%= @customer.applicant_name %></strong> <br>
 
   <div class="field_name">
    <%= customer.check_box :document_required %>
@@ -23,6 +23,9 @@
     <%= customer.hidden_field :application_ref_no, :value=> "#{@application_ref_no}" %>
     <%= customer.hidden_field :fh_code, :value=> "#{@application_ref_no}" %>
     <%= customer.hidden_field :application_status, :value => "RESIDENTIAL" %>
+    <%= customer.hidden_field :client_id, :value => "#{@customer.client_id}" %>
+    <%= customer.hidden_field :branch_id, :value => "#{@customer.branch_id}" %>
+    <%= customer.hidden_field :branch_code, :value => "#{@customer.branch_code}" %>
   <br><br>
 
   <div class="field_name">
@@ -46,16 +49,21 @@
   </div>
   <div class="field_name">
     <%= customer.label :country_state %>
-    <%= customer.text_field :country_state %>
+    <%= customer.text_field :country_state, :value => "Maharashtra" %>
   </div>
   <div class="field_name">
     <%= customer.label :country_city %>
     <%= customer.text_field :country_city %>
   </div>
   <div class="field_name">
-    <%= customer.label :pincode_id %>
-    <%= customer.collection_select :pincode_id, Pincode.all, :id, :pin_number %>
+    <%= customer.label :'name of the area' %>
+    <%= customer.collection_select :pincode_id, Pincode.all, :id, :name %>
   </div>
+  <div class="field_name">
+  <%= customer.label :'pin_number' %>
+    <%= customer.text_field :area_name %>
+  </div>
+
 </div>
   <div class="actions">
     <%= customer.submit 'Submit..', :class => 'btn btn-primary btn-small' %>

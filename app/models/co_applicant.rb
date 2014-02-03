@@ -12,7 +12,8 @@ class CoApplicant < ActiveRecord::Base
   belongs_to :pincode
   belongs_to :tab
   has_one :co_applicant_servey
-
+  belongs_to :branch
+  belongs_to :client
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
   validates_uniqueness_of :application_ref_no, :fh_code
 
@@ -47,7 +48,7 @@ class CoApplicant < ActiveRecord::Base
     state :awaiting_to_get_verified do
       event :accept, :transitions_to => :verified
     end
-     
+
     state :verified do
       event :re_indicated, :transitions_to => :ready_for_verification
       event :submitted, :transitions_to => :verified_with_changes

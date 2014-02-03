@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140201104507) do
+ActiveRecord::Schema.define(:version => 20140203031927) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -152,6 +152,10 @@ ActiveRecord::Schema.define(:version => 20140201104507) do
     t.string   "emp_code"
     t.integer  "department_id"
     t.string   "message"
+    t.integer  "branch_id"
+    t.integer  "client_id"
+    t.string   "branch_code"
+    t.string   "area_name"
   end
 
   add_index "businesses", ["applicant_name"], :name => "index_businesses_on_applicant_name", :unique => true
@@ -210,6 +214,10 @@ ActiveRecord::Schema.define(:version => 20140201104507) do
     t.string   "emp_code"
     t.integer  "department_id"
     t.string   "message"
+    t.integer  "branch_id"
+    t.integer  "client_id"
+    t.string   "branch_code"
+    t.string   "area_name"
   end
 
   create_table "co_applicant_documents", :force => true do |t|
@@ -372,6 +380,10 @@ ActiveRecord::Schema.define(:version => 20140201104507) do
     t.string   "state"
     t.date     "d_o_b"
     t.string   "message"
+    t.integer  "branch_id"
+    t.integer  "client_id"
+    t.string   "branch_code"
+    t.string   "area_name"
   end
 
   create_table "customer_documents", :force => true do |t|
@@ -420,6 +432,9 @@ ActiveRecord::Schema.define(:version => 20140201104507) do
     t.boolean  "photo_required"
     t.string   "message"
     t.integer  "branch_id"
+    t.integer  "client_id"
+    t.integer  "branch_code"
+    t.string   "area_name"
   end
 
   add_index "customers", ["address"], :name => "index_customers_on_address"

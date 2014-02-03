@@ -6,19 +6,19 @@ module DashboardsHelper
  end
 
   def customers_list
-    CustomerVerification.where("created_at::date = ?", Date.today-1)
+    CustomerVerification.where("created_at::date = ?", Date.today)
   end
 
   def business_list
-    BusinessVerification.where("created_at::date = ?", Date.today-1)
+    BusinessVerification.where("created_at::date = ?", Date.today)
   end
 
   def co_applicants_list
-    CoApplicantVerification.where("created_at::date = ?", Date.today-1)
+    CoApplicantVerification.where("created_at::date = ?", Date.today)
   end
 
   def co_app_business_list
-    ClientVerification.where("created_at::date = ?", Date.today-1)
+    ClientVerification.where("created_at::date = ?", Date.today)
   end
 
   def customer_pending_on_the_tab_today

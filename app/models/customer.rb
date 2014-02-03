@@ -2,7 +2,8 @@ class Customer < ActiveRecord::Base
   attr_accessible :applicant_name, :application_ref_no, :latitude, :longitude,
                   :gmaps, :state, :pincode_id, :country_state, :country_city,
                   :country_name, :slug, :address, :degree_name, :agency_name,
-                  :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status, :branch_id
+                  :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status,
+                  :branch_id, :branch_code, :client_id, :area_name
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
   validates_uniqueness_of :application_ref_no, :fh_code
@@ -27,6 +28,7 @@ class Customer < ActiveRecord::Base
   belongs_to :pincode
   belongs_to :tab
   belongs_to :branch
+  belongs_to :client
   has_and_belongs_to_many :assets
   has_and_belongs_to_many :office_assets
   has_and_belongs_to_many :address_proofs

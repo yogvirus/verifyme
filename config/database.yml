@@ -1,23 +1,11 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 development:
     adapter: postgresql
     host: localhost
     database: e-verification_development
     username: postgres
-    password: scorp
+    password: safew
 
 
 production:
@@ -25,7 +13,7 @@ production:
     host: localhost
     database: e-verification_production
     username: postgres
-    password: scorp
+    password: safew
 
  
 

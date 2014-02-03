@@ -226,7 +226,7 @@ Pincode.create(:city => "Thane",:name =>"THANE",:pin_number=>"421601")
 
 
 
-				
+
 Branch.create( :name=>"ANDHERI E", :branch_code => "00539" , :client_id => 1)
 Branch.create( :name=>"ANDHERI E SEEPZ", :branch_code => "11690" , :client_id => 1)
 Branch.create( :name=>"ANDHERI SAHAR RD", :branch_code => "05937" , :client_id => 1)
@@ -378,5 +378,3 @@ end
    Tab.create( :name=>"TAB-ANDHERI", :tab_code=>'T0102030')
    Tab.create( :name=>"TAB-VIKROLI", :tab_code=>'T0102031')
    Tab.create( :name=>"TAB-SION", :tab_code=>'T0102032')
-
-

@@ -1,13 +1,12 @@
 class ReportsController < ApplicationController
 include ApplicationHelper
 include ReportsHelper
+
   def index
    @start_date = params[:start_date] || Date.today-5
    @end_date = params[:end_date] || Date.today
    @tab_id = params[:tab_id].to_i
    @status = params[:status]
-
-
 
 
 
