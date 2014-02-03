@@ -1,8 +1,19 @@
 
+
 development:
     adapter: postgresql
     host: localhost
     database: e-verification_development
-    username: desidime
-    password: desidime123
+    username: postgres
+    password: safew
+
+
+production:
+    adapter: postgresql
+    host: localhost
+    database: e-verification_production
+    username: postgres
+    password: safew
+
+ 
 

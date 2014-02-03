@@ -1,0 +1,44 @@
+<div id="sidebar">
+  <% if current_user.role=="super_user" %>
+
+   <strong>Pending </strong> &nbsp;&nbsp; <pending><%= @total_pending %></pending> &nbsp;&nbsp;
+   <strong>in progress </strong> &nbsp;&nbsp; <in_progress><%= @total_in_progress %></in_progress> &nbsp;&nbsp;
+   <strong>Completed </strong> &nbsp;&nbsp; <complete><%= @total_completed %></complete><br><br>
+ <div class="well" style ="padding:10px;width:360px;">
+	   <table><% Tab.all.each do |t| %>
+	      <td><%= link_to t.name, tab_tab_status_path(:tab_id => t ) %> &nbsp;&nbsp;&nbsp;</td>
+	      <td><%= (BusinessVerification.find_all_by_tab_id(t).count+
+	            ClientVerification.find_all_by_tab_id(t).count+
+	            CustomerVerification.find_all_by_tab_id(t).count+
+	            CoApplicantVerification.find_all_by_tab_id(t).count) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+	   <% end %></table>
+  </div>
+  <div class="well" style ="padding:20px;width:200px;">
+    <table>
+      <tr>
+      <td>Total Created Today &nbsp;&nbsp;&nbsp; </td>
+      <td><%= link_to todays_list.count, customers_daily_customers_path %> </td>
+      </tr>
+      <tr>
+      <td>Completed</td>
+      <td><%= link_to todays_tab_completed_list.count %></td>
+      </tr>
+      <tr>
+      <td>Pending </td>
+      <td><%= todays_tab_pending_list.count %></td>
+      </tr>
+      <tr>
+      <td>Progress</td>
+      <td><%= todays_tab_progress_list.count %></td>
+      </tr>
+    </table>
+  </div>
+
+  <% if current_user.role=="tab_user" %>
+   <strong>Pending </strong> &nbsp;&nbsp; <pending><%= pending_all_on_tab %></pending> &nbsp;&nbsp;
+   <strong>In Progress </strong> &nbsp;&nbsp; <complete> <%= in_progress_all_on_tab %> </complete> &nbsp;&nbsp;
+   <strong>Completed </strong> &nbsp;&nbsp; <complete> <%= completed_all_on_tab %> </complete> &nbsp;&nbsp;
+  <% end %>
+
+<% end %>
+</div>

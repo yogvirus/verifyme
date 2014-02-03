@@ -1,4 +1,13 @@
-
+<style>
+select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    width: 149px;
+}
+input[type="submit"] {
+    font-size: 20px;
+}
+</style>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <%= javascript_include_tag "bootstrap-datepicker.js" %>
 <script type="text/javascript">
@@ -8,6 +17,16 @@ $(function() {
     weekStart: 1,
 });
 </script>
+<!-- <div class="well" style ="padding:10px;width:360px;">
+	   <table><% Tab.all.each do |t| %>
+	      <td><%= link_to t.name, tab_tab_status_path(:tab_id => t ) %> &nbsp;&nbsp;&nbsp;</td>
+	      <td><%= (BusinessVerification.find_all_by_tab_id(t).count+
+	            ClientVerification.find_all_by_tab_id(t).count+
+	            CustomerVerification.find_all_by_tab_id(t).count+
+	            CoApplicantVerification.find_all_by_tab_id(t).count) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+	   <% end %></table>
+  </div>-->
+
 
 <%= form_for :reports_path, :method => :get do |f| %>
 <div class ="row">
@@ -21,6 +40,11 @@ $(function() {
   </div>
 
   <div class="field_name">
+  <%= label_tag :'Application Type' %>
+  <%= select_tag(:application_status, options_for_select([['All'], ['RESIDENTIAL', 'RESIDENTIAL'], ['BUSINESS', 'BUSINESS']])) %>
+  </div>
+
+  <div class="field_name">
   <%= label_tag :'Choose Start Date' %>
   <%= text_field_tag :start_date, '', :class=> "datepicker", :value => @start_date %>
   </div>
@@ -29,119 +53,62 @@ $(function() {
   <%= text_field_tag :end_date, '', :class => "datepicker", :value => @end_date %>
   </div><br><br><br><br>
 
-<%= f.submit "Generate Report", :class =>"btn btn-info" %>
+<%= f.submit "Generate Report", :class =>"btn btn-info" %><hr>
 </div>
 <% end %>
-<hr>
 <% if @customers.nil? %>
  <% else %>
- <h4>Report from <%= params[:start_date] %> to <%= params[:end_date] %></h4>
+
+ <h5>Customer Report from <%= params[:start_date] %> to <%= params[:end_date] %></h5><br><br>
+<table class="table table-condensed" style="width:200px;">
+
+ <tr>
+	 <td>Customer type </td>
+	 <td><%= params[:application_status] %></td>
+	</tr>
+
+ <tr>
+	 <td>Status </td>
+	 <td><%= params[:status] %></td>
+	</tr>
+
+	<tr>
+	 <% if params[:tab_id].present? %>
+	 <% @name = Tab.find(params[:tab_id]) %>
+	 <td>Tab name </td>
+	 <td><%= @name.name %></td>
+	</tr>
+
+	 <% else %>
+	<tr>
+	 <td>Tab </td>
+	 <td> All </td>
+	</tr>
+
+	 <% end %>
+
+	<tr>
 
 
-<p style="float:right">
- <%= image_tag('xls_icon.png') %>
+</table>
 
- <% if @tab_id!=0 && @status!='All' && params[:start_date] && params[:end_date] %>
-	 <%= link_to "To Excel1", reports_path(:tab_id => params[:tab_id], :status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
 
- <% elsif @tab_id!=0 && params[:status]=='All' && params[:start_date] && params[:end_date] %>
-	 <%= link_to "To Excel2", reports_path(:tab_id => params[:tab_id], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
 
- <% elsif @tab_id==0 && @status!='All' %>
-	 <%= link_to "To Excel3", reports_path(:status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
-
- <% else %>
-	 <%= link_to "To Excel4", reports_path(:tab_id => params[:tab_id], :status => params[:status], :start_date => params[:start_date], :end_date => params[:end_date], format: :xls) %>
-
-<% end %>
-</p>
-
-<div id="reports" style ="background:#fff;width:3530px;padding-top:10px;border-radius:5px;border:0px solid #000000;text-align:center">
 
 <table class="table table-condensed table-bordered table-striped">
-<thead>
-<tr>
-   <th> Tab Name </th>
-   <th> Applicants Name </th>
-   <th> Address </th>
-   <th> Visit time </th>
-   <th> status </th>
-   <th> Person Contacted </th>
-   <th> Relationship with applicant </th>
-   <th> Date Of Birth </th>
-   <th> Years Lived at current address </th>
-   <th> Residential Status </th>
-   <th> Education Qualification </th>
-   <th> Family Members </th>
-   <th> Verifiers Remark </th>
-  </tr>
-  </thead>
-  <% @customers.each do |d| %>
-  <tbody>
-   <tr>
-    <td><%= d.tab.name %></td>
-    <td><%= d.customer.applicant_name %></td>
-    <td><%= d.customer.address %></td>
-    <td><%= time_tag d.date_of_visit %> / <%= (d.time_of_visit).strftime("%I:%M %P") %></td>
-    <td><%= d.customer.status %></td>
-    <td><%= d.person_contacted %></td>
-    <td><%= d.relation_with_applicant %></td>
-    <td><%= d.date_of_birth %></td>
-    <td><%= d.years_lived_at_current_address %></td>
-    <td><%= d.residence_status %></td>
-    <td><%= d.educational_qualification %></td>
-    <td><%= d.no_of_family_members %></td>
-    <td><%= d.verifiers_remark %></td>
-   </tr>
-
-  <% end %>
-  <% @customers.each do |d| %>
-   <tr>
-    <% if d.customer.co_applicant && d.customer.co_applicant.co_applicant_servey %>
-    </tr>
-<thead>
-<h3>sudhir</h3>
-<tr>
-   <th> Tab Name </th>
-   <th> Applicants Name </th>
-   <th> Address </th>
-   <th style="width:10%"> Visit time </th>
-   <th style="width:10%"> status </th>
-   <th> Person Contacted </th>
-   <th> Relationship with applicant </th>
-   <th> Date Of Birth </th>
-   <th> Years Lived at current address </th>
-   <th> Residential Status </th>
-   <th> Education Qualification </th>
-   <th> Family Members </th>
-   <th> Verifiers Remark </th>
-  </tr>
-  </thead>
-  <% @customers.each do |d| %>
-  <tbody>
-   <tr>
-    <td><%= d.tab.name %></td>
-    <td><%= d.customer.applicant_name %></td>
-    <td><%= d.customer.address %></td>
-    <td><%= time_tag d.date_of_visit %> / <%= (d.time_of_visit).strftime("%I:%M %P") %></td>
-    <td><%= d.customer.status %></td>
-    <td><%= d.person_contacted %></td>
-    <td><%= d.relation_with_applicant %></td>
-    <td><%= d.date_of_birth %></td>
-    <td><%= d.years_lived_at_current_address %></td>
-    <td><%= d.residence_status %></td>
-    <td><%= d.educational_qualification %></td>
-    <td><%= d.no_of_family_members %></td>
-    <td><%= d.verifiers_remark %></td>
-   </tr>
-  <% end %>
-
-    <% end %>
-  <% end %>
+ <tr>
+  <td> Pending </td>
+  <td> Completed </td>
+  <td> In Progress </td>
+  <td> Total </td>
+ </tr>
+ <tr>
+   <td><%= @all_pending %></td>
+   <td><%= @all_completed %></td>
+   <td><%= @all_progress %></td>
+   <td><%= @total %></td>
 </table>
+
 </div>
-
-
-
 
 <% end %>

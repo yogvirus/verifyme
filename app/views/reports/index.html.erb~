@@ -1,5 +1,15 @@
+<style>
+select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    width: 149px;
+}
+input[type="submit"] {
+    font-size: 20px;
+}
+</style>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<%= javascript_include_tag "bootstrap-datepicker.js" %></script>
+<%= javascript_include_tag "bootstrap-datepicker.js" %>
 <script type="text/javascript">
 $(function() {
     $('.datepicker').datepicker({
@@ -7,197 +17,98 @@ $(function() {
     weekStart: 1,
 });
 </script>
+ <div class="well" style ="padding:10px;width:360px;">
+	   <table><% Tab.all.each do |t| %>
+	      <td><%= link_to t.name, tab_tab_status_path(:tab_id => t ) %> &nbsp;&nbsp;&nbsp;</td>
+	      <td><%= (BusinessVerification.find_all_by_tab_id(t).count+
+	            ClientVerification.find_all_by_tab_id(t).count+
+	            CustomerVerification.find_all_by_tab_id(t).count+
+	            CoApplicantVerification.find_all_by_tab_id(t).count) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+	   <% end %></table>
+  </div>
+
 
 <%= form_for :reports_path, :method => :get do |f| %>
 <div class ="row">
   <div class="field_name">
+  <%= label_tag :'Select Tab' %>
+  <%= select_tag :tab_id, options_for_select(Tab.all.map{ |c| [c.name, c.id] }), :prompt => "All Tabs" %>
+  </div>
+  <div class="field_name">
+  <%= label_tag :'Select Status' %>
+  <%= select_tag(:status, options_for_select([['All'], ['Pending', 'submitted'], ['progress', 'awaiting_to_get_verified'], ['Complete', 'verified']])) %>
+  </div>
+
+  <div class="field_name">
+  <%= label_tag :'Application Type' %>
+  <%= select_tag(:application_status, options_for_select([['All'], ['RESIDENTIAL', 'RESIDENTIAL'], ['BUSINESS', 'BUSINESS']])) %>
+  </div>
+
+  <div class="field_name">
   <%= label_tag :'Choose Start Date' %>
-  <%= text_field_tag :start_date, '', :class=> "datepicker" %>
-</div>
+  <%= text_field_tag :start_date, '', :class=> "datepicker", :value => @start_date %>
+  </div>
   <div class="field_name">
   <%= label_tag :'Choose End Date' %>
-  <%= text_field_tag :end_date, '', :class => "datepicker" %>
-</div><br><Br><br><br>
-<%= f.submit "Generate Report", :class =>"btn btn-info" %>
+  <%= text_field_tag :end_date, '', :class => "datepicker", :value => @end_date %>
+  </div><br><br><br><br>
+
+<%= f.submit "Generate Report", :class =>"btn btn-info" %><hr>
 </div>
 <% end %>
-<hr>
 <% if @customers.nil? %>
  <% else %>
 
-<p>
-  <strong>  
-   <b style="font-size:20px">Report from <%= params[:start_date] %> to <%= params[:end_date] %></b> | 
-   <%= link_to "Download this Report", reports_path(:start_date => params[:start_date], :end_date => params[:end_date], format: "xls") %>
-  </strong>
-</p>
+ <h5>Customer Report from <%= params[:start_date] %> to <%= params[:end_date] %></h5><br><br>
+<table class="table table-condensed" style="width:200px;">
 
-<div id="reports" style ="background:#fff;width:2800px;padding:0px;border-radius:5px;border:0px solid #000000;text-align:center">
-<table class="table table-bordered">
-  <thead>
-  <tr>
-   <th colspan="6"> Customer_detail </th>
-   <th colspan="4"> Business Detail </th>
-   <th colspan="5"> Co applicant Detail</th>
-   <th colspan="9"> Co applicant business</th>
-  </tr>
-<tr>
-   <th style = "width:160px;text-align:left;padding-left:10px;"> name </th>
-   <th> br-code </th>
-   <th> Address </th>
-   <th style="width:10%"> Visit time </th>
-   <th style="width:10%"> status </th>
-   <th> Agency name </th>
-   <!-- business detail-->
-   <th> Company_name </th>
-   <th> Employee_code </th>
-   <th> Office address </th>
-   <th> Status </th>
-   <!--busines detail end -->
-   <!--co applicant detail -->
-   <th> C-A-N </th>
-   <th> C-A-br-code </th>
-   <th> C-A-S </th>
-   <th> C-A-Address </th>
-   <th> Agency Name </th>
-   <!-- co applicant detail end -->
-   <!-- co applicant business detail  -->   
-   <th> C-A-B-N </th>
-   <th> C-A-B-br-code </th>
-   <th> C-A-B-Companyname </th>
-   <th> C-A-S </th>
-   <th> Pan-no. </th>
-   <th> Emp code</th>
-   <th> C-A-Office Address </th>
-   <th> Agency Name </th>
-   <!-- co applicant business detail end -->
-  </tr>
-  </thead>
- <% @customers.each do |d| %>
-  <tbody>
-  <tr>
-   <td style = "color:blue;text-align:left;padding-left:10px;"><b><%= d.applicant_name %></b></td>
-   <td><%= d.fh_code %></td>
-   <td><%= d.address %></th>
-<% unless d.servey.nil? %>
-   <td><%= time_tag d.servey.date_of_visit %> / <%= (d.servey.time_of_visit).strftime("%I:%M %P") %></th>
-<% else %>
-     <td> no date </td>
-<% end %>
-   <% if d.status=='submitted' %>
-   <td><b>Pending</b></i></td>
-   <% end %>
-   <% if d.status=='ready_for_verification' %>
-   <td><b> not given </b></i></td>
-   <% end %>
-   <% if d.status=='awaiting_to_get_verified' %>
-   <td><b>In Progress</b></i></td>
-   <% end %>
-   <% if d.status=='verified' %>
-   <td><b>Done</b></i></td>
-   <% end %>
-   <td><%= d.agency_name %></td>
-<!-- business detail -->
-<% if d.business %>
-   <td><%= d.business.company_name %></td>
-   <td><%= d.business.fh_code %></td>
-   <td><%= d.business.address %></th>
-   <% if d.business.status=='submitted' %>
-    <td><b>Pending</b></i></td>
-   <% end %>
-   <% if d.business.status=='awaiting_to_get_verified' %>
-    <td><b>In Progress</b></i></td>
-   <% end %>
-   <% if d.business.status=='ready_for_verification' %>
-    <td><b> not given </b></i></td>
-   <% end %>
-   <% if d.business.status=='verified' %>
-    <td><b>Done</b></i></td>
-   <% end %>
-<% else %>
-   <td> - </td>
-   <td> - </td>
-   <td> - </td>
-   <td> - </td>   
-<% end %>
-<!-- business detail end -->
-<!-- co applicant detail start-->
-<% if d.co_applicant %>
-   <td><%= d.co_applicant.applicant_name %></td>
-   <td><%= d.co_applicant.fh_code %></td>
+ <tr>
+	 <td>Customer type </td>
+	 <td><%= params[:application_status] %></td>
+	</tr>
 
-   <% if d.co_applicant.status=='submitted' %>
-    <td><b>Pending</b></i></td>
-   <% end %>
+ <tr>
+	 <td>Status </td>
+	 <td><%= params[:status] %></td>
+	</tr>
 
-   <% if d.co_applicant.status=='ready_for_verification' %>
-    <td><b> not given </b></i></td>
-   <% end %>
+	<tr>
+	 <% if params[:tab_id].present? %>
+	 <% @name = Tab.find(params[:tab_id]) %>
+	 <td>Tab name </td>
+	 <td><%= @name.name %></td>
+	</tr>
 
-   <% if d.co_applicant.status=='awaiting_to_get_verified' %>
-    <td><b>In Progress</b></i></td>
-   <% end %>
+	 <% else %>
+	<tr>
+	 <td>Tab </td>
+	 <td> All </td>
+	</tr>
 
-   <% if d.co_applicant.status=='verified' %>
-    <td><b>Done</b></i></td>
-   <% end %>
+	 <% end %>
 
-   <td><%= d.co_applicant.address %></td>
-   <td><%= d.co_applicant.agency_name %></td>
+	<tr>
 
-   <% else %>
-   <td> -</td>
-   <td> -</td>
-   <td> -</td>
-   <td> -</td>
-   <td> -</td>   
-<% end %>
 
-<% if d.co_applicant_business %>
-   <td><%= d.co_applicant.applicant_name %></td>
-   <td><%= d.co_applicant_business.fh_code %></td>
-   <td><%= d.co_applicant_business.company_name %></td>
-
-   <% if d.co_applicant_business.status=='submitted' %>
-   <td><b>Pending</b></i></td>
-   <% end %>
-   <% if d.co_applicant_business.status=='awaiting_to_get_verified' %>
-   <td><b>In Progress</b></i></td>
-   <% end %>
-   <% if d.co_applicant_business.status=='ready_for_verification' %>
-    <td><b> not given </b></i></td>
-   <% end %>
-   <% if d.co_applicant_business.status=='verified' %>
-   <td><b>Done</b></i></td>
-   <% end %>
-
-   <td>AGLV15428796</td>
-   <td>EMP-8309</td>
-   <td><%= d.co_applicant_business.address %></td>
-   <td><%= d.co_applicant_business.agency_name %></td>
-<% else %>
-  <td>-</td>
-  <td>-</td>
-  <td>-</td>
-  <td>-</td>
-  <td>-</td>
-  <td>-</td>  
-  <td>-</td>
-  <td>-</td>
-<% end %>
-
-  
-  
-  
-  
-  
-  </tr>
-
-  </tbody>
- <% end %>
 </table>
+
+
+
+
+<table class="table table-condensed table-bordered table-striped">
+ <tr>
+  <td> Pending </td>
+  <td> Completed </td>
+  <td> In Progress </td>
+  <td> Total </td>
+ </tr>
+ <tr>
+   <td><%= @all_pending %></td>
+   <td><%= @all_completed %></td>
+   <td><%= @all_progress %></td>
+   <td><%= @total %></td>
+</table>
+
 </div>
+
 <% end %>
-
-
-

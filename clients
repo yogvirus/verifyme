@@ -1,0 +1,325 @@
+select * from profiles;
+select phot from profiles;
+select photo from profiles;
+select photo_url from profiles;
+\d profiles;
+select photo_file_name from profiles;
+select photo_file_name from profiles where id =1;
+\d co_applicant_serveys;
+select years_lived_at_current_address from profiles where id =1;
+select years_lived_at_current_address from co_applicant_serveys;
+select years_lived_at_current_address from co_applicant_serveys;
+\exit
+quit
+exit
+\q
+\q
+select * from users;
+\q
+select * from co_applicant_serveys;
+select customer_id from co_applicant_serveys;
+\d co_applicant_serveys;
+\d co_applicant_serveys;
+select co_applicant_id from co_applicant_serveys;
+select date_of_birth from co_applicant_serveys;
+\d transactions;
+\q
+select email from users;
+\q
+select email from users;
+select id, email,tab_id from users;
+\q
+select id, email,tab_id from users;
+\q
+select id, email,tab_id from users;
+select id from tabs
+;
+select id,name from tabs
+;
+update users
+set tab_id=2
+where id=3;
+select id, email,tab_id from users;
+\q
+\q
+select * from tabs;
+select * from customers;
+select email from customers;
+select name from customers;
+\q customers;
+\d customers;
+select applicant_name from customers;
+select applicant_name from co_applicants;
+select applicant_name from business;;
+select applicant_name from businesses;
+\q
+pg_dump -U scorp e-verification_production -f e-verification_production.sql
+\q
+\q
+\q
+\q
+cd Des 
+\d businesses;
+select * from businesses;
+select * from businesses;
+select applicant_name from businesses;
+\q
+select applicant_name from businesses;
+select * from customer_verifications;
+select customer_id from customer_verifications;
+update customer_verifications 
+set customer_id =\\\
+select id customer_id from customer_verifications;
+select id,customer_id from customer_verifications;
+update customer_verifications 
+set customer_id = 4 
+where id =10;
+select id,customer_id from customer_verifications;
+update customer_verifications set customer_id = 4 where id =9;
+select id,customer_id from customer_verifications;
+select id,customer_id, tab_id from customer_verifications;
+\q
+select email from users;
+\q
+\q
+\d 
+select * from client_verifications;
+select * from users;
+select * from customer_verifications;
+delete from customer_verifications where id = 4;
+select * from customer_verifications;
+select * from customer_verifications;
+delete from customer_verifications where id = 11;
+select * from customer_verifications;
+delete from customer_verifications where id = 9;
+select * from users;
+\q
+select count(*) from customer_verifications
+;
+select * from customer_verifications
+;
+select count(*) from customers
+;
+select count(*) from businesses
+;
+select count(*) from co_applicants
+;
+select count(*) from co_applicant_businesses
+;
+\q
+\d users
+select tab_id from users;
+select id , name from tabs;
+select id , name from tabs order by id;
+select count(*) from tabs;
+select tab_id from users;
+select count(*) from users;
+select email from users;
+select tab_id, email from users;
+update users
+set email ='scorpeo.tab1@gmail.com'
+where id =2 ;
+\q
+select tab_id, email from users;
+select id , name from tabs;
+select id, tab_id, email from users;
+update users
+set email ='scorpeo.tab1@gmail.com'
+where id =3 ;
+select id, tab_id, email from users;
+\q
+select * from profiles;
+\d profiles
+\d users
+\q
+\d 
+select * from customer_verifications;
+\d customer_verifications
+select tab_id from customer_verifications;
+\q
+\d customer_verifications;
+select user_id, customer_id, tab_id from customer_verifications;
+select * from customer_verifications;
+select user_id, customer_id, tab_id,work_servey_id from customer_verifications;
+select user_id, customer_id, tab_id,verify_co_applicant_address_1 from customer_verifications;
+select user_id, customer_id, tab_id,verify_co_applicant_address_2 from customer_verifications;
+select user_id, customer_id, tab_idfrom customer_verifications;
+select user_id, customer_id, tab_id from customer_verifications;
+select * from customer_verifications;
+select * from users;
+select * from customers;
+\d customers
+select applicant_name,address from customers;
+\d customers
+select * from co_applicants;
+update customer_verifications  
+set tab_id = 4
+where id =1;
+exit
+\q
+select * from tabs
+;
+\q
+select * from tabs
+;
+select * from customer_verifications;
+select tab_id from customer_verifications;
+select * from tabs;
+select tab_id from customer_verifications;
+\d customer_veriications;
+\d customer_verifcations;
+\d customer_verifications;
+select user_id,customer_id,tab_id from customer_verifications;
+select id from customerS;
+\Q
+\Q
+\q
+update customer_verifications 
+set tab_id = 2
+where id =1;
+select * from customer_verifications;
+selectid* from customer_verifications;
+select id from customer_verifications;
+update customer_verifications 
+set tab_id = 2
+where id =2;
+\q
+\q
+\q
+select * from users;
+\d users;
+select tab_id from users;
+select id,tab_id from users;
+update users
+set tab_id = 2
+where id = 6 ;
+select id,tab_id from users;
+select id,tab_id from users order by id;
+select role,id,tab_id from users order by id;
+SELECT "users".* FROM "users" WHERE (id NOT IN (1,4)) order by id;
+SELECT email,role,tab_id FROM "users" WHERE (id NOT IN (1,4)) order by id;
+SELECT id,email,role,tab_id FROM "users" WHERE (id NOT IN (1,4)) order by id;
+SELECT id,email,role,tab_id FROM "users" WHERE (id NOT IN (1,4)) order by role;
+\q
+select * from users;
+select id,tab_id from users;
+select id,user_id from profiles
+;
+\q
+select * from profiles;
+select user_id from profiles;
+\q
+\d users;
+select email, role, tab_id from users;
+update users 
+set tab_id = ""
+where role = "super_user";
+update users 
+set tab_id = ''
+where role = 'super_user';
+update users 
+set tab_id =''
+where role = 'super_user';
+update users 
+set tab_id ='NULL'
+where role = 'super_user';
+update users 
+set tab_id =
+where role = 'super_user';
+update users 
+set tab_id =nil
+where role = 'super_user';
+exit
+\q
+select email, role, tab_id from users;
+exit
+\q
+select * from co_applicant_businesses;
+cd ..
+\q
+\d
+exit
+\q
+select * from co_applicant_verifications;
+select id from co_applicants;
+DELETE FROM co_applicant_verifications ;
+select * from co_applicant_verifications;
+\q
+\q
+select * from co_applicant_verifications;
+select * from co_applicant_verifications;
+select * from co_applicant_verifications;
+select * from co_applicant_verifications;
+\q
+select * from customer_verifications;
+\d customer_verifications;
+select user_id, customer_id , work_servey_id from customer_verifications;
+select id from customers;
+\q
+select * from businesses;
+\d businesses;
+select id , customer_id from businesses;
+\q
+select * from businesses;
+select count(*) from businesses;
+select * from customer_verifications;
+select id, user_id from customer_verifications;
+select id, user_id,customer_id from customer_verifications;
+\q
+select id , customer_id, tab_id from customer_verifications;
+select id from customers;
+select id from customers order by id;
+select * from businesses;
+select customer_id from businesses;
+select customer_id from businesses order by id;
+select from customer_verifications;
+\d
+\d customer_verifications
+select id,user_id,customer_id,tab_id,work_servey_id from customer_verifications;
+\x
+select * from customers where id = 65;
+\q
+\q
+select * from users;
+select * from tab_users;
+\q
+select * from appointments;
+\q
+select * from co_applicant_businesses;
+\q
+select * from co_applicant_businesses;
+select applicant_name from customers ; 
+\q
+select email from users ;
+\q
+\d
+select * from businesses;
+\x
+select * from businesses;
+\d businesses;
+select * from businesses where applicant_name = 'MR VARADHARAJAN CHELLAPPA';
+\q
+select applicant_name from customers;
+select id,applicant_name from customers order by id ;
+\q
+\x
+select * from co_applicant_serveys;
+select status from co_applicants
+where applicant_name='RESHMA HEMCHANDRA HINGNE';
+\q
+\x
+select * from branches ;
+\q
+\d branches
+\d branches
+select * from branches;
+delete from branches 
+where id = 1 and id = 2 ;
+select * from branches;
+delete from branches 
+where id = 1 ;
+delete from branches 
+where id = 2 ;
+select * from branches;
+\s client
+\s clients

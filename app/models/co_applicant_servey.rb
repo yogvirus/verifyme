@@ -15,5 +15,5 @@ class CoApplicantServey < ActiveRecord::Base
   serialize :name_varified_from
   belongs_to :co_applicant
   has_many :co_applicant_documents
-  accepts_nested_attributes_for :co_applicant_documents,  :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :co_applicant_documents#,  :reject_if => :all_blank, :allow_destroy => true
 end

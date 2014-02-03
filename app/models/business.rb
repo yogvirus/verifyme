@@ -15,6 +15,8 @@ class Business < ActiveRecord::Base
  has_many :business_documents, :dependent => :destroy
  has_and_belongs_to_many :b_documents
  belongs_to :department
+ belongs_to :branch
+ belongs_to :client
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged
 

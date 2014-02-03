@@ -13,6 +13,7 @@ EVerification::Application.routes.draw do
   #get "todays_list" => 'customers#daily_customers', :as => :daily_customers
   #get "customers/todays_list" => "customers#daily_customers", :as => :todays_customers
 
+  resources :branches
   resources :reports do
    get :generated_report
    get :generate_report

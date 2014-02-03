@@ -1,0 +1,15 @@
+<table class="table">
+ <tr>
+  <td> Branch Name </td>
+  <td> branch code </td>
+  <td> Contact Person </td>
+  <td> Client Name </td>
+ </tr>
+<% @branches.each do |branch| %>
+ <tr>
+		<td><%= branch.name %></td>
+		<td><%= branch.branch_code %></td>
+		<td><%= branch.contact_person %></td>
+		<td><%= branch.client.name %></td>
+ </tr>
+</table>

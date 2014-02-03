@@ -14,6 +14,13 @@
 <% end %>
 
 <table class="table table-bordered">
+<% if @customer && @customer.branch %>
+  <tr><td><strong><%= model_class.human_attribute_name(:branch_id) %>:</td></strong>
+  <td><%= @customer.branch.name %> </td></tr>
+  <tr><td><strong><%= model_class.human_attribute_name(:branch_code) %>:</td></strong>
+  <td><%= @customer.branch.branch_code %></td></tr>
+<% else %>
+<% end %>
   <tr><td><strong><%= model_class.human_attribute_name(:application_ref_no) %>:</td></strong>
   <td><%= @customer.application_ref_no %></td></tr>
 

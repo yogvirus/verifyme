@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116120857) do
+ActiveRecord::Schema.define(:version => 20140203031927) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(:version => 20140116120857) do
     t.integer "b_document_id"
   end
 
+  create_table "branches", :force => true do |t|
+    t.string   "name"
+    t.string   "branch_code"
+    t.string   "contact_person"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "client_id"
+  end
+
   create_table "business_documents", :force => true do |t|
     t.integer  "business_id"
     t.integer  "work_servey_id"
@@ -143,6 +152,10 @@ ActiveRecord::Schema.define(:version => 20140116120857) do
     t.string   "emp_code"
     t.integer  "department_id"
     t.string   "message"
+    t.integer  "branch_id"
+    t.integer  "client_id"
+    t.string   "branch_code"
+    t.string   "area_name"
   end
 
   add_index "businesses", ["applicant_name"], :name => "index_businesses_on_applicant_name", :unique => true
@@ -158,6 +171,12 @@ ActiveRecord::Schema.define(:version => 20140116120857) do
     t.integer  "customer_id"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+  end
+
+  create_table "clients", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "co_applicant_business_documents", :force => true do |t|
@@ -195,6 +214,10 @@ ActiveRecord::Schema.define(:version => 20140116120857) do
     t.string   "emp_code"
     t.integer  "department_id"
     t.string   "message"
+    t.integer  "branch_id"
+    t.integer  "client_id"
+    t.string   "branch_code"
+    t.string   "area_name"
   end
 
   create_table "co_applicant_documents", :force => true do |t|
@@ -357,6 +380,10 @@ ActiveRecord::Schema.define(:version => 20140116120857) do
     t.string   "state"
     t.date     "d_o_b"
     t.string   "message"
+    t.integer  "branch_id"
+    t.integer  "client_id"
+    t.string   "branch_code"
+    t.string   "area_name"
   end
 
   create_table "customer_documents", :force => true do |t|
@@ -404,6 +431,10 @@ ActiveRecord::Schema.define(:version => 20140116120857) do
     t.string   "application_status"
     t.boolean  "photo_required"
     t.string   "message"
+    t.integer  "branch_id"
+    t.integer  "client_id"
+    t.integer  "branch_code"
+    t.string   "area_name"
   end
 
   add_index "customers", ["address"], :name => "index_customers_on_address"
@@ -444,6 +475,7 @@ ActiveRecord::Schema.define(:version => 20140116120857) do
     t.integer  "pin_number"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "city"
   end
 
   create_table "profiles", :force => true do |t|
