@@ -9,7 +9,8 @@ attr_accessible :address, :agency_name, :applicant_name, :application_ref_no, :c
  has_one :co_applicant_work_detail
  has_many :co_applicant_business_documents
  belongs_to :department
-
+ belongs_to :branch
+ belongs_to :client
  validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
  validates_uniqueness_of :application_ref_no, :fh_code
 

@@ -1,9 +1,12 @@
+<style>
+  .row-fluid:before, .row-fluid:after {padding:0px;} 
+</style>
 <div id="sidebar">
   <% if current_user.role=="super_user" %>
 
-   <strong>Pending </strong> &nbsp;&nbsp; <pending><%= @total_pending %></pending> &nbsp;&nbsp;
+  <!-- <strong>Pending </strong> &nbsp;&nbsp; <pending><%= @total_pending %></pending> &nbsp;&nbsp;
    <strong>in progress </strong> &nbsp;&nbsp; <in_progress><%= @total_in_progress %></in_progress> &nbsp;&nbsp;
-   <strong>Completed </strong> &nbsp;&nbsp; <complete><%= @total_completed %></complete><br><br>
+   <strong>Completed </strong> &nbsp;&nbsp; <complete><%= @total_completed %></complete><br><br>-->
   <div class="well" style ="padding:20px;width:200px;">
     <table>
       <tr>
