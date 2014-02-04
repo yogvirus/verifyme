@@ -4,7 +4,7 @@ class CoApplicant < ActiveRecord::Base
                   :agency_name, :application_ref_no,
                   :fh_code, :applicant_name, :landmark,:application_status,
                   :country_name, :country_state, :country_city,
-                  :client_id, :branch_id, :branch_code, :area_name
+                  :client_id, :branch_id, :branch_code, :area_name, :city_id
 
   has_one :co_applicant_work_detail
   has_one :co_applicant_verification, :dependent => :destroy

@@ -8,7 +8,7 @@ include ReportsHelper
    @tab_id = params[:tab_id].to_i
    @status = params[:status]
    @application_status = params[:application_status]
-#all
+
   if @tab_id!=0 && @status!='All' && @application_status!='All' && params[:start_date] && params[:end_date]
       @customers = CustomerVerification.joins(:customer).where('customer_verifications.tab_id = ? and customer_verifications.created_at >= ? and customer_verifications.created_at <= ? and customers.status = ? and customers.application_status = ? ', @tab_id , @start_date, @end_date, @status, @application_status)
      @co_applicants = CoApplicantVerification.joins(:co_applicant).where('co_applicant_verifications.tab_id = ? and co_applicant_verifications.created_at >= ? and co_applicant_verifications.created_at <= ? and co_applicants.status = ? and co_applicants.application_status = ? ', @tab_id, @start_date, @end_date, @status, @application_status)
@@ -35,7 +35,6 @@ include ReportsHelper
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
 
-#without status
    elsif @tab_id!=0 && @application_status!='All' && params[:start_date] && params[:end_date]
       @customers = CustomerVerification.joins(:customer).where("customer_verifications.tab_id = ? and customer_verifications.created_at >= ? and customer_verifications.created_at <= ? and customers.application_status = ? ", @tab_id, @start_date, @end_date, @application_status)
 
@@ -65,7 +64,6 @@ include ReportsHelper
       @progress_work = @work_detail.where('co_applicant_businesses.status = ?', 'awaiting_to_get_verified').count
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
-#without tab
    elsif @status!='All' && @application_status!='All' && params[:start_date] && params[:end_date]
       @customers = CustomerVerification.joins(:customer).where("customers.status = ? and customer_verifications.created_at >= ? and customer_verifications.created_at <= ? and customers.application_status = ? ", @status, @start_date, @end_date, @application_status)
 
@@ -95,7 +93,6 @@ include ReportsHelper
       @progress_work = @work_detail.where('co_applicant_businesses.status = ?', 'awaiting_to_get_verified').count
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
-#without tab & without status
    elsif @application_status!='All' && params[:start_date] && params[:end_date]
       @customers = CustomerVerification.joins(:customer).where("customer_verifications.created_at >= ? and customer_verifications.created_at <= ? and customers.application_status = ? ", @start_date, @end_date, @application_status)
 
@@ -126,10 +123,6 @@ include ReportsHelper
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
    else
-#only date
-
-
-
 
       @customers = CustomerVerification.joins(:customer).where('customer_verifications.created_at >= ? and customer_verifications.created_at <= ?  ', @start_date, @end_date)
 

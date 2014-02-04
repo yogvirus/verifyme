@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203193957) do
+ActiveRecord::Schema.define(:version => 20140204063300) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20140203193957) do
     t.integer  "client_id"
     t.string   "branch_code"
     t.string   "area_name"
+    t.integer  "city_id"
   end
 
   add_index "businesses", ["applicant_name"], :name => "index_businesses_on_applicant_name", :unique => true
@@ -224,6 +225,7 @@ ActiveRecord::Schema.define(:version => 20140203193957) do
     t.integer  "client_id"
     t.string   "branch_code"
     t.string   "area_name"
+    t.integer  "city_id"
   end
 
   create_table "co_applicant_documents", :force => true do |t|
@@ -390,6 +392,7 @@ ActiveRecord::Schema.define(:version => 20140203193957) do
     t.integer  "client_id"
     t.string   "branch_code"
     t.string   "area_name"
+    t.integer  "city_id"
   end
 
   create_table "customer_documents", :force => true do |t|
@@ -441,6 +444,8 @@ ActiveRecord::Schema.define(:version => 20140203193957) do
     t.integer  "client_id"
     t.integer  "branch_code"
     t.string   "area_name"
+    t.integer  "city_id"
+    t.boolean  "no_verifcation"
   end
 
   add_index "customers", ["address"], :name => "index_customers_on_address"

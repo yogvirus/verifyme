@@ -56,13 +56,13 @@
               :class => 'label label-important' %>
   <% if @customer.status=="awaiting_to_get_verified"&&current_user.role=="super_user" %>
     <p style="margin-right:50px;float:right">
-      <%= link_to "Accept", accept_customer_path(@customer, :customer_id=>@customer), :class=>"label label-success" %> |
-      <%= link_to "Re Assign", re_indicated_customer_path(@customer, :customer_id=>@customer), :class=>"label label-info" %>
+      <%= link_to "Accept", accept_customer_path(@customer, :customer_id=>@customer), :class=>"label label-success" %>
+      <%#= link_to "Re Assign", re_indicated_customer_path(@customer, :customer_id=>@customer), :class=>"label label-info" %>
     </p>
   <% end %>
 
 <br><br>
-<% if @customer.status=="ready_for_verification" %>
+<% if @customer.status=="ready_for_verification" && @customer.no_verifcation=='t' %>
  <% if user_signed_in?&&current_user.role=="super_user" %>
    <%= form_for :customer_verification_customer_path, :url => customer_verification_customer_path(:customer_id=>@customer.id), :method=>:post do |f| %>
 <%= select_tag "customer_verification[tab_id]", options_for_select(Tab.all.collect {|r|[r.name,r.id]}), {:class=>'tf help',:style=>"margin-top:15px;"} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -74,11 +74,11 @@
 <% if @customer.status=="submitted" %>
 <br>
     <% if @customer.status=='submitted' %>
-     <td><span class="label label-warning">Submitted to Tab User </span></td></tr><br>
-		<small>
+     <td><span class="label label-warning" style='background:pale'>Submitted to Tab User </td></tr>
+		<b>
 		 The customer has been send for verification. this is been assigned to
 		 <%= link_to @customer.customer_verification.tab.name, tab_path(@customer.customer_verification.tab) %><br>
-		</small>
+		</b></span>
     <% end %>
 <% else %>
     <% if @customer.status=='verified' %>

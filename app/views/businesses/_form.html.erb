@@ -13,7 +13,7 @@
   <% end %>
  <div class="row">
   <strong class="label label-info">
-    <%= @application_ref_no %> | <%= @application_ref_no %> | <%= @customer.applicant_name %>
+    <%= @customer.client.name %> | <%= @customer.branch.name %> | <%= @customer.branch_code %> | <%= @application_ref_no %> | <%= @application_ref_no %> | <%= @customer.applicant_name %>
 </strong> <br>
 
   <div class="field_name">
@@ -31,20 +31,17 @@
     <%= f.hidden_field :branch_code, :value=> "#{@customer.branch_code}" %>
   <br><br>
 
+  <div class="row">
   <div class="field_name">
     <%= f.label :'Name OF The Company' %>
     <%= f.text_field :company_name %>
-  </div><br><br><br>
-
-  <!--<div class="field_name">
-    <%= f.label :'Name OF The Department' %>
-    <%= f.collection_select :department_id, Department.all, :id, :name %>
-  </div><br><br><br>-->
+  </div>
 
   <div class="field_name">
     <%= f.label :landmark %>
     <%= f.text_field :landmark %>
-  </div><br><br><br>
+  </div>
+  </div>
 
   <div class="field_name">
     <%= f.label :address %>
@@ -57,19 +54,26 @@
   </div>
   <div class="field_name">
     <%= f.label :country_state %>
-    <%= f.text_field :country_state %>
+    <%= f.text_field :country_state, :value => "Maharashtra" %>
   </div>
   <div class="field_name">
-    <%= f.label :country_city %>
-    <%= f.text_field :country_city %>
+    <%= f.label :Select_city %>
+    <%= f.collection_select :city_id, City.all, :id, :name %>
   </div>
   <div class="field_name">
-    <%= f.label :pincode_id %>
-    <%= f.collection_select :pincode_id, Pincode.all, :id, :pin_number %>
+    <%= f.label :Area_Name %>
+    <%= f.collection_select :pincode_id, Pincode.all, :id, :name %>
   </div>
+
+  <div class="field_name">
+    <%= f.label :'Selected pincode', :class => 'control-label' %>
+    <%= f.text_field :area_name, :class => 'text_field' %>
+  </div>
+
+
 </div>
   <div class="actions">
-    <%= f.submit 'Submit..', :class => 'btn btn-primary btn-small' %>
+    <%= f.submit 'Save coapplicant', :class => 'btn btn-primary btn-small' %>
   </div>
 <% end %>
 </div>

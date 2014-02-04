@@ -3,7 +3,7 @@ class Business < ActiveRecord::Base
                  :country_city, :country_name, :country_state, :date_of_birth,
                  :document_required, :fh_code, :landmark, :latitude, :longitude, :application_status,
                  :pincode_id, :slug, :status, :customer_id, :company_name, :pan_number,:emp_code, :department_id,
-                 :client_id, :branch_id, :branch_code
+                 :client_id, :branch_id, :branch_code, :city_id, :area_name
 
 
  validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code

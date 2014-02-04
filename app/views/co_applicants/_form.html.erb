@@ -55,15 +55,15 @@
     <%= customer.text_field :country_state, :value => "Maharashtra" %>
   </div>
   <div class="field_name">
-    <%= customer.label :country_city %>
-    <%= customer.text_field :country_city %>
+    <%= customer.label :Select_city %>
+    <%= customer.collection_select :city_id, City.all, :id, :name %>
   </div>
   <div class="field_name">
     <%= customer.label :'name of the area' %>
     <%= customer.collection_select :pincode_id, Pincode.all, :id, :name %>
   </div>
   <div class="field_name">
-  <%= customer.label :'pin_number' %>
+    <%= customer.label :'Selected pincode' %>
     <%= customer.text_field :area_name %>
   </div>
 

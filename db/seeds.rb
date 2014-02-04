@@ -1,3 +1,7 @@
+City.create(name: "Mumbai")
+City.create(name: "Navi Mumbai")
+City.create(name: "Thane")
+
 Pincode.create(:city => "Mumbai",:name =>"Mumbai G P O",:pin_number=>"400001")
 Pincode.create(:city => "Mumbai",:name =>"Kalbadevi",:pin_number=>"400002")
 Pincode.create(:city => "Mumbai",:name =>"Mandvi",:pin_number=>"400003")

@@ -48,7 +48,7 @@ input[type=submit] {
     <th>Applicant name</th>
     <th>Address</th>
     <th>Status</th>
-    <th>verifing tab</th>
+    <th>Verifing tab</th>
   </tr>
  </thead>
  <tbody>
@@ -65,9 +65,15 @@ input[type=submit] {
      <td> </td>
      <% end %>
      <% if customer.application_status == 'RESIDENTIAL'%>
-     <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+     <td><b style="color:#009999;border-radius:3px;padding:2px;">
+       <% if customer.class == CoApplicant %>
+        <%= customer.application_status %> - (CO APPLICANT)</b></td>
+        <% else %>
+        <%= customer.application_status %></b></td>
+       <% end %>
      <% else %>
-     <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+     <td><b style="color:#CC0066;border-radius:3px;padding:2px;">
+       <%= customer.application_status %></b></td>
      <% end %>
      <td><strong><%= link_to "scorpeo/ #{customer.created_at.to_date}/ #{customer.application_ref_no}", customer %></strong></td>
      <td><%= customer.applicant_name %></td>
@@ -86,16 +92,52 @@ input[type=submit] {
      <td><bn class="label label-success"> verified </b></td>
      <% end %>
 
-     <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
+     <% if customer.class==Business %>
+     <% @verifier  = BusinessVerification.find_all_by_business_id(customer) %>
       <% @verifier.each do |v| %>
        <% if v.tab.name %>
-        <td width="150px"><%= v.tab.name %></td>
+        <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
        <% end %>
      <% end %>
-      </tr>
+     <% end %>
+
+     <% if customer.class==Customer %>
+     <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+     <% end %>
+
+     <% if customer.class==CoApplicant %>
+     <% @verifier  = CoApplicantVerification.find_all_by_co_applicant_id(customer) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+     <% end %>
+
+     <% if customer.class==CoApplicantBusiness %>
+     <% @verifier  = ClientVerification.find_all_by_co_applicant_business_id(customer) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+     <% end %>
+
     <% end %>
+     </tr>
     </tbody>
 </table>
 

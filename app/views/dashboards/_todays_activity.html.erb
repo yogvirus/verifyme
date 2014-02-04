@@ -11,6 +11,9 @@
     <td><%= link_to e.customer.applicant_name, e.customer %></td>
      <td><%= e.tab.name %></td>
      <td><%= e.customer.status %></td>
+     <% if e.customer.status=='awaiting_to_get_verified' %>
+      <td><%= link_to "ACCEPT", root_path, :class => "label label-info"%></td>
+     <% end %>
   </tr>
 <% end %>
 <% business_list.each do |e| %>
@@ -19,6 +22,9 @@
     <td><%= link_to e.business.customer.applicant_name, e.business %></td>
      <td><%= e.tab.name %></td>
      <td><%= e.business.status %></td>
+     <% if e.business.status=='awaiting_to_get_verified' %>
+      <td><%= link_to "accept" %></td>
+     <% end %>
   </tr>
 <% end %>
 <% co_applicants_list.each do |e| %>
@@ -27,6 +33,10 @@
     <td><%= link_to e.co_applicant.applicant_name, e.co_applicant %></td>
      <td><%= e.tab.name %></td>
      <td><%= e.co_applicant.status %></td>
+          <% if e.co_applicant.status=='awaiting_to_get_verified' %>
+      <td><%= link_to "accept" %></td>
+     <% end %>
+
   </tr>
 <% end %>
 <% co_app_business_list.each do |e| %>
@@ -35,6 +45,10 @@
     <td><%= link_to e.co_applicant_business.customer.co_applicant.applicant_name, e.co_applicant_business %></td>
      <td><%= e.tab.name %></td>
      <td><%= e.co_applicant_business.status %></td>
+     <% if e.co_applicant_business.status=='awaiting_to_get_verified' %>
+      <td><%= link_to "accept" %></td>
+     <% end %>
+
   </tr>
 <% end %>
 </table>
