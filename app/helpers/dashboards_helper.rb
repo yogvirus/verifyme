@@ -40,6 +40,23 @@ module DashboardsHelper
     ClientVerification.where("created_at::date = ?", Date.today)
   end
 
+
+  def customers_list_old
+    CustomerVerification.joins(:customer).where("customers.status = 'awaiting_to_get_verified'")
+  end
+
+  def business_list_old
+    BusinessVerification.joins(:business).where("businesses.status= ?", 'awaiting_to_get_verified')
+  end
+
+  def co_applicants_list_old
+    CoApplicantVerification.joins(:co_applicant).where("co_applicants.status=?", 'awaiting_to_get_verified')
+  end
+
+  def co_app_business_list_old
+    ClientVerification.joins(:co_applicant_business).where("co_applicant_businesses.status = ?", 'awaiting_to_get_verified')
+  end
+
   def customer_pending_on_the_tab_today
    Customer.joins(:customer_verification).where('DATE(customer_verifications.created_at) = ? and customers.status = ?', Date.today, 'submitted' )
   end
