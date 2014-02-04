@@ -32,16 +32,14 @@
 
 
 <% if @customer.blank? %>
+ <div class='row'>
   <div class="field_name">
     <%= f.label :application_ref_no, :class => 'control-label' %>
-    <div class="field_name">
      <b><%= f.text_field :application_ref_no, :class => 'text_field', :value=> @final_no %></b>
-    </div>
   </div>
 <% else %>
 
  <div class="row">
- 
  <div class="field_name">
     <%= f.label :application_ref_no, :class => 'control-label' %>
      <b><%= f.text_field :application_ref_no, :class => 'text_field', :value=> @final_no %></b>
@@ -60,13 +58,12 @@
   </div>
  </div>
 
- <div class="row">
-
+ <div class="row" style="border:1px solid gray;background:palegoldenrod;padding:10px;width:650px;">
   <div class="field_name">
-    <%= f.label :Document_copy_required, :class => 'control-label' %>
-      <h5><%= f.check_box :photo_required, :class => 'text_field' %>
-      <b style ="padding-left:10px;color:blue">Check this if photocopy of the customers document is required. else leave it as it is</b></h5>
-<br><br>  </div>
+    <%= f.check_box :photo_required %>
+ <b style ="padding-left:10px;">Check this if photocopy of the customers document is required or else leave it unchecked</b>
+  </div></div>
+ <div class="row">
 
   <div class="field_name">
     <%= f.label :applicant_name, :class => 'control-label' %>
@@ -119,9 +116,9 @@
   <div class="field_name">
     <%= f.label :address, :class => 'control-label' %>
     <%= f.text_area :address, :class => 'text_area' %>
-  </div>
+  </div><br><br>
 
-  <div class="form-actions">
+  <div class="actions">
     <%= f.submit 'Save Customer..', :class => 'btn btn-primary btn-small' %>
   </div>
 <% end %>

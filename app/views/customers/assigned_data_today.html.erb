@@ -16,7 +16,7 @@
  <% @customers.each do |customer| %>
 
   <tr>
-   <% if customer.customer.co_applicant.application_status == 'RESIDENTIAL' %>
+   <% if customer.customer.application_status == 'RESIDENTIAL' %>
    <td><b><%= customer.customer.application_status %></b></td>
    <% else %>
    <td><b><%= customer.customer.application_status %></b></td>

@@ -5,13 +5,13 @@
   <title>e-verification</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application",'bootstrap-datepicker' %>
-  <link href='http://fonts.googleapis.com/css?family=Happy+Monkey' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
 <style type="text/css">
 	body {
-  	font-family: 'Happy Monkey', cursive;
-		font-size:11px;
+    font-family: 'Varela', sans-serif;
+		font-size:12px;
 		padding-top: 60px;
 		padding-bottom: 40px;
     line-height: 25px;
@@ -20,16 +20,29 @@
 	.sidebar-nav {
 		padding: 9px 0;
 	}
+	      .navbar .nav { font-size:14px;}
 	h5
 	 {
 	  background:black;color:white;padding-left:15px;;
 	  }
 	.row-fluid:before, .row-fluid:after {
-		content: "";
 		display: table;
 		line-height: 0;
 		padding: 48px;
 	}
+	hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+    border-image: none;
+    border-left: 0 none;
+    border-right: 0 none;
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 60px 0 30px 0px ;
+}
 </style>
   </head>
  <body>
@@ -37,8 +50,8 @@
 <%= render "navigation" %>
 <div class="container-fluid">
 
-<div class="span2" style="float:right;width:35%;">
- <%= render "daily_status", :html=>{:float=>"right"} %>
+<div class="span" style ="float:right;font-size:12px;width:230px;background:#F5F5F5;border-radius:5px;" >
+ <%= render "daily_status" %>
 </div>
 
  <div class="row-fluid">
@@ -91,7 +104,7 @@ input[type=submit] {
 <% if current_user.admin? %>
 
 
-<div class="span" style ="font-size:10px;width:1080px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
+<div class="span" style ="font-size:12px;width:1180px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
 <h5> Todays Activity - all records</h5>
    <%= render "todays_activity" %>
 </div>

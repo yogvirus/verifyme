@@ -1,7 +1,7 @@
 
 <style>
 body{
- font-size:12px; 
+ font-size:12px;
  font-weight: bold;
  }
 </style>
@@ -21,10 +21,10 @@ body{
   <% for tab in @tabs %>
     <tr>
       <td><%= link_to tab.name, tab_path(tab) %></td>
-     <% if tab.user %> 
-         <td><i><small style ="color:green"><%=  tab.user.name %></small></i></td>
+     <% if tab.user %>
+         <td><b style ="color:green"><%=  tab.user.name %></b></td>
       <% else %>
-         <td><i><small style="font-size:12px;color:red">no-one assigned  </small></td>
+         <td><b style="font-size:12px;color:red">no-one assigned  </b></td>
       <% end %>
 
       <td><%= tab.tab_code %></td>

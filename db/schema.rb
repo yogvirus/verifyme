@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203031927) do
+ActiveRecord::Schema.define(:version => 20140203193957) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -163,6 +163,12 @@ ActiveRecord::Schema.define(:version => 20140203031927) do
   add_index "businesses", ["customer_id"], :name => "index_businesses_on_customer_id", :unique => true
   add_index "businesses", ["fh_code"], :name => "index_businesses_on_fh_code", :unique => true
   add_index "businesses", ["status"], :name => "index_businesses_on_status"
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "client_verifications", :force => true do |t|
     t.integer  "co_applicant_business_id"
@@ -476,6 +482,7 @@ ActiveRecord::Schema.define(:version => 20140203031927) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "city"
+    t.integer  "city_id"
   end
 
   create_table "profiles", :force => true do |t|
