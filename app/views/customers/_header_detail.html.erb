@@ -60,9 +60,14 @@
       <%#= link_to "Re Assign", re_indicated_customer_path(@customer, :customer_id=>@customer), :class=>"label label-info" %>
     </p>
   <% end %>
+<div id ="stamp" style="float:right">
+<% if @customer.status=='verified'%>
+ <%= image_tag('verified-stamp.png', :size => "300x300") %>
+<% end %>
+</div>
 
 <br><br>
-<% if @customer.status=="ready_for_verification" && @customer.no_verifcation=='t' %>
+<% if @customer && @customer.status=="ready_for_verification" && !@customer.no_verifcation %>
  <% if user_signed_in?&&current_user.role=="super_user" %>
    <%= form_for :customer_verification_customer_path, :url => customer_verification_customer_path(:customer_id=>@customer.id), :method=>:post do |f| %>
 <%= select_tag "customer_verification[tab_id]", options_for_select(Tab.all.collect {|r|[r.name,r.id]}), {:class=>'tf help',:style=>"margin-top:15px;"} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
