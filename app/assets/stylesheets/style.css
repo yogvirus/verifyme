@@ -1,9 +1,9 @@
 /* =======================================
 
 		Main Stylesheet for My-Bootstrap-Site
-		
+
 		Innovations on Twitter Bootstrap
-		
+
 ========================================== */
 
 @import url('bootstrap.css');
@@ -56,7 +56,7 @@
 		.row { /* more top and bottom padding on rows */
 			padding: 20px 0;
 		}
-	
+
 /* 	Pills and Tabs
 		============================================ */
 
@@ -93,33 +93,33 @@
 			margin-left: -10px;
 			padding-left: 20px;
 		}
-	
+
 
 
 /* 	For Code Snippets
 		============================================ */
-		
+
 		code, pre, pre.prettyprint {
 			background-color: #fee9cc;
 		}
 		pre, pre.prettyprint {
 			padding: 16px 20px;
 			margin: 10px 0;
-			-webkit-border-radius: 6px;	
+			-webkit-border-radius: 6px;
 			-moz-border-radius: 6px;
 			border-radius: 6px;
 			max-width: 100%;
 		}
-		
+
 		.alert pre {
 			text-shadow: none;
 		}
-		
+
 		/* Pretty printing styles. Used with prettify.js. */
-		
+
 		/* SPAN elements with the classes below are added by prettyprint. */
 		.pln { color: #000 }  /* plain text */
-		
+
 		@media screen {
 		  .str { color: #080 }  /* string content */
 		  .kwd { color: #008 }  /* a keyword */
@@ -134,7 +134,7 @@
 		  .dec, .var { color: #606 }  /* a declaration; a variable name */
 		  .fun { color: red }  /* a function name */
 		}
-		
+
 		/* Use higher contrast and text-weight for printable form. */
 		@media print, projection {
 		  .str { color: #060 }
@@ -152,7 +152,7 @@
 			/* padding: 2px;
 			border: 1px solid #888  */
 			}
-				
+
 		/* Specify class=linenums on a pre to get line numbering */
 		ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
 		li.L0,
@@ -169,11 +169,11 @@
 		li.L5,
 		li.L7,
 		li.L9 { background: #eee }
-		
-		
-		
-		
-		
+
+
+
+
+
 .btn {
     display: inline-block;
     padding: 10px;
@@ -192,9 +192,6 @@
     padding: 0px 9px;
     margin-right: 4px;
     border-radius: 3px;
-    border: solid 1px #c0c0c0;
-    background: #e9e9e9;
-    box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
     font-size: .875em;
     font-weight: bold;
     text-decoration: none;

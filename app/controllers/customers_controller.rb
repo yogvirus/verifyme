@@ -33,19 +33,19 @@ end
  end
 
   def completed_customers_today
-    @customers = Customer.where('DATE(created_at) = ?', Date.today)
-    @business = Business.where('DATE(created_at) = ?', Date.today)
-    @co_applicants = CoApplicant.where('DATE(created_at) = ?', Date.today)
-    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ?', Date.today)
+    @customers = Customer.where('DATE(created_at) = ? and status = ?', Date.today, 'verified')
+    @business = Business.where('DATE(created_at) = ? and status = ?', Date.today, 'verified')
+    @co_applicants = CoApplicant.where('DATE(created_at) = ? and status = ?', Date.today, 'verified')
+    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ? and status = ?', Date.today, 'verified')
     @all_customers_today = @customers + @co_applicants + @co_applicant_business + @business
   end
 
 
   def in_progress_today
-    @customers = Customer.where('DATE(created_at) = ?', Date.today)
-    @business = Business.where('DATE(created_at) = ?', Date.today)
-    @co_applicants = CoApplicant.where('DATE(created_at) = ?', Date.today)
-    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ?', Date.today)
+    @customers = Customer.where('DATE(created_at) = ? and status = ?', Date.today, 'awaiting_to_get_verified')
+    @business = Business.where('DATE(created_at) = ? and status = ?', Date.today, 'awaiting_to_get_verified')
+    @co_applicants = CoApplicant.where('DATE(created_at) = ? and status = ?', Date.today, 'awaiting_to_get_verified')
+    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ? and status = ?', Date.today, 'awaiting_to_get_verified')
     @all_customers_today = @customers + @co_applicants + @co_applicant_business + @business
   end
 

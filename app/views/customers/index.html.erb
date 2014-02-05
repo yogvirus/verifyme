@@ -8,12 +8,10 @@ input[type=submit] {
 }
 .input-mysize { width: 150px }
 
-.page
-{
-    border: 1px solid #C0C0C0;
-    border-radius: 3px 3px 3px 3px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 1px 3px rgba(0, 0, 0, 0.1);
+.page{
     display: inline-block;
+    font-size: 0.875em;
+    font-weight: bold;
     margin-right: 4px;
     padding: 0 9px;
     text-decoration: none;
@@ -36,18 +34,18 @@ input[type=submit] {
 
 <%- model_class = Customer -%>
 
-<b><%= paginate @all_customer %></b>
+    <%= paginate @all_customer %>
 <table class="table table-condensed table-bordered table-striped">
  <thead>
   <tr>
     <th>Client Name </th>
     <th>Branch Name </th>
     <th>Branch code </th>
-    <th>Status </th>
+    <th>Form Type </th>
     <th>Application ref no</th>
     <th>Applicant name</th>
-    <th>Address</th>
     <th>Status</th>
+    <th>Address</th>
     <th>Verifing tab</th>
   </tr>
  </thead>
@@ -77,7 +75,6 @@ input[type=submit] {
      <% end %>
      <td><strong><%= link_to "scorpeo/ #{customer.created_at.to_date}/ #{customer.application_ref_no}", customer %></strong></td>
      <td><%= customer.applicant_name %></td>
-     <td><%= customer.address %></td>
      <% if customer.status=='submitted' %>
      <td><b class="label label-info"> Pending </b></td>
      <% end %>
@@ -92,6 +89,7 @@ input[type=submit] {
      <td><bn class="label label-success"> verified </b></td>
      <% end %>
 
+     <td><%= customer.address %></td>
      <% if customer.class==Business %>
      <% @verifier  = BusinessVerification.find_all_by_business_id(customer) %>
       <% @verifier.each do |v| %>

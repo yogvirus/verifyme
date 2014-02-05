@@ -16,26 +16,26 @@
  <% @customers.each do |customer| %>
 
   <tr>
-   <% if customer.customer.application_status == 'RESIDENTIAL' %>
-   <td><b><%= customer.customer.application_status %></b></td>
+   <% if customer.application_status == 'RESIDENTIAL' %>
+   <td><b><%= customer.application_status %></b></td>
    <% else %>
-   <td><b><%= customer.customer.application_status %></b></td>
+   <td><b><%= customer.application_status %></b></td>
    <% end %>
    <td>
-	  <b><%= link_to "scorpeo/ #{customer.customer.created_at.to_date}/ #{customer.customer.application_ref_no}", customer.customer %></b>
+	  <b><%= link_to "scorpeo/ #{customer.created_at.to_date}/ #{customer.application_ref_no}", customer %></b>
 	 </td>
-   <td><%= customer.customer.applicant_name %></td>
-   <% if customer.customer.status=='submitted' %>
+   <td><%= customer.applicant_name %></td>
+   <% if customer.status=='submitted' %>
    <td><span class="label label-info"> Pending </span></td>
    <% end %>
-   <% if customer.customer.status=='ready_for_verification' %>
+   <% if customer.status=='ready_for_verification' %>
    <td><span class="label label-info"> ready for verification </span></td>
    <% end %>
 
-   <% if customer.customer.status=='awaiting_to_get_verified' %>
+   <% if customer.status=='awaiting_to_get_verified' %>
    <td><span class="label label-warning"> in progress </span></td>
    <% end %>
-   <% if customer.customer.status=='verified' %>
+   <% if customer.status=='verified' %>
    <td><span class="label label-success"> verified </span></td>
    <% end %>
 
