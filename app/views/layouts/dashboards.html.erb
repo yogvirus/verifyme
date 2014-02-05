@@ -43,9 +43,66 @@
     border-width: 1px 0;
     margin: 60px 0 30px 0px ;
 }
+
+input[type=submit] {
+	font-size:10px;
+  margin-top:31px;
+  padding: 7px;
+  font-weight:bold;
+}
+
+
+.blink_me {
+     float:right;
+     margin-right:50px;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
 </style>
-  </head>
- <body>
+<!--<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<%= javascript_include_tag "bootstrap-datepicker.js" %></script>
+<script type="text/javascript">
+$(function() {
+    $('.datepicker').datepicker({
+    format: 'mm-dd-yyyy',
+    weekStart: 1,
+});
+</script>-->
+
+</head>
+
+<body>
 
 <%= render "navigation" %>
 <div class="container-fluid">
@@ -61,111 +118,15 @@
    <%= render "business" %>
    <% end %>
   </div>
-<!--<% if current_user.role=="super_user" %>
-<div class="span10" style ="font-size:10px;float:right;width:380px;background:#F5F5F5;padding:10px;border-radius:5px;" >
-<h5 style ="padding-left:130px;"> Online Tabs </h5>
-<table class="table table-condensed">
- <tr>
-   <td> Tab User </td>
-   <td> Login Time </td>
-   <td> Logout Time </td>
-   <td> Tatal Time </td>
- </tr>
- <tr>
-<% Attendence.where(login_date: Date.today).each do |a|  %>
-  <td style ="color:green"><%= a.user.tab.name %></td>
-  <td><%= a.login_time.strftime("at %H:%M%p") %></td>
-  <td><%= a.logout_time.strftime("at %H:%M%p") if a.logout_time %></td>
-  <td><%= distance_of_time_in_words(a.login_time, a.logout_time) if a.logout_time %></td>
- </tr>
-<% end %>
-</table>
-<% end %>
-</div>-->
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<%= javascript_include_tag "bootstrap-datepicker.js" %></script>
-<script type="text/javascript">
-$(function() {
-    $('.datepicker').datepicker({
-    format: 'mm-dd-yyyy',
-    weekStart: 1,
-});
-</script>
-
-<style>
-input[type=submit] {
-	font-size:10px;
-  margin-top:31px;
-  padding: 7px;
-  font-weight:bold;
-}
-</style>
-<% if current_user.admin? %>
-
-
-<div class="span" style ="font-size:12px;width:1180px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
-<h5> Todays Activity - all records</h5>
-   <%= render "todays_activity" %>
-</div>
-
-<div class="span" style ="font-size:12px;width:1180px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
-<table class="table table-condensed">
-<tr>
-    <td> Application Status </td>
-    <td> Applicant name </td>
-    <td> Verifier Tab name </td>
-    <td> Current Status </td>
- </tr>
-<% customers_list_old.each do |e| %>
-  <tr>
-    <td style="color:#009999;border-radius:3px;padding:2px;"><%= e.customer.application_status %></td>
-    <td><%= link_to e.customer.applicant_name, e.customer %></td>
-     <td><%= e.tab.name %></td>
-     <td><%= e.customer.status %></td>
-     <% if e.customer.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "ACCEPT", root_path, :class => "label label-info"%></td>
-     <% end %>
-  </tr>
+<% if !customers_list_old.empty? || !business_list_old.empty? || !co_applicants_list_old.empty? || !co_app_business_list_old.empty? %>
+ <b class="blink_me"><%= link_to 'We have Pending Customers', customers_old_pending_customers_path %></b><br><br>
 <% end %>
-<% business_list_old.each do |e| %>
-  <tr>
-    <td style="color:#CC0066;border-radius:3px;padding:2px;"><%= e.business.application_status %></td>
-    <td><%= link_to e.business.customer.applicant_name, e.business %></td>
-     <td><%= e.tab.name %></td>
-     <td><%= e.business.status %></td>
-     <% if e.business.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "accept" %></td>
-     <% end %>
-  </tr>
-<% end %>
-<% co_applicants_list_old.each do |e| %>
-  <tr>
-    <td style="color:#009999;border-radius:3px;padding:2px;"><%= e.co_applicant.application_status %></td>
-    <td><%= link_to e.co_applicant.applicant_name, e.co_applicant %></td>
-     <td><%= e.tab.name %></td>
-     <td><%= e.co_applicant.status %></td>
-          <% if e.co_applicant.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "accept" %></td>
-     <% end %>
 
-  </tr>
-<% end %>
-<% co_app_business_list_old.each do |e| %>
-  <tr>
-    <td style="color:#CC0066;border-radius:3px;padding:2px;"><%= e.co_applicant_business.application_status %></td>
-    <td><%= link_to e.co_applicant_business.customer.co_applicant.applicant_name, e.co_applicant_business %></td>
-     <td><%= e.tab.name %></td>
-     <td><%= e.co_applicant_business.status %></td>
-     <% if e.co_applicant_business.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "accept" %></td>
-     <% end %>
-
-  </tr>
-<% end %>
-</table>
-<% end %>
-  </div>
-</div>
- </div>
+  <% if current_user.admin? %>
+    <div class="span" style ="font-size:12px;width:1180px;background:#F5F5F5;padding:10px;border-radius:5px;margin-left:0px;" >
+      <h5> Todays Activity - all records</h5>
+         <%= render "todays_activity" %>
+    </div>
+  <% end %>
 </div>
