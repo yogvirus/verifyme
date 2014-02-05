@@ -1,3 +1,4 @@
+<%= render "co_applicant_documents" %>
 
 <% if @co_applicant.customer.co_applicant_business %>
  <%= link_to 'show co applicant business detail', co_applicant_business_path(@co_applicant.customer.co_applicant_business), :class=>"label label-success" %>
@@ -39,6 +40,11 @@
   <% end %>
 <br><br>
 
+<div id ="stamp" style="float:right">
+<% if @co_applicant.status=='verified'%>
+ <%= image_tag('verified-stamp.png', :size => "300x300") %>
+<% end %>
+</div>
 
 <h3 class ="label label-info">
  <%= "scorpeo-#{Date.today}-#{@co_applicant.application_ref_no}" %> | <%= @co_applicant.agency_name %>
