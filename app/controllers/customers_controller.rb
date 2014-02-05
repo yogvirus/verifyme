@@ -29,6 +29,17 @@ class CustomersController < ApplicationController
   end
 end
 
+ def old_pending_customers
+ end
+
+  def in_progress_today
+    @customers = Customer.where('DATE(created_at) = ?', Date.today)
+    @business = Business.where('DATE(created_at) = ?', Date.today)
+    @co_applicants = CoApplicant.where('DATE(created_at) = ?', Date.today)
+    @co_applicant_business = CoApplicantBusiness.where('DATE(created_at) = ?', Date.today)
+    @all_customers_today = @customers + @co_applicants + @co_applicant_business + @business
+  end
+
   def daily_customers
     @customers = Customer.where('DATE(created_at) = ?', Date.today)
     @business = Business.where('DATE(created_at) = ?', Date.today)

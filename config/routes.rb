@@ -19,6 +19,8 @@ EVerification::Application.routes.draw do
    get :generate_report
   end
   resources :co_applicant_serveys
+  get "customers/in_progress_today"
+  get "customers/old_pending_customers"
   get "customers/daily_customers"
   get "customers/assigned_data_today"
   get "customers/daily_pending_customers"
