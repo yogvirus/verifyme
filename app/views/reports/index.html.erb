@@ -93,7 +93,7 @@ $(function() {
   <td> Total </td>
  </tr>
  <tr>
-   <td><%= link_to @all_pending %></td>
+   <td><%= link_to @all_pending, pending_customers_path(tab_id: params[:tab_id], status: params[:status], start_date: params[:start_date], end_date: params[:end_date], application_status: params[:application_status]) %></td>
    <td><%= link_to @all_completed %></td>
    <td><%= link_to @all_progress %></td>
    <td><%= link_to @total %></td>

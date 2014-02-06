@@ -12,10 +12,7 @@
 		============================================= */
 
 		/* Top Padding for responsive navbar-top-fixed */
-				body { /* Add top padding for full-width layout */
-					padding-top: 60px;
-					padding-bottom: 40px;
-				}
+
 				@media (max-width: 979px) {
 				  body {
 				    padding-top: 0;

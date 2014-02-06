@@ -6,6 +6,7 @@ EVerification::Application.routes.draw do
 
   get "help_topics/how-to-make-applicant" => 'help_topics#make_customer', :as => :make_customer
   get "help_topics/how-to-make-co-applicant" => 'help_topics#make_co_applicant', :as => :make_co_applicant
+  get 'pending_customers' => "reports#pending", :as => :pending_customers
   #get "/tabs/" => "tabs#tab_status", :as => :tab_status
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
   #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
