@@ -24,19 +24,19 @@ border-collapse:collapse;
         <tr>
         <td class="border1">Application No</td>
         <td class="border1" width="300px;" style="text-align:right;">Agency Name</td>
-        <td class="border1" style="text-align:center; font-size:10px;">SCROP.E.O</td>
+        <td class="border1" style="text-align:center; font-size:10px;"><%= @customer.agency_name %></td>
         <td class="border1">&nbsp;</td>
         <td class="border1" width="60" style="text-align:center;">FH Code</td>
-        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none">&nbsp;</td>
+        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @customer.fh_code %></td>
         </tr>
 
 		<tr>
 
         <td style="border-right:1px #000 solid">Applicant's Name</td>
-        <td style="border-right:1px #000 solid; font-weight:bold" align="center">MR. Simranjit Singh</td>
+        <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @customer.applicant_name %></td>
         <td style="border-right:1px #000 solid">&nbsp;</td>
         <td>BRANCH NAME</td>
-        <td width="20" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="20" style="border-right:1px #000 solid"><%= @customer.branch.name %></td>
 
 
 
@@ -76,9 +76,9 @@ border-collapse:collapse;
         <table>
         <tr>
         <td width="130" style="border-right:1px #000 solid; font-weight:bold">Date of Visit</td>
-        <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold">27-JAN-2014</td>
+        <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= @customer.servey.date_of_visit %></td>
         <td width="233" style="border-right:1px #000 solid; font-weight:bold">TIME OF VISIT</td>
-        <td style="padding-left:20px; font-weight:bold;">4:30 PM</td>
+        <td style="padding-left:20px; font-weight:bold;"><%= @customer.servey.time_of_visit.strftime("%H:%M:%S %p") %></td>
 
         </tr>
         </table>
