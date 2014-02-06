@@ -7,12 +7,8 @@ EVerification::Application.routes.draw do
   get "help_topics/how-to-make-applicant" => 'help_topics#make_customer', :as => :make_customer
   get "help_topics/how-to-make-co-applicant" => 'help_topics#make_co_applicant', :as => :make_co_applicant
   get 'pending_customers' => "reports#pending", :as => :pending_customers
-  #get "/tabs/" => "tabs#tab_status", :as => :tab_status
-  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
-  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
-  #get "help_topics/make_customer" => 'help_topics#make_customer', :as => :make_customer
-  #get "todays_list" => 'customers#daily_customers', :as => :daily_customers
-  #get "customers/todays_list" => "customers#daily_customers", :as => :todays_customers
+  get 'completed_customers' => "reports#completed", :as => :completed_customers
+  get 'progress_customers' => "reports#progress", :as => :progress_customers
 
   resources :branches
   resources :reports do
@@ -67,8 +63,6 @@ EVerification::Application.routes.draw do
     member do
      post :co_applicant_verification
      get :co_applicant_verification
-     #post :co_applicant_work_servey_verification
-     #get :co_applicant_work_servey_verification
      post :accept
      get :accept
      post :re_indicated
