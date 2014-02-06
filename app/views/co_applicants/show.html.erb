@@ -1,5 +1,6 @@
+<% if @co_applicant && @co_applicant.co_applicant_documents %>
 <%= render "co_applicant_documents" %>
-
+<% end %>
 <% if @co_applicant.customer.co_applicant_business %>
  <%= link_to 'show co applicant business detail', co_applicant_business_path(@co_applicant.customer.co_applicant_business), :class=>"label label-success" %>
 <% else %>
