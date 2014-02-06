@@ -1,0 +1,7 @@
+<% if @co_applicant.co_applicant_documents %>
+<div>
+<% @co_applicant.co_applicant_documents.each do |d| %>
+ <%= image_tag d.photo.url(:thumb) %>
+<% end %>
+</div><br><br><br>
+<% end %>
