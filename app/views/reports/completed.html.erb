@@ -1,4 +1,9 @@
 <% if @all_completed.present? %>
+<h5>
+ <%= link_to "Export to excel", completed_customers_path(:tab_id => params[:tab_id].to_i, :status => params[:status],
+     :application_status=> params[:application_status],:start_date => params[:start_date], :end_date => params[:end_date],
+      format: :xls) %>
+</h5>
 
 <table class="table table-condensed">
  <thead>

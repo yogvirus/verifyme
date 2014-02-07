@@ -1,21 +1,25 @@
 <% if @all_pending.present? %>
-
-<table class="table table-condensed">
+<h5>
+ <%= link_to "Export to excel", pending_customers_path(:tab_id => params[:tab_id].to_i, :status => params[:status],
+     :application_status=> params[:application_status],:start_date => params[:start_date], :end_date => params[:end_date],
+      format: :xls) %>
+</h5>
+<table class="table table-condensed table-striped table-bordered" style="width:2000px;">
  <thead>
   <tr>
     <th>Status </th>
-    <th width="195px">Application ref no</th>
-    <th width="195px">Applicant name</th>
+    <th>Application ref no</th>
+    <th>Created At</th>
+    <th>Created Time</th>
+    <th>Applicant name</th>
     <th>Status</th>
     <th>verifing tab</th>
   </tr>
  </thead>
  <tbody>
-  <% count = 0%>
+  <% count = 0 %>
  <% @pending_customers.each do |customer| %>
-
   <tr>
-<td>   <%= count =count+1 %></td>
    <% if customer.customer.application_status == 'RESIDENTIAL' %>
    <td><b><%= customer.customer.application_status %></b></td>
    <% else %>
@@ -24,6 +28,8 @@
    <td>
 	  <b><%= link_to "scorpeo/ #{customer.customer.created_at.to_date}/ #{customer.customer.application_ref_no}", customer.customer %></b>
 	 </td>
+	 <td><%= customer.customer.created_at.to_date %></td>
+	 <td><%= customer.customer.created_at.strftime("%H:%M %p") %></td>
    <td><%= customer.customer.applicant_name %></td>
    <% if customer.customer.status=='submitted' %>
    <td><span class="label label-info"> Pending </span></td>
@@ -54,7 +60,6 @@
  <% @pending_business.each do |b| %>
 
   <tr>
-  <td> <%= count = count+1 %> </td>
    <% if b.business.application_status == 'RESIDENTIAL' %>
    <td><b><%= b.business.application_status %></b></td>
    <% else %>
@@ -63,6 +68,8 @@
    <td>
 	  <b><%= link_to "scorpeo/ #{b.business.created_at.to_date}/ #{b.business.application_ref_no}", b.business %></b>
 	 </td>
+	 <td><%= b.business.created_at.to_date %></td>
+	 <td><%= b.created_at.strftime("%H:%M %p") %></td>
    <td><%= b.business.applicant_name %></td>
    <% if b.business.status=='submitted' %>
    <td><span class="label label-info"> Pending </span></td>
@@ -94,7 +101,6 @@
  <% @pending_co_applicants.each do |c| %>
 
   <tr>
-    <td> <%= count = count+1 %> </td>
    <% if c.co_applicant.application_status == 'RESIDENTIAL' %>
    <td><b><%= c.co_applicant.application_status %></b></td>
    <% else %>
@@ -103,6 +109,8 @@
    <td>
 	  <b><%= link_to "scorpeo/ #{c.co_applicant.created_at.to_date}/ #{c.co_applicant.application_ref_no}", c.co_applicant %></b>
 	 </td>
+	 <td><%= c.co_applicant.created_at.to_date %></td>
+	 <td><%= c.co_applicant.created_at.strftime("%H:%M %p") %></td>
    <td><%= c.co_applicant.applicant_name %></td>
    <% if c.co_applicant.status=='submitted' %>
    <td><span class="label label-info"> Pending </span></td>
@@ -134,7 +142,6 @@
  <% @pending_work.each do |cb| %>
 
   <tr>
-    <td> <%= count= count+1 %> </td>
    <% if cb.co_applicant_business.application_status == 'RESIDENTIAL' %>
    <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= cb.co_applicant_business.application_status %></b></td>
    <% else %>
@@ -143,6 +150,8 @@
    <td>
 	  <b><%= link_to "scorpeo/ #{cb.co_applicant_business.created_at.to_date}/ #{cb.co_applicant_business.application_ref_no}", cb.co_applicant_business %></b>
 	 </td>
+ 	 <td><%= cb.co_applicant_business.created_at.to_date %></td>
+	 <td><%= cb.co_applicant_business.created_at.strftime("%H:%M %p") %></td>
    <td><%= cb.co_applicant_business.applicant_name %></td>
    <% if cb.co_applicant_business.status=='submitted' %>
    <td><span class="label label-info"> Pending </span></td>

@@ -3,7 +3,7 @@ class Customer < ActiveRecord::Base
                   :gmaps, :state, :pincode_id, :country_state, :country_city,
                   :country_name, :slug, :address, :degree_name, :agency_name,
                   :fh_code, :landmark, :d_o_b, :photo_required, :contact_number, :application_status,
-                  :branch_id, :branch_code, :client_id, :area_name, :city_id, :no_verifcation
+                  :branch_id, :branch_code, :client_id, :area_name, :city_id, :no_verifcation, :status
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code, :branch_id, :client_id, :branch_code
   validates_uniqueness_of :application_ref_no, :fh_code

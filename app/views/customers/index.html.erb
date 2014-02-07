@@ -22,14 +22,13 @@ input[type=submit] {
 </style>
 
 <div id="residential">
-<b> Filter by : <%= link_to "residential" , customers_cust_residential_path %> |
-                <%= link_to "business" , customers_cust_business_path %> | <%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:750px;" %></b><br>
- <b> Filter by :
-                <%= link_to "Pending" , customers_cust_pending_path %> |
-                <%= link_to "in progress" , customers_cust_in_progress_path %> |
-                <%= link_to "completed" , customers_cust_completed_path %>
-
-</b><br><br>
+<b> Filter by :
+     <%= link_to "Residential" , customers_cust_residential_path %> |
+     <%= link_to "Pending" , customers_cust_pending_path %> |
+     <%= link_to "InProgress" , customers_cust_in_progress_path %> |
+     <%= link_to "Completed" , customers_cust_completed_path %> |
+     <%= link_to "Business" , customers_cust_business_path %>
+     <%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:450px;" %></b><br><br><br>
 </div>
 
 <%- model_class = Customer -%>

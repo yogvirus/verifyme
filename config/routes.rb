@@ -9,7 +9,9 @@ EVerification::Application.routes.draw do
   get 'pending_customers' => "reports#pending", :as => :pending_customers
   get 'completed_customers' => "reports#completed", :as => :completed_customers
   get 'progress_customers' => "reports#progress", :as => :progress_customers
-
+	get 'get_branch_code' => "branches#get_branch_code"
+	get 'get_area_name' => "branches#get_area_name"
+	get 'get_area' => "branches#get_area"
   resources :branches
   resources :reports do
    get :generated_report

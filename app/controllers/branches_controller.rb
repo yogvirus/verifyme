@@ -14,5 +14,19 @@ class BranchesController < ApplicationController
    end
   end
 
+  def get_branch_code
+   branch = Branch.find(params[:id])
+   render :text => branch.branch_code
+  end
+
+  def get_area_name
+   area = Pincode.find(params[:id])
+   render :text => area.pin_number
+  end
+
+  def get_area
+   @city_area = Pincode.where(city_id: params[:id] )
+   #render :text =>
+  end
 
 end
