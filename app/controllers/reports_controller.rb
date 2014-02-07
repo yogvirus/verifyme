@@ -202,7 +202,6 @@ include ReportsHelper
 #all true
   if @tab_id!=0 && @status!='All' && @application_status!='All' && params[:start_date] && params[:end_date]
       @customers = CustomerVerification.joins(:customer).where('customer_verifications.tab_id = ? and DATE(customer_verifications.created_at) >= ? and DATE(customer_verifications.created_at) <= ? and customers.status = ? and customers.application_status = ? ', @tab_id , @start_date, @end_date, @status, @application_status)
-puts "----------------------------", @customers.inspect
      @co_applicants = CoApplicantVerification.joins(:co_applicant).where('co_applicant_verifications.tab_id = ? and DATE(co_applicant_verifications.created_at) >= ? and DATE(co_applicant_verifications.created_at) <= ? and co_applicants.status = ? and co_applicants.application_status = ? ', @tab_id, @start_date, @end_date, @status, @application_status)
      @business = BusinessVerification.joins(:business).where('business_verifications.tab_id = ? and DATE(business_verifications.created_at) >= ? and DATE(business_verifications.created_at) <= ? and businesses.status = ? and businesses.application_status = ?', @tab_id, @start_date, @end_date, @status, @application_status)
      @work_detail = ClientVerification.joins(:co_applicant_business).where('client_verifications.tab_id = ? and DATE(client_verifications.created_at) >= ? and DATE(client_verifications.created_at) <= ? and co_applicant_businesses.status = ? and co_applicant_businesses.application_status = ? ', @tab_id, @start_date, @end_date, @status,@application_status)
@@ -377,6 +376,10 @@ puts "----------------------------", @customers.inspect
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
    end
+    respond_to do |format|
+     format.html
+     format.xls { render xlsx: :pending, filename: "reports from" }
+    end
  end
 
  def progress
@@ -388,7 +391,6 @@ puts "----------------------------", @customers.inspect
 #all true
   if @tab_id!=0 && @status!='All' && @application_status!='All' && params[:start_date] && params[:end_date]
       @customers = CustomerVerification.joins(:customer).where('customer_verifications.tab_id = ? and DATE(customer_verifications.created_at) >= ? and DATE(customer_verifications.created_at) <= ? and customers.status = ? and customers.application_status = ? ', @tab_id , @start_date, @end_date, @status, @application_status)
-puts "----------------------------", @customers.inspect
      @co_applicants = CoApplicantVerification.joins(:co_applicant).where('co_applicant_verifications.tab_id = ? and DATE(co_applicant_verifications.created_at) >= ? and DATE(co_applicant_verifications.created_at) <= ? and co_applicants.status = ? and co_applicants.application_status = ? ', @tab_id, @start_date, @end_date, @status, @application_status)
      @business = BusinessVerification.joins(:business).where('business_verifications.tab_id = ? and DATE(business_verifications.created_at) >= ? and DATE(business_verifications.created_at) <= ? and businesses.status = ? and businesses.application_status = ?', @tab_id, @start_date, @end_date, @status, @application_status)
      @work_detail = ClientVerification.joins(:co_applicant_business).where('client_verifications.tab_id = ? and DATE(client_verifications.created_at) >= ? and DATE(client_verifications.created_at) <= ? and co_applicant_businesses.status = ? and co_applicant_businesses.application_status = ? ', @tab_id, @start_date, @end_date, @status,@application_status)
@@ -563,6 +565,10 @@ puts "----------------------------", @customers.inspect
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
    end
+     respond_to do |format|
+      format.html
+      format.xls { render xlsx: :progress, filename: "reports from" }
+     end
  end
 
  def completed
@@ -749,6 +755,10 @@ puts "----------------------------", @customers.inspect
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
    end
+    respond_to do |format|
+     format.html
+     format.xls { render xlsx: :completed, filename: "reports from" }
+    end
  end
 
 

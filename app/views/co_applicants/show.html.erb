@@ -20,7 +20,8 @@
 </div>
 
 <%- model_class = Business -%>
-<div class="page-header">
+<div id="datafull">
+<div class="page-header" style="float:left;width:500px">
 
 
   <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -41,12 +42,6 @@
   <% end %>
 <br><br>
 
-<div id ="stamp" style="float:right">
-<% if @co_applicant.status=='verified'%>
- <%= image_tag('verified-stamp.png', :size => "300x300") %>
-<% end %>
-</div>
-
 <h3 class ="label label-info">
  <%= "scorpeo-#{Date.today}-#{@co_applicant.application_ref_no}" %> | <%= @co_applicant.agency_name %>
 </h3>
@@ -54,7 +49,6 @@
   	 <% if @co_applicant.status=="submitted" %>
 		   <h6><%= link_to 'reasign to another tab', edit_co_applicant_verification_path(@co_applicant.co_applicant_verification, :id => @co_applicant.co_applicant_verification) %></h6>
      <% end %>
-
 
 <h5>
   <%= @co_applicant.landmark %> <br>
@@ -102,24 +96,30 @@
 <% end %>
 </td></tr></tr></table>
 </div>
-
+</div>
+<div class ="right" style="float:right">
+<div id ="stamp">
+<% if @co_applicant.status=='verified'%>
+ <%= image_tag('verified-stamp.png', :size => "300x300") %>
+<% end %>
+</div>
+</div><br><br><br><br><br><br><br>
+</div>
 <% if @co_applicant.co_applicant_documents %>
 <div>
 <% @co_applicant.co_applicant_documents.each do |d| %>
  <%= image_tag d.photo.url(:thumb) %>
 <% end %>
-</div><br><br><br>
+
 <% end %>
 
 
 
-<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant.latitude}%2C#{@co_applicant.longitude}" %></p>
-</div>
 
+<br><br>
 <% if @co_applicant.co_applicant_servey %>
 <% if @co_applicant.co_applicant_servey.address_confirmed? %>
-<div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+<div class="span5" style ="width:800px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 <strong>
  <%= link_to 'Edit this document' , edit_co_applicant_servey_path(@co_applicant.co_applicant_servey, :customer_id => @co_applicant, :tab_id => @co_applicant.co_applicant_servey.tab_id) %></strong>
 <table class="table table-bordered">
@@ -263,4 +263,7 @@
 </table>
 </div>
 <% end %>
+<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@co_applicant.latitude}%2C#{@co_applicant.longitude}" %></p>
+</div>
 <% end %>

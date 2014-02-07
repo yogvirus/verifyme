@@ -1,0 +1,1 @@
+$('#area_name').html('<%=j collection_select :customer, :pincode_id, @city_area, :id, :name, {:prompt => true} ,{:class => 'text_field', :onchange => 'getAreaname(this)'} %>')
