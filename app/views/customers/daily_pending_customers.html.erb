@@ -1,0 +1,161 @@
+<h3> List Of Customers Created Today </h3>
+
+<table class="table table-condensed">
+ <thead>
+  <tr>
+    <th>Status </th>
+    <th width="195px">Application ref no</th>
+    <th width="195px">Applicant name</th>
+    <th>Status</th>
+    <th>verifing tab</th>
+  </tr>
+ </thead>
+ <tbody>
+
+<% @customers.each do |customer| %>
+
+  <tr>
+     <% if customer.application_status == 'RESIDENTIAL'%>
+     <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+     <% else %>
+     <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+     <% end %>
+     <td><strong><%= link_to "scorpeo/ #{customer.created_at.to_date}/ #{customer.application_ref_no}", customer %></strong></td>
+     <td><%= customer.applicant_name %></td>
+     <% if customer.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if customer.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if customer.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if customer.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+
+     <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td width="150px"><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+
+
+<% @business.each do |b| %>
+
+  <tr>
+     <% if b.application_status == 'RESIDENTIAL'%>
+     <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= b.application_status %></b></td>
+     <% else %>
+     <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= b.application_status %></b></td>
+     <% end %>
+     <td><strong><%= link_to "scorpeo/ #{b.created_at.to_date}/ #{b.application_ref_no}", b %></strong></td>
+     <td><%= b.applicant_name %></td>
+     <% if b.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if b.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if b.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if b.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+
+     <% @verifier  = BusinessVerification.find_all_by_business_id(b) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td width="150px"><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+
+<% @co_applicants.each do |b| %>
+
+  <tr>
+     <% if b.application_status == 'RESIDENTIAL'%>
+     <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= b.application_status %></b></td>
+     <% else %>
+     <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= b.application_status %></b></td>
+     <% end %>
+     <td><strong><%= link_to "scorpeo/ #{b.created_at.to_date}/ #{b.application_ref_no}", b %></strong></td>
+     <td><%= b.applicant_name %></td>
+     <% if b.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if b.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if b.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if b.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+
+     <% @verifier  = CoApplicantVerification.find_all_by_co_applicant_id(b) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td width="150px"><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+
+<% @co_applicant_business.each do |b| %>
+
+  <tr>
+     <% if b.application_status == 'RESIDENTIAL'%>
+     <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= b.application_status %></b></td>
+     <% else %>
+     <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= b.application_status %></b></td>
+     <% end %>
+     <td><strong><%= link_to "scorpeo/ #{b.created_at.to_date}/ #{b.application_ref_no}", b %></strong></td>
+     <td><%= b.applicant_name %></td>
+     <% if b.status=='submitted' %>
+     <td><span class="label label-info"> Pending </span></td>
+     <% end %>
+     <% if b.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+
+     <% if b.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if b.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+
+     <% @verifier  = ClientVerification.find_all_by_co_applicant_business_id(b) %>
+      <% @verifier.each do |v| %>
+       <% if v.tab.name %>
+        <td width="150px"><%= v.tab.name %></td>
+       <% else %>
+        <td>no tab </td>
+       <% end %>
+     <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+
+
+</table>
