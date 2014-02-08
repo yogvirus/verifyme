@@ -51,7 +51,6 @@ input[type=submit] {
  <tbody>
 
 <% @all_customer.each do |customer| %>
-
   <tr><% if customer && customer.branch && customer.client %>
      <td><%= customer.client.name %></td>
      <td><%= customer.branch.name %></td>

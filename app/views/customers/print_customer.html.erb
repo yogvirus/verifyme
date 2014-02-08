@@ -22,9 +22,9 @@ border-collapse:collapse;
 		<td>
         <table>
         <tr>
-        <td class="border1">Application No</td>
+        <td class="border1" width="100">Application No</td>
         <td class="border1" width="300px;" style="text-align:right;">Agency Name</td>
-        <td class="border1" style="text-align:center; font-size:10px;"><%= @customer.agency_name %></td>
+        <td class="border1" style="text-align:center; font-size:10px;">ScorpE.O</td>
         <td class="border1">&nbsp;</td>
         <td class="border1" width="60" style="text-align:center;">FH Code</td>
         <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @customer.fh_code %></td>
@@ -32,14 +32,11 @@ border-collapse:collapse;
 
 		<tr>
 
-        <td style="border-right:1px #000 solid">Applicant's Name</td>
+        <td style="border-right:1px #000 solid" width="100">Applicant's Name</td>
         <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @customer.applicant_name %></td>
         <td style="border-right:1px #000 solid">&nbsp;</td>
-        <td>BRANCH NAME</td>
-        <td width="20" style="border-right:1px #000 solid"><%= @customer.branch.name %></td>
-
-
-
+        <td>BRANCH</td>
+        <td width="120" style="border-right:1px #000 solid"><%= @customer.branch.name %></td>
         </tr>
 
         </table>

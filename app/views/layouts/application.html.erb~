@@ -4,26 +4,24 @@
     <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>e-verification</title>
-    <%= stylesheet_link_tag "application",'datepicker',"bootstrap.css","form", :media => :all %>
+    <%= stylesheet_link_tag "style","application",'datepicker',"bootstrap.css","form", :media => :all %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag 'bootstrap-datepicker' %>
-<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
 
     <style type="text/css">
       body{
-font-family: 'Shadows Into Light Two', cursive;
-            text-transform: uppercase;
-            font-size:11px;
-            padding: 60px;
+            font-family: 'Varela', sans-serif;
+            font-size:12px;
+            padding-top: 60px;
             line-height: 25px;
-             font-weight: bold;
+            font-weight: bold;
            }
       .sidebar-nav {
         padding: 9px 0;
       }
-
-
+      .navbar .nav { font-size:14px;}
       /* Set the fixed height of the footer here */
       #footer {
 				bottom: 0;
@@ -32,20 +30,9 @@ font-family: 'Shadows Into Light Two', cursive;
         background-color: #000;
 				height: 160px;
 	      }
-
-
     </style>
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-
-  </head>
-
-<body>
+</head>
+ <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -67,12 +54,17 @@ font-family: 'Shadows Into Light Two', cursive;
              <% end %>
 
             </p><% if user_signed_in? %>
-            <ul class="nav"><% if current_user.role=="super_user"||current_user.role=="admin"%>
+            <ul class="nav">
+            <% if current_user.role=="super_user"||current_user.role=="admin"%>
               <li class="active"> <%= link_to 'Show all users', profiles_path %></li>
-              <li><%= link_to "Customers", customers_path %></li>
-              <li><%= link_to "Tabs", tabs_path %></li>
-              <li><%= link_to "Generate Report", reports_path %></li>
-              <% unless !current_user.profile %><li class="active"><%= link_to "My Profile", profile_path(current_user) %></li><% end %>
+              <li class="active"><%= link_to "Customers", customers_path %></li>
+              <li class="active"><%= link_to "Tabs", tabs_path %></li>
+              <li class="active"><%= link_to "Generate Report", reports_path %></li>
+              <li class="active"><%= link_to "Branches", branches_path %></li>
+              <li class="active"><%= link_to "Pincodes", pincodes_path %></li>
+            <% unless !current_user.profile %>
+              <li class="active"><%= link_to "My Profile", profile_path(current_user) %></li>
+            <% end %>
               <% end %><% end %>
             </ul>
           </div><!--/.nav-collapse -->
@@ -92,7 +84,6 @@ font-family: 'Shadows Into Light Two', cursive;
 </div>
 
 
-      <hr>
 
 </body>
 </html>

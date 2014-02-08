@@ -1,0 +1,15 @@
+<h4> <%= link_to "Add New", new_pincode_path %></h4>
+<table class="table">
+ <tr>
+  <td> Area Name </td>
+  <td> Pincode </td>
+  <td> City </td>
+ </tr>
+<% @pincodes.each do |p| %>
+ <tr>
+		<td><%= p.name %></td>
+		<td><%= p.pin_number %></td>
+ </tr>
+<% end %>
+</table>
+

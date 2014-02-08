@@ -1,0 +1,30 @@
+<%= form_for(@pincode) do |f| %>
+  <% if @pincode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pincode.errors.count, "error") %> prohibited this from being saved:</h2>
+
+      <ul>
+      <% @pincode.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field_name">
+    <%= f.label :Area_name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field_name">
+    <%= f.label :pincode_Code %>
+    <%= f.text_field :pin_number %>
+  </div>
+
+  <div class="field_name">
+    <%= f.label :Select_City %>
+    <%= f.collection_select :city_id, City.all, :id, :name , :prompt => "Select" %>
+  </div>
+
+   <%= f.submit %>
+<% end %>
