@@ -30,6 +30,7 @@
         background-color: #000;
 				height: 160px;
 	      }
+       .dropdown-menu{   margin: 2px 437px 0;}
     </style>
 </head>
  <body>
@@ -52,16 +53,21 @@
                <%= link_to "Login", new_user_session_path %>
                <!--<%= link_to "Admin login", "/admin" %>-->
              <% end %>
-
             </p><% if user_signed_in? %>
             <ul class="nav">
             <% if current_user.role=="super_user"||current_user.role=="admin"%>
               <li class="active"> <%= link_to 'Users', profiles_path %></li>
               <li class="active"><%= link_to "Customers", customers_path %></li>
-              <li class="active"><%= link_to "Tabs", tabs_path %></li>
               <li class="active"><%= link_to "Generate Report", reports_path %></li>
-              <li class="active"><%= link_to "Branches", branches_path %></li>
-              <li class="active"><%= link_to "Pincodes", pincodes_path %></li>
+							<button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
+								Admin
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+								<li role="presentation"><%= link_to "Tabs", tabs_path %></li>
+								<li role="presentation"><%= link_to "Branches", branches_path %></li>
+								<li role="presentation"><%= link_to "Pincodes", pincodes_path %></li>
+							</ul>
             <% unless !current_user.profile %>
               <li class="active"><%= link_to "My Profile", profile_path(current_user) %></li>
             <% end %>
