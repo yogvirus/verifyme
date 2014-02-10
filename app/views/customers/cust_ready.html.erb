@@ -1,0 +1,41 @@
+<div id="residential" style="font-size:11px;width:2200px">
+<h5> all customers with Business </h5> <br>
+
+<table class="table table-condensed table-striped table-bordered">
+  <tr>
+    <th>Application Status </th>
+    <th>Application ref no</th>
+    <th>Applicant name</th>
+    <th>Address</th>
+    <th>Status</th>
+  </tr>
+
+<% @cust_ready.each do |customer| %>
+
+  <tr>
+    <% if customer.application_status == 'RESIDENTIAL'%>
+    <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+    <% else %>
+    <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
+    <% end %>
+    <td><strong><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></strong></td>
+    <td><%= customer.applicant_name %></td>
+     <td><%= customer.address %></td>
+     <% if customer.status=='submitted' %>
+     <td><span class="label label-info"> Submitted </span></td>
+     <% end %>
+     <% if customer.status=='ready_for_verification' %>
+     <td><span class="label label-info"> ready for verification </span></td>
+     <% end %>
+     <% if customer.status=='awaiting_to_get_verified' %>
+     <td><span class="label label-warning"> in progress </span></td>
+     <% end %>
+     <% if customer.status=='verified' %>
+     <td><span class="label label-success"> verified </span></td>
+     <% end %>
+
+      </tr>
+    <% end %>
+</table>
+
+<br />

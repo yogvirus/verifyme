@@ -27,19 +27,19 @@ border-collapse:collapse;
    <table>
      <tr>
         <td class="border1" width="100">Application No </td>
-        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @customer.fh_code %></td>
+        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @business.fh_code %></td>
         <td class="border1" width="300px;" style="text-align:right;">Agency Name</td>
         <td class="border1" style="text-align:center; font-size:10px;">ScorpE.O</td>
         <td class="border1">&nbsp;</td>
         <td class="border1" width="60" style="text-align:center;">FH Code</td>
-        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @customer.fh_code %></td>
+        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @business.fh_code %></td>
      </tr>
   	 <tr>
         <td style="border-right:1px #000 solid" width="100">Applicant's Name</td>
-        <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @customer.applicant_name %></td>
+        <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @business.applicant_name %></td>
         <td style="border-right:1px #000 solid">&nbsp;</td>
         <td class="border1">BRANCH</td>
-        <td width="120" style="border-right:1px #000 solid"><%= @customer.branch.name %></td>
+        <td width="120" style="border-right:1px #000 solid"><%= @business.branch.name %></td>
       </tr>
    </table>
 
@@ -50,7 +50,7 @@ border-collapse:collapse;
         <table>
         <tr>
         <td style="border-right:1px solid #000" width="130" height="20">Office Address</td>
-        <td width="0">&nbsp;</td>
+        <td width="0"><%= @business.address %></td>
         </tr>
         </table>
 	</tr>
@@ -61,10 +61,12 @@ border-collapse:collapse;
         <table>
         <tr align="center">
         <td style="border-right:1px #000 solid; font-weight:bold" width="130">Name and Emp Confirmed</td>
-        <td width="80" style="border-right:1px #000 solid">YES</td>
+        <% if @business.work_servey.name_and_employee_confirm? %>
+        <td width="80" style="background:black;color:white;border-right:1px #000 solid">YES</td>
+         <% end %>
         <td width="80" style="border-right:1px #000 solid">NO</td>
         <td width="150" style="border-right:1px #000 solid">Designation</td>
-        <td width="80" style="border-right:1px #000 solid;">CEO</td>
+        <td width="80" style="border-right:1px #000 solid;"><%= @business.work_servey.applicant_designation %></td>
         <td>&nbsp;</td>
         </tr>
         </table>
@@ -75,9 +77,9 @@ border-collapse:collapse;
         <table>
         <tr>
         <td width="130" style="border-right:1px #000 solid; font-weight:bold">Date of Visit</td>
-        <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= @customer.servey.date_of_visit %></td>
+        <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= @business.work_servey.date_of_visit %></td>
         <td width="233" style="border-right:1px #000 solid; font-weight:bold">TIME OF VISIT</td>
-        <td style="padding-left:20px; font-weight:bold;"><%= @customer.servey.time_of_visit.strftime("%H:%M:%S %p") %></td>
+        <td style="padding-left:20px; font-weight:bold;"><%= @business.work_servey.time_of_visit.strftime("%H:%M:%S %p") %></td>
 
         </tr>
         </table>

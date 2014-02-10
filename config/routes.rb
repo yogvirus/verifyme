@@ -34,6 +34,7 @@ EVerification::Application.routes.draw do
   get "customers/cust_business"
   get "customers/cust_pending"
   get "customers/cust_in_progress"
+  get "customers/cust_ready"
   get "customers/cust_completed"
   get "customers/customer_search_results" => "customers#search", :as => :customer_search
   post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
@@ -96,6 +97,7 @@ EVerification::Application.routes.draw do
      post :business_verification
      get :business_verification
      post :accept
+     get :print_business_form
      get :accept
      post :re_indicated
      get :re_indicated

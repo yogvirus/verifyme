@@ -93,5 +93,9 @@ class BusinessesController < InheritedResources::Base
     end
   end
 
+  def print_business_form
+    @print_form = Business.find(params[:business_id])
+  end
+
 
 end

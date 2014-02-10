@@ -24,10 +24,11 @@ input[type=submit] {
 <div id="residential">
 <b> Filter by :
      <%= link_to "Residential" , customers_cust_residential_path %> |
+     <%= link_to "Business" , customers_cust_business_path %> |
      <%= link_to "Pending" , customers_cust_pending_path %> |
      <%= link_to "InProgress" , customers_cust_in_progress_path %> |
      <%= link_to "Completed" , customers_cust_completed_path %> |
-     <%= link_to "Business" , customers_cust_business_path %>
+     <%= link_to "Ready For Verification" , customers_cust_ready_path %>
      <%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:450px;" %></b><br><br><br>
 </div>
 
@@ -37,29 +38,21 @@ input[type=submit] {
 <table class="table table-condensed table-bordered table-striped">
  <thead>
   <tr>
-    <th>Client Name </th>
-    <th>Branch Name </th>
-    <th>Branch code </th>
     <th>Form Type </th>
     <th>Application ref no</th>
     <th>Applicant name</th>
     <th>Status</th>
     <th>Address</th>
     <th>Verifing tab</th>
+    <th>Client Name </th>
+    <th>Branch Name </th>
+    <th>Branch code </th>
   </tr>
  </thead>
  <tbody>
 
 <% @all_customer.each do |customer| %>
-  <tr><% if customer && customer.branch && customer.client %>
-     <td><%= customer.client.name %></td>
-     <td><%= customer.branch.name %></td>
-     <td><%= customer.branch_code %></td>
-     <% else %>
-     <td> </td>
-     <td> </td>
-     <td> </td>
-     <% end %>
+ <tr>
      <% if customer.application_status == 'RESIDENTIAL'%>
      <td><b style="color:#009999;border-radius:3px;padding:2px;">
        <% if customer.class == CoApplicant %>
@@ -91,7 +84,7 @@ input[type=submit] {
      <% if customer.class==Business %>
      <% @verifier  = BusinessVerification.find_all_by_business_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
@@ -102,7 +95,7 @@ input[type=submit] {
      <% if customer.class==Customer %>
      <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v.customer && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
@@ -113,7 +106,7 @@ input[type=submit] {
      <% if customer.class==CoApplicant %>
      <% @verifier  = CoApplicantVerification.find_all_by_co_applicant_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
@@ -124,14 +117,22 @@ input[type=submit] {
      <% if customer.class==CoApplicantBusiness %>
      <% @verifier  = ClientVerification.find_all_by_co_applicant_business_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
        <% end %>
      <% end %>
      <% end %>
-
+ <% if customer && customer.branch && customer.client %>
+     <td><%= customer.client.name %></td>
+     <td><%= customer.branch.name %></td>
+     <td><%= customer.branch_code %></td>
+     <% else %>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <% end %>
     <% end %>
      </tr>
     </tbody>

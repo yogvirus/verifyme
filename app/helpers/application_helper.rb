@@ -27,6 +27,10 @@ module ApplicationHelper
     Customer.find_all_by_status('submitted') + CoApplicant.find_all_by_status('submitted') + Business.find_all_by_status('submitted') + CoApplicantBusiness.find_all_by_status('submitted')
   end
 
+  def inqueue_filter
+    Customer.find_all_by_status('ready_for_verification') + CoApplicant.find_all_by_status('ready_for_verification') + Business.find_all_by_status('ready_for_verification') + CoApplicantBusiness.find_all_by_status('ready_for_verification')
+  end
+
   def in_progress_filter
     Customer.find_all_by_status('awaiting_to_get_verified') + CoApplicant.find_all_by_status('awaiting_to_get_verified') + Business.find_all_by_status('awaiting_to_get_verified') + CoApplicantBusiness.find_all_by_status('awaiting_to_get_verified')
   end

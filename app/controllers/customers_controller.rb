@@ -108,6 +108,9 @@ end
    @cust_completed = completed_filter
   end
 
+  def cust_ready
+   @cust_ready = inqueue_filter
+  end
 
   # GET /customers/1
   # GET /customers/1.json
