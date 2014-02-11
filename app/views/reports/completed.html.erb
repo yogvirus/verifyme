@@ -30,7 +30,6 @@
   </tr>
  </thead>
  <tbody>
-  <% count = 0%>
  <% @completed_customers.each do |customer| %>
   <tr>
    <% if customer.customer.application_status == 'RESIDENTIAL' %>
@@ -65,8 +64,8 @@
    <td><span class="label label-success"> verified </span></td>
    <% end %>
    <td>
-     <%= customer.customer.servey.verifiers_remark %> ; 
-     <%= customer.customer.servey.date_of_visit %> ; 
+     <%= customer.customer.servey.verifiers_remark %> ;
+     <%= customer.customer.servey.date_of_visit %> ;
      <%= customer.customer.servey.time_of_visit.strftime("%H:%M %p") %>;
      <%= customer.customer.servey.person_contacted %>;
      <%= customer.customer.servey.relation_with_applicant %>;
@@ -115,8 +114,8 @@
    <td><span class="label label-success"> verified </span></td>
    <% end %>
    <td>
-     <%= customer.co_applicant.co_applicant_servey.verifiers_remark %> ; 
-     <%= customer.co_applicant.co_applicant_servey.date_of_visit %> ; 
+     <%= customer.co_applicant.co_applicant_servey.verifiers_remark %> ;
+     <%= customer.co_applicant.co_applicant_servey.date_of_visit %> ;
      <%= customer.co_applicant.co_applicant_servey.time_of_visit.strftime("%H:%M %p") %>;
      <%= customer.co_applicant.co_applicant_servey.person_contacted %>;
      <%= customer.co_applicant.co_applicant_servey.relation_with_applicant %>;
@@ -177,8 +176,8 @@
    <td><%= b.business.work_servey.name_of_the_company %></td>
    <td><%= b.business.work_servey.verifier_remark %></td>
    <td>
-     <%= b.business.work_servey.verifier_remark %> ; 
-     <%= b.business.work_servey.date_of_visit %> ; 
+     <%= b.business.work_servey.verifier_remark %> ;
+     <%= b.business.work_servey.date_of_visit %> ;
      <%= b.business.work_servey.time_of_visit.strftime("%H:%M %p") %>;
      <%= b.business.work_servey.applicant_designation %>;
      <%= b.business.work_servey.person_met %>;

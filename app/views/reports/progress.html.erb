@@ -1,3 +1,6 @@
+<style>
+#hero-unit{ margin:5px;width:2522px}
+</style>
 <% if @all_pending.present? %>
 <h5>
  <%= link_to "Export to excel", progress_customers_path(:tab_id => params[:tab_id].to_i, :status => params[:status],
@@ -5,31 +8,49 @@
       format: :xls) %>
 </h5>
 
-<table class="table table-condensed">
+<table class="table table-condensed table-bordered table-striped" style="width:1800px;">
  <thead>
   <tr>
     <th>Status </th>
-    <th width="195px">Application ref no</th>
-    <th width="195px">Applicant name</th>
+    <th>Tab Name  </th>
+    <th>Applicant name</th>
+    <th width="160px">Address</th>
+    <th>VisitDate</th>
+    <th width="60px">VisitTime</th>
+    <th>Person Contacted</th>
+    <th>Relationship</th>
+    <th>BirthDate</th>
+    <th>Years at Current Address</th>
+    <th>Residence Status</th>
+    <th>Qualification</th>
+    <th>Family Members</th>
     <th>Status</th>
-    <th>verifing tab</th>
+    <th>Verifier Remark</th>
   </tr>
  </thead>
  <tbody>
-  <% count = 0%>
  <% @progress_customers.each do |customer| %>
 
   <tr>
-<td>   <%= count =count+1 %></td>
    <% if customer.customer.application_status == 'RESIDENTIAL' %>
    <td><b><%= customer.customer.application_status %></b></td>
    <% else %>
    <td><b><%= customer.customer.application_status %></b></td>
    <% end %>
-   <td>
-	  <b><%= link_to "scorpeo/ #{customer.customer.created_at.to_date}/ #{customer.customer.application_ref_no}", customer.customer %></b>
-	 </td>
+   <td><%= customer.customer.servey.tab.name %></td>
    <td><%= customer.customer.applicant_name %></td>
+   <td><%= customer.customer.address %></td>
+   <td><%= customer.customer.servey.date_of_visit %></td>
+   <td><%= customer.customer.servey.time_of_visit.strftime("%H:%M %p") %></td>
+   <td><%= customer.customer.servey.person_contacted %></td>
+   <td><%= customer.customer.servey.relation_with_applicant %></td>
+   <td><%= customer.customer.servey.date_of_birth %></td>
+   <td><%= customer.customer.servey.years_lived_at_current_address %> Yrs</td>
+   <td><%= customer.customer.servey.residence_status %></td>
+   <td><%= customer.customer.servey.educational_qualification %></td>
+   <td><%= customer.customer.servey.no_of_family_members %></td>
+	 <%#= link_to "scorpeo/ #{customer.customer.created_at.to_date}/ #{customer.customer.application_ref_no}", customer.customer %>
+
    <% if customer.customer.status=='submitted' %>
    <td><span class="label label-info"> Pending </span></td>
    <% end %>
@@ -44,15 +65,20 @@
    <td><span class="label label-success"> verified </span></td>
    <% end %>
 
-	 <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
-		 <% @verifier.each do |v| %>
-			 <% if v.tab.name %>
-				 <td width="150px"><%= v.tab.name %></td>
-			 <% else %>
-				 <td>no tab </td>
-			 <% end %>
-	   <% end %>
- 	 </tr>
+   <td>
+     <%= customer.customer.servey.verifiers_remark %> ;
+     <%= customer.customer.servey.date_of_visit %> ;
+     <%= customer.customer.servey.time_of_visit.strftime("%H:%M %p") %>;
+     <%= customer.customer.servey.person_contacted %>;
+     <%= customer.customer.servey.relation_with_applicant %>;
+     <%= customer.customer.servey.date_of_birth %>;
+     <%= customer.customer.servey.years_lived_at_current_address %> Yrs;
+     <%= customer.customer.servey.residence_status %>;
+     <%= customer.customer.servey.educational_qualification %>
+   </td>
+
+
+
 	 <% end %>
 	 </tbody>
 <!--------------- business---------------------------------------------------------------------->

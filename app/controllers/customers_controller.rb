@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
    include ApplicationHelper
    before_filter :authenticate_user!
+   layout 'print_layout', :only => :print_customer
    load_and_authorize_resource
 
   def index
