@@ -12,7 +12,7 @@ class CoApplicantBusinessesController < ApplicationController
  end
 
  def edit
-  @co_applicant = CoApplicant.find(params[:customer_id])
+  @co_applicant = CoApplicant.find(params[:co_applicant_id])
   @co_applicant_work_detail = CoApplicantBusiness.find(params[:id])
   @application_ref_no = @co_applicant.application_ref_no
  end
@@ -91,5 +91,9 @@ class CoApplicantBusinessesController < ApplicationController
      end
   end
 
+
+ def print_co_applicant_business
+  @print_co_applicant_business
+ end
 
 end

@@ -1,0 +1,607 @@
+
+<style type="text/css">
+body{line-height: 12px;}
+#wrapper { width:700px; background-color:#fff; margin:0 auto; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:9px !important;}
+td { font-size:9px;}
+td tr td { }
+.border1 { border-right:1px #000 solid; border-bottom:1px solid #000;}
+table
+{
+border-collapse:collapse;
+}
+</style>
+<%=link_to_function("Print this Page", "javascript:print()")%>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- Save for Web Slices (test.psd) -->
+<div id="wrapper">
+<table id="Table_01" width="700" height="847" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td style="height:28px; text-align:center;">
+			<p style="height:0; text-decoration:underline; padding-bottom:2px;">State Bank of india</p>
+            <p style="text-decoration:underline;">Employment / Business Verification Report</p></td>
+	</tr>
+	<tr>
+		<td>
+
+   <table>
+     <tr>
+        <td class="border1" width="100">Application No </td>
+        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @co_applicant_business.fh_code %></td>
+        <td class="border1" width="300px;" style="text-align:right;">Agency Name</td>
+        <td class="border1" style="text-align:center; font-size:10px;">ScorpE.O</td>
+        <td class="border1">&nbsp;</td>
+        <td class="border1" width="60" style="text-align:center;">FH Code</td>
+        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @co_applicant_business.fh_code %></td>
+     </tr>
+  	 <tr>
+        <td style="border-right:1px #000 solid" width="100">Applicant's Name</td>
+        <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @co_applicant_business.applicant_name %></td>
+        <td width="227" style="border-right:1px #000 solid">&nbsp;</td>
+        <td class="border1">BRANCH</td>
+        <td width="120" style="border-right:1px #000 solid"><%= @co_applicant_business.branch.name %></td>
+      </tr>
+   </table>
+
+
+	</tr>
+	<tr>
+    	<td>
+        <table>
+        <tr>
+        <td style="border-right:1px solid #000" width="130" height="20">Office Address</td>
+        <td width="0">&nbsp;</td>
+        </tr>
+        </table>
+	</tr>
+
+	<tr>
+		<td>
+
+        <table>
+        <tr align="center">
+        <td style="border-right:1px #000 solid; font-weight:bold" width="130">Name and Emp Confirmed</td>
+        <td width="80" style="border-right:1px #000 solid">YES</td>
+        <td width="80" style="border-right:1px #000 solid">NO</td>
+        <td width="150" style="border-right:1px #000 solid">Designation</td>
+        <td width="80" style="border-right:1px #000 solid;">CEO</td>
+        <td>&nbsp;</td>
+        </tr>
+        </table>
+
+	</tr>
+	<tr>
+		<td>
+        <table>
+        <tr>
+        <td width="130" style="border-right:1px #000 solid; font-weight:bold">Date of Visit</td>
+        <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= @co_applicant_business.servey.date_of_visit %></td>
+        <td width="233" style="border-right:1px #000 solid; font-weight:bold">TIME OF VISIT</td>
+        <td style="padding-left:20px; font-weight:bold;"><%= @co_applicant_business.servey.time_of_visit.strftime("%H:%M:%S %p") %></td>
+
+        </tr>
+        </table>
+	</tr>
+	<tr>
+		<td style="font-weight:bold">Following are based on information obtaines foem applicant colleague</td>
+	</tr>
+	<tr>
+		<td>
+
+        <table>
+        <tr>
+
+        <td width="80" style="border-right:1px #000 solid; font-weight:bold">Person Met</td>
+        <td width="48" style="border-right:1px #000 solid; font-weight:bold;">SELF</td>
+        <td width="50" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="110" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="232" style="border-right:1px #000 solid">Designation of the person met</td>
+        <td width="50" style="border-right:1px #000 solid">&nbsp;</td>
+        <td>&nbsp;</td>
+       </tr>
+        </table>
+	</td>
+	</tr>
+
+    <tr>
+		<td>
+        <table>
+        <tr>
+        <td width="131" style="border-right:1px #000 solid; font-weight:bold">Telephone Number</td>
+        <td width="120" align="center" style="border-right:1px #000 solid">022-4124500</td>
+        <td width="50" style="border-right:1px #000 solid">Ext No</td>
+        <td width="120" align="center" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="99" align="center" style="border-right:1px #000 solid">Mobile No</td>
+        <td width="130" style="border-right:1px #000 solid" align="center">9167348085</td>
+        <td>&nbsp;</td>
+
+        </tr>
+
+        </table>
+        </td>
+	</tr>
+
+    <tr>
+		<td>
+        <table>
+        <tr>
+        <td width="254" style="border-right:1px #000 solid; font-weight:bold">Number of years in Present employment / Business</td>
+        <td width="50" style="border-right:1px solid #000" align="center">2MNTH</td>
+        <td width="40" style="border-right:1px solid #000">&nbsp;</td>
+        <td width="40" style="border-right:1px solid #000">&nbsp;</td>
+        <td width="136" style="border-right:1px solid #000">Visiting Card obtained</td>
+        <td width="85" style="border-right:1px #000 solid" align="center">Yes</td>
+        <td width="80" align="center">No</td>
+        </tr>
+
+
+        </table>
+</td>
+	</tr>
+	<tr>
+		<td>
+
+        <table>
+        <tr>
+        <td width="150" style="border-right:1px #000 solid; font-weight:bold">Name of Company / Business </td>
+        <td style="padding-left:10;">PARKER HANNIFIN INDIA PVT. LTD</td>
+        </tr>
+        </table>
+        </td>
+	</tr>
+	<tr>
+		<td>
+
+        <table>
+        <tr>
+        <td width="90" style="border-right:1px #000 solid; font-weight:bold">Type of Business</td>
+        <td width="82" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="169" align="center" style="border-right:1PX #000 solid; font-weight:bold">Nature of Busuness</td>
+        <td width="168" align="center" style="border-right:1PX #000 solid; font-weight:bold">NOB IN DETAIL</td>
+        <td width="170" align="center" style="font-weight:bold">Office Ownership</td>
+        </tr>
+        </table>
+        </td>
+	</tr>
+
+	<tr>
+
+        <td><table width="700"  cellpadding="0" cellspacing="0">
+<tr><td><table width="20"  cellpadding="0" cellspacing="0" style="margin-left:2px;">
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+</table>
+</td>
+<td><table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin:2px;">
+<tr style="border-left:none;"><td >Public LTD</td></tr>
+<tr><td >Partnership</td></tr>
+<tr><td >Private LTD</td></tr>
+<tr><td >Propretorship</td></tr>
+<tr><td >Others</td></tr>
+
+</tr></table></td>
+<td><table width="20"  cellpadding="0" cellspacing="0" style="margin-top:-4"><tr>
+        <td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+</table></td>
+<td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;"><tr>
+        <td >Proffestional</td></tr>
+<tr><td >Manufacturer</td></tr>
+<tr><td >Trade Shopkeeper</td></tr>
+<tr><td >Service Provider</td></tr>
+<tr><td >1) Commision Agent </td></tr>
+<tr><td >2) Broker</td></tr>
+<tr><td >3) Tutor/Personal Care</td></tr>
+<tr><td >4) LIC Agent</td></tr>
+<tr><td >5) STD-PCO Booth</td></tr>
+<tr><td >6) Others</td></tr>
+</table></td>
+<td><table width="20"  cellpadding="0" cellspacing="0"><tr>
+        <td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+</table></td>
+<td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;"><tr>
+        <td >CA/DOC Architects Others</td></tr>
+<tr><td >Product----------------</td></tr>
+<tr><td >Dealing In----------------</td></tr>
+<tr><td >Dealing In----------------</td></tr>
+<tr><td >Dealing In---------------- </td></tr>
+<tr><td >Dealing In----------------</td></tr>
+<tr><td >Dealing In----------------</td></tr>
+<tr><td >Branch name----------------</td></tr>
+<tr><td >Locality----------------</td></tr>
+<tr><td >Locality----------------</td></tr>
+</table></td>
+											<td><table>
+
+                                            <tr style="border-left:1px #000 solid;">
+
+                                            <td><table><tr><td>
+
+                                            <table width="20"  cellpadding="0" cellspacing="0"><tr>
+                                                    <td style="border:1px #000 solid">&nbsp;</td></tr>
+                                            <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+                                            <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+                                            </table></td>
+
+                                            <td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;"><tr>
+                                                    <td >Owned </td></tr>
+                                            <tr><td >Rented</td></tr>
+                                            <tr><td >Pagdi</td></tr>
+                                            </td></table>
+                                            </td></tr></table>
+                                           </td>
+
+
+                                           </tr>
+
+                                           <tr>
+                                           <td style="border:1px #000 solid">
+                                           <table>
+                                           <tr><td >No of Employees Working </td></tr>
+                                            <tr><td >in Office Business -------- </td></tr>
+                                            <tr><td >&nbsp;</td></tr>
+                                            <tr><td >&nbsp;</td></tr>
+                                            <tr><td >No of Branches:</td></tr>
+                                            </table>
+                                            </td>
+                                           </tr>
+
+                                          </table>
+                                            </td>
+
+
+</tr></table></td>
+	</tr>
+	<tr>
+		<td>
+        <table>
+        <tr>
+        <td width="250" style="border-right:1px #000 solid">(FOR SELF EMPLOYED) Average Monthly Turnover:</td>
+        <td width="120" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="150" style="border-right:1px #000 solid; font-weight:bold">No. of customers per day:</td>
+        <td>&nbsp;</td>
+        </tr>
+        </table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+        <table>
+        <tr>
+        <td width="550" style="border-right:1px #000 solid" align="center">(FOR SALARIED)</td>
+
+
+        </tr>
+        </table>
+	</td>
+	</tr>
+	<tr>
+		<td>
+        <table>
+        <tr>
+        <td width="185" style="border-right:1px #000 solid">Type of job</td>
+        <td width="362" style="border-right:1px #000 solid">Applicant working as</td>
+        <td> Applicant Job
+ Transferable</td>
+        </tr>
+	    </table>
+		</td>
+	</tr>
+	<tr><!-- Edited Column-->
+		<td>
+        <table width="700" border="0" cellpadding="0" cellspacing="0" style="margin:2">
+        <tr><td>
+        <table width="150">
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Permanent</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
+        </table>
+        </td><td width="30" style="border-right:1px #000 solid; border-left:1px #000 solid">&nbsp;</td><td>
+        <table width="350">
+      	<tr>
+      	<td>
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
+        </table>
+        </td>
+        <td>
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Typist</td></tr>
+        </table>
+        </td>
+        <td>
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Stegnographer</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Skilled labour</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>others</td></tr>
+     </table>
+        </td>
+        </tr>
+        </table></td>
+        <td>
+        <table width="150">
+        <tr align="center" ><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Yes</td></tr>
+        <tr align="center"><td style="border:1px #000 solid;">&nbsp;</td><td>No</td>
+        </table></td></tr>
+        </table>
+        </td>
+	</tr><!--Ends Edited Column-->
+
+	<tr>
+        <td>Previous Employedment details {if working for <1 year in current employment}</td>
+        </tr>
+		</td>
+	</tr>
+	<tr>
+		<td>
+        <table>
+        <tr>
+        <td width="117" style="border-right:1px solid #000; font-weight:bold">Name of the Company</td>
+        <td width="50" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="100" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="80" align="center" style="border-right:1px #000 solid; font-weight:bold">Year worked in</td>
+        <td width="120" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="80" style="border-right:1px #000 solid; font-weight:bold" align="center">Salary Drawn</td>
+        <td>&nbsp;</td>
+        </tr>
+        </table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+        <table>
+        <tr>
+        <td width="280" style="border-right:1px #000 solid">Business Board seen outside Building office</td>
+        <td width="73" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="100" align="center" style="border-right:1px #000 solid">No</td>
+        <td>&nbsp;</td>
+        </tr>
+        </table>
+	</tr>
+	<tr>
+		<td>
+        <table>
+        <tr>
+        <td>Applicant's name </td>
+        <td>Type of Office </td>
+        <td>Locality of Office</td>
+
+        </tr>
+
+
+        </table>
+    <tr>
+    <td>
+
+    <table width="700" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+	    <td><table width="118">
+        <tr align="center"><td style="border-bottom:1px #000 solid">Applicant Name verified From</td></tr>
+        <tr><td><table>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Collegues</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Receptionst</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Security</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+        </table></td></tr>
+
+        </table></td>
+
+ <td>
+ 	<table width="300">
+ 	<tr align="center"><td style="border:1px #000 solid; border-top:none; border-right:none; text-align:right">Type of office</td></tr>
+ 	<tr style="border:1px #000 solid">
+ 		<td>
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+        </table>
+        </td>
+        <td>
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+        </table>
+        </td>
+
+        </tr>
+
+        </table></td>
+
+
+<td><table width="300">
+        <tr align="right" style="border-left:1px #000 solid;"><td style="border-left:1px #000 solid">Locality of office</td></tr>
+ 	<tr style="border-top:1px #000 solid;">
+ 		<td>
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop Office Complex</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Commercial Complex</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale Industries Area</td></tr>
+        </table>
+        </td>
+        <td>
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Residential</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Industry / Factory</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Plant</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+        </table>
+        </td>
+
+        </tr>
+        <tr><td style="border:1px #000 solid">Approx. area of office(in sq. ft.)</td></tr>
+
+
+
+        </table></td>
+
+    </tr>
+    </table>
+
+    </td>
+	</tr>
+
+
+
+		<tr><td >
+        <table width="718">
+
+        <tr>
+        <td width="150"><table><tr><td style="border-right:1px #000 solid;" align="center">Construction of office</td>
+       <td width="150"style="border-right:1px #000 solid" align="center">Extarlors</td>
+        <td width="150"style="border-right:1px #000 solid" align="center">Interiors</td>
+        <td width="150"style="border-right:1px #000 solid">Ease of Locating Office</td>
+        <td width="150"style="border-right:1px #000 solid">Business Activity Level</td>
+        <td width="150"style="border-right:1px #000 solid">No. Employess sighted in Premises:</td></tr>
+        <tr><td width="150"style="border:1px #000 solid"><table>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+
+        </table></td>
+       <td width="150"style="border:1px #000 solid"><table>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
+
+        </table></td>
+       <td width="150" style="border:1px #000 solid"><table>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+        </table></td>
+        <td style="border:1px #000 solid"><table>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
+
+        </table></td>
+       <td style="border:1px #000 solid"><table>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
+
+        </table></td>
+        <td style="border:1px #000 solid">No. of Customers Seen:</td></tr></table></td>
+        </tr>
+       <!-- -->
+       </td>
+	</tr>
+	<table width="717">
+    <tr>
+
+        <td style="border:1px #000 solid">
+        <table width="235"><tr><td>Whether any display of affilation political party seen</td></tr>
+        <tr><td><table>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Yes</td>
+        <td style="border:1px #000 solid" width="20">&nbsp;</td><td>No</td></tr>
+
+        </table></td></tr></table>
+        </td>
+        <td width="500"style="border:1px #000 solid">
+        <table >
+        <tr>
+        <td>Items seen in premises</td><td style="padding:0 10">AC</td>
+        <td style="border:1px #000 solid" width="20">&nbsp;</td>
+        <td style="padding:0 10">Printer</td>
+        <td style="border:1px #000 solid" width="20">&nbsp;</td>
+        <td style="padding:0 10">Fax</td><td style="border:1px #000 solid">&nbsp;</td>
+        </tr>
+        <tr>
+        <td>(Specify in no)</td><td style="padding:0 10">PC</td>
+        <td style="border:1px #000 solid">&nbsp;</td>
+        <td style="padding:0 10">Telephone</td>
+        <td style="border:1px #000 solid">&nbsp;</td>
+        <td style="padding:0 10">Xerox</td>
+        <td style="border:1px #000 solid" width="20">&nbsp;</td></tr>
+        </table></td>
+	</tr>
+	</table>
+    <tr>
+
+        <td ><table width="700" cellpadding="0" cellspacing="0">
+        <tr><td style="border-bottom:1px #000 solid">Third Party Confirmation</td></tr>
+        <tr><td style="border-bottom:1px #000 solid">Viewer Remarks</td></tr>
+        <tr><td height="40" style="border-bottom:1px #000 solid;">VT 4:30 PM MEET SELF & THIRD PARTYCONFIRMATION DONE. SUB IS WORKING PAST 2 MNTH.DEPARTMENT ALL& DESIGNATION CEO. DOB 02/06/1990
+        TYPE OF LOAN FOR CAR LOAN AMOUNT 5.40 LAKHS.</td></tr>
+        </table></td>
+	</tr>
+	<tr>
+
+        <td><table width="700" cellpadding="0" cellspacing="0"><tr><td  width="50" cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td><td width="95">POSITIVE</td><td  width="50"  cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td><td width="100" style="text-align:center">NEGATIVE</td><td  width="50"  cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td><td width="150" style="padding-left:10px;">REFER TO BANK</td><td>(Tick appropriate reason below)</td></tr></table></td>
+	</tr>
+	<tr>
+
+        <td><table width="700"  cellpadding="0" cellspacing="0">
+<tr><td><table width="300"  cellpadding="0" cellspacing="0"><tr>
+        <td >Residence cum Office</td></tr>
+<tr><td >Non Targetd Area</td></tr>
+<tr><td >Outside Geographical Limits</td></tr>
+<tr><td >Entry Not Allowed</td></tr>
+<tr><td >Defaulter/Bad Market Reputation</td></tr>
+<tr><td >Address Not Traceable/Does Not Exist</td>
+</tr></table></td>
+<td><table width="50"  cellpadding="0" cellspacing="0"><tr>
+        <td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td>
+</tr></table></td>
+<td><table width="300"  cellpadding="0" cellspacing="0"><tr>
+        <td >Residence cum Office</td></tr>
+<tr><td >Non Targetd Area</td></tr>
+<tr><td >Outside Geographical Limits</td></tr>
+<tr><td >Entry Not Allowed</td></tr>
+<tr><td >Defaulter/Bad Market Reputation</td></tr>
+<tr><td >Address Not Traceable/Does Not Exist</td>
+</tr></table></td>
+<td><table width="50"  cellpadding="0" cellspacing="0"><tr>
+        <td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td>
+</tr></table></td></tr>
+</tr></table>
+</td>
+	</tr>
+	<tr><td><table width="700"><tr>
+	<td  width="200" style="border-right:1px #000 solid">&nbsp;</td><td width="500"</td></tr></table>
+	</td></tr>
+	<tr>
+
+        <td><table width="700"><tr>
+	<td align="center" width="200" >Verify Name and Signature</td><td align="center"width="200">Agency Manager and Signature</td><td align="center" width="300">Agency Seal</td></tr></table></td>
+	</tr>
+</table>
+<!-- End Save for Web Slices -->
+</div>
+</body>

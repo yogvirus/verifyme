@@ -10,6 +10,11 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'label label-important' %>
+<% if @co_applicant_business.co_applicant_work_detail && @co_applicant_business.co_applicant_work_detail.name_and_employee_confirm %>
+ <b style="background:red"><%= link_to "print this form", print_co_applicant_business_co_applicant_business_path(:business_id => @co_applicant_business ), :class => "label label-info" %></b>
+<% end %>
+
+
   <% if @co_applicant_business.status=="awaiting_to_get_verified"&&current_user.role=="super_user" %>
     <p style="margin-right:50px;float:right">
       <%= link_to "Accept", accept_co_applicant_business_path(@co_applicant_business, :co_applicant_business_id=>@co_applicant_business), :class=>"label label-success" %> |

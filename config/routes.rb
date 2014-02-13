@@ -56,6 +56,7 @@ EVerification::Application.routes.draw do
      get :business_verification
      post :accept
      get :accept
+     get :print_co_applicant_business
      post :re_indicated
      get :re_indicated
    end
