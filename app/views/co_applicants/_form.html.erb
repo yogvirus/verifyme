@@ -79,15 +79,15 @@
   </div>
   <div class="field_name">
     <%= customer.label :Select_city %>
-    <%= customer.collection_select :city_id, City.all, :id, :name, {}, {:class => 'text_field', :onchange => 'getArea(this)'} %>
+    <%= customer.collection_select :city_id, City.all, :id , :name, {}, {:class => 'text_field', :onchange => 'getArea(this)'} %>
   </div>
   <div class="field_name">
     <%= customer.label :'name of the area' %>
     <div id ="area_name"><%= customer.collection_select :pincode_id, Pincode.all, :id, :name, {:prompt => true} ,{:class => 'text_field', :onchange => 'getAreaname(this)'} %></div>
     </div>
   <div class="field_name">
-    <%= customer.label :'Selected pincode' %>
-    <%= customer.text_field :area_name %>
+    <%= customer.label :'Selected pincode', :class => 'control-label' %>
+    <%= customer.text_field :area_name, :class => 'text_field' %>
   </div>
 
 </div>

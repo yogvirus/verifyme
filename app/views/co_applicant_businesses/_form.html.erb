@@ -1,3 +1,27 @@
+<script stype="javascript">
+ function getArea(obj){
+ $.ajax({url:'/get_area',
+ dataType: 'script',
+ type: 'get',
+ data: {id: obj.value},
+ success: function(data){
+
+ }
+ });}
+</script>
+
+<script stype="javascript">
+ function getAreaname(obj){
+ $.ajax({url:'/get_area_name',
+ dataType: 'text',
+ type: 'get',
+ data: {id: obj.value},
+ success: function(data){
+  $("#co_applicant_business_area_name").val(data);
+ }
+ });}
+</script>
+
 <div id="business" style ="padding-left:40px">
 <%= form_for(@co_applicant_work_detail) do |f| %>
   <% if @co_applicant_work_detail.errors.any? %>
@@ -56,12 +80,17 @@
   </div>
   <div class="field_name">
     <%= f.label :country_city %>
-    <%= f.text_field :city %>
+    <%= f.collection_select :city_id, City.all, :id, :name, {}, {:class => 'text_field', :onchange => 'getArea(this)'} %>
   </div>
   <div class="field_name">
     <%= f.label :pincode_id %>
-    <%= f.collection_select :pincode_id, Pincode.all, :id, :pin_number %>
+  <div id ="area_name"><%= f.collection_select :pincode_id, Pincode.all, :id, :name, {:prompt => true} ,{:class => 'text_field', :onchange => 'getAreaname(this)'} %></div>
   </div>
+  <div class="field_name">
+    <%= f.label :'Selected pincode', :class => 'control-label' %>
+    <%= f.text_field :area_name, :class => 'text_field' %>
+  </div>
+
 </div>
   <div class="actions">
     <%= f.submit 'Submit..', :class => 'btn btn-primary btn-small' %>

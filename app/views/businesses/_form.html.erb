@@ -56,13 +56,38 @@
     <%= f.label :country_state %>
     <%= f.text_field :country_state, :value => "Maharashtra" %>
   </div>
+
+<script stype="javascript">
+ function getArea(obj){
+ $.ajax({url:'/get_area',
+ dataType: 'script',
+ type: 'get',
+ data: {id: obj.value},
+ success: function(data){
+ }
+ });}
+</script>
+
   <div class="field_name">
     <%= f.label :Select_city %>
-    <%= f.collection_select :city_id, City.all, :id, :name %>
+    <%= f.collection_select :city_id, City.all, :id, :name, {}, {:class => 'text_field', :onchange => 'getArea(this)'} %>
   </div>
+
+<script stype="javascript">
+ function getAreaname(obj){
+ $.ajax({url:'/get_area_name',
+ dataType: 'text',
+ type: 'get',
+ data: {id: obj.value},
+ success: function(data){
+  $("#business_area_name").val(data);
+ }
+ });}
+</script>
+
   <div class="field_name">
     <%= f.label :Area_Name %>
-    <%= f.collection_select :pincode_id, Pincode.all, :id, :name %>
+    <div id ="area_name"><%= f.collection_select :pincode_id, Pincode.all, :id, :name, {:prompt => true} ,{:class => 'text_field', :onchange => 'getAreaname(this)'} %></div>
   </div>
 
   <div class="field_name">
