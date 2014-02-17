@@ -36,8 +36,8 @@
 
   <% if @co_applicant.status=="awaiting_to_get_verified"&&current_user.role=="super_user" %>
     <p style="margin-right:50px;float:right">
-      <%= link_to "Accept", accept_co_applicant_path(@co_applicant, :co_applicant_id=> @co_applicant), :class=>"label label-success" %> |
-      <%= link_to "Re Assign", re_indicated_co_applicant_path(@co_applicant, :co_applicant_id=> @co_applicant), :class=>"label label-info" %>
+      <%= link_to "Accept", accept_co_applicant_path(@co_applicant, :co_applicant_id=> @co_applicant), :class=>"label label-success" %> 
+      <%#= link_to "Re Assign", re_indicated_co_applicant_path(@co_applicant, :co_applicant_id=> @co_applicant), :class=>"label label-info" %>
     </p>
   <% end %>
 <br><br>
@@ -51,11 +51,12 @@
      <% end %>
 
 <h5>
+
   <%= @co_applicant.landmark %> <br>
   <%= @co_applicant.address %> <br>
   <%= @co_applicant.country_name %> |
   <%= @co_applicant.country_state %> |
-  <%= @co_applicant.country_city %> |
+  <%= @co_applicant.city.name %> |
   <%#= @co_applicant.pincode.name %>
 </h5>
 
@@ -245,7 +246,7 @@
 
 
   <tr><td><strong><%= model_class.human_attribute_name(:pin) %>:</strong>
-  <%= @co_applicant.pincode.name %></td></tr>
+  <%#= @co_applicant.pincode.name %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:country_state) %>:</strong>
   <%= @co_applicant.country_state %></td></tr>

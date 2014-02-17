@@ -3,7 +3,8 @@ class CoApplicant < ActiveRecord::Base
                   :pincode_id, :customer_id, :status,
                   :agency_name, :application_ref_no,
                   :fh_code, :applicant_name, :landmark,:application_status,
-                  :country_name, :country_state, :country_city
+                  :country_name, :country_state, :country_city,
+                  :client_id, :branch_id, :branch_code, :area_name, :city_id
 
   has_one :co_applicant_work_detail
   has_one :co_applicant_verification, :dependent => :destroy
@@ -12,9 +13,10 @@ class CoApplicant < ActiveRecord::Base
   belongs_to :pincode
   belongs_to :tab
   has_one :co_applicant_servey
-
+  belongs_to :branch
+  belongs_to :client
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
-  validates_uniqueness_of :application_ref_no, :address, :fh_code
+  validates_uniqueness_of :application_ref_no, :fh_code
 
   has_many :co_applicant_documents
   accepts_nested_attributes_for :co_applicant_documents, :allow_destroy => true
@@ -47,7 +49,7 @@ class CoApplicant < ActiveRecord::Base
     state :awaiting_to_get_verified do
       event :accept, :transitions_to => :verified
     end
-     
+
     state :verified do
       event :re_indicated, :transitions_to => :ready_for_verification
       event :submitted, :transitions_to => :verified_with_changes

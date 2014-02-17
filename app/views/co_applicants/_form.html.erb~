@@ -1,0 +1,106 @@
+
+<%= form_for(@co_applicant) do |customer| %>
+  <% if @co_applicant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@co_applicant.errors.count, "error") %> prohibited this co applicants from being saved:</h2>
+
+      <ul>
+      <% @co_applicant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="row">
+  <strong class="label label-info">
+     <% if @customer && @customer.client && @customer.branch %>
+        <%= @customer.client.name %> | <%= @customer.branch.name %> | <%= @customer.branch_code %> |<% end %>
+        <%= @application_ref_no %> | <%= @application_ref_no %> | <%= @customer.applicant_name %></strong> <br>
+
+  <div class="field_name">
+   <%= customer.check_box :document_required %>
+   <i style ="padding-left:20px;color:green">Check this if photocopy of the customers document is required. else leave it as it is</i>
+  </div>
+    <%= customer.hidden_field :customer_id, :value=> "#{@customer.id}" %>
+    <%= customer.hidden_field :agency_name, :value=>"Scorp Enterprises" %>
+    <%= customer.hidden_field :application_ref_no, :value=> "#{@application_ref_no}" %>
+    <%= customer.hidden_field :fh_code, :value=> "#{@application_ref_no}" %>
+    <%= customer.hidden_field :application_status, :value => "RESIDENTIAL" %>
+    <%= customer.hidden_field :client_id, :value => "#{@customer.client_id}" %>
+    <%= customer.hidden_field :branch_id, :value => "#{@customer.branch_id}" %>
+    <%= customer.hidden_field :branch_code, :value => "#{@customer.branch_code}" %>
+  <br><br>
+
+  <div class="field_name">
+    <%= customer.label :Co_Applicant_name %>
+    <%= customer.text_field :applicant_name %>
+  </div><br><br><br>
+
+  <div class="field_name">
+    <%= customer.label :landmark %>
+    <%= customer.text_field :landmark %>
+  </div><br><br><br>
+
+  <div class="field_name">
+    <%= customer.label :address %>
+    <%= customer.text_area :address %>
+  </div>
+
+  <div class="field_name">
+    <%= customer.label :country_name %>
+    <%= customer.text_field :country_name, :value => "INDIA" %>
+  </div>
+  <div class="field_name">
+    <%= customer.label :country_state %>
+    <%= customer.text_field :country_state, :value => "Maharashtra" %>
+  </div>
+
+<script stype="javascript">
+ function getArea(obj){
+ $.ajax({url:'/get_area',
+ dataType: 'script',
+ type: 'get',
+ data: {id: obj.value},
+ success: function(data){
+
+ }
+ });}
+</script>
+
+  <div class="field_name">
+    <%= customer.label :Select_city %>
+    <%= customer.collection_select :city_id, City.all, :id , :name, {}, {:class => 'text_field', :onchange => 'getArea(this)'} %>
+  </div>
+
+<script stype="javascript">
+ function getAreaname(obj){
+ $.ajax({url:'/get_area_name',
+ dataType: 'text',
+ type: 'get',
+ data: {id: obj.value},
+ success: function(data){
+  $("#co_applicant_area_name").val(data);
+ }
+ });}
+</script>
+
+
+  <div class="field_name">
+    <%= customer.label :'name of the area' %>
+    <div id ="area_name">
+       <%= customer.collection_select :pincode_id, Pincode.all, :id, :name, {:prompt => true} ,{:class => 'text_field', :onchange => 'getAreaname(this)'} %>
+    </div>
+ </div>
+
+  <div class="field_name">
+    <%= customer.label :'Selected pincode', :class => 'control-label' %>
+    <%= customer.text_field :area_name, :class => 'text_field' %>
+  </div>
+
+</div>
+  <div class="actions">
+    <%= customer.submit 'Submit..', :class => 'btn btn-primary btn-small' %>
+  </div>
+<% end %>
+</div>

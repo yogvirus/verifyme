@@ -21,7 +21,7 @@ class BranchesController < ApplicationController
 
   def get_area_name
    area = Pincode.find(params[:id])
-   render :text => area.pin_number
+  render :text => area.pin_number
   end
 
   def get_area

@@ -15,6 +15,7 @@ class CoApplicant < ActiveRecord::Base
   has_one :co_applicant_servey
   belongs_to :branch
   belongs_to :client
+  belongs_to :city 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
   validates_uniqueness_of :application_ref_no, :fh_code
 

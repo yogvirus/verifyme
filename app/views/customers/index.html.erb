@@ -23,12 +23,12 @@ input[type=submit] {
 
 <div id="residential">
 <b> Filter by :
-     <%= link_to "Residential" , customers_cust_residential_path %> |
-     <%= link_to "Business" , customers_cust_business_path %> |
-     <%= link_to "Pending" , customers_cust_pending_path %> |
-     <%= link_to "InProgress" , customers_cust_in_progress_path %> |
-     <%= link_to "Completed" , customers_cust_completed_path %> |
-     <%= link_to "Ready For Verification" , customers_cust_ready_path %>
+     <%= link_to "RESIDENTIAL" , customers_cust_residential_path %> |
+     <%= link_to "BUSINESS" , customers_cust_business_path %> |
+     <%= link_to "PENDING" , customers_cust_pending_path %> |
+     <%= link_to "INPROGRESS" , customers_cust_in_progress_path %> |
+     <%= link_to "COMPLETED" , customers_cust_completed_path %> |
+     <%= link_to "READY FOR VERIFICATION" , customers_cust_ready_path %>
      <%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:450px;" %></b><br><br><br>
 </div>
 
@@ -39,7 +39,7 @@ input[type=submit] {
  <thead>
   <tr>
     <th>Form Type </th>
-    <th>Application ref no</th>
+    <th width='220px'>Application ref no</th>
     <th>Applicant name</th>
     <th>Status</th>
     <th>Address</th>
