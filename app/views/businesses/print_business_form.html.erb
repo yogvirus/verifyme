@@ -85,7 +85,7 @@ border-collapse:collapse;
         </table>
 	</tr>
 	<tr>
-		<td style="font-weight:bold">Following are based on information obtaines foem applicant colleague</td>
+		<td style="font-weight:bold">Following are based on information obtaines from applicant colleague</td>
 	</tr>
 	<tr>
 		<td>
@@ -94,11 +94,11 @@ border-collapse:collapse;
         <tr>
 
         <td width="80" style="border-right:1px #000 solid; font-weight:bold">Person Met</td>
-        <td width="48" style="border-right:1px #000 solid; font-weight:bold;">SELF</td>
+        <td width="48" style="border-right:1px #000 solid; font-weight:bold;"><%= @business.work_servey.person_met %></td>
         <td width="50" style="border-right:1px #000 solid">&nbsp;</td>
         <td width="110" style="border-right:1px #000 solid">&nbsp;</td>
         <td width="232" style="border-right:1px #000 solid">Designation of the person met</td>
-        <td width="50" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="50" style="border-right:1px #000 solid"><%= @business.work_servey.designation_of_person_met %></td>
         <td>&nbsp;</td>
        </tr>
         </table>
@@ -110,11 +110,11 @@ border-collapse:collapse;
         <table>
         <tr>
         <td width="131" style="border-right:1px #000 solid; font-weight:bold">Telephone Number</td>
-        <td width="120" align="center" style="border-right:1px #000 solid">022-4124500</td>
+        <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.telephone_number %></td>
         <td width="50" style="border-right:1px #000 solid">Ext No</td>
-        <td width="120" align="center" style="border-right:1px #000 solid">&nbsp;</td>
+        <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.ext_number %></td>
         <td width="99" align="center" style="border-right:1px #000 solid">Mobile No</td>
-        <td width="130" style="border-right:1px #000 solid" align="center">9167348085</td>
+        <td width="130" style="border-right:1px #000 solid" align="center"><%= @business.work_servey.mobile_number %></td>
         <td>&nbsp;</td>
 
         </tr>
@@ -128,12 +128,12 @@ border-collapse:collapse;
         <table>
         <tr>
         <td width="254" style="border-right:1px #000 solid; font-weight:bold">Number of years in Present employment / Business</td>
-        <td width="50" style="border-right:1px solid #000" align="center">2MNTH</td>
+        <td width="50" style="border-right:1px solid #000" align="center"><%= @business.work_servey.number_of_years_in_present_employment %></td>
         <td width="40" style="border-right:1px solid #000">&nbsp;</td>
         <td width="40" style="border-right:1px solid #000">&nbsp;</td>
         <td width="136" style="border-right:1px solid #000">Visiting Card obtained</td>
-        <td width="85" style="border-right:1px #000 solid" align="center">Yes</td>
-        <td width="80" align="center">No</td>
+        <td width="85" style="border-right:1px #000 solid" align="center"><% if @business.work_servey.mobile_number? %> Yes </td>
+        <% else %><td width="80" align="center">No</td><% end %>
         </tr>
 
 
@@ -146,7 +146,7 @@ border-collapse:collapse;
         <table>
         <tr>
         <td width="150" style="border-right:1px #000 solid; font-weight:bold">Name of Company / Business </td>
-        <td style="padding-left:10;">PARKER HANNIFIN INDIA PVT. LTD</td>
+        <td style="padding-left:10;"><%= @business.work_servey.name_of_the_company %></td>
         </tr>
         </table>
         </td>
@@ -233,43 +233,43 @@ border-collapse:collapse;
 <tr><td >Locality----------------</td></tr>
 <tr><td >Locality----------------</td></tr>
 </table></td>
-											<td><table>
+<td><table>
 
-                                            <tr style="border-left:1px #000 solid;">
+<tr style="border-left:1px #000 solid;">
 
-                                            <td><table><tr><td>
+<td><table><tr><td>
 
-                                            <table width="20"  cellpadding="0" cellspacing="0"><tr>
-                                                    <td style="border:1px #000 solid">&nbsp;</td></tr>
-                                            <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-                                            <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-                                            </table></td>
+<table width="20"  cellpadding="0" cellspacing="0"><tr>
+  <td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+</table></td>
 
-                                            <td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;"><tr>
-                                                    <td >Owned </td></tr>
-                                            <tr><td >Rented</td></tr>
-                                            <tr><td >Pagdi</td></tr>
-                                            </td></table>
-                                            </td></tr></table>
-                                           </td>
+<td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;"><tr>
+<td >Owned </td></tr>
+<tr><td >Rented</td></tr>
+<tr><td >Pagdi</td></tr>
+</td></table>
+</td></tr></table>
+</td>
 
 
-                                           </tr>
+</tr>
 
-                                           <tr>
-                                           <td style="border:1px #000 solid">
-                                           <table>
-                                           <tr><td >No of Employees Working </td></tr>
-                                            <tr><td >in Office Business -------- </td></tr>
-                                            <tr><td >&nbsp;</td></tr>
-                                            <tr><td >&nbsp;</td></tr>
-                                            <tr><td >No of Branches:</td></tr>
-                                            </table>
-                                            </td>
-                                           </tr>
+<tr>
+<td style="border:1px #000 solid">
+<table>
+<tr><td >No of Employees Working </td></tr>
+<tr><td >in Office Business <%= @business.work_servey.no_of_employees %> </td></tr>
+<tr><td >&nbsp;</td></tr>
+<tr><td >&nbsp;</td></tr>
+<tr><td >No of Branches: <%= @business.work_servey.no_of_branches %></td></tr>
+</table>
+</td>
+</tr>
 
-                                          </table>
-                                            </td>
+</table>
+</td>
 
 
 </tr></table></td>
@@ -303,8 +303,7 @@ border-collapse:collapse;
         <tr>
         <td width="185" style="border-right:1px #000 solid">Type of job</td>
         <td width="362" style="border-right:1px #000 solid">Applicant working as</td>
-        <td> Applicant Job
- Transferable</td>
+        <td> Applicant Job Transferable</td>
         </tr>
 	    </table>
 		</td>
@@ -314,10 +313,18 @@ border-collapse:collapse;
         <table width="700" border="0" cellpadding="0" cellspacing="0" style="margin:2">
         <tr><td>
         <table width="150">
-        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Permanent</td></tr>
+        <% if @business.work_servey.type_of_job=='Permanent' %>
+        <tr><td style="background:black;color:white;border:1px #000 solid" width="20">&nbsp;</td><td>Permanent</td></tr>
+                <% end %>
+        <% if @business.work_servey.type_of_job=='Probation' %>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
+                <% end %>
+        <% if @business.work_servey.type_of_job=='Temporary Worker' %>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
+                <% end %>
+        <% if @business.work_servey.type_of_job=='Contract Worker' %>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
+                <% end %>
         </table>
         </td><td width="30" style="border-right:1px #000 solid; border-left:1px #000 solid">&nbsp;</td><td>
         <table width="350">
