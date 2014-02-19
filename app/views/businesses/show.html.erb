@@ -1,6 +1,12 @@
-<%- model_class = Business -%>
-<div class="page-header">
+<style>
+ #servey_data{float:left; width:800px;border-right:2px solid black;}
+ #servey_document{width:350px;float:right}
+</style>
 
+<%- model_class = Business -%>
+<h2> Customer Detail</h2>
+
+<div class="page-header">
   <%= link_to 'Main Detail',
               customer_path(@business.customer), :class => 'label'  %>
 
@@ -16,27 +22,29 @@
 <% if @business.work_servey && @business.work_servey.name_and_employee_confirm %>
  <b style="background:red"><%= link_to "print this form", print_business_form_business_path(:business_id => @business ), :class => "label label-info" %></b>
 <% end %>
+
 <div id ="stamp" style="float:right">
 <% if @business.status=='verified'%>
- <%= image_tag('verified-stamp.png', :size => "300x300") %>
+ <%= image_tag('verified-stamp.png', :size => "150x150") %>
 <% end %>
 </div>
 
-  <% if @business.status=="awaiting_to_get_verified"&&current_user.role=="super_user" %>
-    <p style="margin-right:50px;float:right">
-      <%= link_to "Accept", accept_business_path(@business, :business_id=>@business), :class=>"label label-success" %> |
-      <%= link_to "Re Assign", re_indicated_business_path(@business, :business_id=>@business), :class=>"label label-info" %>
-    </p>
-  <% end %>
+<% if @business.status=="awaiting_to_get_verified" && current_user.role=="super_user" %>
+  <p style="margin-right:50px;float:right">
+    <%= link_to "Accept", accept_business_path(@business, :business_id=>@business), :class=>"label label-success" %> |
+    <%= link_to "Re Assign", re_indicated_business_path(@business, :business_id=>@business), :class=>"label label-info" %>
+  </p>
+<% end %>
 <br><br>
 
 <h3 class ="label label-info">
  <%= "scorpeo-#{Date.today}-#{@business.application_ref_no}" %> | <%= @business.agency_name %>
 </h3>
-  <h4 style="color:blue"><%= @business.applicant_name %></h4> <b style="color:blue"><%= @business.department.name if @business.department %></b>
-  		 <% if @business.status=="submitted" %>
-		   <h6><%= link_to 'reasign to another tab', edit_business_verification_path(@business.business_verification, :id => @business.business_verification) %></h6>
-     <% end %>
+  <h4 style="color:blue"><%= @business.applicant_name %></h4>
+  <b style="color:blue"><%= @business.department.name if @business.department %></b>
+<% if @business.status=="submitted" %>
+ <h6><%= link_to 'reasign to another tab', edit_business_verification_path(@business.business_verification, :id => @business.business_verification) %></h6>
+<% end %>
 
 <h5>
   <%= @business.address %> <br>
@@ -45,7 +53,6 @@
   <%= @business.country_city %> |
   <%= @business.pincode.name %>
   <%= @business.landmark %> <br>
-
 </h5>
 
 <% if @business.status=="ready_for_verification" %>
@@ -60,7 +67,8 @@
 <% if @business.status=="submitted" %>
 <br>
     <% if @business.status=='submitted' %>
-     <td><span class="label label-warning">Submitted to Tab User </span></td></tr><br>
+     <span class="label label-warning">Submitted to Tab User </span><br>
+
 <small>
  The customer has been send for verification. <br>
  Tab Name:
@@ -81,7 +89,8 @@
 
 
 <% if @business.business_documents %>
-<div>
+<div id="servey_document">
+<h4> Submitted Documents </h4><br>
 <% @business.business_documents.each do |d| %>
 	<% if d.photo? %>
 	 <%= link_to image_tag(d.photo.url(:thumb)), d.photo.url(:large) %>
@@ -89,24 +98,16 @@
    <%= image_tag("url.png", :size => "100x100") %>
 	<% end %>
 <% end %>
-</div><br><br><br>
+</div>
 <% end %>
-<hr>
 
-
-<!--<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@business.latitude}%2C#{@business.longitude}" %></p>
-</div>-->
 
 <% if @business.work_servey %>
 <% if @business.work_servey.name_and_employee_confirm %>
-<!--<div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">-->
-<b style="float:right"><%= link_to "edit servey", edit_work_servey_path(@business.work_servey,
-                              :business_id=> @business,
-                              :tab_id=>@business.work_servey.tab_id),
-                              :class=> "label label-info" %></b><br><br>
+<h4> Customer's Servey Detail | <%= link_to "Edit servey", edit_work_servey_path(@business.work_servey, :business_id=> @business, :tab_id=>@business.work_servey.tab_id) %></h4><br>
 
-<table class="table table-bordered">
+<div id="servey_data">
+<table class="table table-bordered table-striped table-condensed" style="width:500px;">
   <tr><td><strong><%= model_class.human_attribute_name(:Designation) %>:</strong>
   <td><%= @business.work_servey.applicant_designation %></td>
 
@@ -191,5 +192,6 @@
   <tr><td><strong><%= model_class.human_attribute_name(:verifier_remark) %>:</strong>
   <td><%= @business.work_servey.verifier_remark %></td>
 </table>
+</div>
 <% end %>
 <% end %>
