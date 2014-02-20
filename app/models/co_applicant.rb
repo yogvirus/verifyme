@@ -15,13 +15,13 @@ class CoApplicant < ActiveRecord::Base
   has_one :co_applicant_servey
   belongs_to :branch
   belongs_to :client
-  belongs_to :city 
+  belongs_to :city
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
   validates_uniqueness_of :application_ref_no, :fh_code
 
   has_many :co_applicant_documents
   accepts_nested_attributes_for :co_applicant_documents, :allow_destroy => true
-
+  scope :without_status, lambda{|customer| customer ? {:conditions => ["status != ?", 'ready_for_verification']} : {} }
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged
 

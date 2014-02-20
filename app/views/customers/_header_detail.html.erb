@@ -6,14 +6,13 @@
 
 <% if @customer.co_applicant %>
  <%= link_to 'show co applicant', co_applicant_path(@customer.co_applicant), :class=>"label label-success" %>
-<small>( to add co applicants business detail click and add co applicant business detail )</small>
 <% else %>
 <a href="#myModal_app" role="button" data-toggle="modal" class="label label-important">Add Co aplicant Detail</a>
 <% end %>
 
 
 <% if @customer.servey && @customer.servey.address_confirmed? %>
- <b style="float:right"><%= link_to "print this form", print_customer_customer_path(:customer_id => @customer ), :class => "label label-info" %></b>
+ <b><%= link_to "print this form", print_customer_customer_path(:customer_id => @customer ), :class => "label label-info" %></b>
 <% end %>
 
 <!-- Modal -->
@@ -30,16 +29,21 @@
 
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-<h3 id="myModalLabel"><%= @customer.applicant_name %>'s Business Form </h3>
-</div>
-<div class="modal-body">
-<p><%= render :partial=>"businesses/form"%></p>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel"><%= @customer.applicant_name %>'s Business Form </h3>
+  </div>
 
-</div>
+  <div class="modal-body">
+    <p><%= render :partial=>"businesses/form" %></p>
+  </div>
 </div>
 
+<style>
+ #customer_detail{width:700px;}
+ #stamp{float:right;width:300px;margin-top:-207px;}
+</style>
+<div id="customer_detail">
   <h1><%= @customer.applicant_name %></h1>
 		 <% if @customer.status=="submitted" %>
 		   <h6><%= link_to 'reasign to another tab', edit_customer_verification_path(@customer.customer_verification, :id => @customer.customer_verification) %></h6>
@@ -60,13 +64,11 @@
       <%#= link_to "Re Assign", re_indicated_customer_path(@customer, :customer_id=>@customer), :class=>"label label-info" %>
     </p>
   <% end %>
-<div id ="stamp" style="float:right">
-<% if @customer.status=='verified'%>
- <%= image_tag('verified-stamp.png', :size => "300x300") %>
-<% end %>
 </div>
 
-<br><br>
+<div id ="stamp">
+ <%= render 'status_stamp' %>
+</div>
 <% if @customer && @customer.status=="ready_for_verification" && !@customer.no_verifcation %>
  <% if user_signed_in?&&current_user.role=="super_user" %>
    <%= form_for :customer_verification_customer_path, :url => customer_verification_customer_path(:customer_id=>@customer.id), :method=>:post do |f| %>
@@ -79,7 +81,7 @@
 <% if @customer.status=="submitted" %>
 <br>
     <% if @customer.status=='submitted' %>
-     <td><span class="label label-warning" style='background:pale'>Submitted to Tab User </td></tr>
+     <span class="label label-warning" style='background:pale'>Submitted to Tab User
 		<b>
 		 The customer has been send for verification. this is been assigned to
 		 <%= link_to @customer.customer_verification.tab.name, tab_path(@customer.customer_verification.tab) %><br>
@@ -87,11 +89,10 @@
     <% end %>
 <% else %>
     <% if @customer.status=='verified' %>
-     <td><span class="label label-success">Verified </span></td></tr>
+     <span class="label label-success">Verified </span>
     <% end %>
     <% if @customer.status=='verified_with_changes' %>
-     <td><span class="label label-info">Verified with Changes </span></td></tr>
+     <span class="label label-info">Verified with Changes </span>
     <% end %>
 <% end %>
 <% end %>
-</td></tr></tr></table>

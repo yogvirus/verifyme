@@ -1,19 +1,26 @@
-<%= render "header_detail" %>
+<style>
+ #servey_data{float:left; width:800px;border-right:2px solid black;}
+ #servey_document{width:350px;float:right}
+</style>
+
+<%= render "header_detail" %><hr>
 <%- model_class = Customer -%>
-<div class="page-header"></div>
+
+
+
+
+<div id="servey_document">
+<% if @customer.customer_documents %>
+<h4> Submitted Documents </h4><br>
 <%= render "customer_documents" %>
+<% end %>
+</div>
 
 <% if @customer.servey && @customer.servey.address_confirmed? %>
+<h4> Customer's Servey Detail | <%= link_to "edit this servey", edit_servey_path(@customer.servey,:customer_id=>@customer,:tab_id=>@customer.servey.tab_id) %></h4><br>
 
-<strong>
- <%= link_to "edit this servey", edit_servey_path(@customer.servey,
-                            :customer_id=>@customer,
-                            :tab_id=>@customer.servey.tab_id),
-                            :class=>"label label-info" %>
-</strong>
-<% end %>
-
-<table class="table table-bordered">
+<div id="servey_data">
+<table class="table table-bordered table-striped table-condensed" style="width:700px;">
 <% if @customer && @customer.branch %>
   <tr><td><strong><%= model_class.human_attribute_name(:branch_id) %>:</td></strong>
   <td><%= @customer.branch.name %> </td></tr>
@@ -40,14 +47,8 @@
   <tr><td><strong><%= model_class.human_attribute_name(:pin) %>:</td></strong>
   <td><%= @customer.pincode.name %></td></tr>
 
-<!--<div class="span3" style ="width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@customer.latitude}%2C#{@customer.longitude}" %></p>
-</div>-->
-
 <% if @customer.servey %>
 <% if @customer.servey.address_confirmed? %>
-
-<div class="span5" style ="width:400px;padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
 
   <tr><td><strong><%= model_class.human_attribute_name(:address_confirmed) %>:</td></strong>
   <td><% if @customer.servey.address_confirmed? %> Yes <% end %></td></tr>
@@ -73,9 +74,6 @@
   <tr><td><strong><%= model_class.human_attribute_name(:years_lived_at_current_address) %>:</strong>
   <td><%= @customer.servey.years_lived_at_current_address %></td></tr>
 
-  <!--<tr><td><strong><%= model_class.human_attribute_name(:residence_status) %>:</strong>
-  <%= @customer.servey.residence_status %></td></tr>-->
-
   <tr><td><strong><%= model_class.human_attribute_name(:educational_qualification) %>:</strong>
   <td><%= @customer.servey.educational_qualification %></td></tr>
 
@@ -99,21 +97,6 @@
 
   <tr><td><strong><%= model_class.human_attribute_name(:name_plate_seen) %>:</strong>
   <td><%= @customer.servey.name_plate_seen %></td></tr>
-
-  <!--<tr><td><strong><%= model_class.human_attribute_name(:credit_card) %>:</strong>
-  <%= @customer.servey.credit_card %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:card_no) %>:</strong>
-  <%= @customer.servey.card_no %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:card_limit) %>:</strong>
-  <%= @customer.servey.card_limit %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:issuing_bank) %>:</strong>
-  <%= @customer.servey.issuing_bank %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:expiry_date) %>:</strong>
-  <%= @customer.servey.expiry_date %></td></tr>-->
 
   <tr><td><strong><%= model_class.human_attribute_name(:customer_beaviour) %>:</strong>
   <td><%= @customer.servey.customer_beaviour %></td></tr>
@@ -155,18 +138,6 @@
   <tr><td><strong><%= model_class.human_attribute_name(:asset_seen_at_residence) %>:</strong>
   <td><%= @customer.servey.asset_seen_at_residence %></td></tr>
 
-  <!--<tr><td><strong><%= model_class.human_attribute_name(:potrait_on_wall) %>:</strong>
-  <%= @customer.servey.potrait_on_wall %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:applicant_residing_detail) %>:</strong>
-  <%= @customer.servey.applicant_residing_detail %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:application_availibility_time) %>:</strong>
-  <%= @customer.servey.application_availibility_time %></td></tr>
-
-  <tr><td><strong><%= model_class.human_attribute_name(:no_of_family_member_in_the_house) %>:</strong>
-  <%= @customer.servey.no_of_family_member_in_the_house %></td></tr>-->
-
   <tr><td><strong><%= model_class.human_attribute_name(:verifiers_remark) %>:</strong>
   <td><%= @customer.servey.verifiers_remark %></td></tr>
 
@@ -185,9 +156,8 @@
   <tr><td><strong><%= model_class.human_attribute_name(:country_name) %>:</strong>
   <td><%= @customer.country_name %></td></tr>
 
-<!--<tr><td><strong><%= model_class.human_attribute_name(:status) %>:</strong>
-  <%= @customer.status %></td></tr>-->
-
 </table>
 <% end %>
 <% end %>
+<% end %>
+</div>

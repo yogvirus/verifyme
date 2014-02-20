@@ -17,6 +17,7 @@ class Customer < ActiveRecord::Base
   scope :inqueue , where(:status => 'ready_for_verification')
   scope :verified, where(:status => 'verified')
   scope :submitted, where(:status => 'submitted')
+  scope :without_status, lambda{|customer| customer ? {:conditions => ["status != ?", 'ready_for_verification']} : {} }
 
   has_one :servey, :dependent => :destroy
   has_one :business, :dependent => :destroy
