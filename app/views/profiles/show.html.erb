@@ -20,7 +20,7 @@ background-color:white;
     vertical-align: baseline;
     white-space: nowrap;
 }
-         
+
 
 .tab {
     color: #FFFFFF;
@@ -37,7 +37,7 @@ background-color:white;
     border-radius: 3px 3px 3px 3px;
 }
 
-.span1{ 
+.span1{
           border-radius:5px;
           padding:20px;
           width:100px;
@@ -46,7 +46,7 @@ background-color:white;
           color:white;
          }
 
-.span2{ 
+.span2{
           border-radius:5px;
           padding:20px;
           width:100px;
@@ -55,7 +55,7 @@ background-color:white;
           color:red;
          }
 
-.span3{ 
+.span3{
           border-radius:5px;
           padding:20px;
           width:100px;
@@ -64,29 +64,29 @@ background-color:white;
           color:white;
          }
 
- 
+
 </style>
 
 <%- model_class = Profile -%>
 <div class="page-header">
  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
-<div style="float:center"><%= link_to t('.back', :default => t("helpers.links.back")),
-              profiles_path, :class => 'label label-info'  %>
-<% if current_user.role=="super_user" %>  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_profile_path(@profile), :class => 'label label-info' %> <% end %>
+<% if current_user.role =="super_user" %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_profile_path(@profile), :class => 'label label-info' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               profile_path(@profile),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'label label-info' %>
+              :class => 'label label-info' %><% end %>
+
 <% if current_user.role=="super_user" %>
     <b style ="float:right"><%= link_to "Add Customer", new_customer_path , :class=>"label label-success"%></b>
 <% end %>
 </div>
 </div>
 
- 
+
 <div id="center" style="width:auto">
 
 <div id="image" style="float:left;">
@@ -109,7 +109,7 @@ background-color:white;
 
 <% if current_user.role=="tab_user"%>
   <% if @profile.user.tab %>
-  <span class="tab"><%= link_to @profile.user.tab.name, tab_path(@profile.user.tab) %> </span> | 
+  <span class="tab"><%= link_to @profile.user.tab.name, tab_path(@profile.user.tab) %> </span> |
 <% end %>
 <% end %>
   <span class="label"><%= @profile.contact_no_1 %></span> |  <span class="label"><%= @profile.contact_no_2 %></span><br>
@@ -120,38 +120,3 @@ background-color:white;
   <%= @profile.hobbies %></small><br>
 </dl>
 <hr>
-
-<!--<small>
-     <% unless current_user.role=="super_user" %>
- <div class="span9">
-<div class="row-fluid">
-
-   <div class="span4">
-    <b>complete</b>
-      <% Customer.find_all_by_status('verified').each do |p| %>
-       <br><%= link_to p.applicant_name, p %><br>
-     <% end %>
-    </div>
-
-    <div class="span4">
-     <b>pending</b>
-     <% Customer.find_all_by_status('ready_for_verification').each do |p| %>
-      <br><%= p.applicant_name %>
-     <% end %>
-    </div>
-
-    <div class="span4">
-     <b>ready</b>
-     <% Customer.find_all_by_status('ready_for_verification').each do |p| %>
-      <br><%= p.applicant_name %>
-     <% end %>
-    </div>
-
- </div>
- 
- </div>
-   <% end %> 
-</small>-->
-
-
-
