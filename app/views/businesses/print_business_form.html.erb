@@ -169,55 +169,53 @@ border-collapse:collapse;
 
   <td><table width="700"  cellpadding="0" cellspacing="0">
   <tr><td><table width="20"  cellpadding="0" cellspacing="0" style="margin-left:2px;margin-bottom:60px;">
+  <% if @business.work_servey.type_of_business=='Public Ltd.' %>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <% end %>
+  <% if @business.work_servey.type_of_business=='Partnership' %>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <% end %>
+  <% if @business.work_servey.type_of_business=='Private LTD.' %>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <% end %>
+  <% if @business.work_servey.type_of_business=='Propreietorship' %>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <% end %>
+  <% if @business.work_servey.type_of_business=='Others' %>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <% end %>
+
   </table>
   </td>
 
   <td>
   <table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin-left:2px;margin-bottom:65px;">
-  <% if @business.work_servey.type_of_business=='Public Ltd.' %>
-  <tr><td>Public LTD</td></tr>
-  <tr><td >Partnership</td></tr>
-  <tr><td >Private LTD</td></tr>
-  <tr><td >Propretorship</td></tr>
-  <tr><td >Others</td></tr>
-  <% end %>
-
-  <% if @business.work_servey.type_of_business=='Partnership' %>
-  <tr><td>Public LTD</td></tr>
-  <tr><td style="background:silver;color:black">Partnership</td></tr>
-  <tr><td >Private LTD</td></tr>
-  <tr><td >Propretorship</td></tr>
-  <tr><td >Others</td></tr>
-  <% end %>
   
-  <% if @business.work_servey.type_of_business=='Private LTD.' %>
-  <tr><td>Public LTD</td></tr>
-  <tr><td >Partnership</td></tr>
-  <tr><td style="background:silver;color:black">Private LTD</td></tr>
-  <tr><td >Propretorship</td></tr>
-  <tr><td >Others</td></tr>
-  <% end %>
-  
-  <% if @business.work_servey.type_of_business=='Propreietorship' %>
-  <tr><td>Public LTD</td></tr>
-  <tr><td >Partnership</td></tr>
-  <tr><td >Private LTD</td></tr>
-  <tr><td style="background:silver;color:black">Propretorship</td></tr>
-  <tr><td >Others</td></tr>
-  <% end %>
-
-  <% if @business.work_servey.type_of_business=='Others' %>
   <tr><td>Public LTD</td></tr>
   <tr><td >Partnership</td></tr>
   <tr><td >Private LTD</td></tr>
   <tr><td >Propretorship</td></tr>
-  <tr><td style="background:silver;color:black">Others</td></tr>
-  <% end %>
+  <tr><td >Others</td></tr>
 
 
   </tr></table></td>
