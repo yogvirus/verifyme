@@ -17,6 +17,7 @@ class WorkServey < ActiveRecord::Base
   belongs_to :customer
   belongs_to :pincode
   belongs_to :business
+  belongs_to :department
   has_one :work_servey_verification
 
   has_many :business_documents

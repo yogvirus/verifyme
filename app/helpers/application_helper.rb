@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def total_customer
+   (Customer.all+Business.all+CoApplicant.all+CoApplicantBusiness.all).count
+  end
+
   def bootstrap_class_for flash_type
     case flash_type
       when :success

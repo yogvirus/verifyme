@@ -1,0 +1,31 @@
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+body{
+     line-height: 10px;
+     }
+#wrapper
+        {
+          text-transform:uppercase;
+          width:700px;
+          background-color:#fff;
+          margin:0 auto;
+          padding:0;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:9px !important;
+          }
+td { font-size:12px;}
+td tr td { }
+.border1 {
+           border-right:1px #000 solid;
+           border-bottom:1px solid #000;
+           }
+table
+{
+ border-collapse:collapse;
+}
