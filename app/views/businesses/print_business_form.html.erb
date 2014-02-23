@@ -184,7 +184,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
   <% if @business.work_servey.type_of_business=='Private LTD.' %>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -212,10 +212,10 @@ border-collapse:collapse;
   <table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin-left:2px;margin-bottom:65px;">
   
   <tr><td>Public LTD</td></tr>
-  <tr><td >Partnership</td></tr>
-  <tr><td >Private LTD</td></tr>
-  <tr><td >Propretorship</td></tr>
-  <tr><td >Others</td></tr>
+  <tr><td>Partnership</td></tr>
+  <tr><td>Private LTD</td></tr>
+  <tr><td>Propretorship</td></tr>
+  <tr><td>Others</td></tr>
 
 
   </tr></table></td>
@@ -459,6 +459,7 @@ border-collapse:collapse;
   <table width="700" border="0" cellpadding="0" cellspacing="0" style="margin:2">
   <tr><td>
   <table width="150">
+  <% if @business.work_servey.type_of_job %>
   <% if @business.work_servey.type_of_job=='Permanent' %>
   <tr><td style="background:silver;color:black;border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
@@ -483,6 +484,12 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
   <tr><td style="background:silver;color:black;border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
   <% end %>
+  <% else %>
+  <tr><td style="border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
+  <tr><td style="background:silver;color:black;border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
+<% end %>
   </table>
   </td>
   
