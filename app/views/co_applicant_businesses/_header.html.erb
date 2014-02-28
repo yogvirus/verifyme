@@ -43,7 +43,7 @@
   <%= @co_applicant_business.country %> |
   <%= @co_applicant_business.state %> |
   <%= @co_applicant_business.city %> |
-  <%= @co_applicant_business.pincode.name %>
+  <%= @co_applicant_business.pincode.name if @co_applicant_business.pincode %>
 </h5>
 
 <% if @co_applicant_business.status=="ready_for_verification" %>

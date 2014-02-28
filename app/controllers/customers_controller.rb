@@ -30,6 +30,11 @@ class CustomersController < ApplicationController
   end
 end
 
+ def assign_all
+    CustomerVerification.update_all("tab_id = ? and customer_id = ?",  :id => params[:transaction_ids])
+    redirect_to customers_path
+ end
+
  def old_pending_customers
  end
 
@@ -110,7 +115,11 @@ end
   end
 
   def cust_ready
-   @cust_ready = inqueue_filter
+    #@cust_ready = inqueue_filter
+    @cust_ready = Customer.where('status = ? and  no_verifcation = ? ', 'ready_for_verification', 'true')
+    @business_ready = Business.where('status = ?', 'ready_for_verification')
+    @co_applicant_ready = CoApplicant.where('status = ?', 'ready_for_verification')
+    @co_applicant_business_ready = CoApplicantBusiness.where('status = ?', 'ready_for_verification')
   end
 
   # GET /customers/1

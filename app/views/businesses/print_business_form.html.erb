@@ -9,8 +9,7 @@ table
 border-collapse:collapse;
 }
 </style>
-<%=link_to_function("Print this Page", "javascript:print()")%>
-
+<%= link_to_function("Print this Page", "javascript:print()") %>
   <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
   <!-- Save for Web Slices (test.psd) -->
   <div id="wrapper">
@@ -210,7 +209,7 @@ border-collapse:collapse;
 
   <td>
   <table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin-left:2px;margin-bottom:65px;">
-  
+
   <tr><td>Public LTD</td></tr>
   <tr><td>Partnership</td></tr>
   <tr><td>Private LTD</td></tr>
@@ -221,6 +220,7 @@ border-collapse:collapse;
   </tr></table></td>
 
   <td><table width="20"  cellpadding="0" cellspacing="0" style="margin-top:-4">
+  <% if @business.work_servey.nature_of_business %>
   <% if @business.work_servey.nature_of_business=='Professional'%>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -324,7 +324,18 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-
+  <% else %>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <% end %>
   </table></td>
 
   <td>
@@ -393,7 +404,7 @@ border-collapse:collapse;
   </table></td>
 
   <td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;">
-  
+
   <tr><td>Owned </td></tr>
   <tr><td>Rented</td></tr>
   <tr><td>Pagdi</td></tr>
@@ -492,10 +503,10 @@ border-collapse:collapse;
 <% end %>
   </table>
   </td>
-  
+
   <td width="30" style="border-right:1px #000 solid; border-left:1px #000 solid"></td><td>
   <table width="350">
-  
+
   <tr>
 <% if @business.work_servey.working_as=='Senior/Middle Manager'%>
   <td><table>
@@ -503,7 +514,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -522,7 +533,7 @@ border-collapse:collapse;
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -541,7 +552,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -553,14 +564,14 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>others</td></tr>
   </table></td>
   </tr>
-<% end %>  
+<% end %>
 <% if @business.work_servey.working_as=='Assistant'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -579,7 +590,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -598,7 +609,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -617,7 +628,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -636,7 +647,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -655,7 +666,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-  
+
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -667,21 +678,21 @@ border-collapse:collapse;
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>others</td></tr>
   </table></td>
   </tr>
-<% end %>  
-  
+<% end %>
+
   </table></td>
-  
+
   <td>
   <table width="150">
   <% if @business.work_servey.job_transferable? %>
   <tr align="center" ><td style="background:silver;border:1px #000 solid;" width="20">&nbsp;</td><td>Yes</td></tr>
   <tr align="center"><td style="border:1px #000 solid;">&nbsp;</td><td>No</td>
-  <% end %>  
+  <% end %>
 
   <% if @business.work_servey.job_transferable=='false' %>
   <tr align="center" ><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Yes</td></tr>
   <tr align="center"><td style="border:1px #000 solid;">&nbsp;</td><td>No</td>
-  <% end %>  
+  <% end %>
   </table></td></tr>
   </table>
   </td>
@@ -751,7 +762,8 @@ border-collapse:collapse;
   <tr align="center"><td style="border:1px #000 solid; border-top:none; border-right:none; text-align:right">Type of office</td></tr>
   <tr style="border:1px #000 solid">
   <td>
-  <% if @business.work_servey.type_of_office=='Business Center' %>  
+  <% if @business.work_servey.type_of_office %>
+  <% if @business.work_servey.type_of_office=='Business Center' %>
   <table>
   <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -769,7 +781,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Independent Office' %>  
+  <% if @business.work_servey.type_of_office=='Independent Office' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -787,7 +799,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Office Complex' %>  
+  <% if @business.work_servey.type_of_office=='Office Complex' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -805,7 +817,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Shop' %>  
+  <% if @business.work_servey.type_of_office=='Shop' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -823,7 +835,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Shared Office' %>  
+  <% if @business.work_servey.type_of_office=='Shared Office' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -841,7 +853,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Industry / Factory' %>  
+  <% if @business.work_servey.type_of_office=='Industry / Factory' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -859,7 +871,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Clinic' %>  
+  <% if @business.work_servey.type_of_office=='Clinic' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -877,7 +889,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Small Scale / Shade' %>  
+  <% if @business.work_servey.type_of_office=='Small Scale / Shade' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -895,7 +907,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Residence Cum OFfice' %>  
+  <% if @business.work_servey.type_of_office=='Residence Cum OFfice' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -913,7 +925,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @business.work_servey.type_of_office=='Others' %>  
+  <% if @business.work_servey.type_of_office=='Others' %>
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -930,7 +942,23 @@ border-collapse:collapse;
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
   </table>
   <% end %>
-
+  <% else %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
   </td>
 
   </tr>
@@ -942,18 +970,203 @@ border-collapse:collapse;
   <tr align="right" style="border-left:1px #000 solid;"><td style="border-left:1px #000 solid">Locality of office</td></tr>
   <tr style="border-top:1px #000 solid;">
   <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Commercial Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale Industries Area</td></tr>
+  <% if @business.work_servey.locality_of_office %>
+  <% if @business.work_servey.locality_of_office=='Business Center' %>
+  <table>
+  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
   </table>
   </td>
   <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Residential</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Plant</td></tr>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
   </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Independent Office' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Office Complex' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Shop' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Shared Office' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Industry / Factory' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Clinic' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Small Scale / Shade' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Residence Cum OFfice' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+
+  <% if @business.work_servey.locality_of_office=='Others' %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
+  <% else %>
+  <table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  </table>
+  </td>
+  <td>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
+  </table>
+  <% end %>
   </td>
 
   </tr>
@@ -976,42 +1189,146 @@ border-collapse:collapse;
 
   <tr>
   <td width="150"><table><tr><td style="border-right:1px #000 solid;" align="center">Construction of office</td>
-  <td width="150" style="border-right:1px #000 solid" align="center">Extarlors</td>
+  <td width="150" style="border-right:1px #000 solid" align="center">Exteriors</td>
   <td width="150" style="border-right:1px #000 solid" align="center">Interiors</td>
   <td width="150" style="border-right:1px #000 solid">Ease of Locating Office</td>
   <td width="150" style="border-right:1px #000 solid">Business Activity Level</td>
   <td width="150" style="border-right:1px #000 solid">No. Employess sighted in Premises:</td></tr>
   <tr><td width="150" style="border:1px #000 solid"><table>
+  <% if @business.work_servey.construction_of_office %>
+  <% if @business.work_servey.construction_of_office=='Pukka' %>
+  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+  <% end %>
+  <% if @business.work_servey.construction_of_office=='semi-pukka' %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+  <% end %>
+  <% if @business.work_servey.construction_of_office=='Temporary' %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+  <% end %>
+  <% else %>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
-
+  <% end %>
   </table></td>
+  <% if @business.work_servey.exterior %>
+  <% if @business.work_servey.exterior=='Good' %>
+  <td width="150" style="border:1px #000 solid"><table>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
+  <% end %>
+  <% if @business.work_servey.exterior=='Average' %>
+  <td width="150" style="border:1px #000 solid"><table>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
+  <% end %>
+  <% if @business.work_servey.exterior=='Poor' %>
+  <td width="150" style="border:1px #000 solid"><table>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
+  <% end %>
+  <% else %>
   <td width="150" style="border:1px #000 solid"><table>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
+  <% end %>
 
   </table></td>
+
   <td width="150" style="border:1px #000 solid"><table>
+  <% if @business.work_servey.interior %>
+  <% if @business.work_servey.interior=='Painted' %>
+  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+  <% end %>
+  <% if @business.work_servey.interior=='Carpeted' %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+  <% end %>
+  <% if @business.work_servey.interior=='Curtains' %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+  <% end %>
+  <% if @business.work_servey.interior=='Clean' %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+  <% end %>
+  <% else %>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+  <% end %>
   </table></td>
+
   <td style="border:1px #000 solid"><table>
+  <% if @business.work_servey.ease_of_location %>
+  <% if @business.work_servey.ease_of_location=='Easy' %>
+  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
+  <% end %>
+  <% if @business.work_servey.ease_of_location=='Difficult' %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
+  <% end %>
+  <% if @business.work_servey.ease_of_location=='Untracabale' %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
+  <% end %>
+  <% else %>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
-
+  <% end %>
   </table></td>
+  <% if @business.work_servey.activity_level %>
+  <% if @business.work_servey.activity_level=='High' %>
+  <td style="border:1px #000 solid"><table>
+  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
+  <% end %>
+  <% if @business.work_servey.activity_level=='Medium' %>
+  <td style="border:1px #000 solid"><table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
+  <% end %>
+  <% if @business.work_servey.activity_level=='Low' %>
   <td style="border:1px #000 solid"><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
+  <% end %>
 
+  <% else %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
+  <% end %>
   </table></td>
-  <td style="border:1px #000 solid">No. of Customers Seen:</td></tr></table></td>
+  <td style="border:1px #000 solid">No. of Customers Seen: <%= @business.work_servey.no_of_customer_seen %></td></tr></table></td>
   </tr>
   <!-- -->
   </td>
@@ -1022,8 +1339,14 @@ border-collapse:collapse;
   <td style="border:1px #000 solid">
   <table width="235"><tr><td>Whether any display of affilation political party seen</td></tr>
   <tr><td><table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Yes</td>
+  <% if @business.work_servey.political_party? %>
+  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Yes</td>
   <td style="border:1px #000 solid" width="20">&nbsp;</td><td>No</td></tr>
+  <% end %>
+  <% if !@business.work_servey.political_party? %>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Yes</td>
+  <td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>No</td></tr>
+  <% end %>
 
   </table></td></tr></table>
   </td>
@@ -1055,8 +1378,8 @@ border-collapse:collapse;
   <%= @business.work_servey.time_of_visit.strftime("%H:%M %p") %>,
   <%= @business.work_servey.person_met %> & THIRD PARTYCONFIRMATION DONE
   SUB is working Past <%= @business.work_servey.number_of_years_in_present_employment %> years,
-  in department <%= @business.work_servey.department.name %> & Designation <%= @business.work_servey.applicant_designation %>, 
-  DOB  TYPE OF LOAN FOR CAR LOAN AMOUNT 5.40 LAKHS.
+  in department <%= @business.work_servey.department.name if @business.work_servey.department %> & Designation <%= @business.work_servey.applicant_designation %>,
+  DOB  <%= @business.work_servey.verifier_remark %>
   </td></tr>
   </table></td>
   </tr>
@@ -1086,8 +1409,8 @@ border-collapse:collapse;
   <td>(Tick appropriate reason below)</td></tr></table></td>
   </tr>
   <% end %>
-  
-  
+
+
   <% if @business.work_servey.refer_to_bank == 'negative' %>
   <tr>
   <td  width="50" cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td>

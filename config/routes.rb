@@ -90,6 +90,7 @@ EVerification::Application.routes.draw do
      post :accept
      get :accept
      post :re_indicated
+     put :assign_all
      get :re_indicated
     end
   end

@@ -17,4 +17,8 @@
 //= require jquery_nested_form
 //= require_tree .
 
-
+$(function() {
+	$('#checkall').click(function () {
+		$('.checksingle').attr('checked', this.checked);
+    });
+   });
