@@ -13,7 +13,7 @@ class CoApplicantWorkDetail < ActiveRecord::Base
   belongs_to :customer
   belongs_to :co_applicant
   belongs_to :co_applicant_business
-
+  belongs_to :department
   has_many :co_applicant_business_documents
   accepts_nested_attributes_for :co_applicant_business_documents
 

@@ -60,6 +60,9 @@ EVerification::Application.routes.draw do
      post :re_indicated
      get :re_indicated
    end
+     collection do
+       post :assign_all
+     end
   end
 
   resources :co_applicants do
@@ -71,7 +74,9 @@ EVerification::Application.routes.draw do
      post :re_indicated
      get :re_indicated
     end
-
+     collection do
+       post :assign_all
+     end
   end
   resources :co_applicant_work_details
   resources :customer_verifications
@@ -90,9 +95,11 @@ EVerification::Application.routes.draw do
      post :accept
      get :accept
      post :re_indicated
-     put :assign_all
      get :re_indicated
     end
+     collection do
+       post :assign_all
+     end
   end
   resources :businesses do
    member do
@@ -104,6 +111,9 @@ EVerification::Application.routes.draw do
      post :re_indicated
      get :re_indicated
    end
+     collection do
+       post :assign_all
+     end
   end
 
   ActiveAdmin.routes(self)

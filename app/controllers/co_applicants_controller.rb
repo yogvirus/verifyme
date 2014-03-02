@@ -20,13 +20,24 @@ class CoApplicantsController < ApplicationController
    @application_ref_no = @co_applicant.application_ref_no
   end
 
-
+ def assign_all
+    params[:co_applicant_verification][:co_applicant_ids].each do |t|
+     params_customer = {}
+     params_customer['co_applicant_id'] = t
+     @t = CoApplicantVerification.create(params_customer)
+     @t.tab_id = params[:tab_id].to_i
+     if @t.save
+        @t.co_applicant.submit!
+     end
+    end
+     redirect_to customers_cust_ready_path, notice: "successful."
+ end
 
   def create
    @co_applicant = CoApplicant.create(params[:co_applicant])
    if @co_applicant.save
       area_name = Pincode.find_by_id(@co_applicant.pincode_id)
-      @co_applicant.area_name = area_name.pin_number 
+      @co_applicant.area_name = area_name.pin_number
       @co_applicant.save
     redirect_to @co_applicant.customer, :notice => "'#{@co_applicant.applicant_name}'s' Details Added."
    else

@@ -24,11 +24,12 @@ function checkAll()
     <th>Status</th>
     <th>Address</th>
   </tr>
-<%= form_tag customers_path, :method => :put do %>
+<%= form_tag assign_all_co_applicants_path, :method => :post do %>
+<%= select_tag 'tab_id', options_for_select(Tab.all.map{|t| [t.name, t.id]}), {:prompt => "--Select Tab--"} %>
 <% @co_applicant_ready .each do |customer| %>
 
   <tr>
-  	<td><%= check_box_tag "ready_ids[]", customer.id, false, {:class => "checksingle"} %></td>
+    <td><%= check_box_tag 'co_applicant_verification[co_applicant_ids][]', customer.id, false, :id => customer.id %></td>
     <% if customer.application_status == 'RESIDENTIAL'%>
     <td>
      <b style="color:#009999;border-radius:3px;padding:2px;">
@@ -62,5 +63,5 @@ function checkAll()
 </table>
 
 <br />
-<%= submit_tag "Mark as Approved", :class=>"btn" %>
+<%= submit_tag "Assign", :class=>"btn btn-danger" %>
 <% end %>

@@ -31,8 +31,16 @@ class CustomersController < ApplicationController
 end
 
  def assign_all
-    CustomerVerification.update_all("tab_id = ? and customer_id = ?",  :id => params[:transaction_ids])
-    redirect_to customers_path
+    params[:customer_verification][:customer_ids].each do |t|
+     params_customer = {}
+     params_customer['customer_id'] = t
+     @t = CustomerVerification.create(params_customer)
+     @t.tab_id = params[:tab_id].to_i
+     if @t.save
+        @t.customer.submit!
+     end
+    end
+     redirect_to customers_cust_ready_path, notice: "successful."
  end
 
  def old_pending_customers

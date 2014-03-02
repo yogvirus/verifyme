@@ -47,6 +47,19 @@ class BusinessesController < InheritedResources::Base
     end
   end
 
+ def assign_all
+    params[:business_verification][:business_ids].each do |t|
+     params_business = {}
+     params_business['business_id'] = t
+     @t = BusinessVerification.create(params_business)
+     @t.tab_id = params[:tab_id].to_i
+     if @t.save
+        @t.business.submit!
+     end
+    end
+     redirect_to customers_cust_ready_path, notice: "successful."
+ end
+
   def accept
     @business = Business.find(params[:business_id])
     @business.accept!

@@ -1,5 +1,6 @@
 class CoApplicantBusinessesController < ApplicationController
    before_filter :authenticate_user!
+   layout 'print_layout', :only => :print_co_applicant_business
    load_and_authorize_resource
 
  def create
@@ -10,6 +11,20 @@ class CoApplicantBusinessesController < ApplicationController
     redirect_to @co_applicant.customer, :notice => "Something went wrong , please contact the administrator!."
  end
  end
+
+ def assign_all
+    params[:co_applicant_business_verification][:co_applicant_business_ids].each do |t|
+     params_customer = {}
+     params_customer['co_applicant_business_id'] = t
+     @t = ClientVerification.create(params_customer)
+     @t.tab_id = params[:tab_id].to_i
+     if @t.save
+        @t.co_applicant_business.submit!
+     end
+    end
+     redirect_to customers_cust_ready_path, notice: "successful."
+ end
+
 
  def edit
   @co_applicant = CoApplicant.find(params[:co_applicant_id])
@@ -93,7 +108,7 @@ class CoApplicantBusinessesController < ApplicationController
 
 
  def print_co_applicant_business
-  @print_co_applicant_business
+  #@print_co_applicant_business = CoApplicantBusiness.find(params[:business_id])
  end
 
 end
