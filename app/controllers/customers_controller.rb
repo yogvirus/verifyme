@@ -124,7 +124,7 @@ end
 
   def cust_ready
     #@cust_ready = inqueue_filter
-    @cust_ready = Customer.where('status = ? and  no_verifcation = ? ', 'ready_for_verification', 'true')
+    @cust_ready = Customer.where('status = ? and  no_verifcation = ? ', 'ready_for_verification', false)
     @business_ready = Business.where('status = ?', 'ready_for_verification')
     @co_applicant_ready = CoApplicant.where('status = ?', 'ready_for_verification')
     @co_applicant_business_ready = CoApplicantBusiness.where('status = ?', 'ready_for_verification')

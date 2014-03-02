@@ -1,5 +1,5 @@
 <style type="text/css">
-body{line-height: 10px;}
+body{line-height: 10px;margin-left:auto;margin-top:-10px;}
 #wrapper { text-transform:uppercase;width:700px; background-color:#fff; margin:0 auto; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:9px !important;}
 td { font-size:8px;}
 td tr td { }
@@ -10,7 +10,6 @@ border-collapse:collapse;
 }
 </style>
 <%= link_to_function("Print this Page", "javascript:print()") %>
-  <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
   <!-- Save for Web Slices (test.psd) -->
   <div id="wrapper">
   <table id="Table_01" width="700" height="847" border="1" cellpadding="0" cellspacing="0">
@@ -408,7 +407,7 @@ border-collapse:collapse;
   <tr><td>Owned </td></tr>
   <tr><td>Rented</td></tr>
   <tr><td>Pagdi</td></tr>
-  </td></table>
+  </table>
   </td></tr></table>
   </td>
 
@@ -699,9 +698,7 @@ border-collapse:collapse;
   </tr><!--Ends Edited Column-->
 
   <tr>
-  <td>Previous Employedment details {if working for <1 year in current employment}</td>
-  </tr>
-  </td>
+  <td>Previous Employedment details {if working for less than 1 year in current employment}</td>
   </tr>
   <tr>
   <td>
@@ -1323,12 +1320,13 @@ border-collapse:collapse;
   <% end %>
 
   <% else %>
+  <td style="border:1px #000 solid"><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
   <% end %>
   </table></td>
-  <td style="border:1px #000 solid">No. of Customers Seen: <%= @business.work_servey.no_of_customer_seen %></td></tr></table></td>
+  <td style="border:1px #000 solid"><table><td>No. of Customers Seen: <%= @business.work_servey.no_of_customer_seen %></td></tr></table></td>
   </tr>
   <!-- -->
   </td>
@@ -1347,10 +1345,9 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Yes</td>
   <td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>No</td></tr>
   <% end %>
-
   </table></td></tr></table>
   </td>
-  <td width="500"style="border:1px #000 solid">
+  <td width="500" style="border:1px #000 solid">
   <table >
   <tr>
   <td>Items seen in premises</td><td style="padding:0 10">AC</td>
@@ -1371,7 +1368,7 @@ border-collapse:collapse;
   </table>
   <tr>
 
-  <td ><table width="700" cellpadding="0" cellspacing="0">
+  <td><table width="700" cellpadding="0" cellspacing="0">
   <tr><td style="border-bottom:1px #000 solid">Third Party Confirmation</td></tr>
   <tr><td style="border-bottom:1px #000 solid">Viewer Remarks</td></tr>
   <tr><td height="40" style="border-bottom:1px #000 solid;">
@@ -1472,4 +1469,3 @@ border-collapse:collapse;
   </table>
   <!-- End Save for Web Slices -->
   </div>
-  </body>
