@@ -71,6 +71,7 @@ EVerification::Application.routes.draw do
      get :co_applicant_verification
      post :accept
      get :accept
+     get :print_co_applicant
      post :re_indicated
      get :re_indicated
     end

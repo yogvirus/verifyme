@@ -3,6 +3,9 @@
 <% else %>
 <a href="#myModal_app_work" role="button" data-toggle="modal" class="label label-important">Add Co aplicant Business Detail</a>
 <% end %>
+<% if @co_applicant.co_applicant_servey && @co_applicant.co_applicant_servey.address_confirmed? %>
+ <b><%= link_to "print this form", print_co_applicant_co_applicant_path(:customer_id => @customer ), :class => "label label-info" %></b>
+<% end %>
 
 
 <!-- Modal -->

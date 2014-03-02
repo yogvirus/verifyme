@@ -118,7 +118,9 @@ class CoApplicantsController < ApplicationController
      end
   end
 
-
+  def print_co_applicant
+    #@print_customer = CoApplicant.find(params[:customer_id])
+  end
 
 
 end
