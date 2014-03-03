@@ -1,13 +1,9 @@
 <style>
  #servey_data{float:left; width:800px;border-right:2px solid black;}
- #servey_document{width:350px;float:right; border:1px solid black;float:right;padding:0px 0px 0px 30px;background:#FAFAFA;margin:280px -150px 0px 0px;}
+ #servey_document{width:350px;float:right; border:0px solid black;float:right;padding:0px 0px 0px 30px;background:#FAFAFA;margin:280px -150px 0px 0px;}
 </style>
 <%- model_class = Business -%>
 <%= render 'header' %>
-
-
-
-
 
 <% if @co_applicant.co_applicant_servey && @co_applicant.co_applicant_servey.co_applicant_documents %>
 <div id="servey_document">
