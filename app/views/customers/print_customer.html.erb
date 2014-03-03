@@ -27,10 +27,10 @@ border-collapse:collapse;
 		<td>
         <table>
         <tr>
-        <td class="border1">Application No</td>
-        <td class="border1" width="300px;" style="text-align:right;">Agency Name</td>
+        <td class="border1" style="width:200px">Application No</td>
+        <td class="border1"> <%= @customer.fh_code %></td>
+        <td class="border1" width="300px;" style="text-align:center;">Agency Name</td>
         <td class="border1" style="text-align:center; font-size:10px;">SCROP.E.O</td>
-        <td class="border1">&nbsp;</td>
         <td class="border1" width="60" style="text-align:center;">FH Code</td>
         <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @customer.fh_code %></td>
         </tr>
@@ -38,11 +38,10 @@ border-collapse:collapse;
 		<tr>
 
         <td style="border-right:1px #000 solid">Applicant's Name</td>
-        <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @customer.applicant_name %></td>
-        <td style="border-right:1px #000 solid">&nbsp;</td>
-        <td>BRANCH NAME</td>
-        <td width="20" style="border-right:1px #000 solid"></td>
-        <td><%= @customer.branch.name %></td>
+        <td style="border-right:1px #000 solid;text-align:left;width:250px;font-weight:bold" align="center"><%= @customer.applicant_name %></td>
+        <td style="text-align:center;width:200px;">BRANCH NAME</td>
+        <td width="20" style="border-left:1px #000 solid;text-align:center"><%= @customer.branch.name %></td>
+
         </tr>
 
         </table>
@@ -145,6 +144,7 @@ border-collapse:collapse;
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 </table>
 </td>
+
 <td><table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin:2px;">
 <tr style="border-left:none;"><td >Self Owned</td></tr>
 <tr><td >Owned by Parents</td></tr>
@@ -152,10 +152,32 @@ border-collapse:collapse;
 <tr><td >Company Accomodation</td></tr>
 </table></td>
 <td><table width="20"  cellpadding="0" cellspacing="0" style="margin-top:-4">
+<% if @customer.servey.residence_status=='Self Owned' %>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.residence_status=='Owned By Parents' %>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.residence_status=='Rented' %>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.residence_status=='Company Accomodation' %>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<% else %>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% end %>
 </table></td>
 <td style="border-right:1px #000 solid;"><table width="100"  cellpadding="1" cellspacing="0" style="font-size:8px;">
 <tr><td>Paying Guest</td></tr>
@@ -163,11 +185,27 @@ border-collapse:collapse;
 <tr><td>Owned by Relative</td></tr>
 <tr><td>Lodging</td></tr>
 </table></td>
+
 <td><table width="20"  cellpadding="0" cellspacing="0">
+<% if @customer.servey.educational_qualification == 'proffessional'%>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.educational_qualification == 'Post Graduate'%>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.educational_qualification == 'Graduate'%>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<% else %>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% end %>
 </table></td>
+
 <td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;">
 <tr><td >Professional</td></tr>
 <tr><td >Post graduate</td></tr>
@@ -268,7 +306,7 @@ border-collapse:collapse;
         <tr>
         <td width="300" style="border-right:1px #000 solid; text-align:center;">Type of Residence</td>
         <td align="center" width="230" style="border-right:1px #000 solid">Locality of Residence</td>
-        <td>Ease of Location Sq. ft. (approx.)</td>
+        <td>Ease of Location</td>
         </tr>
 	    </table>
 		</td>
@@ -317,26 +355,51 @@ border-collapse:collapse;
         </table></td>
         <td>
         <table width="150">
+        <% if @customer.servey.ease_of_location=='Easy' %>
+        <tr><td style="background:silver;border:1px #000 solid;" width="20">&nbsp;</td><td>Easy</td></tr>
+        <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Diffcult</td>
+        <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Untraceable</td>
+        <% elsif @customer.servey.ease_of_location=='Difficult' %>
+        <tr><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Easy</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid;">&nbsp;</td><td>Diffcult</td>
+        <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Untraceable</td>
+        <% elsif @customer.servey.ease_of_location=='Untraceable' %>
+        <tr><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Easy</td></tr>
+        <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Diffcult</td>
+        <tr><td style="background:silver;border:1px #000 solid;">&nbsp;</td><td>Untraceable</td>
+        <% else %>
         <tr><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Easy</td></tr>
         <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Diffcult</td>
         <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Untraceable</td>
+        <% end %>
         </table></td></tr>
         </table>
         </td>
 	</tr><!--Ends Edited Column-->
 
-	<tr>
+	      <tr>
         <td><table><tr><td width="250" style="border-right:1px #000 solid;" align="center">Construction of Residence</td>
         <td width="350" align="right">Comments of Exteriors</td>
         <td style="border-right:1px #000 solid"></td>
-
-
-</tr>
-
+        </tr>
         <tr><td width="150"style="border:1px #000 solid"><table>
+        <% if @customer.servey.construction_of_residence=='pakka' %>
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+        <% elsif @customer.servey.construction_of_residence=='semi pakka' %>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+        <% elsif @customer.servey.construction_of_residence=='temperory' %>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+        <% else %>
         <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
+        <% end %>
 
         </table></td>
 
@@ -441,14 +504,31 @@ border-collapse:collapse;
         </table></td>
 	</tr>
 	<tr>
-
-        <td><table width="700" cellpadding="0" cellspacing="0"><tr><td  width="50" cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td><td width="95">POSITIVE</td><td  width="50"  cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td><td width="100" style="text-align:center">NEGATIVE</td><td  width="50"  cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td><td width="150" style="padding-left:10px;">REFER TO BANK</td><td>(Tick appropriate reason below)</td></tr></table></td>
+  <td>
+   <table width="700" cellpadding="0" cellspacing="0">
+<% if @customer.servey.refer_to_bank=='Accept' %>
+     <tr><td  width="50" cellpadding="0" cellspacing="0" style="background:silver;border:1px #000 solid">&nbsp;</td>
+     <td width="95">POSITIVE</td>
+     <td  width="50"  cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td>
+     <td width="100" style="text-align:center">NEGATIVE</td>
+     <td  width="50"  cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td>
+     <td width="150" style="padding-left:10px;">REFER TO BANK</td>
+<% else %>
+     <tr><td  width="50" cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td>
+     <td width="95">POSITIVE</td>
+     <td  width="50"  cellpadding="0" cellspacing="0" style="background:silver;border:1px #000 solid">&nbsp;</td>
+     <td width="100" style="text-align:center">NEGATIVE</td>
+     <td  width="50"  cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td>
+     <td width="150" style="padding-left:10px;">REFER TO BANK</td>
+<% end %>
+     <td>(Tick appropriate reason below)</td></tr>
+     </table></td>
 	</tr>
 	<tr>
 
         <td><table width="700"  cellpadding="0" cellspacing="0">
 <tr><td><table width="300"  cellpadding="0" cellspacing="0"><tr>
-        <td >Residence cum Office</td></tr>
+<td >Residence cum Office</td></tr>
 <tr><td >Non Targetd Area</td></tr>
 <tr><td >Outside Geographical Limits</td></tr>
 <tr><td >Entry Not Allowed</td></tr>
