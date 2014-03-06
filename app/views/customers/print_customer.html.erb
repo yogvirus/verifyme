@@ -1,7 +1,3 @@
-<html>
-<head>
-<title>test</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 body{line-height: 10px;margin-left:auto;margin-top:-10px;}
 #wrapper { width:700px; background-color:#fff; margin:0 auto; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:9px !important;}
@@ -13,15 +9,12 @@ table
 border-collapse:collapse;
 }
 </style>
-</head>
-<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<!-- Save for Web Slices (test.psd) -->
 <div id="wrapper">
 <table id="Table_01" width="700" height="847" border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td style="height:28px; text-align:center;">
 			<p style="height:0; text-decoration:underline; padding-bottom:2px;">State Bank of india</p>
-            <p style="text-decoration:underline;">Employment / Business Verification Report</p></td>
+            <p style="text-decoration:underline;">Employment / Residential Verification Report</p></td>
 	</tr>
 	<tr>
 		<td>
@@ -82,7 +75,8 @@ border-collapse:collapse;
         <table>
         <tr>
         <td width="130" style="border-right:1px #000 solid; font-weight:bold">Date of Visit</td>
-        <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= time_tag @customer.servey.date_of_visit if @customer.servey.date_of_visit %></td>
+        <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold">
+        <%= @customer.servey.date_of_visit.strftime("%m/%d/%Y") if @customer.servey.date_of_visit %></td>
         <td width="233" style="border-right:1px #000 solid; font-weight:bold">TIME OF VISIT</td>
         <td style="padding-left:20px; font-weight:bold;"><%= @customer.servey.time_of_visit.strftime("%H:%M %p") if @customer.servey.time_of_visit %></td>
 
@@ -113,7 +107,7 @@ border-collapse:collapse;
         <table>
         <tr>
         <td width="150" style="border-right:1px #000 solid; font-weight:bold">Date of birth / Age of Applicant </td>
-        <td width="266" style="padding-left:10; border-right:1px #000 solid;"><%= @customer.servey.date_of_birth if @customer.servey.date_of_birth %></td>
+        <td width="266" style="padding-left:10; border-right:1px #000 solid;"><%= @customer.servey.date_of_birth.strftime("%m/%d/%Y") if @customer.servey.date_of_birth %></td>
         <td width="150" style="padding-left:10; border-right:1px #000 solid; font-weight:bold">Years lived at current address</td>
         <td><%= @customer.servey.years_lived_at_current_address %> Years</td>
         </tr>
@@ -123,51 +117,35 @@ border-collapse:collapse;
 	<tr>
 		<td>
 
-        <table>
-        <tr>
-        <td width="290" style=" border-right:1px #000 solid; text-align:center; font-weight:bold">Residential Status</td>
-        <td width="226" align="center" style="border-right:1PX #000 solid; font-weight:bold">Educational Quaification</td>
-<!--        <td width="168" align="center" style="border-right:1PX #000 solid; font-weight:bold">Marital Status</td>-->
-        <td width="170" align="center" style="font-weight:bold">Marital Status</td>
-        </tr>
-        </table>
-        </td>
-	</tr>
-
-	<tr>
-
-        <td><table width="700"  cellpadding="0" cellspacing="0">
-<tr><td><table width="20"  cellpadding="0" cellspacing="0" style="margin-left:2px;">
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<table>
+<tr>
+<td width="290" style=" border-right:1px #000 solid; text-align:center; font-weight:bold">Residential Status</td>
+<td width="226" align="center" style="border-right:1PX #000 solid; font-weight:bold">Educational Quaification</td>
+<td width="170" align="center" style="font-weight:bold">Marital Status</td>
+</tr>
 </table>
 </td>
 
-<td><table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin:2px;">
-<tr style="border-left:none;"><td >Self Owned</td></tr>
-<tr><td >Owned by Parents</td></tr>
-<tr><td >Ranted</td></tr>
-<tr><td >Company Accomodation</td></tr>
-</table></td>
-<td><table width="20"  cellpadding="0" cellspacing="0" style="margin-top:-4">
-<% if @customer.servey.residence_status=='Self Owned' %>
+<tr>
+<td><table width="700"  cellpadding="0" cellspacing="0">
+<tr><td><table width="20"  cellpadding="0" cellspacing="0" style="margin-left:2px;">
+<!-- residence status first block -->
+<% if @customer.servey.residence_status=='Self Owned'%>
 <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<% elsif @customer.servey.residence_status=='Owned By Parents' %>
+<% elsif @customer.servey.residence_status=='Owned By Parents'%>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<% elsif @customer.servey.residence_status=='Rented' %>
+<% elsif @customer.servey.residence_status=='Rented'%>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<% elsif @customer.servey.residence_status=='Company Accomodation' %>
+<% elsif @customer.servey.residence_status=='Company Accomodation'%>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -178,6 +156,46 @@ border-collapse:collapse;
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <% end %>
+<!-- first block end -->
+</table>
+</td>
+
+<td><table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin:2px;">
+<tr><td>Self Owned</td></tr>
+<tr><td>Owned by Parents</td></tr>
+<tr><td>Ranted</td></tr>
+<tr><td>Company Accomodation</td></tr>
+</table></td>
+
+<td><table width="20"  cellpadding="0" cellspacing="0" style="margin-top:-4">
+<!-- residence status second block -->
+<% if @customer.servey.residence_status == 'paying guest'%>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.residence_status == 'owned by friend'%>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.residence_status == 'Owned by Relative'%>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.residence_status == 'Lodging'%>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<% else %>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% end %>
+<!-- end second block -->
 </table></td>
 <td style="border-right:1px #000 solid;"><table width="100"  cellpadding="1" cellspacing="0" style="font-size:8px;">
 <tr><td>Paying Guest</td></tr>
@@ -186,24 +204,11 @@ border-collapse:collapse;
 <tr><td>Lodging</td></tr>
 </table></td>
 
+<!-- educational qualification block -->
 <td><table width="20"  cellpadding="0" cellspacing="0">
-<% if @customer.servey.educational_qualification == 'proffessional'%>
-<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<% elsif @customer.servey.educational_qualification == 'Post Graduate'%>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<% elsif @customer.servey.educational_qualification == 'Graduate'%>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
-<% else %>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-<% end %>
 </table></td>
 
 <td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;">
@@ -214,11 +219,8 @@ border-collapse:collapse;
 </table></td>
 
     <td><table>
-
     <tr style="border-left:1px #000 solid;">
-
     <td><table><tr><td>
-
     <table width="20"  cellpadding="0" cellspacing="0"><tr>
 <% if @customer.servey.marital_status == 'Single' %>
     <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
@@ -316,15 +318,36 @@ border-collapse:collapse;
 		<td>
         <table width="700" border="0" cellpadding="0" cellspacing="0" style="margin:2">
         <tr><td>
+
         <table width="150">
+        <% if @customer.servey.type_of_residence == 'Flat'%>
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        <% elsif @customer.servey.type_of_residence == 'Independent House'%>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        <% elsif @customer.servey.type_of_residence == 'Multitanent House'%>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        <% elsif @customer.servey.type_of_residence == 'Flat'%>
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        <% else %>
         <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        <% end %>
         </table>
         </td>
-
-
 
         <td width="30" style="border-right:1px #000 solid;">
         <table width="150">
@@ -499,8 +522,16 @@ border-collapse:collapse;
         <td ><table width="700" cellpadding="0" cellspacing="0">
         <tr><td style="border-bottom:1px #000 solid">Third Party Confirmation</td></tr>
         <tr><td style="border-bottom:1px #000 solid">Viewer Remarks</td></tr>
-        <tr><td height="40" style="border-bottom:1px #000 solid;">VT 4:30 PM MEET SELF & THIRD PARTYCONFIRMATION DONE. SUB IS WORKING PAST 2 MNTH.DEPARTMENT ALL& DESIGNATION CEO. DOB 02/06/1990
-                TYPE OF LOAN FOR CAR LOAN AMOUNT 5.40 LAKHS. <%= @customer.servey.verifiers_remark %></td></tr>
+        <tr><td height="40" style="border-bottom:1px #000 solid;">
+        <%= @customer.servey.time_of_visit.strftime("%H:%M %p") if @customer.servey.time_of_visit %>,
+        <%= @customer.servey.date_of_visit.strftime("%m/%d/%Y") if @customer.servey.time_of_visit %>,
+        <%= @customer.servey.person_contacted %>,
+        <%= @customer.servey.relation_with_applicant %>,
+        <%= @customer.servey.date_of_birth.strftime("%m/%d/%Y") if @customer.servey.date_of_birth %>,
+        <%= @customer.servey.years_lived_at_current_address %> years,
+        <%= @customer.servey.residence_status %>,
+        <%= @customer.servey.educational_qualification %>,
+        <%= @customer.servey.verifiers_remark %></td></tr>
         </table></td>
 	</tr>
 	<tr>
@@ -573,5 +604,3 @@ border-collapse:collapse;
 </table>
 <!-- End Save for Web Slices -->
 </div>
-</body>
-</html>

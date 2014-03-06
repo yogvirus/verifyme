@@ -12,6 +12,7 @@ function checkAllBusiness()
      }
  }
 </script>
+
 <div id="residential" style="font-size:11px;width:2200px">
 <h5> Businesses </h5> <br>
 
@@ -62,5 +63,5 @@ function checkAllBusiness()
 </table>
 
 <br />
-<%= submit_tag "Assign", :class=>"btn btn-danger" %>
+<%= submit_tag "Assign", :class=>"btn btn-danger", :onclick => "return checkTabId('#businesses')" %>
 <% end %>

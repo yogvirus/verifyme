@@ -12,16 +12,6 @@ function checkAll()
      }
  }
 </script>
-<script type="text/javascript" charset="utf-8">
-      $(function() {
-        $("#tab_id").click(function() {
-          alert(this.getAttribute("Select A tab"));
-          return false;
-        })
-      })
-</script>
-
-
 
 <div id="residential" style="font-size:11px;width:2200px">
 <h5> All customers </h5><br>
@@ -74,5 +64,5 @@ function checkAll()
 </table>
 
 <br />
-<%= submit_tag "Assign", :class=>"btn btn-danger" %>
+<%= submit_tag "Assign", :class=>"btn btn-danger", :onclick => "return checkTabId('#customers')" %>
 <% end %>
