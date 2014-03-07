@@ -56,7 +56,7 @@
   <%= @co_applicant.address %> <br>
   <%= @co_applicant.country_name %> |
   <%= @co_applicant.country_state %> |
-  <%= @co_applicant.city.name %> |
+  <%= @co_applicant.city.name if @co_applicant.city %> |
   <%#= @co_applicant.pincode.name %>
 </h5>
 

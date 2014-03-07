@@ -499,8 +499,17 @@ border-collapse:collapse;
         <td ><table width="700" cellpadding="0" cellspacing="0">
         <tr><td style="border-bottom:1px #000 solid">Third Party Confirmation</td></tr>
         <tr><td style="border-bottom:1px #000 solid">Viewer Remarks</td></tr>
-        <tr><td height="40" style="border-bottom:1px #000 solid;">VT 4:30 PM MEET SELF & THIRD PARTYCONFIRMATION DONE. SUB IS WORKING PAST 2 MNTH.DEPARTMENT ALL& DESIGNATION CEO. DOB 02/06/1990
-                TYPE OF LOAN FOR CAR LOAN AMOUNT 5.40 LAKHS. <%= @co_applicant.co_applicant_servey.verifiers_remark %></td></tr>
+        <tr><td height="40" style="border-bottom:1px #000 solid;">
+        <%= @co_applicant.co_applicant_servey.time_of_visit.strftime("%H:%M %p") if @co_applicant.co_applicant_servey.time_of_visit %>,
+        <%= @co_applicant.co_applicant_servey.date_of_visit.strftime("%m/%d/%Y") if @co_applicant.co_applicant_servey.time_of_visit %>,
+        <%= @co_applicant.co_applicant_servey.person_contacted %>,
+        <%= @co_applicant.co_applicant_servey.relation_with_applicant %>,
+        <%= @co_applicant.co_applicant_servey.date_of_birth.strftime("%m/%d/%Y") if @co_applicant.co_applicant_servey.date_of_birth %>,
+        <%= @co_applicant.co_applicant_servey.years_lived_at_current_address %> years,
+        <%= @co_applicant.co_applicant_servey.residence_status %>,
+        <%= @co_applicant.co_applicant_servey.educational_qualification %>,
+        <%= @co_applicant.co_applicant_servey.verifiers_remark %></td></tr>
+        </td></tr>
         </table></td>
 	</tr>
 	<tr>
