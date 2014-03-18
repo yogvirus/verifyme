@@ -7,7 +7,6 @@ class SearchesController < ApplicationController
     @customers = Customer.order("status ASC").find(:all)
     @all_customers = (@business + @co_applicants + @co_app_business + @customers).sort_by {|a| a.created_at}.reverse
     @cust  = @all_customers.search(params[:search])
-logger.info "######################"+@cust.inspect
     respond_to do |format|
       format.json { render json: @all_customers }
     end

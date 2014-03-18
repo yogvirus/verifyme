@@ -40,7 +40,7 @@ module ApplicationHelper
   end
 
   def completed_filter
-    Customer.find_all_by_status('verified') + CoApplicant.find_all_by_status('verified') + Business.find_all_by_status('verified') + CoApplicantBusiness.find_all_by_status('verified')
+    Customer.find_all_by_status('verified', order: 'created_at DESC') + CoApplicant.find_all_by_status('verified', order: 'created_at DESC') + Business.find_all_by_status('verified', order: 'created_at DESC') + CoApplicantBusiness.find_all_by_status('verified', order: 'created_at DESC')
   end
 
   def complete_filter
@@ -170,7 +170,5 @@ module ApplicationHelper
   def completed_all_on_tab
     (tab_customer_verification_completed + tab_business_verification_completed + tab_co_applicant_verification_completed + tab_co_applicant_business_completed)
   end
-
-
 
 end

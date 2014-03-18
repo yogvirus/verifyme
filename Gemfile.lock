@@ -86,6 +86,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    commonjs (0.2.7)
     daemons (1.1.9)
     devise (3.0.3)
       bcrypt-ruby (~> 3.0)
@@ -133,6 +134,11 @@ GEM
     kgio (2.8.1)
     launchy (2.3.0)
       addressable (~> 2.3)
+    less (2.4.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.4.2)
+      actionpack (>= 3.1)
+      less (~> 2.4.0)
     libv8 (3.16.14.3)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
@@ -189,6 +195,7 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails-simple-search (0.9.3)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -244,6 +251,11 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
@@ -281,6 +293,7 @@ DEPENDENCIES
   jquery-rails (~> 2.3.0)
   jquery-ui-rails
   kaminari
+  less-rails
   macaddr
   mocha
   mysql2
@@ -289,12 +302,14 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 3.2.13)
+  rails-simple-search (~> 0.9.3)
   rmagick (= 2.13.1)
   sass-rails (~> 3.2.3)
   taps
   therubyracer
   thin
   to_spreadsheet
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
   validates_timeliness (~> 3.0)

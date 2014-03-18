@@ -1,3 +1,4 @@
+<h1> Sudhir </h1>
 <% if @all_pending.present? %>
 <h5>
  <%= link_to "Export to excel", pending_customers_path(:tab_id => params[:tab_id].to_i, :status => params[:status],
@@ -17,7 +18,6 @@
   </tr>
  </thead>
  <tbody>
-  <% count = 0 %>
  <% @pending_customers.each do |customer| %>
   <tr>
    <% if customer.customer.application_status == 'RESIDENTIAL' %>
@@ -45,9 +45,8 @@
    <td><span class="label label-success"> verified </span></td>
    <% end %>
 
-	 <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
-		 <% @verifier.each do |v| %>
-			 <% if v.tab.name %>
+   <% CustomerVerification.find_all_by_customer_id(customer).each do |v| %>
+			 <% if v.tab && v.tab.name %>
 				 <td width="150px"><%= v.tab.name %></td>
 			 <% else %>
 				 <td>no tab </td>
@@ -56,6 +55,7 @@
  	 </tr>
 	 <% end %>
 	 </tbody>
+
 <!--------------- business---------------------------------------------------------------------->
  <% @pending_business.each do |b| %>
 

@@ -356,15 +356,17 @@ border-collapse:collapse;
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary Shed</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Standing Chawl/ Janta Flat Hument / Sitting Chawl</td></tr>
         </table>
-</td>
+        </td>
         <td>
         <table width="230">
       	<tr>
       	<td>
-        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Posh Locality</td></tr>
+        <table>
+        <% if @customer.servey.locality_of_residence == 'Posh locality'%>
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Posh Locality</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Upper Middle Class</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Middle Class</td></tr>
-		<tr><td style="border:1px #000 solid">&nbsp;</td><td>Lower Middle Class</td></tr>
+		    <tr><td style="border:1px #000 solid">&nbsp;</td><td>Lower Middle Class</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td></td></tr>
         </table>
         </td>
@@ -372,21 +374,74 @@ border-collapse:collapse;
         <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Village Area</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Slums</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Other</td></tr>
+        <% elsif @customer.servey.locality_of_residence == 'village area'%>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Posh Locality</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Upper Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Middle Class</td></tr>
+		    <tr><td style="border:1px #000 solid">&nbsp;</td><td>Lower Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td></td></tr>
+        </table>
+        </td>
+        <td style="border-right:1px #000 solid;">
+        <table>  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Village Area</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Slums</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Other</td></tr>
+
+        <% elsif @customer.servey.locality_of_residence == 'upper middle class'%>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Posh Locality</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Upper Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Middle Class</td></tr>
+		    <tr><td style="border:1px #000 solid">&nbsp;</td><td>Lower Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td></td></tr>
+        </table>
+        </td>
+        <td style="border-right:1px #000 solid;">
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Village Area</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Slums</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Other</td></tr>
+        <% elsif @customer.servey.locality_of_residence == 'lower middle class'%>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Posh Locality</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Upper Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Middle Class</td></tr>
+		    <tr><td style="background:silver;background:silver;border:1px #000 solid">&nbsp;</td><td>Lower Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td></td></tr>
+        </table>
+        </td>
+        <td style="border-right:1px #000 solid;">
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Village Area</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Slums</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Other</td></tr>
+
+
+        <% else %>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Posh Locality</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Upper Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Middle Class</td></tr>
+		    <tr><td style="border:1px #000 solid">&nbsp;</td><td>Lower Middle Class</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td></td></tr>
+        </table>
+        </td>
+        <td style="border-right:1px #000 solid;">
+        <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Village Area</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Slums</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Other</td></tr>
+
+        <% end %>
         </table>
         </td>
         </tr>
         </table></td>
         <td>
         <table width="150">
-        <% if @customer.servey.ease_of_location=='Easy' %>
+        <% if @customer.servey.ease_of_location=='easy' %>
         <tr><td style="background:silver;border:1px #000 solid;" width="20">&nbsp;</td><td>Easy</td></tr>
         <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Diffcult</td>
         <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Untraceable</td>
-        <% elsif @customer.servey.ease_of_location=='Difficult' %>
+        <% elsif @customer.servey.ease_of_location=='difficult' %>
         <tr><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Easy</td></tr>
         <tr><td style="background:silver;border:1px #000 solid;">&nbsp;</td><td>Diffcult</td>
         <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Untraceable</td>
-        <% elsif @customer.servey.ease_of_location=='Untraceable' %>
+        <% elsif @customer.servey.ease_of_location=='untraceable' %>
         <tr><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Easy</td></tr>
         <tr><td style="border:1px #000 solid;">&nbsp;</td><td>Diffcult</td>
         <tr><td style="background:silver;border:1px #000 solid;">&nbsp;</td><td>Untraceable</td>

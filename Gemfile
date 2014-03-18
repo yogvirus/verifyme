@@ -8,6 +8,8 @@ source 'https://rubygems.org'
   gem "nested_form"
   gem 'paperclip'
   gem "therubyracer"
+  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  gem "twitter-bootstrap-rails"
   gem 'mysql2'
   gem "rmagick", "2.13.1"
   gem "mocha", :group => :test
@@ -27,6 +29,9 @@ source 'https://rubygems.org'
   gem 'kaminari'
   gem 'capistrano'
   gem 'pg'
+  gem 'rails-simple-search', "~> 0.9.3"
+
+
 #  gem 'to_xls', '~> 1.0.0'
   gem 'carrierwave'
   gem 'jquery-rails', '~> 2.3.0'

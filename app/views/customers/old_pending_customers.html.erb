@@ -13,7 +13,7 @@
      <td><%= e.tab.name %></td>
      <td><%= e.customer.status %></td>
      <% if e.customer.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "ACCEPT", accept_customer_path(e, :customer_id=>e), :class => "label label-info"%></td>
+      <td><%#= link_to "ACCEPT", accept_customer_path(e, :customer_id=>e), :class => "label label-info"%></td>
      <% end %>
   </tr>
 <% end %>
@@ -24,7 +24,7 @@
      <td><%= e.tab.name %></td>
      <td><%= e.business.status %></td>
      <% if e.business.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "accept" %></td>
+      <td><%#= link_to "accept" %></td>
      <% end %>
   </tr>
 <% end %>
@@ -35,7 +35,7 @@
      <td><%= e.tab.name %></td>
      <td><%= e.co_applicant.status %></td>
           <% if e.co_applicant.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "accept" %></td>
+      <td><%#= link_to "accept" %></td>
      <% end %>
 
   </tr>
@@ -47,7 +47,7 @@
      <td><%= e.tab.name %></td>
      <td><%= e.co_applicant_business.status %></td>
      <% if e.co_applicant_business.status=='awaiting_to_get_verified' %>
-      <td><%= link_to "accept" %></td>
+      <td><%#= link_to "accept" %></td>
      <% end %>
 
   </tr>

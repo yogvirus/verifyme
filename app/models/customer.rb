@@ -94,13 +94,18 @@ workflow_column :status
 	CONSTRUCTION = %w[ pukka semi-pukka temperory carpark garden security building-wall]
 
 
-	def self.search(search)
-		if search
-			where('applicant_name iLIKE ?', "%#{search}%")
-		else
-			scoped
-		end
-	end
+#	def self.search(search)
+#		if search
+#			where('applicant_name iLIKE ?', "%#{search}%")
+#		else
+#			scoped
+#		end
+#	end
+
+# def self.search(search)
+#  search_condition = "%" + search + "%"
+#  find(:all, :conditions => ['title LIKE ? OR description LIKE ?', search_condition, search_condition])
+# end
 
 
 end

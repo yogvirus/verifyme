@@ -1,0 +1,12 @@
+<%= form_for :report_search_customers_path, :method => :get do |f| %>
+  <div class="field_name">
+  <%= label_tag :'Application Type' %>
+  <%= select_tag(:application_status, options_for_select([['All'], ['RESIDENTIAL', 'RESIDENTIAL'], ['BUSINESS', 'BUSINESS']])) %>
+  </div>
+  <div class="field_name">
+  <%= label_tag :'Applicant Name' %>
+  <%= text_field_tag :applicant_name, '' %>
+  </div>
+
+<%= f.submit "Find Customers", :class =>"btn btn-info" %><hr>
+<% end %>

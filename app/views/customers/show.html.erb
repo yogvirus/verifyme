@@ -37,6 +37,8 @@
   <tr><td><strong><%= model_class.human_attribute_name(:fh_code) %>:</td></strong>
   <td><%= @customer.fh_code %></td></tr>
 
+  <tr><td><strong><%= model_class.human_attribute_name(:addresse_confirmed) %>:</td></strong>
+  <td><%= @customer.servey.address_confirmed %></td></tr>
 
   <tr><td><strong><%= model_class.human_attribute_name(:address) %>:</td></strong>
   <td><%= @customer.address %></td></tr>
@@ -108,6 +110,10 @@
     <td><ol><% @customer.servey.name_varified_from.each do |i| %>
        <li><%= i %></li>
     <% end %></ol></td></tr>
+
+  <tr><td><strong><%= model_class.human_attribute_name(:residence_status) %>:</strong>
+  <td><%= @customer.servey.residence_status %></td></tr>
+
   <tr><td><strong><%= model_class.human_attribute_name(:type_of_residence) %>:</strong>
   <td><%= @customer.servey.type_of_residence %></td></tr>
 

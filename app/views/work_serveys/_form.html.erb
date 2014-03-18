@@ -82,21 +82,14 @@ $(function () {
 </table>
 <hr>
 
-  </div>
+
 <%= @business.address %>
 
 <h3> Following are the Details to be obtained from the customer </h3><hr>
 
-<div class="map" style ="float:right;width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<strong><%= @business.address %></strong><br>
-<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@business.latitude}%2C#{@business.longitude}" %></p>
-    </div><br>
-
-
 <a><small><i class="show_hide">Click to activate Camera</i></small></a>
 
 <div class="slidingDiv">
-
  <%= f.fields_for :business_documents do |customer| %>
     <%= customer.file_field :photo %>
     <%= customer.hidden_field :work_servey_id %>
@@ -104,8 +97,6 @@ $(function () {
     <%= customer.link_to_remove "Remove" %>
  <% end %>
   <p><%= f.link_to_add "Add more documents", :business_documents %></p><br>
-
-
 </div>
 
   <div class="control-group">
@@ -116,75 +107,88 @@ $(function () {
     </div>
   </div>
 
-  <div class="field_name">
-    <%= f.label :'Name OF The Department' %>
+  <div class="control-group">
+    <%= f.label :'Name OF The Department' , :class => 'control-label'%>
+        <div class="controls">
     <%= f.collection_select :department_id, Department.all, :id, :name %>
+   </div>
   </div>
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :Applicant_Designation, :class => 'control-label' %>
+    <div class="controls">
       <%= f.text_field :applicant_designation, :placeholder => "enter Designation" %>
   </div>
-
-<!--  <div class="field_name">
+  </div>
+<!--  <div class="control-group">
     <%= f.label :Date_Of_visit, :class => 'control-label' %>
       <%= f.date_select :date_of_visit %>
   </div>
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :Time_Of_visit, :class => 'control-label' %>
       <%= f.time_select :date_of_visit %>
   </div>-->
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :Name_of_the_person_met, :class => 'control-label' %>
+          <div class="controls">
       <%= f.text_field :person_met %>
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :Designation_of_the_person_met, :class => 'control-label' %>
+    <div class="controls">
       <%= f.text_field :designation_of_person_met %>
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :Telephone_number, :class => 'control-label' %>
+         <div class="controls">
      <%= f.text_field :telephone_number %>
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :Mobile_Number, :class => 'control-label' %>
+          <div class="controls">
       <%= f.text_field :mobile_number %>
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :Extension_Number, :class => 'control-label' %>
+          <div class="controls">
       <%= f.text_field :ext_number %>
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :Number_of_Year_in_present_employement, :class => 'control-label' %>
+          <div class="controls">
       <%= f.number_field :number_of_years_in_present_employment %>
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :'Visiting cart obtained', :class => 'control-label' %>
+        <div class="controls">
     Yes  <%= f.radio_button :visiting_card_obtained, 'true' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     No  <%= f.radio_button :visiting_card_obtained, 'false' %>
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :name_of_the_company, :class => 'control-label' %>
+          <div class="controls">
       <%= f.text_field :name_of_the_company, :value=>@business.company_name %>
       <%= f.text_field :company_name_new %> *tips : enter the new name if the existing name is wrong
   </div>
-
-  <div class="field_name">
+</div>
+  <div class="control-group">
     <%= f.label :'Type Of Business', :class => 'control-label' %>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Public Ltd." />Public Ltd. <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Partnership" />Partnership <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Private LTD." />Private LTD. <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Propreietorship" />Propreietorship <br>
-<input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Others" /> Others <br>
+  <div class="controls">
+        <input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Public Ltd." />Public Ltd. <br>
+        <input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Partnership" />Partnership <br>
+        <input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Private LTD." />Private LTD. <br>
+        <input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Propreietorship" />Propreietorship <br>
+        <input id="work_servey_type_of_business" name="work_servey[type_of_business]" type="radio" value="Others" /> Others <br>
+   </div>
   </div>
 <br>
   <!--<div class="field_name">
@@ -236,22 +240,22 @@ $(function () {
 
   </div><br>-->
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :working_as, :class => 'control-label' %>
- <div class="field_name">
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Senior/Middle Manager" />Senior/Middle Manager<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Supervisior" />Supervisior<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Junior Management" />Junior Management<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Assistant" />Assistant<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Clerk" />Clerk<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="typist" />Typist<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Stenographer" />Stenographer<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Skilled Labour" />Skilled Labour<br>
-<input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Others" />Others<br>
-  </div>
+    <div class="controls">
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Senior/Middle Manager" />Senior/Middle Manager<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Supervisior" />Supervisior<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Junior Management" />Junior Management<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Assistant" />Assistant<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Clerk" />Clerk<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="typist" />Typist<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Stenographer" />Stenographer<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Skilled Labour" />Skilled Labour<br>
+      <input id="work_servey_type_of_business" name="work_servey[working_as]" type="radio" value="Others" />Others<br>
     </div>
+  </div>
 <br>
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :job_transferable, :class => 'control-label' %>
     <div class="controls">
      Yes <input id="servey_name_and_employee_confirm" name="work_servey[job_transferable]" type="radio" value="1" />
@@ -261,7 +265,7 @@ $(function () {
 
 <h3>The following is based on Verifiers Observation :</h3>
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :'Business Board Seen outside Building / office', :class => 'control-label' %>
     <div class="controls">
      Yes <input id="servey_name_and_employee_confirm" name="work_servey[board_seen]" type="radio" value="1" />
@@ -269,9 +273,9 @@ $(function () {
     </div>
   </div>
 <br>
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :name_verified_from, :class => 'control-label' %>
-
+   <div class="controls">
   <% for name in WorkServey::NAME_VERIFIED %>
     <%= check_box_tag "work_servey[name_verified_from][]", name %>
     <%= h name.humanize %><br />
@@ -330,7 +334,7 @@ $(function () {
 </div>
 <br>
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :interior, :class => 'control-label' %>
  <input id="work_servey_type_of_business" name="work_servey[interior]" type="radio" value="Painted" />Painted<br>
  <input id="work_servey_type_of_business" name="work_servey[interior]" type="radio" value="Carpated" />Carpated<br>
@@ -353,12 +357,12 @@ $(function () {
  <input id="work_servey_type_of_business" name="work_servey[activity_level]" type="radio" value="Low" />Low<br>
   </div><br>
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :no_of_employees_sighted_in_premises, :class => 'control-label' %>
       <%= f.text_field :no_of_employees_sighted %>
   </div>
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :no_of_customer_seen, :class => 'control-label' %>
       <%= f.text_field :no_of_customer_seen %>
   </div>-->
@@ -375,8 +379,9 @@ $(function () {
 
 
 
-  <div class="field_name">
+  <div class="control-group">
     <%= f.label :Verifier_Remark, :class => 'control-label' %>
+<div class="controls">
       <%= f.text_area :verifier_remark, :class => 'textfield', :id=>"video0_tags" %>
   </div>
 </div>
@@ -392,6 +397,13 @@ $(function () {
 
 
 <br><br>
-<%= f.submit "Continue.." , :class=>"btn btn-primary btn-small" %>
+<%= f.submit "Submit" , :class=>"btn btn-primary btn-small" %>
 
 <% end %>
+<hr>
+<div id="canvas_map" style ="width:auto;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+<strong><%= @business.address %></strong><br>
+<p>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=750x300&sensor=false&zoom=15&markers=#{@business.latitude}%2C#{@business.longitude}" %>
+</p>
+</div><br>

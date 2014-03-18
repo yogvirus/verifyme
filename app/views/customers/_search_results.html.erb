@@ -1,0 +1,5 @@
+  <ul>
+    <% @customers.each do |grant| %>
+  <li><%= link_to grant.title, :action => 'show', :id => grant.id  %></li>
+  <% end %>
+  </ul>

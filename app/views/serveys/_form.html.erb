@@ -89,11 +89,6 @@ $(function () {
 <hr>
 <h3> Following are the Details to be obtained from the customer </h3><hr>
 
-<div class="map" style ="float:right;width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<b style ="color:blue"><%= @customer.address %></b><br>
-<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@customer.latitude}%2C#{@customer.longitude}" %></p>
-</div>
-
 <a><small><i class="show_hide">Click to activate Camera</i></small></a>
 
 <div class="slidingDiv">
@@ -143,32 +138,34 @@ $(function () {
       <%= f.number_field :years_lived_at_current_address, :class => 'number_field' %>
     </div>
   </div>
-<div class="control-group">
-<%= f.label :residence_status, :class => 'control-label' %><br>
-<div class="controls">
-<input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Self Owned" />
- Self Owned <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Owned By Parents" />
- Owned By Parents <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Rented" />
-Rented
-<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Company Accomodation" /> Company accomodation<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="paying guest" />
-paying guest<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="owned by friend" /> owned by friend <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Owned by Relative" /> owned by relative <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Lodging" /> lodging <br>
+
+  <div class="control-group">
+  <%= f.label :residence_status, :class => 'control-label' %><br>
+  <div class="controls">
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="Self Owned" />
+     Self Owned <br>
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="Owned By Parents" />
+     Owned By Parents <br>
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="Rented" />
+    Rented
+    <br>
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="Company Accomodation" /> Company accomodation<br>
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="paying guest" />
+    paying guest<br>
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="owned by friend" /> owned by friend <br>
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="Owned by Relative" /> owned by relative <br>
+    <input id="servey_residence_status" name="servey[residence_status]" type="radio" value="Lodging" /> lodging <br>
+      </div>
     </div>
-  </div>
+
   <div class="control-group">
     <%= f.label :educational_qualification, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="proffessional" /> Proffessional <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Post Graduate" /> Post Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Under Graduate" /> Under Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Graduate" /> Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="others" /> others <br>
+<input id="servey_educational_qualification" name="servey[educational_qualification]" type="radio" value="proffessional" /> Proffessional <br>
+<input id="servey_educational_qualification" name="servey[educational_qualification]" type="radio" value="Post Graduate" /> Post Graduate <br>
+<input id="servey_educational_qualification" name="servey[educational_qualification]" type="radio" value="Under Graduate" /> Under Graduate <br>
+<input id="servey_educational_qualification" name="servey[educational_qualification]" type="radio" value="Graduate" /> Graduate <br>
+<input id="servey_educational_qualification" name="servey[educational_qualification]" type="radio" value="others" /> others <br>
 
     </div>
   </div>
@@ -423,3 +420,8 @@ paying guest<br>
                 customers_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<div class="map" style ="width:auto;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+<b style ="color:blue"><%= @customer.address %></b><br>
+<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=1500x300&sensor=false&zoom=15&markers=#{@customer.latitude}%2C#{@customer.longitude}" %></p>
+</div>

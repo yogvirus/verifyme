@@ -761,5 +761,8 @@ puts "----------------------------", @customers.inspect
     end
  end
 
+  def search
+    @customers = Customer.search params[:search]
+  end
 
 end
