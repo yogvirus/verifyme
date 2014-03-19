@@ -96,6 +96,14 @@ input[type=submit] {
 
 <%= render "navigation" %>
 <div class="container-fluid">
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
 
 <div class="span" style ="float:right;font-size:12px;width:230px;background:#F5F5F5;border-radius:5px;margin-right:26px;" >
  <%= render "daily_status" %>

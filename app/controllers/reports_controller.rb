@@ -1,7 +1,6 @@
 class ReportsController < ApplicationController
 include ApplicationHelper
 include ReportsHelper
-
   def index
    @start_date = params[:start_date] || Date.today-5
    @end_date = params[:end_date] || Date.today
@@ -755,6 +754,7 @@ puts "----------------------------", @customers.inspect
       @all_progress = @progress_customers +@progress_co_applicants + @progress_business + @progress_work
 
    end
+     unauthorized! if cannot? :index, @customers
     respond_to do |format|
      format.html
      format.xls { render xlsx: :completed, filename: "reports from" }

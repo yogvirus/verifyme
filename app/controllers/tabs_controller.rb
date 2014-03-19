@@ -3,6 +3,7 @@ class TabsController < ApplicationController
   include ApplicationHelper
   include TabsHelper
   include DashboardsHelper
+  load_and_authorize_resource
 
   def index
     @tabs = Tab.all

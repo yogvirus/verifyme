@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
     self.role == 'super_user'
   end
 
+  def role_name?
+    return !!self.role
+  end
+
+
 end

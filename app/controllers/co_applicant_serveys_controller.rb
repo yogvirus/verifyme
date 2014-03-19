@@ -1,5 +1,5 @@
 class CoApplicantServeysController < InheritedResources::Base
-
+   load_and_authorize_resource
   def index
   end
 
@@ -7,13 +7,13 @@ class CoApplicantServeysController < InheritedResources::Base
    @co_applicant = CoApplicant.find(params[:customer_id])
    @co_applicant_servey = CoApplicantServey.find(params[:id])
   end
-  
+
   def new
    @co_applicant = CoApplicant.find(params[:customer_co_applicant_id])
    @co_applicant_servey = CoApplicantServey.new
    @customer_documents = @co_applicant.co_applicant_documents.build
   end
- 
+
   def create
     @servey = CoApplicantServey.new(params[:co_applicant_servey])
 

@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  before_filter :authenticate_user!
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
 
   #def after_sign_up_path_for(resource)
   #  new_profiles_path
@@ -17,8 +20,5 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
-  end
 
 end
