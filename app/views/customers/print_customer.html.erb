@@ -20,18 +20,18 @@ border-collapse:collapse;
 		<td>
         <table>
         <tr>
-        <td class="border1" style="width:200px">Application No</td>
-        <td class="border1"> <%= @customer.fh_code %></td>
+        <td class="border1" style="text-align:center;width:200px">Application No</td>
+        <td class="border1" style='text-align:center;'> <%= @customer.fh_code %></td>
         <td class="border1" width="300px;" style="text-align:center;">Agency Name</td>
-        <td class="border1" style="text-align:center; font-size:10px;">SCROP.E.O</td>
+        <td class="border1" width="150" style="text-align:center; font-size:10px;">SCROP.E.O</td>
         <td class="border1" width="60" style="text-align:center;">FH Code</td>
-        <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @customer.fh_code %></td>
+        <td width="127" style="text-align:center;border:1px #000 solid; border-top:none; border-right:none"><%= @customer.fh_code %></td>
         </tr>
 
 		<tr>
 
         <td style="border-right:1px #000 solid">Applicant's Name</td>
-        <td style="border-right:1px #000 solid;text-align:left;width:250px;font-weight:bold" align="center"><%= @customer.applicant_name %></td>
+        <td style="border-right:1px #000 solid;text-align:center;width:250px;font-weight:bold" align="center"><%= @customer.applicant_name %></td>
         <td style="text-align:center;width:200px;">BRANCH NAME</td>
         <td width="20" style="border-left:1px #000 solid;text-align:center"><%= @customer.branch.name %></td>
 
@@ -45,8 +45,8 @@ border-collapse:collapse;
     	<td>
         <table>
         <tr>
-        <td style="border-right:1px solid #000" width="130" height="20">Address</td>
-        <td width="0"><%= @customer.address %></td>
+        <td style="border-right:1px solid #000" width="130">Address</td>
+        <td width="0" style="padding-left:30px;"><%= @customer.address %></td>
         </tr>
         </table>
 	</tr>
@@ -56,12 +56,12 @@ border-collapse:collapse;
 
         <table>
         <tr align="center">
-        <td style="border-right:1px #000 solid; font-weight:bold; text-align:left;" width="130">Address Confiremed</td>
+        <td style="border-right:1px #000 solid; font-weight:bold; text-align:center;" width="130">Address Confiremed</td>
 <% if @customer.servey.address_confirmed? %>
         <td width="80" style="background:silver;border-right:1px #000 solid">YES</td>
 <% end %>
         <td width="80" style="border-right:1px #000 solid">NO</td>
-        <td width="150" style="border-right:1px #000 solid; text-align:left;"><strong>Name & Stay Confirmed</strong></td>
+        <td width="150" style="border-right:1px #000 solid; text-align:center;"><strong>Name & Stay Confirmed</strong></td>
 <% if @customer.servey.name_and_stay_confirm? %>
         <td width="80" style="background:silver;border-right:1px #000 solid;">YES</td>
 <% end %>
@@ -205,11 +205,29 @@ border-collapse:collapse;
 </table></td>
 
 <!-- educational qualification block -->
-<td><table width="20"  cellpadding="0" cellspacing="0">
+
+
+<td>
+<table width="20"  cellpadding="0" cellspacing="0">
+<% if @customer.servey.educational_qualification == 'proffessional' %>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.educational_qualification == 'Post Graduate' %>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<% elsif @customer.servey.educational_qualification == 'Under Graduate' %>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+<tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
+<% else %>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
 <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-</table></td>
+<% end %>
+</table>
+</td>
 
 <td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;">
 <tr><td >Professional</td></tr>
@@ -280,10 +298,13 @@ border-collapse:collapse;
 		<td>
         <table>
         <tr>
-        <td width="239" height="30" style="border-right:1px #000 solid; text-align:left">Card Limit</td>
-        <td width="100" style="border-right:1px #000 solid; text-align:left;">Issuing Bank</td>
-        <td width="180" style="border-right:1px #000 solid; text-align:left;">Expiry Date:</td>
-        <td width="" style="border-right:1px #000 solid; font-weight:bold">Depending Adults Spouse Working ? Yes No If Yes Employement Details:</td>
+        <td width="239" style="text-align:center;border-right:1px #000 solid;">Card Limit</td>
+        <td width="150" style="text-align:center;border-right:1px #000 solid;">Issuing Bank</td>
+        <td width="140" style="text-align:center;border-right:1px #000 solid;">Expiry Date:</td>
+        <td width="380" style="text-align:center;border-right:1px #000 solid;font-weight:bold">Depending Adults Spouse Working ?</td>
+        <td width="50"  style="text-align:center;border-right:1px #000 solid;font-weight:bold">Yes</td>
+        <td width="50"  style="text-align:center;border-right:1px #000 solid;font-weight:bold"> No </td>
+        <td width="300" style="text-align:center;border-right:1px #000 solid;font-weight:bold">If Yes Employement Details:</td>
 	       </tr>
         </table>
 		</td>
@@ -480,7 +501,21 @@ border-collapse:collapse;
         <% end %>
 
         </table></td>
+        <% if @customer.servey.comments_of_exteriors=='fenced' %>
+        <td style="border:1px #000 solid; border-right:none"><table>
+        <tr><td width="20" style="border:1px #000 solid">&nbsp;</td><td>Car Park</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Garden</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Security</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Building wall</td></tr>
 
+        </table></td>
+        <td style="border:1px #000 solid; border-left:none;">
+        <table width="200" style="margin-top:-13px;">
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Fenced / Compound Wall</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Elevator</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others (PLs. Specify)</td></tr>
+
+        <% elsif @customer.servey.comments_of_exteriors=='elevator' %>
         <td style="border:1px #000 solid; border-right:none"><table>
         <tr><td width="20" style="border:1px #000 solid">&nbsp;</td><td>Car Park</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Garden</td></tr>
@@ -491,9 +526,37 @@ border-collapse:collapse;
         <td style="border:1px #000 solid; border-left:none;">
         <table width="200" style="margin-top:-13px;">
         <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Fenced / Compound Wall</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Elevator</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others (PLs. Specify)</td></tr>
+
+        <% elsif @customer.servey.comments_of_exteriors=='Building wall' %>
+        <td style="border:1px #000 solid; border-right:none"><table>
+        <tr><td width="20" style="border:1px #000 solid">&nbsp;</td><td>Car Park</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Garden</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Security</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Building wall</td></tr>
+
+        </table></td>
+        <td style="border:1px #000 solid; border-left:none;">
+        <table width="200" style="margin-top:-13px;">
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Fenced / Compound Wall</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Elevator</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others (PLs. Specify)</td></tr>
 
+        <% else %>
+        <td style="border:1px #000 solid; border-right:none"><table>
+        <tr><td width="20" style="border:1px #000 solid">&nbsp;</td><td>Car Park</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Garden</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Security</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Building wall</td></tr>
+
+        </table></td>
+        <td style="border:1px #000 solid; border-left:none;">
+        <table width="200" style="margin-top:-13px;">
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Fenced / Compound Wall</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Elevator</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others (PLs. Specify)</td></tr>
+        <% end %>
         </table>
         </td>
         </tr>
@@ -507,11 +570,24 @@ border-collapse:collapse;
 </tr>
 
         <tr><td width="150" style="border:1px #000 solid; border-right:1px #fff solid;"><table>
-        <tbody><tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Sofa</td></tr>
+        <% if @customer.servey.interior_condition == 'sofa'%>
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Sofa</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Painted</td></tr>
-
-        </tbody></table></td>
+        <% elsif @customer.servey.interior_condition == 'clean'%>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Sofa</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Painted</td></tr>
+        <% elsif @customer.servey.interior_condition == 'painted'%>
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Sofa</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Painted</td></tr>
+        <% else %>
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Sofa</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Painted</td></tr>
+        <% end %>
+        </table></td>
 
         <td style="border:1px #000 solid;"><table>
         <tbody style="border-right:1px #000 solid;"><tr><td width="20" style="border:1px #000 solid">&nbsp;</td><td>Carpated</td></tr>

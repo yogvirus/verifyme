@@ -16,7 +16,6 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require jquery_nested_form
-//= require_tree .
 
 $(function() {
 	$('#checkall').click(function () {
