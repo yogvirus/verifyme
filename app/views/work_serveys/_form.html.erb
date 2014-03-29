@@ -29,6 +29,16 @@ $(function () {
 });
 </script>
 
+<script type="text/javascript">
+function CheckColors(val){
+ var element=document.getElementById('color');
+ if(val=='pick a color'||val=='others'||val==394)
+   element.style.display='block';
+ else
+   element.style.display='none';
+}
+</script>
+
 <style>
 
   i{color:green}
@@ -110,10 +120,17 @@ $(function () {
   <div class="control-group">
     <%= f.label :'Name OF The Department' , :class => 'control-label'%>
         <div class="controls">
-    <%= f.collection_select :department_id, Department.all, :id, :name %>
+    <%= f.collection_select :department_id, Department.all, :id, :name, {}, {:class => 'text_field', :onchange => 'CheckColors(this.value)'} %><br>
    </div>
   </div>
 
+  <div id ="color" style="display:none">
+    <%= f.label :'Enter New Department Name: ' , :class => 'control-label'%>
+    <div class="controls">
+     <input type="text" name="work_servey[new_department_name]" >
+    </div>
+   </div>
+<br><br>
   <div class="control-group">
     <%= f.label :Applicant_Designation, :class => 'control-label' %>
     <div class="controls">

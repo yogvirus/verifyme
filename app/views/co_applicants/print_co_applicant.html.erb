@@ -21,7 +21,7 @@ border-collapse:collapse;
 	<tr>
 		<td style="height:28px; text-align:center;">
 			<p style="height:0; text-decoration:underline; padding-bottom:2px;">State Bank of india</p>
-            <p style="text-decoration:underline;">Employment / Business Verification Report</p></td>
+            <p style="text-decoration:underline;">Employment / Residential Verification Report</p></td>
 	</tr>
 	<tr>
 		<td>
@@ -315,6 +315,23 @@ border-collapse:collapse;
 	<tr><!-- Edited Column-->
 		<td>
         <table width="700" border="0" cellpadding="0" cellspacing="0" style="margin:2">
+<% if @co_applicant.co_applicant_servey.type_of_residence == 'Flat'%>
+        <tr><td>
+        <table width="150">
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        </table>
+        </td>
+        <td width="30" style="border-right:1px #000 solid;">
+        <table width="150">
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Bungalow</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Row House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary Shed</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Standing Chawl/ Janta Flat Hument / Sitting Chawl</td></tr>
+
+<% elsif @co_applicant.co_applicant_servey.type_of_residence == 'bunglow'%>
         <tr><td>
         <table width="150">
         <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
@@ -323,17 +340,47 @@ border-collapse:collapse;
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
         </table>
         </td>
+        <td width="30" style="border-right:1px #000 solid;">
+        <table width="150">
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Bungalow</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Row House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary Shed</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Standing Chawl/ Janta Flat Hument / Sitting Chawl</td></tr>
+<% elsif @co_applicant.co_applicant_servey.type_of_residence == 'Independent House'%>
+        <tr><td>
+        <table width="150">
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
+        <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        </table>
+        </td>
+        <td width="30" style="border-right:1px #000 solid;">
+        <table width="150">
+        <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Bungalow</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Row House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary Shed</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Standing Chawl/ Janta Flat Hument / Sitting Chawl</td></tr>
 
-
-
+<% else %>
+        <tr><td>
+        <table width="150">
+        <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Flat</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Part of Independent House</td></tr>
+        <tr><td style="border:1px #000 solid">&nbsp;</td><td>Multi tenant House</td></tr>
+        </table>
+        </td>
         <td width="30" style="border-right:1px #000 solid;">
         <table width="150">
         <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Bungalow</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Row House</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary Shed</td></tr>
         <tr><td style="border:1px #000 solid">&nbsp;</td><td>Standing Chawl/ Janta Flat Hument / Sitting Chawl</td></tr>
+<% end %>
         </table>
 </td>
+
         <td>
         <table width="230">
       	<tr>
