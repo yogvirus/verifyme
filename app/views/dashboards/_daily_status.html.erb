@@ -7,11 +7,16 @@
   <!-- <strong>Pending </strong> &nbsp;&nbsp; <pending><%= @total_pending %></pending> &nbsp;&nbsp;
    <strong>in progress </strong> &nbsp;&nbsp; <in_progress><%= @total_in_progress %></in_progress> &nbsp;&nbsp;
    <strong>Completed </strong> &nbsp;&nbsp; <complete><%= @total_completed %></complete><br><br>-->
-  <div class="span" style ="width:200px;">
-    <table class="table table-condensed">
+  <div class="span" style ="width:400px;">
+    <table class="table table-condensed table-bordered table-striped">
       <tr>
+        <td style="color:#0088CC"> Totoal Entries in the system </td>
+        <td> <%= (Customer.all+Business.all+CoApplicant.all+CoApplicantBusiness.all).count %>
+      <tr>
+      </table>
+    <table class="table table-condensed table-bordered table-striped">
       <td><%= link_to 'Total Created Today', customers_daily_customers_path %> &nbsp;&nbsp;&nbsp; </td>
-      <td><%= daily_total %> </td>
+      <td width="16%"><%= daily_total %> </td>
       </tr>
       <tr>
       <td><%= link_to 'Total Assigned Today', customers_assigned_data_today_path %> &nbsp;&nbsp;&nbsp; </td>

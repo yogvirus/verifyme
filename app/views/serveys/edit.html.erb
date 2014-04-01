@@ -67,12 +67,6 @@ $(".checkbox").click(function(){
 <hr>
 <h3> Following are the Details to be obtained from the customer </h3><hr>
 
-
-<div class="map" style ="float:right;width:400px;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
-<b style ="color:blue"><%= @customer.address %></b><br>
-<p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=15&markers=#{@customer.latitude}%2C#{@customer.longitude}" %></p>
-</div>
-
 <a><small><i class="show_hide">Click to activate Camera</i></small></a>
 
 <div class="slidingDiv">
@@ -91,15 +85,15 @@ $(".checkbox").click(function(){
   <div class="control-group">
     <%= f.label :address_confirmed, :class => 'control-label' %>
     <div class="controls">
-       Yes <input id="servey_address_confirmed" name="servey[address_confirmed]" type="radio" value="1" />
-       No <input id="servey_address_confirmed" name="servey[address_confirmed]" type="radio" value="0" />
+      Yes <%= f.radio_button :address_confirmed, true  %>
+      No  <%= f.radio_button :address_confirmed, false %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :name_and_stay_confirm, :class => 'control-label' %>
     <div class="controls">
-     Yes <input id="servey_name_and_stay_confirm" name="servey[name_and_stay_confirm]" type="radio" value="1" />
-     No <input id="servey_name_and_stay_confirm" name="servey[name_and_stay_confirm]" type="radio" value="0" />
+      Yes <%= f.radio_button :name_and_stay_confirm, true  %>
+      No  <%= f.radio_button :name_and_stay_confirm, false %>
     </div>
   </div>
 
@@ -125,38 +119,44 @@ $(".checkbox").click(function(){
 <div class="control-group">
 <%= f.label :residence_status, :class => 'control-label' %><br>
 <div class="controls">
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Self Owned" />
- Self Owned <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Owned By Parents" />
- Owned By Parents <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Rented" />
-Rented
-<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Company Accomodation" /> Company accomodation<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="paying guest" />
-paying guest<br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="owned by friend" /> owned by friend <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Married" /> owned by relative <br>
-<input id="servey_marital_status" name="servey[residence_status]" type="radio" value="Married" /> lodging <br>
+     <%= f.label "Self Owned" %>
+     <%= f.radio_button :residence_status, "Self Owned" %>
+     <%= f.label "Owned By Parents" %>
+     <%= f.radio_button :residence_status, "Owned By Parents" %>
+     <%= f.label "Rented" %>
+     <%= f.radio_button :residence_status, "Rented" %>
+     <%= f.label "Company accomodation" %>
+     <%= f.radio_button :residence_status, "Company accomodation" %>
+     <%= f.label "Paying Guest" %>
+     <%= f.radio_button :residence_status, "paying guest" %>
+     <%= f.label "Owned by Friend" %>
+     <%= f.radio_button :residence_status, "owned by friend" %>
+     <%= f.label "Lodging" %>
+     <%= f.radio_button :residence_status, "lodging" %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :educational_qualification, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="proffessional" /> Proffessional <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Post Graduate" /> Post Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Under Graduate" /> Under Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="Graduate" /> Graduate <br>
-<input id="servey_marital_status" name="servey[educational_qualification]" type="radio" value="others" /> others <br>
-
+     <%= f.label "Proffessional" %>
+     <%= f.radio_button :educational_qualification, "proffessional" %>
+     <%= f.label "Post Graduate" %>
+     <%= f.radio_button :educational_qualification, "Post Graduate" %>
+     <%= f.label "Under Graduate" %>
+     <%= f.radio_button :educational_qualification, "Under Graduate" %>
+     <%= f.label "Graduate" %>
+     <%= f.radio_button :educational_qualification, "Graduate" %>
+     <%= f.label "Others" %>
+     <%= f.radio_button :educational_qualification, "others" %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :marital_status, :class => 'control-label' %>
     <div class="controls">
-     <input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Married" /> Married  <br>
-    <input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Unmarried" /> Unmarried  <br>
+     Married <%= f.radio_button :marital_status, "Married" %>
+     UnMarried <%= f.radio_button :marital_status, "unmarried" %>
     </div>
   </div>
 
@@ -257,17 +257,25 @@ paying guest<br>
   <div class="control-group">
     <%= f.label :type_of_residence, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Flat" /> Flat <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Independent House" /> Independent House <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Multitanent House" />Multi Tanent house <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="bunglow" /> Bunglow <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Row House" /> Row house <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="temperory Shed" /> Temperary Shed <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="standing Chawl" /> Standing Chawl <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Janta Flat Hutment" /> Janta Flat Hutment <br>
-<input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Sitting Chawl" /> Sitting chawl <br>
-
-    </div>
+     <%= f.label "Flat" %>
+     <%= f.radio_button :type_of_residence, "Flat" %>
+     <%= f.label "Independent House" %>
+     <%= f.radio_button :type_of_residence, "Independent House" %>
+     <%= f.label "Multi Tanent house" %>
+     <%= f.radio_button :type_of_residence, "Multitanent house" %>
+     <%= f.label "Bunglow" %>
+     <%= f.radio_button :type_of_residence, "bunglow" %>
+     <%= f.label "Row house" %>
+     <%= f.radio_button :type_of_residence, "Row house" %>
+     <%= f.label "Temperary Shed" %>
+     <%= f.radio_button :type_of_residence, "temperary shed" %>
+     <%= f.label "Standing Chawl" %>
+     <%= f.radio_button :type_of_residence, "standing chawl" %>
+     <%= f.label "Janta Flat Hutment" %>
+     <%= f.radio_button :type_of_residence, "janta Flat Hutment" %>
+     <%= f.label "Sitting Chawl" %>
+     <%= f.radio_button :type_of_residence, "Sitting Chawl" %>
+   </div>
   </div>
   <div class="control-group">
     <%= f.label :locality_of_residence, :class => 'control-label' %>
@@ -356,7 +364,7 @@ paying guest<br>
     <%= f.label :Electricity_account_number %>
     <%= f.text_field :electricity_acc_number %>
    </div>
-  <hr></div></br>
+  </div></br>
 
 <!--  <div class="control-group">
     <%= f.label :potrait_on_wall, :class => 'control-label' %>
@@ -397,10 +405,9 @@ paying guest<br>
 
     </div>
   </div>
-
-  <div class="form-actions">
+<hr>
+  <div class="control-group" style="padding-left:180px;">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                customers_path, :class => 'btn' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), customers_path, :class => 'btn' %>
   </div>
 <% end %>
