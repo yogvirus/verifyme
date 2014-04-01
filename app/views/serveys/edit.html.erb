@@ -399,10 +399,12 @@ $(".checkbox").click(function(){
   </div>
   <div class="control-group">
     <div class="controls">
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Accept" /> Accept
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="Decline" /> Decline
-      <input id="servey_marital_status" name="servey[refer_to_bank]" type="radio" value="refer to bank" /> Refer to Bank
-
+     <%= f.label "Accept" %>
+     <%= f.radio_button :refer_to_bank, "Accept" %>
+     <%= f.label "Decline" %>
+     <%= f.radio_button :refer_to_bank, "Decline" %>
+     <%= f.label "Refer to bank" %>
+     <%= f.radio_button :refer_to_bank, "refer to bank" %>
     </div>
   </div>
 <hr>
