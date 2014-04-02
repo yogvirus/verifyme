@@ -33,9 +33,6 @@ $(".checkbox").click(function(){
 
 
 
-
-
-
 <%- model_class = Servey -%>
 <div class="page-header">
   <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
@@ -49,7 +46,7 @@ $(".checkbox").click(function(){
   <%= f.hidden_field :time_of_visit, :value=> @survey.time_of_visit , :class => 'time_select' %>
   <%= f.hidden_field :date_of_visit, :value=> @survey.date_of_visit, :class => 'date_select' %>
   <!-- Customer detal -->
-<table class="table table-striped" border>
+<table class="table table-striped table-bordered table-striped" border>
   <tr>
     <th>Application ref no</th>
     <th>Agency name</th>
@@ -85,15 +82,15 @@ $(".checkbox").click(function(){
   <div class="control-group">
     <%= f.label :address_confirmed, :class => 'control-label' %>
     <div class="controls">
-      Yes <%= f.radio_button :address_confirmed, true  %>
-      No  <%= f.radio_button :address_confirmed, false %>
+           <%= f.label "Yes" %> <%= f.radio_button :address_confirmed, true  %>
+           <%= f.label "No" %>  <%= f.radio_button :address_confirmed, false %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :name_and_stay_confirm, :class => 'control-label' %>
     <div class="controls">
-      Yes <%= f.radio_button :name_and_stay_confirm, true  %>
-      No  <%= f.radio_button :name_and_stay_confirm, false %>
+      <%= f.label "Yes" %> <%= f.radio_button :name_and_stay_confirm, true  %>
+      <%= f.label "No" %>  <%= f.radio_button :name_and_stay_confirm, false %>
     </div>
   </div>
 
@@ -155,8 +152,10 @@ $(".checkbox").click(function(){
   <div class="control-group">
     <%= f.label :marital_status, :class => 'control-label' %>
     <div class="controls">
-     Married <%= f.radio_button :marital_status, "Married" %>
-     UnMarried <%= f.radio_button :marital_status, "unmarried" %>
+    <%= f.label "Married" %>
+    <%= f.radio_button :marital_status, "Married" %>
+    <%= f.label "UnMarried" %>
+    <%= f.radio_button :marital_status, "unmarried" %>
     </div>
   </div>
 
@@ -280,44 +279,61 @@ $(".checkbox").click(function(){
   <div class="control-group">
     <%= f.label :locality_of_residence, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="Posh locality" /> posh locality <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="village area" /> Village area <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="upper middle class" /> Upper middle class <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="lower middle class" /> lower middle class <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="slum" /> slum <br>
-<input id="servey_marital_status" name="servey[locality_of_residence]" type="radio" value="other" /> other <br>
-
+     <%= f.label "Posh locality" %>
+     <%= f.radio_button :locality_of_residence, "Posh locality" %>
+     <%= f.label "village area" %>
+     <%= f.radio_button :locality_of_residence, "village area" %>
+     <%= f.label "upper middle class" %>
+     <%= f.radio_button :locality_of_residence, "upper middle class" %>
+     <%= f.label "lower middle class" %>
+     <%= f.radio_button :locality_of_residence, "lower middle class" %>
+     <%= f.label "slum" %>
+     <%= f.radio_button :locality_of_residence, "slum" %>
+     <%= f.label "other" %>
+     <%= f.radio_button :locality_of_residence, "other" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :ease_of_location, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[ease_of_location]" type="radio" value="easy" /> easy <br>
-<input id="servey_marital_status" name="servey[ease_of_location]" type="radio" value="difficult" /> Difficult <br>
-<input id="servey_marital_status" name="servey[ease_of_location]" type="radio" value="unreachabe" /> unreachable <br>
+     <%= f.label "Easy" %>
+     <%= f.radio_button :ease_of_location, "easy" %>
+     <%= f.label "Difficult" %>
+     <%= f.radio_button :ease_of_location, "difficult" %>
+     <%= f.label "unreachabe" %>
+     <%= f.radio_button :ease_of_location, "unreachabe" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :construction_of_residence, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="pakka" /> pakka <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="semi pakka" /> semi pakka <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="temperory" /> temperory <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="car park" /> car park <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="garden" /> garden <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="security" /> security <br>
-<input id="servey_marital_status" name="servey[construction_of_residence]" type="radio" value="building wall" /> building wall <br>
-
+     <%= f.label "pakka" %>
+     <%= f.radio_button :construction_of_residence, "pakka" %>
+     <%= f.label "Semi pakka" %>
+     <%= f.radio_button :construction_of_residence, "semi pakka" %>
+     <%= f.label "temperory" %>
+     <%= f.radio_button :construction_of_residence, "temperory" %>
+     <%= f.label "car park" %>
+     <%= f.radio_button :construction_of_residence, "car park" %>
+     <%= f.label "garden" %>
+     <%= f.radio_button :construction_of_residence, "garden" %>
+     <%= f.label "security" %>
+     <%= f.radio_button :construction_of_residence, "security" %>
+     <%= f.label "building wall" %>
+     <%= f.radio_button :construction_of_residence, "building wall" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :comments_of_exteriors, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="fenced" /> fenced <br>
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="compound wall" /> compound wall <br>
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="elevator" /> elevator <br>
-<input id="servey_marital_status" name="servey[comments_of_exteriors]" type="radio" value="others" /> others <br>
-
+     <%= f.label "fenced" %>
+     <%= f.radio_button :comments_of_exteriors, "fenced" %>
+     <%= f.label "compound wall" %>
+     <%= f.radio_button :comments_of_exteriors, "compound wall" %>
+     <%= f.label "elevator" %>
+     <%= f.radio_button :comments_of_exteriors, "elevator" %>
+     <%= f.label "others" %>
+     <%= f.radio_button :comments_of_exteriors, "others" %>
     </div>
   </div>
   <div class="control-group">
@@ -329,12 +345,16 @@ $(".checkbox").click(function(){
   <div class="control-group">
     <%= f.label :interior_condition, :class => 'control-label' %>
     <div class="controls">
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="sofa" /> Sofa <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="clean" /> Clean <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="painted" /> painted <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="carpated" /> Carpated <br>
-<input id="servey_marital_status" name="servey[interior_condition]" type="radio" value="ventilation blinds" /> ventilation blinds <br>
-
+     <%= f.label "sofa" %>
+     <%= f.radio_button :interior_condition, "sofa" %>
+     <%= f.label "clean" %>
+     <%= f.radio_button :interior_condition, "clean" %>
+     <%= f.label "painted" %>
+     <%= f.radio_button :interior_condition, "painted" %>
+     <%= f.label "carpated" %>
+     <%= f.radio_button :interior_condition, "carpated" %>
+     <%= f.label "ventilation blindes" %>
+     <%= f.radio_button :interior_condition, "ventilation blinds" %>
     </div>
   </div>
   <div class="control-group">
