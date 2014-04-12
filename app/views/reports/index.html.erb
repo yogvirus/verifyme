@@ -8,14 +8,24 @@ input[type="submit"] {
     font-size: 12px;
 }
 </style>
+
+
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <%= javascript_include_tag "bootstrap-datepicker.js" %>
+
 <script type="text/javascript">
-$(function() {
+jQuery(document).ready(function() {
+    // binds form submission and fields to the validation engine
+    // jQuery("form").validationEngine();
+    var myDate = new Date("March 21, 1997");
+     console.log('myDate');
     $('.datepicker').datepicker({
-    format: 'mm-dd-yyyy',
-    weekStart: 1,
-});
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-14:-75',
+        defaultDate: myDate
+    });
+  });
 </script>
 
 <%= form_for :reports_path, :method => :get do |f| %>
