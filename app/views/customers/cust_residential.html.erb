@@ -3,7 +3,6 @@
 
 <table class="table table-condensed table-striped table-bordered">
   <tr>
-    <th>Application Status </th>
     <th width="195px">Application ref no</th>
     <th>Applicant name</th>
     <th>Address</th>
@@ -14,11 +13,6 @@
 <% @all_customer.each do |customer| %>
 
   <tr>
-    <% if customer.application_status == 'RESIDENTIAL'%>
-    <td><b style="color:#009999;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
-    <% else %>
-    <td><b style="color:#CC0066;border-radius:3px;padding:2px;"><%= customer.application_status %></b></td>
-    <% end %>
     <td><strong><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></strong></td>
     <td><%= customer.applicant_name %></td>
      <td><%= customer.address %></td>

@@ -7,6 +7,7 @@
  </tr>
 <% customers_list.each do |e| %>
   <tr>
+<% if e && e.customer %>
     <td style="color:#009999;border-radius:3px;padding:2px;"><%= e.customer.application_status %></td>
     <td><%= link_to e.customer.applicant_name, e.customer %></td>
      <td><%= e.tab.name %></td>
@@ -14,6 +15,7 @@
      <% if e.customer.status=='awaiting_to_get_verified' %>
       <td><%= link_to "ACCEPT", root_path, :class => "label label-info"%></td>
      <% end %>
+<% end %>
   </tr>
 <% end %>
 <% business_list.each do |e| %>
