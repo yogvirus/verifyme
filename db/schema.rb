@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329035226) do
+ActiveRecord::Schema.define(:version => 20140413140859) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -481,13 +481,20 @@ ActiveRecord::Schema.define(:version => 20140329035226) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "pincode_groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "pincodes", :force => true do |t|
     t.string   "name"
     t.integer  "pin_number"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "city"
     t.integer  "city_id"
+    t.integer  "pincode_group_id"
   end
 
   create_table "profiles", :force => true do |t|
@@ -565,11 +572,12 @@ ActiveRecord::Schema.define(:version => 20140329035226) do
   create_table "tabs", :force => true do |t|
     t.string   "name"
     t.string   "tab_code"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "pin_code"
     t.string   "mac_address"
     t.integer  "pincode_id"
+    t.integer  "pincode_group_id"
   end
 
   create_table "users", :force => true do |t|

@@ -7,7 +7,7 @@ class Tab < ActiveRecord::Base
   has_many :customers
   has_many :customer_verifications, :dependent => :destroy  
   has_many :co_applicants
-
+  has_many :serveys, :dependent => :destroy
   #validation
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }

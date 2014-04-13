@@ -11,7 +11,7 @@
 
   <p>
     <%= f.label :tab_area_code %>
-    <%= f.collection_select :pincode_id, Pincode.all, :id, :name %>
+    <%= f.collection_select :pincode_group_id, PincodeGroup.all, :id, :name %>
   </p>
 
   <p><%= f.submit %></p>
