@@ -1,18 +1,41 @@
 <%= stylesheet_link_tag "customers" %>
+<style>
+input[type=text] {
+	font-size:9px;
+}
+input[type=submit] {
+	font-size:14px;
+  margin-top:13px;
+}
+.input-mysize { width: 150px }
+
+.page {
+    display: inline-block;
+    font-size: 0.875em;
+    font-weight: bold;
+    margin-right: 4px;
+    padding: 0 9px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #FFFFFF;
+    border: 1px solid background;    
+}
+
+#hero-unit{margin:25px;width:2500px}
+</style>
+<%- model_class = Customer -%>
+
 <div id="residential">
 <b> Filter by :<br>
-     <%= link_to "RESIDENTIAL" , customers_cust_residential_path, :class=>"btn btn-small" %> 
-     <%= link_to "BUSINESS" , customers_cust_business_path, :class=>"btn btn-small" %> 
+     <%= link_to "RESIDENTIAL" , customers_cust_residential_path, :class=>"btn btn-small btn-primary-info" %> 
+     <%= link_to "BUSINESS" , customers_cust_business_path, :class=>"btn btn-danger btn-small" %> 
      <%= link_to "PENDING" , customers_cust_pending_path, :class=>"btn btn-info btn-small" %> 
      <%= link_to "INPROGRESS" , customers_cust_in_progress_path, :class=>"btn btn-warning btn-small" %> 
      <%= link_to "COMPLETED" , customers_cust_completed_path, :class=>"btn btn-success btn-small" %> 
      <%= link_to "READY FOR VERIFICATION" , customers_cust_ready_path, :class=>"btn btn-primary btn-small" %>
-     <%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:400px;" %></b><br><br><br>
+     <%#= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:400px;" %></b><br><br><br>
+     <%= link_to "ADD CUSTOMER", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:400px;" %></b><hr>
 </div>
-
-<%- model_class = Customer -%>
-    <%= total_customer %>
-    <%= paginate @all_customer %>
+<%= paginate @all_customer %>
 <table class="table table-condensed table-bordered table-striped">
  <thead>
   <tr>
