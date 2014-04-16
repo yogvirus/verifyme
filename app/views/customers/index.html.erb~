@@ -1,66 +1,36 @@
-<style>
-input[type=text] {
-	font-size:9px;
-}
-input[type=submit] {
-	font-size:14px;
-  margin-top:13px;
-}
-.input-mysize { width: 150px }
-
-.page{
-    display: inline-block;
-    font-size: 0.875em;
-    font-weight: bold;
-    margin-right: 4px;
-    padding: 0 9px;
-    text-decoration: none;
-    text-shadow: 0 1px 0 #FFFFFF;
-}
-
-#hero-unit{margin:25px;width:2500px}
-</style>
-
+<%= stylesheet_link_tag "customers" %>
 <div id="residential">
 <b> Filter by :
-     <%= link_to "Residential" , customers_cust_residential_path %> |
-     <%= link_to "Pending" , customers_cust_pending_path %> |
-     <%= link_to "InProgress" , customers_cust_in_progress_path %> |
-     <%= link_to "Completed" , customers_cust_completed_path %> |
-     <%= link_to "Business" , customers_cust_business_path %>
-     <%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:450px;" %></b><br><br><br>
+     <%= link_to "RESIDENTIAL" , customers_cust_residential_path, :class=>"button-new" %> 
+     <%= link_to "BUSINESS" , customers_cust_business_path, :class=>"button-new" %> 
+     <%= link_to "PENDING" , customers_cust_pending_path, :class=>"button-new" %> 
+     <%= link_to "INPROGRESS" , customers_cust_in_progress_path, :class=>"button-new" %> 
+     <%= link_to "COMPLETED" , customers_cust_completed_path, :class=>"button-new" %> 
+     <%= link_to "READY FOR VERIFICATION" , customers_cust_ready_path, :class=>"button-new" %>
+     <%= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:400px;" %></b><br><br><br>
 </div>
 
 <%- model_class = Customer -%>
-
+    <%= total_customer %>
     <%= paginate @all_customer %>
 <table class="table table-condensed table-bordered table-striped">
  <thead>
   <tr>
-    <th>Client Name </th>
-    <th>Branch Name </th>
-    <th>Branch code </th>
     <th>Form Type </th>
-    <th>Application ref no</th>
+    <th width='220px'>Application ref no</th>
     <th>Applicant name</th>
     <th>Status</th>
     <th>Address</th>
     <th>Verifing tab</th>
+    <th>Client Name </th>
+    <th>Branch Name </th>
+    <th>Branch code </th>
   </tr>
  </thead>
  <tbody>
 
 <% @all_customer.each do |customer| %>
-<%= customer.branch %>
-  <tr><% if customer && customer.branch && customer.client %>
-     <td><%= customer.client.name %></td>
-     <td><%= customer.branch.name %></td>
-     <td><%= customer.branch_code %></td>
-     <% else %>
-     <td> </td>
-     <td> </td>
-     <td> </td>
-     <% end %>
+ <tr>
      <% if customer.application_status == 'RESIDENTIAL'%>
      <td><b style="color:#009999;border-radius:3px;padding:2px;">
        <% if customer.class == CoApplicant %>
@@ -92,7 +62,7 @@ input[type=submit] {
      <% if customer.class==Business %>
      <% @verifier  = BusinessVerification.find_all_by_business_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
@@ -103,7 +73,7 @@ input[type=submit] {
      <% if customer.class==Customer %>
      <% @verifier  = CustomerVerification.find_all_by_customer_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v.customer && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
@@ -114,7 +84,7 @@ input[type=submit] {
      <% if customer.class==CoApplicant %>
      <% @verifier  = CoApplicantVerification.find_all_by_co_applicant_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
@@ -125,14 +95,22 @@ input[type=submit] {
      <% if customer.class==CoApplicantBusiness %>
      <% @verifier  = ClientVerification.find_all_by_co_applicant_business_id(customer) %>
       <% @verifier.each do |v| %>
-       <% if v.tab.name %>
+       <% if v && v.tab && v.tab.name %>
         <td><%= v.tab.name %></td>
        <% else %>
         <td>no tab </td>
        <% end %>
      <% end %>
      <% end %>
-
+ <% if customer && customer.branch && customer.client %>
+     <td><%= customer.client.name %></td>
+     <td><%= customer.branch.name %></td>
+     <td><%= customer.branch_code %></td>
+     <% else %>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <% end %>
     <% end %>
      </tr>
     </tbody>

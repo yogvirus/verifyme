@@ -1,5 +1,5 @@
 <style type="text/css">
-body{line-height: 10px;margin-left:auto;margin-top:-10px;}
+body{line-height: 10px;}
 #wrapper { text-transform:uppercase;width:700px; background-color:#fff; margin:0 auto; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:9px !important;}
 td { font-size:8px;}
 td tr td { }
@@ -9,14 +9,16 @@ table
 border-collapse:collapse;
 }
 </style>
-<%#= link_to_function("Print this Page", "javascript:print()") %>
+<%=link_to_function("Print this Page", "javascript:print()")%>
+
+  <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
   <!-- Save for Web Slices (test.psd) -->
   <div id="wrapper">
   <table id="Table_01" width="700" height="847" border="1" cellpadding="0" cellspacing="0">
   <tr>
   <td style="height:28px; text-align:center;">
   <p style="height:0; text-decoration:underline; padding-bottom:2px;">State Bank of india</p>
-  <p style="text-decoration:underline;">Business Verification Report</p></td>
+  <p style="text-decoration:underline;">Employment / Business Verification Report</p></td>
   </tr>
   <tr>
   <td>
@@ -24,19 +26,19 @@ border-collapse:collapse;
   <table>
   <tr>
   <td class="border1" width="100">Application No </td>
-  <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @co_applicant_business.fh_code %></td>
+  <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @business.fh_code %></td>
   <td class="border1" width="300px;" style="text-align:right;">Agency Name</td>
   <td class="border1" style="text-align:center; font-size:10px;">ScorpE.O</td>
   <td class="border1">&nbsp;</td>
   <td class="border1" width="60" style="text-align:center;">FH Code</td>
-  <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @co_applicant_business.fh_code %></td>
+  <td width="127" style="border:1px #000 solid; border-top:none; border-right:none"><%= @business.fh_code %></td>
   </tr>
   <tr>
   <td style="border-right:1px #000 solid" width="100">Applicant's Name</td>
-  <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @co_applicant_business.applicant_name %></td>
+  <td style="border-right:1px #000 solid; font-weight:bold" align="center"><%= @business.applicant_name %></td>
   <td style="border-right:1px #000 solid">&nbsp;</td>
   <td class="border1">BRANCH</td>
-  <td width="120" style="border-right:1px #000 solid"><%= @co_applicant_business.branch.name %></td>
+  <td width="120" style="border-right:1px #000 solid"><%= @business.branch.name %></td>
   </tr>
   </table>
 
@@ -47,7 +49,7 @@ border-collapse:collapse;
   <table>
   <tr>
   <td style="border-right:1px solid #000" width="130" height="20">Office Address</td>
-  <td width="0"><%= @co_applicant_business.address %></td>
+  <td width="0"><%= @business.address %></td>
   </tr>
   </table>
   </tr>
@@ -58,12 +60,12 @@ border-collapse:collapse;
   <table>
   <tr align="center">
   <td style="border-right:1px #000 solid; font-weight:bold" width="130">Name and Emp Confirmed</td>
-  <% if @co_applicant_business.co_applicant_work_detail.name_and_employee_confirm? %>
+  <% if @business.work_servey.name_and_employee_confirm? %>
   <td width="80" style="background:silver;color:black;border-right:1px #000 solid">YES</td>
   <% end %>
   <td width="80" style="border-right:1px #000 solid">NO</td>
   <td width="150" style="border-right:1px #000 solid">Designation</td>
-  <td width="120" style="border-right:1px #000 solid;"><%= @co_applicant_business.co_applicant_work_detail.applicant_designation %></td>
+  <td width="120" style="border-right:1px #000 solid;"><%= @business.work_servey.applicant_designation %></td>
   <td>&nbsp;</td>
   </tr>
   </table>
@@ -74,9 +76,9 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="130" style="border-right:1px #000 solid; font-weight:bold">Date of Visit</td>
-  <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= time_tag @co_applicant_business.co_applicant_work_detail.date_of_visit %></td>
+  <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= time_tag @business.work_servey.date_of_visit %></td>
   <td width="233" style="border-right:1px #000 solid; font-weight:bold">TIME OF VISIT</td>
-  <td style="padding-left:20px; font-weight:bold;"><%= @co_applicant_business.co_applicant_work_detail.time_of_visit.strftime("%H:%M:%S %p") %></td>
+  <td style="padding-left:20px; font-weight:bold;"><%= @business.work_servey.time_of_visit.strftime("%H:%M:%S %p") %></td>
 
   </tr>
   </table>
@@ -91,11 +93,11 @@ border-collapse:collapse;
   <tr>
 
   <td width="80" style="border-right:1px #000 solid; font-weight:bold">Person Met</td>
-  <td width="48" style="border-right:1px #000 solid; font-weight:bold;"><%= @co_applicant_business.co_applicant_work_detail.person_met %></td>
+  <td width="48" style="border-right:1px #000 solid; font-weight:bold;"><%= @business.work_servey.person_met %></td>
   <td width="50" style="border-right:1px #000 solid">&nbsp;</td>
   <td width="110" style="border-right:1px #000 solid">&nbsp;</td>
   <td width="232" style="border-right:1px #000 solid">Designation of the person met</td>
-  <td width="50" style="border-right:1px #000 solid"><%= @co_applicant_business.co_applicant_work_detail.designation_of_person_met %></td>
+  <td width="50" style="border-right:1px #000 solid"><%= @business.work_servey.designation_of_person_met %></td>
   <td>&nbsp;</td>
   </tr>
   </table>
@@ -107,11 +109,11 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="131" style="border-right:1px #000 solid; font-weight:bold">Telephone Number</td>
-  <td width="120" align="center" style="border-right:1px #000 solid"><%= @co_applicant_business.co_applicant_work_detail.telephone_number %></td>
+  <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.telephone_number %></td>
   <td width="50" style="border-right:1px #000 solid">Ext No</td>
-  <td width="120" align="center" style="border-right:1px #000 solid"><%= @co_applicant_business.co_applicant_work_detail.ext_number %></td>
+  <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.ext_number %></td>
   <td width="99" align="center" style="border-right:1px #000 solid">Mobile No</td>
-  <td width="130" style="border-right:1px #000 solid" align="center"><%= @co_applicant_business.co_applicant_work_detail.mobile_number %></td>
+  <td width="130" style="border-right:1px #000 solid" align="center"><%= @business.work_servey.mobile_number %></td>
   <td>&nbsp;</td>
 
   </tr>
@@ -125,11 +127,11 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="254" style="border-right:1px #000 solid; font-weight:bold">Number of years in Present employment / Business</td>
-  <td width="50" style="border-right:1px solid #000" align="center"><%= @co_applicant_business.co_applicant_work_detail.number_of_years_in_present_employment %></td>
+  <td width="50" style="border-right:1px solid #000" align="center"><%= @business.work_servey.number_of_years_in_present_employment %></td>
   <td width="40" style="border-right:1px solid #000">&nbsp;</td>
   <td width="40" style="border-right:1px solid #000">&nbsp;</td>
   <td width="136" style="border-right:1px solid #000">Visiting Card obtained</td>
-  <td width="85" style="border-right:1px #000 solid" align="center"><% if @co_applicant_business.co_applicant_work_detail.mobile_number? %> Yes </td>
+  <td width="85" style="border-right:1px #000 solid" align="center"><% if @business.work_servey.mobile_number? %> Yes </td>
   <% else %><td width="80" align="center">No</td><% end %>
   </tr>
 
@@ -143,7 +145,7 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="150" style="border-right:1px #000 solid; font-weight:bold">Name of Company / Business </td>
-  <td style="padding-left:10;"><%= @co_applicant_business.co_applicant_work_detail.name_of_the_company %></td>
+  <td style="padding-left:10;"><%= @business.work_servey.name_of_the_company %></td>
   </tr>
   </table>
   </td>
@@ -167,35 +169,35 @@ border-collapse:collapse;
 
   <td><table width="700"  cellpadding="0" cellspacing="0">
   <tr><td><table width="20"  cellpadding="0" cellspacing="0" style="margin-left:2px;margin-bottom:60px;">
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_business=='Public Ltd.' %>
+  <% if @business.work_servey.type_of_business=='Public Ltd.' %>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_business=='Partnership' %>
+  <% if @business.work_servey.type_of_business=='Partnership' %>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_business=='Private LTD.' %>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
+  <% if @business.work_servey.type_of_business=='Private LTD.' %>
+  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_business=='Propreietorship' %>
+  <% if @business.work_servey.type_of_business=='Propreietorship' %>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_business=='Others' %>
+  <% if @business.work_servey.type_of_business=='Others' %>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -208,19 +210,18 @@ border-collapse:collapse;
 
   <td>
   <table width="150"  cellpadding="0" cellspacing="0" style="font-size:8px; margin-left:2px;margin-bottom:65px;">
-
+  
   <tr><td>Public LTD</td></tr>
-  <tr><td>Partnership</td></tr>
-  <tr><td>Private LTD</td></tr>
-  <tr><td>Propretorship</td></tr>
-  <tr><td>Others</td></tr>
+  <tr><td >Partnership</td></tr>
+  <tr><td >Private LTD</td></tr>
+  <tr><td >Propretorship</td></tr>
+  <tr><td >Others</td></tr>
 
 
   </tr></table></td>
 
   <td><table width="20"  cellpadding="0" cellspacing="0" style="margin-top:-4">
-  <% if @co_applicant_business.co_applicant_work_detail.nature_of_business %>
-  <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='Professional'%>
+  <% if @business.work_servey.nature_of_business=='Professional'%>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -233,7 +234,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='Manufacturer'%>
+  <% if @business.work_servey.nature_of_business=='Manufacturer'%>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -246,7 +247,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='Trade/Shopkeeper'%>
+  <% if @business.work_servey.nature_of_business=='Trade/Shopkeeper'%>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
@@ -259,7 +260,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='Commission Agent'%>
+  <% if @business.work_servey.nature_of_business=='Commission Agent'%>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -272,7 +273,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
 
-    <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='Broker'%>
+    <% if @business.work_servey.nature_of_business=='Broker'%>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -285,7 +286,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
 
-    <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='Tutor/Personal Care'%>
+    <% if @business.work_servey.nature_of_business=='Tutor/Personal Care'%>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -298,7 +299,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='STD/PCO Booth'%>
+  <% if @business.work_servey.nature_of_business=='STD/PCO Booth'%>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -311,7 +312,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.nature_of_business=='Others'%>
+  <% if @business.work_servey.nature_of_business=='Others'%>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -323,18 +324,7 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% else %>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
-  <% end %>
+
   </table></td>
 
   <td>
@@ -385,17 +375,17 @@ border-collapse:collapse;
   <td><table><tr><td>
 
   <table width="20"  cellpadding="0" cellspacing="0"><tr>
-  <% if @co_applicant_business.co_applicant_work_detail.office_ownership=='Owned' %>
+  <% if @business.work_servey.office_ownership=='Owned' %>
   <td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.office_ownership=='Rented' %>
+  <% if @business.work_servey.office_ownership=='Rented' %>
   <td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.office_ownership=='Pagdi' %>
+  <% if @business.work_servey.office_ownership=='Pagdi' %>
   <td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
@@ -403,11 +393,11 @@ border-collapse:collapse;
   </table></td>
 
   <td><table width="150"  cellpadding="1" cellspacing="0" style="font-size:8px;">
-
+  
   <tr><td>Owned </td></tr>
   <tr><td>Rented</td></tr>
   <tr><td>Pagdi</td></tr>
-  </table>
+  </td></table>
   </td></tr></table>
   </td>
 
@@ -418,10 +408,10 @@ border-collapse:collapse;
   <td style="border:1px #000 solid">
   <table>
   <tr><td >No of Employees Working </td></tr>
-  <tr><td >in Office Business : <b style="font-size:12px;"><%= @co_applicant_business.co_applicant_work_detail.no_of_employees %></b></td></tr>
+  <tr><td >in Office Business : <b style="font-size:12px;"><%= @business.work_servey.no_of_employees %></b></td></tr>
   <tr><td >&nbsp;</td></tr>
   <tr><td >&nbsp;</td></tr>
-  <tr><td >No of Branches: <%= @co_applicant_business.co_applicant_work_detail.no_of_branches %></td></tr>
+  <tr><td >No of Branches: <%= @business.work_servey.no_of_branches %></td></tr>
   </table>
   </td>
   </tr>
@@ -469,51 +459,44 @@ border-collapse:collapse;
   <table width="700" border="0" cellpadding="0" cellspacing="0" style="margin:2">
   <tr><td>
   <table width="150">
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_job %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_job=='Permanent' %>
+  <% if @business.work_servey.type_of_job=='Permanent' %>
   <tr><td style="background:silver;color:black;border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_job=='Probation' %>
+  <% if @business.work_servey.type_of_job=='Probation' %>
   <tr><td style="border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
   <tr><td style="background:silver;color:black;border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_job=='Temporary Worker' %>
+  <% if @business.work_servey.type_of_job=='Temporary Worker' %>
   <tr><td style="border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
   <tr><td style="background:silver;color:black;border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
   <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_job=='Contract Worker' %>
+  <% if @business.work_servey.type_of_job=='Contract Worker' %>
   <tr><td style="border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
   <tr><td style="background:silver;color:black;border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
   <% end %>
-  <% else %>
-  <tr><td style="border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>temporary Worker</td></tr>
-  <tr><td style="background:silver;color:black;border:1px #000 solid">&nbsp;</td><td>Contract Worker</td></tr>
-<% end %>
   </table>
   </td>
-
+  
   <td width="30" style="border-right:1px #000 solid; border-left:1px #000 solid"></td><td>
   <table width="350">
-
+  
   <tr>
-<% if @co_applicant_business.co_applicant_work_detail.working_as=='Senior/Middle Manager'%>
+<% if @business.work_servey.working_as=='Senior/Middle Manager'%>
   <td><table>
   <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -526,13 +509,13 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-<% if @co_applicant_business.co_applicant_work_detail.working_as=='Supervisior'%>
+<% if @business.work_servey.working_as=='Supervisior'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -545,13 +528,13 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-<% if @co_applicant_business.co_applicant_work_detail.working_as=='Junior Management'%>
+<% if @business.work_servey.working_as=='Junior Management'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -563,14 +546,14 @@ border-collapse:collapse;
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>others</td></tr>
   </table></td>
   </tr>
-<% end %>
-<% if @co_applicant_business.co_applicant_work_detail.working_as=='Assistant'%>
+<% end %>  
+<% if @business.work_servey.working_as=='Assistant'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -583,13 +566,13 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-<% if @co_applicant_business.co_applicant_work_detail.working_as=='Clerk'%>
+<% if @business.work_servey.working_as=='Clerk'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -602,13 +585,13 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.working_as=='typist'%>
+  <% if @business.work_servey.working_as=='typist'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -621,13 +604,13 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.working_as=='Stenographer'%>
+  <% if @business.work_servey.working_as=='Stenographer'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -640,13 +623,13 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.working_as=='Skilled Labour'%>
+  <% if @business.work_servey.working_as=='Skilled Labour'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -659,13 +642,13 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.working_as=='Others'%>
+  <% if @business.work_servey.working_as=='Others'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Junior Management</td></tr>
   </table></td>
-
+  
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Assistant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clerk</td></tr>
@@ -677,28 +660,30 @@ border-collapse:collapse;
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>others</td></tr>
   </table></td>
   </tr>
-<% end %>
-
+<% end %>  
+  
   </table></td>
-
+  
   <td>
   <table width="150">
-  <% if @co_applicant_business.co_applicant_work_detail.job_transferable? %>
+  <% if @business.work_servey.job_transferable? %>
   <tr align="center" ><td style="background:silver;border:1px #000 solid;" width="20">&nbsp;</td><td>Yes</td></tr>
   <tr align="center"><td style="border:1px #000 solid;">&nbsp;</td><td>No</td>
-  <% end %>
+  <% end %>  
 
-  <% if @co_applicant_business.co_applicant_work_detail.job_transferable=='false' %>
+  <% if @business.work_servey.job_transferable=='false' %>
   <tr align="center" ><td style="border:1px #000 solid;" width="20">&nbsp;</td><td>Yes</td></tr>
   <tr align="center"><td style="border:1px #000 solid;">&nbsp;</td><td>No</td>
-  <% end %>
+  <% end %>  
   </table></td></tr>
   </table>
   </td>
   </tr><!--Ends Edited Column-->
 
   <tr>
-  <td>Previous Employedment details {if working for less than 1 year in current employment}</td>
+  <td>Previous Employedment details {if working for <1 year in current employment}</td>
+  </tr>
+  </td>
   </tr>
   <tr>
   <td>
@@ -759,8 +744,7 @@ border-collapse:collapse;
   <tr align="center"><td style="border:1px #000 solid; border-top:none; border-right:none; text-align:right">Type of office</td></tr>
   <tr style="border:1px #000 solid">
   <td>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office %>
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Business Center' %>
+  <% if @business.work_servey.type_of_office=='Business Center' %>  
   <table>
   <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -778,7 +762,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Independent Office' %>
+  <% if @business.work_servey.type_of_office=='Independent Office' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -796,7 +780,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Office Complex' %>
+  <% if @business.work_servey.type_of_office=='Office Complex' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -814,7 +798,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Shop' %>
+  <% if @business.work_servey.type_of_office=='Shop' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -832,7 +816,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Shared Office' %>
+  <% if @business.work_servey.type_of_office=='Shared Office' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -850,7 +834,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Industry / Factory' %>
+  <% if @business.work_servey.type_of_office=='Industry / Factory' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -868,7 +852,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Clinic' %>
+  <% if @business.work_servey.type_of_office=='Clinic' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -886,7 +870,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Small Scale / Shade' %>
+  <% if @business.work_servey.type_of_office=='Small Scale / Shade' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -904,7 +888,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Residence Cum OFfice' %>
+  <% if @business.work_servey.type_of_office=='Residence Cum OFfice' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -922,7 +906,7 @@ border-collapse:collapse;
   </table>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.type_of_office=='Others' %>
+  <% if @business.work_servey.type_of_office=='Others' %>  
   <table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
@@ -939,23 +923,7 @@ border-collapse:collapse;
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
   </table>
   <% end %>
-  <% else %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
+
   </td>
 
   </tr>
@@ -967,207 +935,22 @@ border-collapse:collapse;
   <tr align="right" style="border-left:1px #000 solid;"><td style="border-left:1px #000 solid">Locality of office</td></tr>
   <tr style="border-top:1px #000 solid;">
   <td>
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office %>
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Business Center' %>
-  <table>
-  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop Office Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Commercial Complex</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale Industries Area</td></tr>
   </table>
   </td>
   <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
+  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Residential</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Industry / Factory</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Plant</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
   </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Independent Office' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Office Complex' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Shop' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Shared Office' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Industry / Factory' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Clinic' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Small Scale / Shade' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Residence Cum OFfice' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-
-  <% if @co_applicant_business.co_applicant_work_detail.locality_of_office=='Others' %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
-  <% else %>
-  <table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Business Center</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Independent Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Office Complex</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shop</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Shared Office</td></tr>
-  </table>
-  </td>
-  <td>
-  <table>  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Industry / Factory</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clinic</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Small Scale / Shed</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Residence Cum Office</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Others</td></tr>
-  </table>
-  <% end %>
   </td>
 
   </tr>
-  <tr><td style="border:1px #000 solid">Approx. area of office(in sq. ft.): <%= @co_applicant_business.co_applicant_work_detail.office_area %></td></tr>
+  <tr><td style="border:1px #000 solid">Approx. area of office(in sq. ft.): <%= @business.work_servey.office_area %></td></tr>
 
 
 
@@ -1186,147 +969,42 @@ border-collapse:collapse;
 
   <tr>
   <td width="150"><table><tr><td style="border-right:1px #000 solid;" align="center">Construction of office</td>
-  <td width="150" style="border-right:1px #000 solid" align="center">Exteriors</td>
+  <td width="150" style="border-right:1px #000 solid" align="center">Extarlors</td>
   <td width="150" style="border-right:1px #000 solid" align="center">Interiors</td>
   <td width="150" style="border-right:1px #000 solid">Ease of Locating Office</td>
   <td width="150" style="border-right:1px #000 solid">Business Activity Level</td>
   <td width="150" style="border-right:1px #000 solid">No. Employess sighted in Premises:</td></tr>
   <tr><td width="150" style="border:1px #000 solid"><table>
-  <% if @co_applicant_business.co_applicant_work_detail.construction_of_office %>
-  <% if @co_applicant_business.co_applicant_work_detail.construction_of_office=='Pukka' %>
-  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.construction_of_office=='semi-pukka' %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.construction_of_office=='Temporary' %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
-  <% end %>
-  <% else %>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Pakka</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Semi-Pakka</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Temporary</td></tr>
-  <% end %>
+
   </table></td>
-  <% if @co_applicant_business.co_applicant_work_detail.exterior %>
-  <% if @co_applicant_business.co_applicant_work_detail.exterior=='Good' %>
-  <td width="150" style="border:1px #000 solid"><table>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.exterior=='Average' %>
-  <td width="150" style="border:1px #000 solid"><table>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.exterior=='Poor' %>
-  <td width="150" style="border:1px #000 solid"><table>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
-  <% end %>
-  <% else %>
   <td width="150" style="border:1px #000 solid"><table>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Good</td></tr>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Average</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Poor</td></tr>
-  <% end %>
 
   </table></td>
-
   <td width="150" style="border:1px #000 solid"><table>
-  <% if @co_applicant_business.co_applicant_work_detail.interior %>
-  <% if @co_applicant_business.co_applicant_work_detail.interior=='Painted' %>
-  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.interior=='Carpeted' %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.interior=='Curtains' %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.interior=='Clean' %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
-  <% end %>
-  <% else %>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Painted</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Carpeted</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Curtains</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Clean</td></tr>
-  <% end %>
   </table></td>
+  <td style="border:1px #000 solid"><table>
+  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
 
-  <td style="border:1px #000 solid"><table>
-  <% if @co_applicant_business.co_applicant_work_detail.ease_of_location %>
-  <% if @co_applicant_business.co_applicant_work_detail.ease_of_location=='Easy' %>
-  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.ease_of_location=='Difficult' %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.ease_of_location=='Untracabale' %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
-  <% end %>
-  <% else %>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Easy</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Difficult</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Untraceble</td></tr>
-  <% end %>
   </table></td>
-  <% if @co_applicant_business.co_applicant_work_detail.activity_level %>
-  <% if @co_applicant_business.co_applicant_work_detail.activity_level=='High' %>
-  <td style="border:1px #000 solid"><table>
-  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.activity_level=='Medium' %>
-  <td style="border:1px #000 solid"><table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
-  <% end %>
-  <% if @co_applicant_business.co_applicant_work_detail.activity_level=='Low' %>
   <td style="border:1px #000 solid"><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
-  <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
-  <% end %>
+  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
 
-  <% else %>
-  <td style="border:1px #000 solid"><table>
-  <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>High</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Medium</td></tr>
-  <tr><td style="border:1px #000 solid">&nbsp;</td><td>Low</td></tr>
-  <% end %>
   </table></td>
-  <td style="border:1px #000 solid"><table><td>No. of Customers Seen: <%= @co_applicant_business.co_applicant_work_detail.no_of_customer_seen %></td></tr></table></td>
+  <td style="border:1px #000 solid">No. of Customers Seen:</td></tr></table></td>
   </tr>
   <!-- -->
   </td>
@@ -1337,17 +1015,12 @@ border-collapse:collapse;
   <td style="border:1px #000 solid">
   <table width="235"><tr><td>Whether any display of affilation political party seen</td></tr>
   <tr><td><table>
-  <% if @co_applicant_business.co_applicant_work_detail.political_party? %>
-  <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Yes</td>
-  <td style="border:1px #000 solid" width="20">&nbsp;</td><td>No</td></tr>
-  <% end %>
-  <% if !@co_applicant_business.co_applicant_work_detail.political_party? %>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Yes</td>
-  <td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>No</td></tr>
-  <% end %>
+  <td style="border:1px #000 solid" width="20">&nbsp;</td><td>No</td></tr>
+
   </table></td></tr></table>
   </td>
-  <td width="500" style="border:1px #000 solid">
+  <td width="500"style="border:1px #000 solid">
   <table >
   <tr>
   <td>Items seen in premises</td><td style="padding:0 10">AC</td>
@@ -1368,22 +1041,22 @@ border-collapse:collapse;
   </table>
   <tr>
 
-  <td><table width="700" cellpadding="0" cellspacing="0">
+  <td ><table width="700" cellpadding="0" cellspacing="0">
   <tr><td style="border-bottom:1px #000 solid">Third Party Confirmation</td></tr>
   <tr><td style="border-bottom:1px #000 solid">Viewer Remarks</td></tr>
   <tr><td height="40" style="border-bottom:1px #000 solid;">
-  <%= @co_applicant_business.co_applicant_work_detail.time_of_visit.strftime("%H:%M %p") %>,
-  <%= @co_applicant_business.co_applicant_work_detail.person_met %> & THIRD PARTYCONFIRMATION DONE
-  SUB is working Past <%= @co_applicant_business.co_applicant_work_detail.number_of_years_in_present_employment %> years,
-  in department <%= @co_applicant_business.co_applicant_work_detail.department.name if @co_applicant_business.co_applicant_work_detail.department %> & Designation <%= @co_applicant_business.co_applicant_work_detail.applicant_designation %>,
-  DOB  <%= @co_applicant_business.co_applicant_work_detail.verifier_remark %>
+  <%= @business.work_servey.time_of_visit.strftime("%H:%M %p") %>,
+  <%= @business.work_servey.person_met %> & THIRD PARTYCONFIRMATION DONE
+  SUB is working Past <%= @business.work_servey.number_of_years_in_present_employment %> years,
+  in department <%= @business.work_servey.department.name %> & Designation <%= @business.work_servey.applicant_designation %>, 
+  DOB  TYPE OF LOAN FOR CAR LOAN AMOUNT 5.40 LAKHS.
   </td></tr>
   </table></td>
   </tr>
   <tr>
 
   <td><table width="700" cellpadding="0" cellspacing="0">
-  <% if @co_applicant_business.co_applicant_work_detail.refer_to_bank == 'positive' %>
+  <% if @business.work_servey.refer_to_bank == 'positive' %>
   <tr>
   <td  width="50" cellpadding="0" cellspacing="0" style="background:silver;border:1px #000 solid">&nbsp;</td>
   <td width="95">POSITIVE</td>
@@ -1395,7 +1068,7 @@ border-collapse:collapse;
   </tr>
   <% end %>
 
-  <% if @co_applicant_business.co_applicant_work_detail.refer_to_bank == 'refer to bank' %>
+  <% if @business.work_servey.refer_to_bank == 'refer to bank' %>
   <tr>
   <td  width="50" cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td>
   <td width="95">POSITIVE</td>
@@ -1406,9 +1079,9 @@ border-collapse:collapse;
   <td>(Tick appropriate reason below)</td></tr></table></td>
   </tr>
   <% end %>
-
-
-  <% if @co_applicant_business.co_applicant_work_detail.refer_to_bank == 'negative' %>
+  
+  
+  <% if @business.work_servey.refer_to_bank == 'negative' %>
   <tr>
   <td  width="50" cellpadding="0" cellspacing="0" style="border:1px #000 solid">&nbsp;</td>
   <td width="95">POSITIVE</td>
@@ -1469,3 +1142,4 @@ border-collapse:collapse;
   </table>
   <!-- End Save for Web Slices -->
   </div>
+  </body>
