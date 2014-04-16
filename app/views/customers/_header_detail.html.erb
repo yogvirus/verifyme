@@ -45,9 +45,11 @@
 </style>
 <div id="customer_detail">
   <h1><%= @customer.applicant_name %></h1>
-		 <% if @customer.status=="submitted" %>
-		   <h6><%= link_to 'reasign to another tab', edit_customer_verification_path(@customer.customer_verification, :id => @customer.customer_verification) %></h6>
-     <% end %>
+ <% if @customer.status=="submitted" %>
+	<p><%= link_to 'reasign to another tab', edit_customer_verification_path(@customer.customer_verification, :id => @customer.customer_verification) %></p>
+	or
+  <p><%= link_to 'reset customer', customers_reset_path(@customer, :customer_id => @customer.id) %></p>
+ <% end %>
    <h3><%= @customer.address %></h3>
   <%= link_to t('.back', :default => t("helpers.links.back")),
               customers_path, :class => 'label'  %>

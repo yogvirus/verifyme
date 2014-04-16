@@ -25,6 +25,7 @@ EVerification::Application.routes.draw do
   get "customers/daily_completed_customers"
   get "customers/daily_progress_customers"
   get "reports/show"
+  get 'customers/reset'
   get "co_applicant_businesses/index"
   get "reports/to_excel" => "reports#to_excel", :as => :excel
   get "customers/search_results" => "customers#customer_search", :as => :search

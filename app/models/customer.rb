@@ -57,6 +57,7 @@ workflow_column :status
 
     state :submitted do
       event :progress, :transitions_to => :awaiting_to_get_verified
+      event :reset, :transitions_to => :ready_for_verification
     end
 
     state :awaiting_to_get_verified do

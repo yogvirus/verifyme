@@ -30,6 +30,14 @@ class CustomersController < ApplicationController
   end
 end
 
+ def reset
+  @customer = Customer.find(params[:customer_id])
+  @customer.reset!
+  customer_verification_id = CustomerVerification.find_by_customer_id(@customer.id)
+  customer_verification_id.destroy
+  redirect_to customer_path(@customer, :notice => "Succesfully restored")
+ end
+
  def assign_all
     params[:customer_verification][:customer_ids].each do |t|
      params_customer = {}
