@@ -32,8 +32,8 @@ input[type=submit] {
      <%= link_to "INPROGRESS" , customers_cust_in_progress_path, :class=>"btn btn-warning btn-small" %> 
      <%= link_to "COMPLETED" , customers_cust_completed_path, :class=>"btn btn-success btn-small" %> 
      <%= link_to "READY FOR VERIFICATION" , customers_cust_ready_path, :class=>"btn btn-primary btn-small" %>
-     <%#= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:400px;" %></b><br><br><br>
-     <%= link_to "ADD CUSTOMER", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:400px;" %></b><hr>
+     <%#= link_to "Add Customer", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:400px;" %></b>
+     <%= link_to "ADD CUSTOMER", new_customer_path,:class=>"btn btn-primary btn-small", :style=>"margin-left:300px;" %></b><hr>
 </div>
 <%= paginate @all_customer %>
 <table class="table table-condensed table-bordered table-striped">

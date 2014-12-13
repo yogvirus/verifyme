@@ -186,11 +186,12 @@ end
 
     respond_to do |format|
       if @customer.save
-        pincode = Pincode.find(@customer.pincode_id)
-        group_id = pincode.pincode_group_id if pincode
-        tab_id = Tab.find_by_pincode_group_id(group_id) if group_id
-        verification = CustomerVerification.create(user_id: current_user.id, tab_id: tab_id.id, customer_id: @customer.id) if tab_id
-        verification.save! && verification.customer.submit!
+        #pincode = Pincode.find(@customer.pincode_id)
+        #group_id = pincode.pincode_group_id if pincode
+        #tab_id = Tab.find_by_pincode_group_id(group_id) if group_id
+
+        #verification = CustomerVerification.create(user_id: current_user.id, tab_id: tab_id.id, customer_id: @customer.id) if tab_id
+        #verification.save! && verification.customer.submit!
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render json: @customer, status: :created, location: @customer }
       else
