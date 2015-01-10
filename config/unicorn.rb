@@ -1,52 +1,65 @@
-# root = "/home/deployer/apps/e_verification/current"
-# working_directory root
-# pid "#{root}/tmp/pids/unicorn.pid"
-# stderr_path "#{root}/log/unicorn.log"
-# stdout_path "#{root}/log/unicorn.log"
-# listen "/tmp/unicorn.e_verification.sock"
-# worker_processes 2
-# timeout 30
-
-
-
-app_dir = File.expand_path('../../', __FILE__)
-shared_dir = File.expand_path('../../../shared/', __FILE__)
-
-# Set unicorn options
-worker_processes 2
+# config/unicorn.rb
+# Set environment to development unless something else is specified
+env = ENV["RAILS_ENV"] || "development"
+ 
+# See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete
+# documentation.
+worker_processes 4
+ 
+# listen on both a Unix domain socket and a TCP port,
+# we use a shorter backlog for quicker failover when busy
+listen "/home/deployer/apps/e_verification/tmp/e_verification.socket", :backlog => 64
+ 
+# Preload our app for more speed
 preload_app true
+ 
+# nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
-
-# Fill path to your app
-working_directory app_dir
-
-# Set up socket location
-listen "#{shared_dir}/sockets/unicorn.sock", :backlog => 64
-
-# Loging
-stderr_path "#{shared_dir}/log/unicorn.stderr.log"
-stdout_path "#{shared_dir}/log/unicorn.stdout.log"
-
-# Set master PID location
-pid "#{shared_dir}/pids/unicorn.pid"
-
+ 
+pid "/home/deployer/apps/e_verification/tmp/unicorn.e_verification.pid"
+ 
+# Production specific settings
+if env == "production"
+  # Help ensure your application will always spawn in the symlinked
+  # "current" directory that Capistrano sets up.
+  working_directory "/home/deployer/apps/e_verification"
+ 
+  # feel free to point this anywhere accessible on the filesystem
+  user 'deployer', 'deployers'
+  shared_path = "/home/deployer/apps/e_verification"
+ 
+  stderr_path "#{shared_path}/log/unicorn.stderr.log"
+  stdout_path "#{shared_path}/log/unicorn.stdout.log"
+end
+ 
 before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-  old_pid = "#{server.config[:pid]}.oldbin"
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+  end
+ 
+  # Before forking, kill the master process that belongs to the .oldbin PID.
+  # This enables 0 downtime deploys.
+  old_pid = "/home/deployer/apps/e_verification/tmp/unicorn.e_verification.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
-      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-      Process.kill(sig, File.read(old_pid).to_i)
+      Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
       # someone else did our job for us
     end
   end
 end
-
+ 
 after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
-end
-
-before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{app_dir}/Gemfile"
+  # the following is *required* for Rails + "preload_app true",
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+  end
+ 
+  # if preload_app is true, then you may also want to check and
+  # restart any other shared sockets/descriptors such as Memcached,
+  # and Redis.  TokyoCabinet file handles are safe to reuse
+  # between any number of forked children (assuming your kernel
+  # correctly implements pread()/pwrite() system calls)
 end
