@@ -1,55 +1,75 @@
-require "bundler/capistrano"
+SSHKit.config.command_map[:rake] = "bundle exec rake"
+# config valid only for Capistrano 3.1
+lock '3.1.0'
+set :application, 'e_verification'                       # application name
+set :repo_url, 'git@github.com:sudorails/e_verification.git'   # your repo url
+set :deploy_to, '/home/deployer/apps/e_verification'
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :scm, :git
+set :branch, 'master'
+# Default deploy_to directory is /var/www/my_app
+# set :deploy_to, '/var/www/my_app'
+# Default value for :scm is :git
+# set :scm, :git
+set :keep_releases, 5
+# Default value for :format is :pretty
+# set :format, :pretty
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# Default value for :log_level is :debug
+set :log_level, :debug
 
-server "115.248.231.170", :web, :app, :db, primary: true
+# Default value for :pty is false
+# set :pty, true
+set :format, :pretty
+set :log_level, :debug
+set :pty, true
+set :rvm1_ruby_version, "ruby-2.1.5"
+# Default value for :linked_files is []
+# set :linked_files, %w{config/database.yml}
 
-set :application, "e_verification"
-set :user, "scorp"
-set :deploy_to, "/home/#{user}/apps/#{application}"
-set :deploy_via, :remote_cache
-set :use_sudo, false
+# Default value for linked_dirs is []
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
-set :scm, "git"
-set :repository, "git@github.com:sudorails/#{application}.git"
-set :branch, "master"
-
-set :whenever_command, "bundle exec whenever"
-require "whenever/capistrano"
-
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
-
-after "deploy", "deploy:cleanup" # keep only the last 5 releases
+# Default value for keep_releases is 5
+# set :keep_releases, 5
+# set :puma_rackup, -> { File.join(current_path, 'config.ru') }
+# set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+# set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
+# set :puma_bind, "unix://#{shared_path}/tmp/sockets/puma.sock"
+# set :puma_conf, "#{shared_path}/puma.rb"
+# set :puma_access_log, "#{shared_path}/log/puma_error.log"
+# set :puma_error_log, "#{shared_path}/log/puma_access.log"
+# set :puma_role, :app
+# set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
+# set :puma_threads, [0, 16]
+# set :puma_workers, 0
+# set :puma_init_active_record, true
+# set :puma_preload_app, true
 
 namespace :deploy do
-  %w[start stop restart].each do |command|
-    desc "#{command} unicorn server"
-    task command, roles: :app, except: {no_release: true} do
-      run "/etc/init.d/unicorn_#{application} #{command}"
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
     end
   end
 
-  task :setup_config, roles: :app do
-    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-    sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
-    run "mkdir -p #{shared_path}/config"
-    put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
-    puts "Now edit the config files in #{shared_path}."
-  end
-  after "deploy:setup", "deploy:setup_config"
+  after :publishing, :restart
 
-  task :symlink_config, roles: :app do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/setup_mail.rb #{release_path}/config/initializers/setup_mail.rb"
-  end
-  after "deploy:finalize_update", "deploy:symlink_config"
-
-  desc "Make sure local git is in sync with remote."
-  task :check_revision, roles: :web do
-    unless 'git rev-parse HEAD' == 'git rev-parse origin/master'
-      puts "WARNING: HEAD is not the same as origin/master"
-      puts "Run 'git push' to sync changes."
-      exit
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
     end
   end
-  before "deploy", "deploy:check_revision"
+
 end
