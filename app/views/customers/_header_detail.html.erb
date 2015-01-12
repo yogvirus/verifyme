@@ -10,6 +10,7 @@
 <a href="#myModal_app" role="button" data-toggle="modal" class="label label-important">Add Co aplicant Detail</a>
 <% end %>
 
+<%= link_to "Add Another Customer", new_customer_path, :class=>"label label-info" %>
 
 <% if @customer.servey && @customer.servey.address_confirmed? %>
  <b><%= link_to "print this form", print_customer_customer_path(:customer_id => @customer ), :class => "label label-info" %></b>
@@ -98,3 +99,5 @@
     <% end %>
 <% end %>
 <% end %>
+
+
