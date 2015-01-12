@@ -325,7 +325,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.13)
   rails-simple-search (~> 0.9.3)
-  rmagick (= 2.13.1)
+  rmagick
   rvm1-capistrano3
   sass-rails (~> 3.2.3)
   taps
