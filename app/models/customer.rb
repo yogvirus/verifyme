@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
                   :branch_id, :branch_code, :client_id, :area_name, :city_id, :no_verifcation, :status
 
   validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code, :branch_id, :client_id, :branch_code
-  validates_uniqueness_of :application_ref_no, :fh_code
+  validates_uniqueness_of :application_ref_no, :fh_code, :contact_number
 
   serialize :asset_seen_at_residence
 
@@ -74,7 +74,7 @@ workflow_column :status
  def self.to_csv(options = {})
   CSV.generate(options) do |csv|
     csv << column_names
-    all.each do |product|
+    all.each do |customer|
       csv << customer.attributes.values_at(*column_names)
     end
   end

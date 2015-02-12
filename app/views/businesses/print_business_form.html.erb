@@ -58,12 +58,12 @@ border-collapse:collapse;
   <table>
   <tr align="center">
   <td style="border-right:1px #000 solid; font-weight:bold" width="130">Name and Emp Confirmed</td>
-  <% if @business.work_servey.name_and_employee_confirm? %>
+  <% if @business.work_servey.present? && @business.work_servey.name_and_employee_confirm? %>
   <td width="80" style="background:silver;color:black;border-right:1px #000 solid">YES</td>
   <% end %>
   <td width="80" style="border-right:1px #000 solid">NO</td>
   <td width="150" style="border-right:1px #000 solid">Designation</td>
-  <td width="120" style="border-right:1px #000 solid;"><%= @business.work_servey.applicant_designation %></td>
+  <td width="120" style="border-right:1px #000 solid;"><%= @business.work_servey.applicant_designation if @business.work_servey.present? %></td>
   <td>&nbsp;</td>
   </tr>
   </table>
@@ -74,9 +74,9 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="130" style="border-right:1px #000 solid; font-weight:bold">Date of Visit</td>
-  <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= time_tag @business.work_servey.date_of_visit %></td>
+  <td width="144" style="padding-left:20px; border-right:1px #000 solid; font-weight:bold"><%= time_tag @business.work_servey.date_of_visit if @business.work_servey.present? %></td>
   <td width="233" style="border-right:1px #000 solid; font-weight:bold">TIME OF VISIT</td>
-  <td style="padding-left:20px; font-weight:bold;"><%= @business.work_servey.time_of_visit.strftime("%H:%M:%S %p") %></td>
+  <td style="padding-left:20px; font-weight:bold;"><%= @business.work_servey.time_of_visit.strftime("%H:%M:%S %p") if @business.work_servey.present? && @business.work_servey.time_of_visit %></td>
 
   </tr>
   </table>
@@ -91,11 +91,11 @@ border-collapse:collapse;
   <tr>
 
   <td width="80" style="border-right:1px #000 solid; font-weight:bold">Person Met</td>
-  <td width="48" style="border-right:1px #000 solid; font-weight:bold;"><%= @business.work_servey.person_met %></td>
+  <td width="48" style="border-right:1px #000 solid; font-weight:bold;"><%= @business.work_servey.person_met if @business.work_servey.present? %></td>
   <td width="50" style="border-right:1px #000 solid">&nbsp;</td>
   <td width="110" style="border-right:1px #000 solid">&nbsp;</td>
   <td width="232" style="border-right:1px #000 solid">Designation of the person met</td>
-  <td width="50" style="border-right:1px #000 solid"><%= @business.work_servey.designation_of_person_met %></td>
+  <td width="50" style="border-right:1px #000 solid"><%= @business.work_servey.designation_of_person_met if @business.work_servey.present? %></td>
   <td>&nbsp;</td>
   </tr>
   </table>
@@ -107,11 +107,11 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="131" style="border-right:1px #000 solid; font-weight:bold">Telephone Number</td>
-  <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.telephone_number %></td>
+  <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.telephone_number if @business.work_servey.present? %></td>
   <td width="50" style="border-right:1px #000 solid">Ext No</td>
-  <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.ext_number %></td>
+  <td width="120" align="center" style="border-right:1px #000 solid"><%= @business.work_servey.ext_number if @business.work_servey.present? %></td>
   <td width="99" align="center" style="border-right:1px #000 solid">Mobile No</td>
-  <td width="130" style="border-right:1px #000 solid" align="center"><%= @business.work_servey.mobile_number %></td>
+  <td width="130" style="border-right:1px #000 solid" align="center"><%= @business.work_servey.mobile_number if @business.work_servey.present? %></td>
   <td>&nbsp;</td>
 
   </tr>
@@ -125,11 +125,11 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="254" style="border-right:1px #000 solid; font-weight:bold">Number of years in Present employment / Business</td>
-  <td width="50" style="border-right:1px solid #000" align="center"><%= @business.work_servey.number_of_years_in_present_employment %></td>
+  <td width="50" style="border-right:1px solid #000" align="center"><%= @business.work_servey.number_of_years_in_present_employment if @business.work_servey.present? %></td>
   <td width="40" style="border-right:1px solid #000">&nbsp;</td>
   <td width="40" style="border-right:1px solid #000">&nbsp;</td>
   <td width="136" style="border-right:1px solid #000">Visiting Card obtained</td>
-  <td width="85" style="border-right:1px #000 solid" align="center"><% if @business.work_servey.mobile_number? %> Yes </td>
+  <td width="85" style="border-right:1px #000 solid" align="center"><% if @business.work_servey.present? && @business.work_servey.mobile_number? %> Yes </td>
   <% else %><td width="80" align="center">No</td><% end %>
   </tr>
 
@@ -143,7 +143,7 @@ border-collapse:collapse;
   <table>
   <tr>
   <td width="150" style="border-right:1px #000 solid; font-weight:bold">Name of Company / Business </td>
-  <td style="padding-left:10;"><%= @business.work_servey.name_of_the_company %></td>
+  <td style="padding-left:10;"><%= @business.work_servey.name_of_the_company if @business.work_servey.present? %></td>
   </tr>
   </table>
   </td>
@@ -167,35 +167,35 @@ border-collapse:collapse;
 
   <td><table width="700"  cellpadding="0" cellspacing="0">
   <tr><td><table width="20"  cellpadding="0" cellspacing="0" style="margin-left:2px;margin-bottom:60px;">
-  <% if @business.work_servey.type_of_business=='Public Ltd.' %>
+  <% if @business.work_servey.present? && @business.work_servey.type_of_business=='Public Ltd.' %>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @business.work_servey.type_of_business=='Partnership' %>
+  <% if @business.work_servey.present? && @business.work_servey.type_of_business=='Partnership' %>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @business.work_servey.type_of_business=='Private LTD.' %>
+  <% if @business.work_servey.present? && @business.work_servey.type_of_business=='Private LTD.' %>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @business.work_servey.type_of_business=='Propreietorship' %>
+  <% if @business.work_servey.present? && @business.work_servey.type_of_business=='Propreietorship' %>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @business.work_servey.type_of_business=='Others' %>
+  <% if @business.work_servey.present? && @business.work_servey.type_of_business=='Others' %>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -219,7 +219,7 @@ border-collapse:collapse;
   </tr></table></td>
 
   <td><table width="20"  cellpadding="0" cellspacing="0" style="margin-top:-4">
-  <% if @business.work_servey.nature_of_business %>
+  <% if @business.work_servey.present? && @business.work_servey.nature_of_business %>
   <% if @business.work_servey.nature_of_business=='Professional'%>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
@@ -385,17 +385,17 @@ border-collapse:collapse;
   <td><table><tr><td>
 
   <table width="20"  cellpadding="0" cellspacing="0"><tr>
-  <% if @business.work_servey.office_ownership=='Owned' %>
+  <% if @business.work_servey.present? && @business.work_servey.office_ownership=='Owned' %>
   <td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @business.work_servey.office_ownership=='Rented' %>
+  <% if @business.work_servey.present? && @business.work_servey.office_ownership=='Rented' %>
   <td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <% end %>
-  <% if @business.work_servey.office_ownership=='Pagdi' %>
+  <% if @business.work_servey.present? && @business.work_servey.office_ownership=='Pagdi' %>
   <td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td></tr>
@@ -418,10 +418,10 @@ border-collapse:collapse;
   <td style="border:1px #000 solid">
   <table>
   <tr><td >No of Employees Working </td></tr>
-  <tr><td >in Office Business : <b style="font-size:12px;"><%= @business.work_servey.no_of_employees %></b></td></tr>
+  <tr><td >in Office Business : <b style="font-size:12px;"><%= @business.work_servey.no_of_employees if @business.work_servey.present? %></b></td></tr>
   <tr><td >&nbsp;</td></tr>
   <tr><td >&nbsp;</td></tr>
-  <tr><td >No of Branches: <%= @business.work_servey.no_of_branches %></td></tr>
+  <tr><td >No of Branches: <%= @business.work_servey.no_of_branches if @business.work_servey.present? %></td></tr>
   </table>
   </td>
   </tr>
@@ -469,7 +469,7 @@ border-collapse:collapse;
   <table width="700" border="0" cellpadding="0" cellspacing="0" style="margin:2">
   <tr><td>
   <table width="150">
-  <% if @business.work_servey.type_of_job %>
+  <% if @business.work_servey.present? && @business.work_servey.type_of_job %>
   <% if @business.work_servey.type_of_job=='Permanent' %>
   <tr><td style="background:silver;color:black;border:1px #000 solid" width="20"></td><td>Permanent</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Probation</td></tr>
@@ -507,7 +507,7 @@ border-collapse:collapse;
   <table width="350">
 
   <tr>
-<% if @business.work_servey.working_as=='Senior/Middle Manager'%>
+<% if @business.work_servey.present? && @business.work_servey.working_as=='Senior/Middle Manager'%>
   <td><table>
   <tr><td style="background:silver;border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>
@@ -526,7 +526,7 @@ border-collapse:collapse;
   </table></td>
   </tr>
 <% end %>
-<% if @business.work_servey.working_as=='Supervisior'%>
+<% if @business.work_servey.present? && @business.work_servey.working_as=='Supervisior'%>
   <td><table>
   <tr><td style="border:1px #000 solid" width="20">&nbsp;</td><td>Senior/Middle&nbsp;Management</td></tr>
   <tr><td style="background:silver;border:1px #000 solid">&nbsp;</td><td>Supervisor</td></tr>

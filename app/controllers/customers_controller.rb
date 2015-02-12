@@ -25,10 +25,18 @@ class CustomersController < ApplicationController
       render :xls => @all_custome,
              :columns => [ :application_status, :applicant_name, :address, :status ],
              :headers => %w[ Application_Status Applicant_Name Address Status ]
+        end
       end
     end
   end
-end
+
+  def download_ready_customers
+    @ready_customers = Customer.where(:status => 'ready_for_verification')
+    respond_to do |format|
+      format.html
+      format.xls { send_data @ready_customers.to_csv(col_sep: "\t") }
+    end
+  end
 
  def reset
   @customer = Customer.find(params[:customer_id])

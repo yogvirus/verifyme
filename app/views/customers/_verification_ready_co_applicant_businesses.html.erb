@@ -12,13 +12,12 @@ function checkAll()
      }
  }
 </script>
-<div id="residential" style="font-size:11px;width:2200px">
+<div id="residential" class="col-md-12" style="font-size:11px;">
 <h5> Co Applicant's Business </h5> <br>
-
+<div style="float:right;"><%= link_to "Download Ready co-applicants-business", customers_download_ready_customers_path(:format => :xls) %></div>
 <table class="table table-condensed table-striped table-bordered">
   <tr>
     <th><INPUT type="checkbox" onchange="checkAll()" name="chk[]" /></th>
-    <th>Application Status </th>
     <th>Application ref no</th>
     <th>Applicant name</th>
     <th>Status</th>
@@ -29,38 +28,14 @@ function checkAll()
 <%= select_tag 'tab_id', options_for_select(Tab.all.map{|t| [t.name, t.id]}), {:prompt => "--Select Tab--"} %>
 <% @co_applicant_business_ready.each do |customer| %>
 
-  <tr>
-    <td><%= check_box_tag 'co_applicant_business_verification[co_applicant_business_ids][]', customer.id, false, :id => customer.id %></td>
-    <% if customer.application_status == 'RESIDENTIAL'%>
-    <td>
-     <b style="color:#009999;border-radius:3px;padding:2px;">
-     <%= customer.application_status %>
-     </b>
-    </td>
-    <% else %>
-    <td>
-     <b style="color:#CC0066;border-radius:3px;padding:2px;">
-     <%= customer.application_status %></b></td>
-    <% end %>
-    <td>
-      <b><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></b>
-    </td>
-    <td><%= customer.applicant_name %></td>
-     <% if customer.status=='submitted' %>
-     <td><span class="label label-info"> Submitted </span></td>
-     <% end %>
-     <% if customer.status=='ready_for_verification' %>
-     <td><span class="label label-info"> ready for verification </span></td>
-     <% end %>
-     <% if customer.status=='awaiting_to_get_verified' %>
-     <td><span class="label label-warning"> in progress </span></td>
-     <% end %>
-     <% if customer.status=='verified' %>
-     <td><span class="label label-success"> verified </span></td>
-     <% end %>
-     <td><%= customer.address %></td>
-      </tr>
-    <% end %>
+<tr>
+  <td><%= check_box_tag 'co_applicant_business_verification[co_applicant_business_ids][]', customer.id, false, :id => customer.id %></td>
+  <td><b><%= link_to "scorpeo/ #{Date.today}/ #{customer.application_ref_no}", customer %></b></td>
+  <td><%= customer.applicant_name %></td>
+  <td><%= link_to "Print co-applicant Business Form", print_co_applicant_business_co_applicant_business_path(customer, :co_applicant_business_id => customer), :class=> "label label-info" %></td>
+  <td><%= customer.address %></td>
+</tr>
+<% end %>
 </table>
 
 <br />

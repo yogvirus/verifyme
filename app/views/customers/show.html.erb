@@ -1,5 +1,5 @@
 <style>
- #servey_data{float:left; width:800px;border-right:2px solid black;}
+ #servey_data{float:left;border-right:2px solid black;}
  #servey_document{width:350px;float:right}
 </style>
 
@@ -20,7 +20,7 @@
 <h4> Customer's Servey Detail | <%= link_to "edit this servey", edit_servey_path(@customer.servey,:customer_id=>@customer,:tab_id=>@customer.servey.tab_id) %></h4><br>
 
 <div id="servey_data">
-<table class="table table-bordered table-striped table-condensed" style="width:700px;">
+<table class="table table-bordered table-striped table-condensed">
 <% if @customer && @customer.branch %>
   <tr><td><strong><%= model_class.human_attribute_name(:branch_id) %>:</td></strong>
   <td><%= @customer.branch.name %> </td></tr>
