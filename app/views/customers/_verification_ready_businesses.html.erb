@@ -15,7 +15,7 @@ function checkAllBusiness()
 
 <div id="residential" class="col-md-12" style="font-size:11px;">
 <h5> Businesses </h5> <br>
-<div style="float:right;"><%= link_to "Download Ready Customers", customers_download_ready_customers_path(:format => :xls) %></div>
+<div style="float:right;"><%= link_to "Download Ready Customers", customers_download_ready_customers_business_path(:format => :xls) %></div>
 <table class="table table-condensed table-striped table-bordered">
   <tr>
     <th><INPUT type="checkbox" onchange="checkAllBusiness()" name="chkbusiness[]" /></th>

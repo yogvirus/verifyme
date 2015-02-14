@@ -1,4 +1,12 @@
 EVerification::Application.routes.draw do
+  [404,500].each do |page|
+    get page, :to => "errors#show", code: page
+  end
+
+  # unless Rails.application.config.consider_all_requests_local
+  #   match '*not_found', to: 'errors#error_404'
+  # end
+
   root :to => 'dashboards#index'
   get "help_topics/" => 'help_topics#index', :as => :help_topics
 
@@ -16,6 +24,11 @@ EVerification::Application.routes.draw do
    get :generate_report
   end
   resources :co_applicant_serveys
+  get "customers/download_ready_customers"
+  get "customers/download_ready_co_applicants"
+  get "customers/download_ready_customers_business"
+  get "customers/download_ready_co_applicants_business"
+
   get "customers/completed_customers_today"
   get "customers/in_progress_today"
   get "customers/old_pending_customers"

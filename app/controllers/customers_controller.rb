@@ -31,12 +31,38 @@ class CustomersController < ApplicationController
   end
 
   def download_ready_customers
-    @ready_customers = Customer.where(:status => 'ready_for_verification')
+    @ready_customers = Customer.where('no_verifcation =? and status =?', false, 'ready_for_verification')
     respond_to do |format|
       format.html
       format.xls { send_data @ready_customers.to_csv(col_sep: "\t") }
     end
   end
+
+    def download_ready_co_applicants
+    @ready_customers = CoApplicant.where('status =?', 'ready_for_verification')
+    respond_to do |format|
+      format.html
+      format.xls { send_data @ready_customers.to_csv(col_sep: "\t") }
+    end
+  end
+
+  def download_ready_customers_business
+    @ready_customers = Business.where('status =?', 'ready_for_verification')
+    respond_to do |format|
+      format.html
+      format.xls { send_data @ready_customers.to_csv(col_sep: "\t") }
+    end
+  end
+
+
+  def download_ready_co_applicants_business
+    @ready_customers = CoApplicantBusiness.where('status =?', 'ready_for_verification')
+    respond_to do |format|
+      format.html
+      format.xls { send_data @ready_customers.to_csv(col_sep: "\t") }
+    end
+  end
+
 
  def reset
   @customer = Customer.find(params[:customer_id])
