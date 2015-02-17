@@ -16,4 +16,11 @@ class CoApplicantServey < ActiveRecord::Base
   belongs_to :co_applicant
   has_many :co_applicant_documents
   accepts_nested_attributes_for :co_applicant_documents#,  :reject_if => :all_blank, :allow_destroy => true
+
+  has_attached_file :photo,
+     :styles => {
+       :media => "64x64",
+       :thumb=> "100x100",
+       :small  => "400x400" }
+
 end

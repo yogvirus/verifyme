@@ -93,7 +93,6 @@ input[type=submit] {
 </head>
 
 <body>
-
 <%= render "navigation" %>
 <div class="container-fluid">
 <% flash.each do |name, msg| %>
@@ -111,15 +110,16 @@ input[type=submit] {
 
  <div class="row-fluid">
    <%= render "media" %><hr>
-   <% if current_user.role=="tab_user" && current_user.tab %>
+    <% if (!customers_list_old.empty?) || (!business_list_old.empty?) || (!co_applicants_list_old.empty?) || (!co_app_business_list_old.empty?) %>
+     <b class="blink_me"><%= link_to 'We have Pending Customers', customers_old_pending_customers_path %></b><br><br>
+    <% end %>
+
+
+   <% if (current_user.tab_user? && current_user.tab) || (current_user.temp_admin? && current_user.tab) %>
    <%= render "residence" %>
    <%= render "business" %>
    <% end %>
   </div>
-
-<% if !customers_list_old.empty? || !business_list_old.empty? || !co_applicants_list_old.empty? || !co_app_business_list_old.empty? %>
- <b class="blink_me"><%= link_to 'We have Pending Customers', customers_old_pending_customers_path %></b><br><br>
-<% end %>
 
   <% if current_user.admin? %>
     <div class="span" style ="font-size:12px;width:1180px;padding:10px;border-radius:5px;margin-left:0px;" >

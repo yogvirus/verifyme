@@ -138,7 +138,7 @@
 
   <div class="field_name_">
     <%= f.label :'Name of the area', :class => 'control-label' %>
-    <div id ="area_name"><%= f.collection_select :pincode_id, Pincode.all, :id, :name, {:prompt => true} ,{:class => 'text_field', :onchange => 'getAreaname(this)'} %></div>
+    <div id ="area_name"><%= f.collection_select :pincode_id, Pincode.order('name ASC'), :id, :name, {:prompt => true} ,{:class => 'text_field', :onchange => 'getAreaname(this)'} %></div>
   </div>
 
   <div class="field_name">

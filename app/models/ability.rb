@@ -3,9 +3,9 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user
-       if user.role=='super_user'
+       if user.admin? || user.temp_admin?
          can :manage, :all
-       else user.role == 'tab_user'
+       else user.tab_user?
          can :manage, Servey
          can :manage, CoApplicantServey
          can :manage, WorkServey

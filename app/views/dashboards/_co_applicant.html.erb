@@ -1,15 +1,15 @@
-<table class="table table-striped">
-  <% CoApplicantVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC').each do |c| %>
- <tr><% if c.co_applicant.status=="submitted" %>
-  <td><strong><%= c.co_applicant.applicant_name %></strong>&nbsp;&nbsp;&nbsp;&nbsp;
+<table class="table table-striped" style ="padding:20px;border-radius:5px;border:0px solid #000000;text-align:center">
+  <% @submitted_co_applicants.each do |c| %>
+ <tr><% if c.submitted? %>
+  <td><strong><%= c.applicant_name %></strong>&nbsp;&nbsp;&nbsp;&nbsp;
     <% time1 = Time.now %> <% time2 = c.created_at %>
     <small style ="color:silver;padding-left:10px;padding-right:10px;margin-left:20px;">
     <%= distance_of_time_in_words(time1, time2) %> ago <br>
     </small>
      <p style ="color:silver;font-size:11px;">
-      <%= c.co_applicant.address %>
+      <%= c.address %>
     </p>
   </td>
-  <td><%= link_to "Verify",new_co_applicant_servey_path(:customer_co_applicant_id=> c.co_applicant.id, :tab_id=> current_user.tab.id), :class=>"label label-info" %></td>
+  <td><%= link_to "Verify",new_co_applicant_servey_path(:customer_co_applicant_id=> c.id, :tab_id=> current_user.tab.id), :class=>"label label-info" %></td>
     <% end %>
   <% end %></tr></table>

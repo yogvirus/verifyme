@@ -77,7 +77,7 @@
 </div>
 
 
-<% if @co_applicant_business.co_applicant_business_documents %>
+<% if @co_applicant_business.co_applicant_business_documents.present? %>
 <div id="servey_document">
 <h4> Submitted Documents </h4><br>
 <% @co_applicant_business.co_applicant_business_documents.each do |d| %>

@@ -4,7 +4,7 @@ class PincodesController < ApplicationController
 
   load_and_authorize_resource
   def index
-   @pincodes = Pincode.all
+   @pincodes = Pincode.order('name ASC')
   end
 
   def new

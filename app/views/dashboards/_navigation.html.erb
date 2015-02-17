@@ -23,7 +23,7 @@
 
     </p>
 
-		<ul class="nav"><% if current_user.role=="super_user"||current_user.role=="admin"%>
+		<ul class="nav"><% if current_user.super_user? ||current_user.admin? || current_user.temp_admin? %>
 			<li class="active"><%= link_to 'Show All Users', profiles_path %></li>
 			<li class="active"><%= link_to "Customers", customers_path %></li>
       <li class="active dropdown pull-right">

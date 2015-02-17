@@ -24,6 +24,7 @@ module DashboardsHelper
   CustomerVerification.find_all_by_tab_id(current_user.tab, :order => 'created_at DESC')
  end
 
+  # will be considered later
   def customers_list
     CustomerVerification.where("created_at::date = ?", Date.today)
   end
@@ -35,6 +36,18 @@ module DashboardsHelper
   def co_applicants_list
     CoApplicantVerification.where("created_at::date = ?", Date.today)
   end
+
+  # def customers_list
+  #   Customer.where("status=?", 'submitted')
+  # end
+
+  # def business_list
+  #   Business.where("status=?", 'submitted')
+  # end
+
+  # def co_applicants_list
+  #   CoApplicant.where("status = ?", 'submitted')
+  # end
 
   def co_app_business_list
     ClientVerification.where("created_at::date = ?", Date.today)

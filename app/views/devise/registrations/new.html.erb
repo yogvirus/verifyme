@@ -49,12 +49,17 @@
 </label>
 
 <label class="checkbox">
+ <input id="user_roles" name="user[role]" type="checkbox" value="temp_super_user" /> Temp Super User
+</label>
+
+<label class="checkbox">
  <input id="user_roles" name="user[role]" type="checkbox" value="tab_user" /> Tab User
 </label>
 
-<div style="display:none;">
+
+<div id ="dates" style="display:none;">
 <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Select a tab (if role is not super user) </label>
-   <!--<%= f.select :tab_id, Tab.all.collect {|p|
+   <!--<%#= f.select :tab_id, Tab.all.collect {|p|
                                            unless p.user
                                              [ p.name, p.id ]
                                              end  }, {include_blank: 'Select one'}, { index: nil } %>-->
@@ -64,22 +69,21 @@
 </div>
 </br>
 
-
-
 <script>
 $(".checkbox").click(function(){
 
-   $(this).next("div").toggle();
+   //$(this).next("div").toggle();
+   $('#dates').toggle();
    //alert('fooo ' + $(this).next("div").html());
 });
 </script>
 
 
 
-<!--<% for role in User::ROLES %>
- <p><i><%= check_box_tag "user[role]", role %>
- <%= h role.humanize %></i></p>
-<% end %>-->
+<!--<%# for role in User::ROLES %>
+ <p><i><%#= check_box_tag "user[role]", role %>
+ <%#= h role.humanize %></i></p>
+<%# end %>-->
 
 <p class="login button">
   <%= f.submit "Sign up", :class=>"btn btn-primary btn-small" %>

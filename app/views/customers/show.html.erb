@@ -10,7 +10,7 @@
 
 
 <div id="servey_document">
-<% if @customer.customer_documents %>
+<% if @customer.customer_documents.present? %>
 <h4> Submitted Documents </h4><br>
 <%= render "customer_documents" %>
 <% end %>

@@ -2,7 +2,7 @@
   .row-fluid:before, .row-fluid:after {padding:0px;}
 </style>
 <div id="sidebar">
-  <% if current_user.role=="super_user" %>
+  <% if current_user.admin? || current_user.temp_admin? %>
 
   <!-- <strong>Pending </strong> &nbsp;&nbsp; <pending><%= @total_pending %></pending> &nbsp;&nbsp;
    <strong>in progress </strong> &nbsp;&nbsp; <in_progress><%= @total_in_progress %></in_progress> &nbsp;&nbsp;

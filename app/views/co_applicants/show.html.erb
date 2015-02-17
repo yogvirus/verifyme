@@ -5,7 +5,7 @@
 <%- model_class = Business -%>
 <%= render 'header' %>
 
-<% if @co_applicant.co_applicant_servey && @co_applicant.co_applicant_servey.co_applicant_documents %>
+<% if @co_applicant.co_applicant_servey && @co_applicant.co_applicant_servey.co_applicant_documents.present? %>
 <div id="servey_document">
 <h4> Submitted Documents </h4><br>
 <% @co_applicant.co_applicant_servey.co_applicant_documents.each do |d| %>

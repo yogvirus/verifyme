@@ -1,4 +1,6 @@
 
 <% @customer.customer_documents.each do |d| %>
- <%= image_tag d.photo.url(:thumb) %><br><br>
+<%#= link_to d.photo_name, d.photo.url %>
+<%#= link_to (image_tag(d.photo.url(:thumb),d.photo.url)) %>
+<a href="<%= d.photo.url %>"><%= image_tag d.photo.url(:thumb) %></a><hr>
 <% end %>

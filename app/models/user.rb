@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :tab
   has_many :attendences
   accepts_nested_attributes_for :profile
-  ROLES = %w[super_user tab_user]
+  ROLES = %w[super_user tab_user temp_super_user]
 
   def admin?
     self.role == 'super_user'
@@ -18,5 +18,17 @@ class User < ActiveRecord::Base
     return !!self.role
   end
 
+  def super_user?
+    self.role == 'super_user'
+  end
+
+  def tab_user?
+    self.role == 'tab_user'
+  end
+
+  def temp_admin?
+    self.role == 'temp_super_user'
+  end
+  
 
 end

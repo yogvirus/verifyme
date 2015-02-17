@@ -88,7 +88,7 @@
 
 
 
-<% if @business.business_documents %>
+<% if @business.business_documents.present? %>
 <div id="servey_document">
 <h4> Submitted Documents </h4><br>
 <% @business.business_documents.each do |d| %>
