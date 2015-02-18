@@ -23,11 +23,3 @@ $(function() {
     });
    });
 
-   function checkTabId(obj){
-     if($(obj+" #tab_id :selected").val() == ""){
-       alert("Please Select tab");
-       return false;
-     }else{
-      return true;
-     }
-    }

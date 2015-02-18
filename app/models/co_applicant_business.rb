@@ -15,6 +15,7 @@ attr_accessible :address, :agency_name, :applicant_name, :application_ref_no, :c
  validates_presence_of :application_ref_no, :applicant_name, :address, :fh_code
  validates_uniqueness_of :application_ref_no, :fh_code
  scope :without_status, lambda{|customer| customer ? {:conditions => ["status != ?", 'ready_for_verification']} : {} }
+ scope :submitted, where(status: 'submitted')
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged
 

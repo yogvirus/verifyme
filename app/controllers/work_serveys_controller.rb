@@ -8,10 +8,17 @@ class WorkServeysController < ApplicationController
 
   def create
    @work_servey = WorkServey.create(params[:work_servey])
-   if @work_servey.save
+
+    respond_to do |format|
+      if @work_servey.save
          @work_servey.business.progress!
-        redirect_to root_url, :notice=> 'Customer Servey successfully Done.' 
-   end
+        format.html { redirect_to root_url, notice: 'Customers Co-applicants business Servey successfully Done.' }
+        format.json { render json: @servey, status: :created, location: @servey }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @servey.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show

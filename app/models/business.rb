@@ -21,6 +21,7 @@ class Business < ActiveRecord::Base
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged
  scope :without_status, lambda{|customer| customer ? {:conditions => ["status != ?", 'ready_for_verification']} : {} }
+ scope :submitted, where(:status => "submitted")
  geocoded_by :full_address
   after_validation :geocode, :if => :address_changed?
 

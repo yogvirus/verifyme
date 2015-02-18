@@ -22,6 +22,7 @@ class CoApplicant < ActiveRecord::Base
   has_many :co_applicant_documents
   accepts_nested_attributes_for :co_applicant_documents, :allow_destroy => true
   scope :without_status, lambda{|customer| customer ? {:conditions => ["status != ?", 'ready_for_verification']} : {} }
+  scope :submitted, where(status: 'submitted')
  extend FriendlyId
  friendly_id :applicant_name, use: :slugged
 
