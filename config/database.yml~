@@ -1,0 +1,14 @@
+development:
+    adapter: postgresql
+    host: localhost
+    database: e-verification_development
+    username: postgres
+    password: yogesh1985
+
+
+production:
+    adapter: postgresql
+    host: localhost
+    database: e-verification_production
+    username: postgres
+    password: yogesh1985

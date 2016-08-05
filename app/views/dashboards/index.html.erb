@@ -8,7 +8,7 @@
  </tr>
  <tr>
 <% User.where("DATE(current_sign_in_at) = ? and role = ?", Date.today, "tab_user").each do |tab_user| %>
-  <td style ="color:green"><%= tab_user.tab.name %></td>
+  <td style ="color:green"><%= tab_user.tab.name if tab_user.tab.present? %></td>
   <td><%= tab_user.current_sign_in_at.strftime('%H:%M:%S %P') %></td>
  </tr>
 <% end %>

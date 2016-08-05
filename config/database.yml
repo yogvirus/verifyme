@@ -2,13 +2,13 @@ development:
     adapter: postgresql
     host: localhost
     database: e-verification_development
-    username: postgres
-    password: scorp
+    username: sudhir
+    password: sudhirsb
 
 
 production:
     adapter: postgresql
     host: localhost
     database: e-verification_production
-    username: postgres
-    password: scorp
+    username: yogesh
+    password: yogesh1985
