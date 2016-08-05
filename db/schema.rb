@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140413140859) do
+ActiveRecord::Schema.define(:version => 20160805101130) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -446,6 +446,8 @@ ActiveRecord::Schema.define(:version => 20140413140859) do
     t.string   "area_name"
     t.integer  "city_id"
     t.boolean  "no_verifcation"
+    t.string   "city_name"
+    t.string   "pincode_number"
   end
 
   add_index "customers", ["address"], :name => "index_customers_on_address"
