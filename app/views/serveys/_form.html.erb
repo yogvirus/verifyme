@@ -210,12 +210,12 @@ $(function () {
       <%#= f.number_field :working_member, :class => 'number_field' %>
     </div>
   </div> -->
-  <div class="control-group">
+<!--   <div class="control-group">
     <%= f.label :children, :class => 'control-label' %>
     <div class="controls">
       <%= f.number_field :children, :class => 'number_field' %>
     </div>
-  </div>
+  </div> -->
 
       <%= f.hidden_field :name_plate_seen, :value=>'yes' %>
   <!--<div class="control-group">
@@ -257,7 +257,7 @@ $(function () {
       <%= f.hidden_field :neighbour_ref, :value => 'positive' %>
 
 <div class="control-group">
- <%= f.label :Name_verified_from, :class => 'control-label' %>
+ <%= f.label :Checklist_of_Documents, :class => 'control-label' %>
     <div class="controls">
   <% for name in Customer::NAME_VERIFIED %>
     <%= check_box_tag "servey[name_varified_from][]", name %>
