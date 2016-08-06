@@ -21,9 +21,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def store_path(for_file = filename)
-    "#{store_dir}#{(version_name || :original).to_s}.jpg"
-  end
+  # def store_path(for_file = filename)
+  #   "#{store_dir}#{(version_name || :original).to_s}.jpg"
+  # end
 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -48,93 +48,93 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(pdf jpg jpeg gif png)
+  end
 #version :jpg do
 #      process :convert_to_jpeg
 #end
 
-version :logo do
-   process :convert => :jpg
-   process :scale => [190, 90]
-   process :resize_to_fill => [190,90]
-  #process :resize_to_limit => [600, 600]
-    #process :dynamic_resize_to_fit => :small
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
-end
+# version :logo do
+#    process :convert => :jpg
+#    process :scale => [190, 90]
+#    process :resize_to_fill => [190,90]
+#   #process :resize_to_limit => [600, 600]
+#     #process :dynamic_resize_to_fit => :small
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end
+# end
 
 
 
-version :thumb do
-   process :convert => :jpg
-   process :scale => [200, 113]
-   process :resize_to_fill => [200,113]
-  #process :resize_to_limit => [600, 600]
-    #process :dynamic_resize_to_fit => :small
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
-end
+# version :thumb do
+#    process :convert => :jpg
+#    process :scale => [200, 113]
+#    process :resize_to_fill => [200,113]
+#   #process :resize_to_limit => [600, 600]
+#     #process :dynamic_resize_to_fit => :small
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end
+# end
 
 
-version :small do
-   process :convert => :jpg
-   process :scale => [800, 600]
-   process :resize_to_fill => [400,400]
-  #process :resize_to_limit => [600, 600]
-    #process :dynamic_resize_to_fit => :small
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
-end
-version :medium do
-   process :convert => :jpg
-   process :scale => [1024, 768]
-   process :resize_to_fill => [800,600]
-    #process :dynamic_resize_to_fit => :medium
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
-end
-version :large do
-   process :convert => :jpg
-   process :scale => [1600, 1200]
-   process :resize_to_fill => [1024,768]
-   # process :dynamic_resize_to_fit => :large
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
-end
-version :max do
-   process :convert => :jpg
-   process :scale => [2272, 1704]
-   # process :dynamic_resize_to_fit => :max
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end 
+# version :small do
+#    process :convert => :jpg
+#    process :scale => [800, 600]
+#    process :resize_to_fill => [400,400]
+#   #process :resize_to_limit => [600, 600]
+#     #process :dynamic_resize_to_fit => :small
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end
+# end
+# version :medium do
+#    process :convert => :jpg
+#    process :scale => [1024, 768]
+#    process :resize_to_fill => [800,600]
+#     #process :dynamic_resize_to_fit => :medium
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end
+# end
+# version :large do
+#    process :convert => :jpg
+#    process :scale => [1600, 1200]
+#    process :resize_to_fill => [1024,768]
+#    # process :dynamic_resize_to_fit => :large
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end
+# end
+# version :max do
+#    process :convert => :jpg
+#    process :scale => [2272, 1704]
+#    # process :dynamic_resize_to_fit => :max
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end 
 
-version :large do
-   process :convert => :jpg
-   process :scale => [400, 300]
-   process :resize_to_fill => [300,300]
-   # process :dynamic_resize_to_fit => :large
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
-end
+# version :large do
+#    process :convert => :jpg
+#    process :scale => [400, 300]
+#    process :resize_to_fill => [300,300]
+#    # process :dynamic_resize_to_fit => :large
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end
+# end
 
-version :logo do
-   process :convert => :jpg
-   process :scale => [100, 200]
- def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
-end
+# version :logo do
+#    process :convert => :jpg
+#    process :scale => [100, 200]
+#  def filename
+#     super.chomp(File.extname(super)) + '.jpg'
+#   end
+# end
 
-end
+# end
  #def dynamic_resize_to_fit(size)
  #   resize_to_fit *(model.class::IMAGE_SIZES[size])
  # end

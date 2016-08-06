@@ -86,7 +86,7 @@ workflow_column :status
 	MARTIAL_STATUS= %w[single married divorced]
 	BEHAVIOUR = %w[ polite rude]
 	NEIGHBOUR_REFERENCE = %w[positive negative]
-	NAME_VERIFIED = %w[ name-plate watchman neighbour society-board company-board]
+	NAME_VERIFIED = %w[ Application-no.(Signed-on-both-Side) Bank-Maudute(signed) Pancard-copy(Signed-Photocopy) Cheque-Leaf(cancelled-Original) Address-Proof(Signed-Copy) Income-Proof]
 	RESIDENCE_LOCALITY = %w[posh_locality village_area upper_middle_class lower_middle_class slums others ]
 	EASE_OF_LOCATION = %w[easy difficult unreachable]
 	ASSET_SEEN = %w[car two_Wheeler aircon television refrigerator music_system pc]

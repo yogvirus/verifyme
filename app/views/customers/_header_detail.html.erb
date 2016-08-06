@@ -87,7 +87,7 @@
      <span class="label label-warning" style='background:pale'>Submitted to Tab User
 		<b>
 		 The customer has been send for verification. this is been assigned to
-		 <%= link_to @customer.customer_verification.tab.name, tab_path(@customer.customer_verification.tab) %><br>
+		 <%= link_to @customer.customer_verification.try(:tab).try(:name), tab_path(@customer.customer_verification.try(:tab)) %><br>
 		</b></span>
     <% end %>
 <% else %>

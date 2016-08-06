@@ -49,11 +49,6 @@ $(function () {
 }
 </style>
 
-
-
-
-
-
 <%- model_class = Servey -%>
 <div class="page-header">
   <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
@@ -64,6 +59,8 @@ $(function () {
 <h4 style ="text-transform: uppercase;">*Customers Document Phots are Required</h4>
 </div>
 <% end %>
+<div class="row-fluid">
+<div class="span6">
 <%= nested_form_for @survey, :html => { :class => 'form-horizontal' } do |f| %>
 
   <%= f.hidden_field :customer_id, :value=> params[:customer_id], :class => 'text_field' %>
@@ -71,18 +68,17 @@ $(function () {
   <%= f.hidden_field :time_of_visit, :value=> Time.now , :class => 'time_select' %>
   <%= f.hidden_field :date_of_visit, :value=> Time.now, :class => 'date_select' %>
   <!-- Customer detal -->
-<table class="table table-striped" border>
+<table class="table table-striped table-condensed table-bordered">
   <tr>
     <th>Application ref no</th>
     <th>Agency name</th>
-    <th>Fh code</th>
+    <th>Address</th>
     <th>Applicant name</th>
   </tr>
-
   <tr>
     <td><%= @customer.application_ref_no %></td>
     <td><%= @customer.agency_name %></td>
-    <td><%= @customer.fh_code %></td>
+    <td><%= @customer.address %></td>
     <td><%= @customer.applicant_name %></td>
   </tr>
 </table>
@@ -170,36 +166,36 @@ $(function () {
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :marital_status, :class => 'control-label' %>
+<!--   <div class="control-group">
+    <%#= f.label :marital_status, :class => 'control-label' %>
     <div class="controls">
      <input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Married" /> Married  <br>
     <input id="servey_marital_status" name="servey[marital_status]" type="radio" value="Unmarried" /> Unmarried  <br>
     </div>
-  </div>
+  </div> -->
 
-    <%= f.label :Spouse_Working, :class => 'control-label' %>
-      <label class="checkbox controls">
+    <%#= f.label :Spouse_Working, :class => 'control-label' %>
+<!--       <label class="checkbox controls">
          <input id="spouse_working_detail_no" name="servey[spouse_working]" type="checkbox" value="no" /> no
       </label>
       <label class="checkbox controls">
          <input id="spouse_working_detail_yes" name="servey[spouse_working]" type="checkbox" value="Yes" class="checkbox" /> Yes
-      </label>
+      </label> -->
 
-   <div class="control-group" style ="display:none;"><br>
-     <%= f.label :spouse_working_detail, :class => 'control-label' %>
+<!--    <div class="control-group" style ="display:none;"><br>
+     <%#= f.label :spouse_working_detail, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :spouse_working_detail, :class => 'text_field' %>
+      <%#= f.text_field :spouse_working_detail, :class => 'text_field' %>
     </div>
-  </div>
+  </div> -->
 
 
-  <div class="control-group">
-    <%= f.label :no_of_family_members, :class => 'control-label' %>
+<!--   <div class="control-group">
+    <%#= f.label :no_of_family_members, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :no_of_family_members, :class => 'number_field' %>
+      <%#= f.number_field :no_of_family_members, :class => 'number_field' %>
     </div>
-  </div>
+  </div> -->
 
   <div class="control-group">
     <%= f.label :date_of_birth, :class => 'control-label' %>
@@ -208,12 +204,12 @@ $(function () {
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :working_member, :class => 'control-label' %>
+<!--   <div class="control-group">
+    <%#= f.label :working_member, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :working_member, :class => 'number_field' %>
+      <%#= f.number_field :working_member, :class => 'number_field' %>
     </div>
-  </div>
+  </div> -->
   <div class="control-group">
     <%= f.label :children, :class => 'control-label' %>
     <div class="controls">
@@ -223,40 +219,40 @@ $(function () {
 
       <%= f.hidden_field :name_plate_seen, :value=>'yes' %>
   <!--<div class="control-group">
-    <%= f.label :credit_card, :class => 'control-label' %>
+    <%#= f.label :credit_card, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :credit_card, :class => 'check_box' %> ye
-      <%= check_box_tag'test' %> no
+      <%#= f.check_box :credit_card, :class => 'check_box' %> ye
+      <%#= check_box_tag'test' %> no
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :card_no, :class => 'control-label' %>
+    <%#= f.label :card_no, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :card_no, :class => 'text_field' %>
+      <%#= f.text_field :card_no, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :card_limit, :class => 'control-label' %>
+    <%#= f.label :card_limit, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :card_limit, :class => 'text_field' %>
+      <%#= f.text_field :card_limit, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :issuing_bank, :class => 'control-label' %>
+    <%#= f.label :issuing_bank, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :issuing_bank, :class => 'text_field' %>
+      <%#= f.text_field :issuing_bank, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :expiry_date, :class => 'control-label' %>
+    <%#= f.label :expiry_date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :expiry_date, :class => 'date_select' %>
+      <%#= f.date_select :expiry_date, :class => 'date_select' %>
     </div>
   </div>-->
 <p> </p>
-<div class="alert alert-success" style="width:400px">
+<!-- <div class="alert alert-success" style="width:400px">
   <strong>the following is based on verifiers observation.</strong>
-</div>
+</div> -->
       <%= f.hidden_field :customer_beaviour, :value => 'polite' %>
       <%= f.hidden_field :neighbour_ref, :value => 'positive' %>
 
@@ -272,7 +268,7 @@ $(function () {
 </div>
 
 
-  <div class="control-group">
+<!--   <div class="control-group">
     <%= f.label :type_of_residence, :class => 'control-label' %>
     <div class="controls">
 <input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="Flat" /> Flat <br>
@@ -284,7 +280,7 @@ $(function () {
 <input id="servey_marital_status" name="servey[type_of_residence]" type="radio" value="standing Chawl" /> Standing Chawl / Janta Flat Hutment / Sitting chawl<br>
 
     </div>
-  </div>
+  </div> -->
   <!--<div class="control-group">
     <%= f.label :locality_of_residence, :class => 'control-label' %>
     <div class="controls">
@@ -420,8 +416,11 @@ $(function () {
                 customers_path, :class => 'btn' %>
   </div>
 <% end %>
-
-<div class="map" style ="width:auto;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
+</div>
+<div class="span6">
+  <div class="map" style ="width:auto;padding:20px;border-radius:5px;border:1px solid #000000;text-align:center">
 <b style ="color:blue"><%= @customer.address %></b><br>
 <p><%= image_tag "http://maps.google.com/maps/api/staticmap?size=1500x300&sensor=false&zoom=15&markers=#{@customer.latitude}%2C#{@customer.longitude}" %></p>
+</div>
+</div>
 </div>

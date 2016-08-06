@@ -160,13 +160,13 @@
 </div>
 
  <div id='sidebar'>
-	<div class="field_name">
-		<%= f.check_box :no_verifcation %>
+<!-- 	<div class="field_name">
+		<%#= f.check_box :no_verifcation %>
 		<b style ="padding-left:10px;">Click if verification not required</b><hr>
-	</div>
+	</div> -->
 	<div class="field_name">
-		<%= f.check_box :photo_required %>
-		<b style ="padding-left:10px;">Click this if photocopy of the customers document is required</b>
+		<%= f.check_box :photo_required, checked: true %>
+		<b style ="padding-left:10px;">document is required</b>
 	</div>
   </div>
 
